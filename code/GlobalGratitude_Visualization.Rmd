@@ -60,10 +60,39 @@ DF <- DF %>%
   drop_na(gratitude_mean, pa_mean, optimistic_mean, na_mean, 
           indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean)
 
+# sanity check
+interventions_test <- DF %>%
+  group_by(condition) %>%
+  summarize(
+    grat_mean     = mean(gratitude_mean, na.rm = TRUE),
+    pa_mean       = mean(pa_mean, na.rm = TRUE),
+    optimistic_mean = mean(optimistic_mean, na.rm = TRUE),
+    na_mean       = mean(na_mean, na.rm = TRUE),
+    indebted_mean = mean(indebted_mean, na.rm = TRUE),
+    envy_mean     = mean(envy_mean, na.rm = TRUE),
+    ls_mean       = mean(ls_mean, na.rm = TRUE),
+    guilty_mean       = mean(guilty, na.rm = TRUE),
+    ss_mean       = mean(ss_mean, na.rm = TRUE),
+    n             = n()
+  )
+
+country_test <- DF %>%
+  group_by(country) %>%
+  summarize(
+    grat_mean     = mean(gratitude_mean, na.rm = TRUE),
+    pa_mean       = mean(pa_mean, na.rm = TRUE),
+    optimistic_mean = mean(optimistic_mean, na.rm = TRUE),
+    na_mean       = mean(na_mean, na.rm = TRUE),
+    indebted_mean = mean(indebted_mean, na.rm = TRUE),
+    envy_mean     = mean(envy_mean, na.rm = TRUE),
+    ls_mean       = mean(ls_mean, na.rm = TRUE),
+    guilty_mean       = mean(guilty, na.rm = TRUE),
+    ss_mean       = mean(ss_mean, na.rm = TRUE),
+    n             = n()
+  )
+
 ```
 ```{r}
-
-DF <- DF %>% filter(UserLanguage == "EN")
 
 DF <- DF %>%
   mutate(country = case_when(
@@ -116,8 +145,19 @@ intervention_data <- subset(DF, condition_type == "intervention")
 unique_labs <- unique(DF$country)
 condition_names <- c("list", "letter", "text", "hk.list", "sub", "god.letter")
 
+#Set levels
+DF$condition <- factor(DF$condition)  # convert to factor
+DF$condition <- factor(DF$condition, levels = c(
+  "measure", "events", "int.events",     # Control
+  "list", "letter", "text", "hk.list", "sub", "god.letter"  # Intervention
+))
+
 ```
+#Overall intervention vs. control (All intervention vs. All control)
 ```{r Overall intervention vs. control}
+DF$condition_type <- factor(DF$condition_type)  # convert to factor
+DF$condition_type <- factor(DF$condition_type, levels = c("control", "intervention"))
+
 overall_results_df <- data.frame(
   control_condition = character(),
   intervention_condition = character(),
@@ -163,41 +203,6 @@ overall_results_df[1, ] <- list(
 )
 
 print(overall_results_df)
-
-###
-
-overall_effect_size_results <- list(
-  pa = cohen.d(pa_mean ~ condition_type, data = DF),
-  na = cohen.d(na_mean ~ condition_type, data = DF),
-  optimism = cohen.d(optimistic_mean ~ condition_type, data = DF),
-  ls = cohen.d(ls_mean ~ condition_type, data = DF),
-  ladder = cohen.d(ladder ~ condition_type, data = DF),
-  envy = cohen.d(envy_mean ~ condition_type, data = DF),
-  indebted = cohen.d(indebted_mean ~ condition_type, data = DF),
-  gratitude = cohen.d(gratitude_mean ~ condition_type, data = DF),
-  guilty = cohen.d(guilty ~ condition_type, data = DF),
-  ss = cohen.d(ss_mean ~ condition_type, data = DF)
-)
-
-overall_effect_size_results <- lapply(overall_results, function(result) {
-  result$estimate <- -result$estimate
-  result$conf.int <- -rev(result$conf.int)
-  result
-})
-
-overall_t_test_results <- list(
-  pa = t.test(pa_mean ~ condition_type, data = DF),
-  na = t.test(na_mean ~ condition_type, data = DF),
-  optimism = t.test(optimistic_mean ~ condition_type, data = DF),
-  ls = t.test(ls_mean ~ condition_type, data = DF),
-  ladder = t.test(ladder ~ condition_type, data = DF),
-  envy = t.test(envy_mean ~ condition_type, data = DF),
-  indebted = t.test(indebted_mean ~ condition_type, data = DF),
-  gratitude = t.test(gratitude_mean ~ condition_type, data = DF),
-  guilty = t.test(guilty ~ condition_type, data = DF),
-  ss = t.test(ss_mean ~ condition_type, data = DF)
-)
-
 
 ```
 
@@ -268,7 +273,7 @@ print(overall_country_results_df)
 
 ```
 
-#Overall intervention vs. control for each country (Each interventions vs. Each control)
+#Unique intervention vs. control for each country (Each interventions vs. Each control)
 ```{r}
 # Initialize results data frame
 unique_country_results_df <- data.frame(
@@ -397,7 +402,7 @@ print(unique_country_results_df)
 ```
 
 
-#Overall intervention vs. control (Each interventions vs. Each control)
+#Unique intervention vs. control (Each interventions vs. Each control)
 ```{r}
 
 # Initialize results data frame
@@ -411,6 +416,9 @@ unique_cond_results_df <- data.frame(
   ladder_effect_size = numeric(),
   envy_effect_size = numeric(),
   indebted_effect_size = numeric(),
+  grat_effect_size = numeric(),
+  guilty_effect_size = numeric(),
+  ss_effect_size = numeric(),
   stringsAsFactors = FALSE
 )
 
@@ -428,6 +436,10 @@ compute_effect_sizes <- function(control_cond, intervention_cond) {
   ladder_effect_size_result <- cohen.d(intervention_subset$ladder, control_subset$ladder, pooled_sd = TRUE)
   envy_effect_size_result <- cohen.d(intervention_subset$envy_mean, control_subset$envy_mean, pooled_sd = TRUE)
   indebted_effect_size_result <- cohen.d(intervention_subset$indebted_mean, control_subset$indebted_mean, pooled_sd = TRUE)
+  grat_effect_size_result <- cohen.d(intervention_subset$gratitude_mean, control_subset$gratitude_mean, data = lab_data)
+  guilty_effect_size_result <- cohen.d(intervention_subset$guilty, control_subset$guilty, data = lab_data)
+  ss_effect_size_result <- cohen.d(intervention_subset$ss_mean, control_subset$ss_mean, data = lab_data)
+
   
   # Return a data frame with the results
   return(data.frame(
@@ -440,6 +452,9 @@ compute_effect_sizes <- function(control_cond, intervention_cond) {
     ladder_effect_size = ladder_effect_size_result$estimate,
     envy_effect_size = envy_effect_size_result$estimate,
     indebted_effect_size = indebted_effect_size_result$estimate,
+    grat_effect_size = grat_effect_size_result$estimate,
+    guilty_effect_size = guilty_effect_size_result$estimate,
+    ss_effect_size = ss_effect_size_result$estimate,
     stringsAsFactors = FALSE
   ))
 }
