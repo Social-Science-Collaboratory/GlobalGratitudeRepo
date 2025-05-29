@@ -32,7 +32,8 @@ Prep data
 # specify directory
 i_am("code/Figure2.Rmd")
 
-df <- read.csv(file = here("data", "unique_country_effect_sizes.csv"))
+df <- read.csv(file = here("data", "unique_country_effect_sizes.csv")) %>% 
+  select(country:ss_var)
 
 # English only-test
 # df <- read.csv(file = here("data", "en_unique_country_effect_sizes.csv")) %>% drop_na(pa_effect_size) 
@@ -40,9 +41,10 @@ df <- read.csv(file = here("data", "unique_country_effect_sizes.csv"))
 
 # List of effect size columns and variance columns
 effect_size_columns <- c("pa_effect_size", "na_effect_size",
-                         "optimism_effect_size","ls_effect_size",
+                         "optimistic_effect_size","ls_effect_size",
                          "envy_effect_size", "indebted_effect_size")
-variance_columns <- c("pa_var", "na_var", "optimism_var",
+
+variance_columns <- c("pa_var", "na_var", "optimistic_var",
                          "ls_var", "envy_var", "indebted_var")
 
 # estimate total heterogeneity
@@ -94,8 +96,42 @@ names(m.ic) <- paste(effect_size_columns)
 # evaluate relative importance of variance components for each outcome
 lapply(m.ic, function(model){
    model$sigma2[2] / model$sigma2[1]})
+```
+
+#Confidence Intervals
+```{r}
+#Confidence Intervals
+# Loop through each effect size column and get confidence intervals
+ci_list <- list()  # initialize a list to store the CIs
+
+for (col in effect_size_columns) {
+  # Apply confint() to each model in the list
+  ci_list[[col]] <- confint(m.ic[[col]])
+}
+
+ci_df <- do.call(rbind, lapply(names(ci_list), function(name) {
+  ci <- ci_list[[name]]
+  df <- as.data.frame(ci)
+  df$effect <- name
+  df$term <- rownames(ci)
+  return(df)
+}))
+
+# Rename the columns
+colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
+                           "country_2_estimate", "country_estimate",
+                           "practice_2_ci_lb", "practice_ci_lb", 
+                           "country_2_ci_lb", "country_ci_lb", 
+                           "practice_2_ci_ub", "practice_ci_ub", 
+                           "country_2_ci_ub", "country_ci_ub")
+
+write.csv(ci_df, 
+        file = here('data',
+                    "ci_df.csv"))
+```
 
 
+```{r}
 ```
 
 #Calculate country-level and intervention-level descriptives
