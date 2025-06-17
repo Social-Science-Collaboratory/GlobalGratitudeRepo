@@ -405,3 +405,21 @@ write.csv(combined_df,
 
 ```
 
+# For discussion
+How many countries exhibit change in pa
+```{r}
+100 - 
+  pnorm(q = 0, 
+        mean = m.ic[["pa_effect_size"]][["b"]],
+        sd = m.ic[["pa_effect_size"]][["sigma2"]][[2]] %>% 
+          sqrt()
+        ) * 100
+
+100 - 
+  pnorm(q = 0, 
+        mean = m.ic[["indebted_effect_size"]][["b"]],
+        sd = m.ic[["indebted_effect_size"]][["sigma2"]][[2]] %>% 
+          sqrt()
+        ) * 100
+```
+
