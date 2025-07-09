@@ -6,14 +6,6 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-This code is designed to (a) estimate the extent to which the effects of gratitude tasks exhibit heterogeneity across different interventions and countries, (b) illustrate the heterogeneity via density curves, and (c) illustrate observed patterns via a second illustration that is combined via ggExtra.
-
-The code as it is written creates this plot for a single independent variable: Pa_effect size. It needs to into a function that can produce the plot for any given variable. This will allow us, for instance, to use lapply to generate plots for pa_effects_size, na_effect_size, optimism_effect_size, ls_effect_size (combined with highly correlated ladder_effect_size), envy_effect_size, and indebted_effect_size.
-
-Once these outcome-specific figures are created via the function (e.g,. via lapply), they can be combined via ggExtra for the final version of the Figure.
-
-Please functionalize the code.
-
 Load libraries
 ```{r lib}
 library(tidyverse)
@@ -32,12 +24,11 @@ Prep data
 # specify directory
 i_am("code/Figure2.Rmd")
 
-df <- read.csv(file = here("data", "unique_country_effect_sizes.csv")) %>% 
+df <- 
+  read.csv(file = here("data",
+                       "unique_country_effect_sizes.csv")
+           ) %>% 
   select(country:ss_var)
-
-# English only-test
-# df <- read.csv(file = here("data", "en_unique_country_effect_sizes.csv")) %>% drop_na(pa_effect_size) 
-
 
 # List of effect size columns and variance columns
 effect_size_columns <- c("pa_effect_size", "na_effect_size",
@@ -64,12 +55,6 @@ calc_I2_from_model <- function(model) {
   return(round(I2, 1))
 }
 
-# Apply to each model in your list
-I2_list <- sapply(m.ic, calc_I2_from_model)
-
-# Assign names
-names(I2_list) <- effect_size_columns
-
 m.c  <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
@@ -92,6 +77,12 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
 
 # Store the results with a name reflecting the effect size and variance pair
 names(m.ic) <- paste(effect_size_columns)
+
+# Apply to each model in your list
+I2_list <- sapply(m.ic, calc_I2_from_model)
+
+# Assign names
+names(I2_list) <- effect_size_columns
 
 # evaluate relative importance of variance components for each outcome
 lapply(m.ic, function(model){
@@ -128,10 +119,6 @@ colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
 write.csv(ci_df, 
         file = here('data',
                     "ci_df.csv"))
-```
-
-
-```{r}
 ```
 
 #Calculate country-level and intervention-level descriptives
@@ -405,9 +392,10 @@ write.csv(combined_df,
 
 ```
 
-# For discussion
+# Pnorm
 How many countries exhibit change in pa
 ```{r}
+# PA
 100 - 
   pnorm(q = 0, 
         mean = m.ic[["pa_effect_size"]][["b"]],
@@ -415,6 +403,38 @@ How many countries exhibit change in pa
           sqrt()
         ) * 100
 
+# NA (note reverse direction -- i.e., not subtracted from 100)
+pnorm(q = 0, 
+      mean = m.ic[["na_effect_size"]][["b"]],
+      sd = m.ic[["na_effect_size"]][["sigma2"]][[2]] %>% 
+        sqrt()
+      ) * 100
+
+# optimism
+100 - 
+  pnorm(q = 0, 
+        mean = m.ic[["optimistic_effect_size"]][["b"]],
+        sd = m.ic[["optimistic_effect_size"]][["sigma2"]][[2]] %>% 
+          sqrt()
+        ) * 100
+
+# ls
+100 - 
+  pnorm(q = 0, 
+        mean = m.ic[["ls_effect_size"]][["b"]],
+        sd = m.ic[["ls_effect_size"]][["sigma2"]][[2]] %>% 
+          sqrt()
+        ) * 100
+
+# envy
+100 - 
+  pnorm(q = 0, 
+        mean = m.ic[["envy_effect_size"]][["b"]],
+        sd = m.ic[["envy_effect_size"]][["sigma2"]][[2]] %>% 
+          sqrt()
+        ) * 100
+
+# indebted
 100 - 
   pnorm(q = 0, 
         mean = m.ic[["indebted_effect_size"]][["b"]],
