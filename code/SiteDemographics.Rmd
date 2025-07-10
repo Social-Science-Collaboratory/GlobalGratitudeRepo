@@ -1,0 +1,48 @@
+---
+title: "Supplemental Table: Site-specific demographics"
+author: "Nicholas A. Coles"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r lib}
+# load libraries 
+library(tidyverse)
+library(here)
+
+# specify directory
+i_am("code/SiteDemographics.Rmd")
+
+# open data
+DF <- 
+  readRDS(file = here("data",
+                      "GlobalGratitude_Final_Cleaned.Rds")
+          )
+  
+si.table.1 <- 
+  DF %>% 
+  mutate(site = lab) %>% 
+  group_by(site) %>% 
+  summarise(n = n(),
+            language = paste(unique(UserLanguage),
+                             collapse = ", "),
+            modality = paste(unique(modality),
+                             collapse = ", "),
+            incentive = paste(unique(incentive),
+                              collapse = ", "),
+            age = paste0("M = ",
+                         round(mean(age,
+                                    na.rm = T),
+                               2),
+                         ", SD = ",
+                         round(sd(age,
+                                  na.rm = T),
+                               2)
+                         ),
+            gender = table(sex) %>% paste(collapse = ", ")
+            )
+
+write.csv(si.table.1,
+          'si.table.1.csv')
+```
+

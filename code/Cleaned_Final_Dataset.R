@@ -5,9 +5,8 @@ library(here)
 i_am("code/Cleaned_Final_Dataset.R")
 
 #Fetch main survey data
-data_main <- read.csv(file = here("data", "GlobalGratitude_Final.csv"))
+data_main <- readRDS(file = here("data", "GlobalGratitude_Final.Rds"))
 data_main <- data_main %>%
-  rename("StartDate" = "ï..StartDate") %>% 
   select(StartDate:pageNo)
 
 # Fetch the USA_02b (harmonized) survey data
@@ -81,6 +80,12 @@ data <- data %>%
          incentive = if_else(lab == "NOR_01" & StartDate > as.POSIXct("11/19/2024 0:00", format = "%m/%d/%Y %H:%M"),
                              "paid", incentive))
 
+# remove instances where age data are clearly wrong (Jul 9, 2025)
+data <- data %>% 
+  mutate(age = 
+           if_else(age > 99,
+                   NA,
+                   age))
 saveRDS(data, 
         file = here('data',
                     "GlobalGratitude_Final_Cleaned.Rds"))
