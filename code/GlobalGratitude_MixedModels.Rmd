@@ -331,7 +331,11 @@ contrast.table <-
         )
 
 contrast.table <- contrast.table %>% 
-  mutate(p.value = stars.pval(p.value))
+  mutate(p.value = stars.pval(p.value),
+         estimate = round(estimate, 2),
+         SE = round(SE, 2),
+         df = round(df, 2),
+         t.ratio = round(t.ratio, 2)) 
 
 write.csv(contrast.table,
           file = here('data',
