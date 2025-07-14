@@ -30,7 +30,7 @@ country.DF <-
   select(
     pa_effect_size,
     na_effect_size,
-    optimism_effect_size,
+    optimistic_effect_size,
     ls_effect_size, 
     envy_effect_size, 
     indebted_effect_size,
@@ -72,7 +72,7 @@ rm(country.DF,
 out.list <- 
   c('pa_effect_size',
     'na_effect_size',
-    'optimism_effect_size',
+    'optimistic_effect_size',
     'ls_effect_size',
     'envy_effect_size',
     'indebted_effect_size')
@@ -136,7 +136,7 @@ results <-
   mutate(outcome = factor(outcome,
                           levels = c("pa_effect_size",
                                      "na_effect_size",
-                                     "optimism_effect_size",
+                                     "optimistic_effect_size",
                                      "ls_effect_size",
                                      "envy_effect_size",
                                      "indebted_effect_size"),
@@ -179,7 +179,7 @@ results <-
          )
 
 # Make minor edit to label
- results <- results %>% 
+results <- results %>% 
     mutate(cor.lab = paste0("paste(", 
                             "italic(r), ' = ",
                             cor,
@@ -222,7 +222,8 @@ results <- results %>%
 
 # Heat map (MAY 6)
 ```{r}
-ggplot(data = results,
+fig3 <-
+  ggplot(data = results,
        aes(x = moderator,
            y = fct_rev(outcome),
            fill = bf.tran.dir,

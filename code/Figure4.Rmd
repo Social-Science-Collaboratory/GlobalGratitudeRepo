@@ -19,7 +19,6 @@ i_am('code/Figure4.Rmd')
 Prep data
 ```{r}
 # open data
-
 df <- 
   read.csv(file = here("data",
                        "unique_country_effect_sizes.csv")
@@ -153,4 +152,50 @@ write.csv(final_results,
           file = here('data',
                       "universality_data.csv"))
 ```
+
+# load and plot data
+```{r}
+viz.DF <- 
+  read.csv(here('data',
+                "universality_data.csv"),
+                na.strings = "N/A") %>%
+  
+  # clean factors
+  mutate(outcome = factor(outcome,
+                          levels = c("PA",
+                                     "Optimism",
+                                     "NA",
+                                     "Indebtedness",
+                                     "Life Satisfaction",
+                                     "Envy"),
+                          labels = c("positive affect",
+                                     "optimism",
+                                     "negative affect",
+                                     "indebtedness",
+                                     "life satisfaction",
+                                     "envy")
+                          ),
+         countries = str_replace_all(countries,
+                                     "\n",
+                                     ", ")
+         )
+```
+
+```{r}
+fig4 <- 
+  ggplot(data = viz.DF,
+       aes(y = fct_rev(outcome),
+           x = opposite_distribution,
+           label = countries)) +
+  geom_col(alpha = .5,
+           fill = 'blue') +
+  geom_text(aes(x = 18),
+            size = 3,
+            hjust = 0) +
+  theme_classic() +
+  xlim(0,100) +
+  xlab('theory-inconsistent proportion of estimated distribution') +
+  ylab('outcome')
+```
+
 
