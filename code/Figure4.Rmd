@@ -199,3 +199,16 @@ fig4 <-
 ```
 
 
+```{r}
+library(cowplot)
+
+plot_grid(fig4, 
+          ggdraw(),
+          fig3, 
+          labels = c("A", "", "B"), 
+          nrow = 3,
+          rel_heights = c(.2, .05, .75),
+          rel_widths = c(.1, 1))
+```
+
+
