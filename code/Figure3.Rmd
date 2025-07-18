@@ -220,6 +220,19 @@ results <- results %>%
          )
 ```
 
+# For paper
+```{r}
+cor.test(DF$optimistic_effect_size, 
+         DF$indulgence)
+
+cor.test(DF$ls_effect_size, 
+         DF$power.distance)
+
+cor.test(DF$indebted_effect_size, 
+         DF$mean_GDP)
+```
+
+
 # Heat map (MAY 6)
 ```{r}
 fig3 <-

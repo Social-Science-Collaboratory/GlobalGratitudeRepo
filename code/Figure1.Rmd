@@ -31,7 +31,7 @@ country.DF <-
   select(
     pa_effect_size,
     na_effect_size,
-    optimism_effect_size,
+    optimistic_effect_size,
     ls_effect_size, 
     envy_effect_size, 
     indebted_effect_size,
@@ -90,6 +90,18 @@ DF2 <- left_join(DF.cd,
                  DF,
                  by = 'country')
 ```
+
+# Standardization of variables
+```{r}
+library(scales)
+DF2 <-
+  DF2 %>% 
+  mutate_at(.vars = vars(dist.us,
+                         rel_mob_mean : indulgence),
+            ~ rescale(x = .,
+                      to = c(-1, 1)))
+```
+
 
 # New attempt at top of Figure 1
 ```{r}

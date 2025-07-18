@@ -198,7 +198,6 @@ fig4 <-
   ylab('outcome')
 ```
 
-
 ```{r}
 library(cowplot)
 
@@ -210,5 +209,3 @@ plot_grid(fig4,
           rel_heights = c(.2, .05, .75),
           rel_widths = c(.1, 1))
 ```
-
-
