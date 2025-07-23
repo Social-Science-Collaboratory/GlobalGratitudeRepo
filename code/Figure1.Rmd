@@ -12,6 +12,8 @@ library(tidyverse)
 library(here)
 library(countrycode)
 library(cowplot)
+library(ggplot2)
+library(dplyr)
 
 options(scipen = 999)
 
@@ -81,7 +83,8 @@ DF.cd <- read.csv(here('data',
   rename(country = Name,
          dist.us = United.States1981.2014) %>% 
   mutate(country = str_remove_all(country, "[:digit:]"),
-         country = str_remove_all(country, "-"))
+         country = str_remove_all(country, "-")) %>% 
+  mutate(country = ifelse(country == "Great Britain", "United Kingdom", country)) 
 ```
 
 # Merge
@@ -151,8 +154,10 @@ fig.1a <-
   theme(
     legend.position = 'none',
     axis.title = element_blank(),
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
+    axis.text.x = element_text(),
+    axis.text.y = element_blank(),
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_blank(),    
     axis.line.y = element_blank(),
     strip.placement = "outside",
     strip.background = element_blank()
@@ -171,8 +176,8 @@ fig1.DF <-
   mutate(
     name = 
       fct_recode(name,
-                 "Relational mobility" = "rel_mob_mean", 
-                 "Responsibilism" = "respon_mean", 
+                 "Relational mobility" = "relational_mobility",
+                 "Responsibilism" = "responsibilism", 
                  "Tightness" = "tightness", 
                  "Religiosity" = "relig_mean",
                  "GDP" = "mean_GDP",
@@ -228,35 +233,47 @@ DF2 <- DF2 %>%
 
 plot
 ```{r}
-fig.1b <-
+fig.1b <- 
   ggplot(
-  data = DF2,
-  aes(x = dist.us,
-      y = .2)) +
-  
-  # add rug graph
+    data = DF2,
+    aes(x = dist.us,
+        y = .2)) +
+
+  # Population density (unsampled countries)
+  geom_density(
+    data = DF2 %>% filter(sampled == "no"),
+    aes(x = dist.us, y = ..scaled.. * 0.2),
+    fill = "grey80", alpha = 0.5, color = NA
+  ) +
+
+  # Sample density (sampled countries)
+  geom_density(
+    data = DF2 %>% filter(sampled == "yes"),
+    aes(x = dist.us, y = ..scaled.. * 0.2),
+    fill = "#3C5488", alpha = 0.5, color = NA
+  ) +
+
+  # Rug lines: population
   geom_linerange(
-    data = DF2 %>% 
-      filter(sampled == "no"),
+    data = DF2 %>% filter(sampled == "no"),
     aes(ymin = 0, ymax = 0.1),
     color = 'grey50') +
-  
+
+  # Rug lines: sample
   geom_linerange(
-    data = DF2 %>% 
-      filter(sampled == "yes"),
+    data = DF2 %>% filter(sampled == "yes"),
     aes(ymin = 0, ymax = 0.2,
         color = country)) +
-  
-  # add country labels
+
+  # Country labels
   geom_text(
-    data = DF2 %>% 
-      filter(sampled == "yes"),
+    data = DF2 %>% filter(sampled == "yes"),
     aes(label = country,
         color = country,
         y = .8),
     position = position_jitter(height = 0.5)) +
-  
-  # fix theme
+
+  # Theme
   theme_classic() +
   theme(
     legend.position = 'none',

@@ -51,6 +51,7 @@ DF_main <- DF_main %>%
     )
   )
 
+
 DF_cultural <- DF_main %>%
   select(country_code, rel_mob_mean, respon_mean) %>% 
   mutate(country_name = countrycode(country_code, origin = "iso3c", destination = "country.name")) %>%
@@ -71,12 +72,14 @@ DF_relation <- DF_relation %>%
   
 #Responsibilism
 DF_respon <- read.csv(file = here("data", "GlobalGratitude_Responsibilism.csv"))
-DF_respon <- DF_respon %>%
-  rename("country_name" = "ï..Culture") %>% 
-  rename("responsibilism" = "ResponsibilismSum5Items") %>% 
+DF_respon <- DF_respon %>% 
+  rename("country_name" = "Culture") %>% 
+  rename("responsibilism" = "Responsibilism") %>%
+  select(country_name:responsibilism) %>% 
+  filter(country_name != "", country_name != "Total") %>% 
   mutate(country_code = countrycode(country_name, origin = "country.name", destination = "iso3c")) %>% 
-  filter(country_code != "Overall Average") %>%
-  mutate(country_name = ifelse(country_name == "UK", "United Kingdom", country_name)) 
+  mutate(country_name = ifelse(country_name == "UK", "United Kingdom", country_name))  %>% 
+  mutate(country_name = ifelse(country_name == "Macedonia", "North Macedonia", country_name)) 
 
 #GDP
 #Fetch main survey data
@@ -92,7 +95,7 @@ DF_GDP <- DF_GDP %>%
 
 #Tightness Looseness
 DF_tight <- read.csv(file = here("data", "GlobalGratitude_Tightness.csv")) %>%
-  rename(country_name = ï..Country) %>%
+  rename(country_name = Country) %>%
   mutate(country_code = countrycode(country_name, origin = 'country.name', destination = 'iso3c')) %>% 
   select(tightness = Tightness, country_code,country_name)
 
