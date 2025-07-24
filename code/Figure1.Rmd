@@ -191,7 +191,7 @@ fig1.DF <-
   )
 ```
 
-# Top facet (cross-cultural moderators)
+# Facet 1 (cross-cultural moderators)
 ```{r eval = F}
 fig.1a <-
   ggplot(data = fig1.DF,
@@ -210,7 +210,7 @@ fig.1a <-
         axis.ticks.x = element_blank())
 ```
 
-# Bottom facet (cultural distance)
+# Facet 2 (cultural distance)
 Prep data
 ```{r}
 DF2 <- DF2 %>% 
@@ -241,17 +241,21 @@ fig.1b <-
 
   # Population density (unsampled countries)
   geom_density(
-    data = DF2 %>% filter(sampled == "no"),
-    aes(x = dist.us, y = ..scaled.. * 0.2),
-    fill = "grey80", alpha = 0.5, color = NA
-  ) +
+    data = DF2 %>% 
+      filter(sampled == "no"),
+    aes(x = dist.us, 
+        y = ..scaled..),
+    color = "grey80", 
+    alpha = 0.5) +
 
   # Sample density (sampled countries)
   geom_density(
-    data = DF2 %>% filter(sampled == "yes"),
-    aes(x = dist.us, y = ..scaled.. * 0.2),
-    fill = "#3C5488", alpha = 0.5, color = NA
-  ) +
+    data = DF2 %>% 
+      filter(sampled == "yes"),
+    aes(x = dist.us, 
+        y = ..scaled..),
+    color = "#3C5488", 
+    alpha = 0.5) +
 
   # Rug lines: population
   geom_linerange(
@@ -294,7 +298,7 @@ plot_grid(fig.1b,
           labels = c('a', 'b'))
 ```
 
-# Try to create map
+# Map facet
 ```{r}
 # open packages
 library("sf")
@@ -311,7 +315,6 @@ world[world$name == "France", ]$iso_a3 = "FRA"
 world[world$name == "Norway", ]$iso_a3 = "NOR"
 ```
 
-# Globe?
 ```{r}
 world <- ne_countries(scale = "medium", 
                       returnclass = "sf")
