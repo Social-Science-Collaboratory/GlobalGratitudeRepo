@@ -5,6 +5,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+Note: we are missing some cultural distance data
 
 # Load libraries
 ```{r lib}
@@ -97,16 +98,19 @@ DF2 <- left_join(DF.cd,
 # Standardization of variables
 ```{r}
 library(scales)
+
 DF2 <-
   DF2 %>% 
+  mutate(dist.us =
+           replace_na(dist.us, 
+                      0)) %>% 
   mutate_at(.vars = vars(dist.us,
                          rel_mob_mean : indulgence),
             ~ rescale(x = .,
                       to = c(-1, 1)))
 ```
 
-
-# New attempt at top of Figure 1
+# New attempt at bottom of Figure 1
 ```{r}
 fig1.DF.new <-
   mod.DF %>% 
@@ -154,9 +158,9 @@ fig.1a <-
   theme(
     legend.position = 'none',
     axis.title = element_blank(),
-    axis.text.x = element_text(),
+    axis.text.x = element_blank(),
     axis.text.y = element_blank(),
-    axis.ticks.x = element_line(),
+    axis.ticks.x = element_blank(),
     axis.ticks.y = element_blank(),    
     axis.line.y = element_blank(),
     strip.placement = "outside",
@@ -191,7 +195,7 @@ fig1.DF <-
   )
 ```
 
-# Facet 1 (cross-cultural moderators)
+# Facet B (cross-cultural moderators)
 ```{r eval = F}
 fig.1a <-
   ggplot(data = fig1.DF,
@@ -210,7 +214,7 @@ fig.1a <-
         axis.ticks.x = element_blank())
 ```
 
-# Facet 2 (cultural distance)
+# Facet A (cultural distance)
 Prep data
 ```{r}
 DF2 <- DF2 %>% 
@@ -223,11 +227,7 @@ DF2 <- DF2 %>%
     country = 
       countrycode(country,
                   origin = "country.name",
-                  destination = "iso3c"),
-    
-    dist.us =
-      replace_na(dist.us, 
-                 0)
+                  destination = "iso3c")
     )
 ```
 
@@ -274,8 +274,8 @@ fig.1b <-
     data = DF2 %>% filter(sampled == "yes"),
     aes(label = country,
         color = country,
-        y = .8),
-    position = position_jitter(height = 0.5)) +
+        y = 1),
+    position = position_jitter(height = .75)) +
 
   # Theme
   theme_classic() +
