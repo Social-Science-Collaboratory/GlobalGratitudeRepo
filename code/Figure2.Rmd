@@ -305,6 +305,22 @@ m.p <- lapply(effect_size_columns, function(es) {
 # Check the resulting list of plots
 m.p
 ```
+#Add Tau
+```{r}
+# Extract tau values
+tau_c <- sapply(m.c, function(model) sqrt(model$tau2))
+tau_i <- sapply(m.i, function(model) sqrt(model$tau2))
+
+# Create data frame
+tau_df <- data.frame(
+  effect_size = effect_size_columns,
+  tau_c = tau_c,
+  tau_i = tau_i,
+  tau_ci = tau_c / tau_i
+)
+
+
+```
 
 # combine plots
 ```{r}
@@ -322,7 +338,7 @@ grid <-
           combined_plots[[4]],
           combined_plots[[5]],
           combined_plots[[6]],
-          ncol = 3,
+          ncol = 2,
           labels = paste0("   ",
                           LETTERS[1:6],
                           ". ",
