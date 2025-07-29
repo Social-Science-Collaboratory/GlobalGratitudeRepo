@@ -15,7 +15,7 @@ library(ggplot2)
 library(ggrepel)
 library(cowplot)
 library(purrr)
-library (here)
+library(here)
 ```
 
 Prep data
@@ -89,38 +89,6 @@ lapply(m.ic, function(model){
    model$sigma2[2] / model$sigma2[1]})
 ```
 
-#Confidence Intervals
-```{r}
-#Confidence Intervals
-# Loop through each effect size column and get confidence intervals
-ci_list <- list()  # initialize a list to store the CIs
-
-for (col in effect_size_columns) {
-  # Apply confint() to each model in the list
-  ci_list[[col]] <- confint(m.ic[[col]])
-}
-
-ci_df <- do.call(rbind, lapply(names(ci_list), function(name) {
-  ci <- ci_list[[name]]
-  df <- as.data.frame(ci)
-  df$effect <- name
-  df$term <- rownames(ci)
-  return(df)
-}))
-
-# Rename the columns
-colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
-                           "country_2_estimate", "country_estimate",
-                           "practice_2_ci_lb", "practice_ci_lb", 
-                           "country_2_ci_lb", "country_ci_lb", 
-                           "practice_2_ci_ub", "practice_ci_ub", 
-                           "country_2_ci_ub", "country_ci_ub")
-
-write.csv(ci_df, 
-        file = here('data',
-                    "ci_df.csv"))
-```
-
 #Calculate country-level and intervention-level descriptives
 ```{r}
 # Apply the operations for each effect size column
@@ -176,13 +144,41 @@ d.c <- bind_rows(d.c)
 d.i <- bind_rows(d.i)
 ```
 
+#Add Tau
+```{r}
+# Extract tau values
+tau_c <- sapply(m.ic, function(model) (model$sigma2[2]))
+tau_i <- sapply(m.ic, function(model) (model$sigma2[1]))
+
+# Create data frame
+tau_df <- data.frame(
+  effect_size = effect_size_columns,
+  tau_c = tau_c,
+  tau_i = tau_i,
+  tau_ci = tau_c / tau_i
+)
+
+options(scipen=999)
+
+```
+
 # Create density plots
 ```{r}
 # Create a list of ggplot objects
-m.d <- lapply(effect_size_columns, function(effect_size) {
+m.d <- lapply(seq_along(effect_size_columns), function(i) {
   
-  # Extract the corresponding model (e.g., m.ic) for the effect size from the list of models
-  model <- m.ic[[which(effect_size_columns == effect_size)]]
+  effect_size <- effect_size_columns[i]
+  model <- m.ic[[i]]
+  #Add tau
+  tau_label <- tau_df$tau_ci[i]
+  tau_str <- if (tau_label > 50) ">50" else round(tau_label, 2)
+  
+  # Create label
+  label_text <- if (i == 1) {
+    paste0("τ(country)/τ(intervention) = ", tau_str)
+  } else {
+    paste0("= ", tau_str)
+  }
   
   # Create the plot for each effect size
   plot <- ggplot() +
@@ -217,6 +213,9 @@ m.d <- lapply(effect_size_columns, function(effect_size) {
                   args = list(mean = model$b[1], 
                               sd = sqrt(model$sigma2[2])), 
                   color = "#3C5488") +
+        # Add tau_ci label
+    geom_text(aes(x = 0.7, y = 11.5, label = label_text),
+              color = "black", hjust = 1, vjust = 1, size = 4) +
     
     # Aesthetics
     scale_x_continuous(limits = c(-0.75, 0.75)) +
@@ -305,22 +304,6 @@ m.p <- lapply(effect_size_columns, function(es) {
 # Check the resulting list of plots
 m.p
 ```
-#Add Tau
-```{r}
-# Extract tau values
-tau_c <- sapply(m.c, function(model) sqrt(model$tau2))
-tau_i <- sapply(m.i, function(model) sqrt(model$tau2))
-
-# Create data frame
-tau_df <- data.frame(
-  effect_size = effect_size_columns,
-  tau_c = tau_c,
-  tau_i = tau_i,
-  tau_ci = tau_c / tau_i
-)
-
-
-```
 
 # combine plots
 ```{r}
@@ -362,7 +345,37 @@ ggdraw() +
              x = 0.5, y = 0, vjust = -1, size = 10)
 
 ```
+#Confidence Intervals
+```{r}
+#Confidence Intervals
+# Loop through each effect size column and get confidence intervals
+ci_list <- list()  # initialize a list to store the CIs
 
+for (col in effect_size_columns) {
+  # Apply confint() to each model in the list
+  ci_list[[col]] <- confint(m.ic[[col]])
+}
+
+ci_df <- do.call(rbind, lapply(names(ci_list), function(name) {
+  ci <- ci_list[[name]]
+  df <- as.data.frame(ci)
+  df$effect <- name
+  df$term <- rownames(ci)
+  return(df)
+}))
+
+# Rename the columns
+colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
+                           "country_2_estimate", "country_estimate",
+                           "practice_2_ci_lb", "practice_ci_lb", 
+                           "country_2_ci_lb", "country_ci_lb", 
+                           "practice_2_ci_ub", "practice_ci_ub", 
+                           "country_2_ci_ub", "country_ci_ub")
+
+write.csv(ci_df, 
+        file = here('data',
+                    "ci_df.csv"))
+```
 #Sensitivity Analyses
 ```{r}
 en.m.ic.stats <- lapply(en.m.ic, function(model) {
