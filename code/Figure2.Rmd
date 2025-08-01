@@ -229,7 +229,7 @@ if (i == 1) {
     # τ[country] on top, blue color
     annotate(
       "text",
-      x = 0.5, y = 12.4,
+      x = 0.5, y = 13,
       label = expression(tau[country]),
       parse = TRUE,
       size = 6,
@@ -257,7 +257,7 @@ if (i == 1) {
   # Final formatting
   plot <- plot +
     scale_x_continuous(limits = c(-0.75, 0.75)) +
-    scale_y_continuous(limits = c(0, 12.5)) +
+    scale_y_continuous(limits = c(0, 13)) +
     theme_void()
   
   return(plot)
