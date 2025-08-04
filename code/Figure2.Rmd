@@ -152,7 +152,7 @@ tau_i <- sapply(m.ic, function(model) (model$sigma2[1]))
 
 # Create data frame
 tau_df <- data.frame(
-  effect_size = p,
+  effect_size = effect_size_columns,
   tau_c = tau_c,
   tau_i = tau_i,
   tau_ci = tau_c / tau_i
@@ -178,10 +178,10 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
   
   #Add tau
   tau_label <- tau_df$tau_ci[i]
-  tau_str <- if (tau_label > 50) ">50" else round(tau_label, 2)
+  tau_str <- if (tau_label > 50) "n.s." else round(tau_label, 2)
   
   # Create label
-label_text <- if (tau_str == ">50") {
+label_text <- if (tau_str == "n.s.") {
   tau_str
 } else {
   paste0("= ", tau_str)
@@ -232,7 +232,7 @@ if (i == 1) {
       x = 0.5, y = 13,
       label = expression(tau[country]),
       parse = TRUE,
-      size = 6,
+      size = 5,
       hjust = 1,
       vjust = 1,
       color = "#3C5488"
@@ -240,10 +240,10 @@ if (i == 1) {
     # τ[practice] below, red color
     annotate(
       "text",
-      x = 0.5, y = 10.15,
+      x = 0.5, y = 10,
       label = expression(tau[practice]),
       parse = TRUE,
-      size = 6,
+      size = 5,
       hjust = 1,
       vjust = 1,
       color = "#E64B35"
@@ -355,7 +355,7 @@ grid <-
           combined_plots[[6]],
           ncol = 2,
           labels = paste0("   ",
-                          LETTERS[1:6],
+                          letters[1:6],
                           ". ",
                           c('Positive affect',
                             'Negative affect',
