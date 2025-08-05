@@ -67,8 +67,9 @@ DF_relation <- read.csv(file = here("data", "GlobalGratitude_RelationalMobility.
 DF_relation <- DF_relation %>%
   rename("country_name" = "COUNTRY") %>% 
   rename("relational_mobility" = "RMOBLM") %>% 
+  mutate(country_name = ifelse(country_name == "USA", "United States", country_name)) %>% 
   mutate(country_code = countrycode(country_name, origin = "country.name", destination = "iso3c")) %>% 
-  select(country_code, country_name, relational_mobility)
+  select(country_code, country_name, relational_mobility) 
   
 #Responsibilism
 DF_respon <- read.csv(file = here("data", "GlobalGratitude_Responsibilism.csv"))

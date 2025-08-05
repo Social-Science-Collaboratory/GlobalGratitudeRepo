@@ -50,7 +50,6 @@ mod.DF <-
   select(-c(country_code,
             country_name))
 
-rm(mod.list, out.list)
 ```
 
 # Open cross-cultural moderator data
@@ -78,8 +77,8 @@ out.list <-
     'indebted_effect_size')
 
 mod.list <-
-  c('rel_mob_mean',
-    'respon_mean',
+  c("relational_mobility",
+    "responsibilism",
     "tightness",
     "relig_mean",
     "mean_GDP",
@@ -151,9 +150,9 @@ results <-
   mutate(moderator = factor(moderator,
                             levels = c("individualism",
                                        "tightness",
-                                       "rel_mob_mean",
+                                       "relational_mobility",
                                        "resmobility",
-                                       "respon_mean",
+                                       "responsibilism",
                                        "relig_mean",
                                        "mean_GDP",
                                        "power.distance",
