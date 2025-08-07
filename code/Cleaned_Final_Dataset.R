@@ -4,29 +4,29 @@ library(here)
 # specify directory
 i_am("code/Cleaned_Final_Dataset.R")
 
-#Fetch main survey data
+# fetch main survey data
 data_main <- readRDS(file = here("data", "GlobalGratitude_Final.Rds"))
 data_main <- data_main %>%
   select(StartDate:pageNo)
 
-# Fetch the USA_02b (harmonized) survey data
+# fetch the USA_02b (harmonized) survey data
 data_USA_02b <- read.csv(file = here("data", "USA_02b_raw_harmonized.csv"))
 data_USA_02b <- data_USA_02b %>% 
   select(StartDate:pageNo) %>%
   rename("events_list" = "control_list") 
 
-# Fetch the USA_02c survey data
+# fetch the USA_02c survey data
 data_USA_02c <- read.csv(file = here("data", "USA_02c.csv"))
 data_USA_02c <- data_USA_02c %>% select(StartDate:pageNo)
 
-#Match columns
+#match columns
 data_main <- data_main %>%
   mutate(across(names(data_USA_02c), ~ {
-    # Matching character columns
+    # matching character columns
     if (is.character(data_USA_02c[[cur_column()]])) {
       return(as.character(.))
     }
-    # Matching numeric or integer columns
+    # matching numeric or integer columns
     else if (is.numeric(data_USA_02c[[cur_column()]])) {
       return(as.numeric(.))
     }
@@ -35,13 +35,13 @@ data_main <- data_main %>%
     }
   }))
 
-# Read and combine the CSV files
+# read and combine the CSV files
 data <- bind_rows(data_main, data_USA_02c)
 data <- bind_rows(data, data_USA_02b)
 
-#Clean data
+#clean data
 data <- data %>% 
-  #Removed test links and incomplete surveys
+  #removed test links and incomplete surveys
   filter(DistributionChannel != "preview",
          consent == 1,
          Progress >= 95,
@@ -74,18 +74,16 @@ data <- data %>%
          ResponseId != "R_4OvlyOmeTsmLpFn",
          ResponseId != "R_4BA1gbglSYnVyDK")
 
-# Change the 'incentive' column from "volunteer" to "paid" for NOR_01 participants after 11/19/2024
+# change the 'incentive' column from "volunteer" to "paid" for NOR_01 participants after 11/19/2024
 data <- data %>%
-  mutate(StartDate = as.POSIXct(StartDate, format = "%m/%d/%Y %H:%M"),  # Ensure correct format
+  mutate(StartDate = as.POSIXct(StartDate, format = "%m/%d/%Y %H:%M"),
          incentive = if_else(lab == "NOR_01" & StartDate > as.POSIXct("11/19/2024 0:00", format = "%m/%d/%Y %H:%M"),
                              "paid", incentive))
 
-# remove instances where age data are clearly wrong (Jul 9, 2025)
-data <- data %>% 
-  mutate(age = 
-           if_else(age > 99,
-                   NA,
-                   age))
+# fix age data where wrong info is inputted
+data <- data %>%
+  mutate(age = if_else(age > 99, 2024 - age, age))
+
 saveRDS(data, 
         file = here('data',
                     "GlobalGratitude_Final_Cleaned.Rds"))

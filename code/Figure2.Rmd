@@ -30,7 +30,7 @@ df <-
            ) %>% 
   select(country:ss_var)
 
-# List of effect size columns and variance columns
+# list of effect size columns and variance columns
 effect_size_columns <- c("pa_effect_size", "na_effect_size",
                          "optimistic_effect_size","ls_effect_size",
                          "envy_effect_size", "indebted_effect_size")
@@ -43,17 +43,6 @@ m <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
          data = df)})
-
-#Calculate I2
-
-calc_I2_from_model <- function(model) {
-  Q <- model$QE           
-  df <- model$k - model$p
-  
-  # I^2 formula
-  I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
-  return(round(I2, 1))
-}
 
 m.c  <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
@@ -77,12 +66,6 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
 
 # Store the results with a name reflecting the effect size and variance pair
 names(m.ic) <- paste(effect_size_columns)
-
-# Apply to each model in your list
-I2_list <- sapply(m.ic, calc_I2_from_model)
-
-# Assign names
-names(I2_list) <- effect_size_columns
 
 # evaluate relative importance of variance components for each outcome
 lapply(m.ic, function(model){
@@ -170,24 +153,24 @@ tau_label <- data.frame(
 
 # Create density plots
 ```{r}
-# Create a list of ggplot objects
+# create a list of ggplot objects
 m.d <- lapply(seq_along(effect_size_columns), function(i) {
   
   effect_size <- effect_size_columns[i]
   model <- m.ic[[i]]
   
-  #Add tau
+  #add tau
   tau_label <- tau_df$tau_ci[i]
   tau_str <- if (tau_label > 50) "n.s." else round(tau_label, 2)
   
-  # Create label
+  # create label
 label_text <- if (tau_str == "n.s.") {
   tau_str
 } else {
   paste0("= ", tau_str)
 }
   
-  # Create the plot for each effect size
+  # create the plot for each effect size
   plot <- ggplot() +
     
     # overall effect size estimate
@@ -248,13 +231,13 @@ if (i == 1) {
       vjust = 1,
       color = "#E64B35"
     ) +
-    # Draw a horizontal line between them to mimic fraction bar
+    # draw a horizontal line between them to mimic fraction bar
     geom_segment(aes(x = 0.28, xend = 0.52, y = 10.2, yend = 10.2),
                  color = "black", size = 0.5)
 }
   
   
-  # Final formatting
+  # final formatting
   plot <- plot +
     scale_x_continuous(limits = c(-0.75, 0.75)) +
     scale_y_continuous(limits = c(0, 13)) +
@@ -271,7 +254,7 @@ m.d
 
 # Plot descriptives
 ```{r}
-# Combine both datasets into one data frame
+# combine both datasets into one data frame
 d.c$dataset <- "d.c"
 d.i$dataset <- "d.i"
 d.c$intervention_condition <- NA
@@ -289,13 +272,13 @@ d.c.i <- d.c.i %>%
     )
     )
 
-# Create a list of 6 plots based on the effect size values
+# create a list of 6 plots based on the effect size values
 m.p <- lapply(effect_size_columns, function(es) {
   
-  # Filter the data for the current effect_size level
+  # filter the data for the current effect_size level
   data_subset <- subset(d.c.i, effect_size == es)
   
-  # Create the plot for the current effect_size
+  #  create the plot for the current effect_size
   ggplot(data_subset) +
     
     # visual indicator: null effect
@@ -303,34 +286,33 @@ m.p <- lapply(effect_size_columns, function(es) {
                color = "grey30",
                linetype = 'dotted') +
     
-    # Add country-level descriptives (for d.c)
+    # add country-level descriptives (for d.c)
     geom_point(data = subset(data_subset, dataset == "d.c"),
                aes(x = m, y = y), 
                color = "#3C5488", alpha = .5) +
     
-    # Add labels for country-level
+    # add labels for country-level
     geom_text_repel(data = subset(data_subset, dataset == "d.c"),
                     aes(x = m, y = y, label = label),
                     color = "#3C5488", alpha = .5, nudge_y = -.005) +
     
-    # Add intervention-level descriptives (for d.i)
+    # add intervention-level descriptives (for d.i)
     geom_point(data = subset(data_subset, dataset == "d.i"),
                aes(x = m, y = y),
                color = "#E64B35", alpha = .5) +
     
-    # Add labels for intervention-level
+    # add labels for intervention-level
     geom_text_repel(data = subset(data_subset, dataset == "d.i"),
                     aes(x = m, y = y, label = label),
                     color = "#E64B35", alpha = .5, nudge_y = .005) +
     
-    # Aesthetics
+    # aesthetics
     theme_classic() +
     theme(axis.title.y = element_blank(),
           axis.title.x = element_blank(),
           axis.text.y = element_blank(), 
           axis.ticks.y = element_blank()) +
     scale_x_continuous(limits = c(-3, 3))
-    #labs(x = expression("Cohens " * italic('d')))
 })
 
 # Check the resulting list of plots
@@ -339,9 +321,9 @@ m.p
 
 # combine plots
 ```{r}
-# Combine m.d and m.p into a single list
+# combine m.d and m.p into a single list
 combined_plots <- mapply(function(plot_d, plot_p) {
-  # Combine each pair of plots (one from m.d and one from m.p) into a list
+  # combine each pair of plots (one from m.d and one from m.p) into a list
   plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
 }, m.d, m.p, SIMPLIFY = FALSE)
 
@@ -379,9 +361,8 @@ ggdraw() +
 ```
 #Confidence Intervals
 ```{r}
-#Confidence Intervals
-# Loop through each effect size column and get confidence intervals
-ci_list <- list()  # initialize a list to store the CIs
+# loop through each effect size column and get confidence intervals
+ci_list <- list()  
 
 for (col in effect_size_columns) {
   # Apply confint() to each model in the list
@@ -412,34 +393,34 @@ write.csv(ci_df,
 ```{r}
 en.m.ic.stats <- lapply(en.m.ic, function(model) {
   data.frame(
-    effect_size = model$beta,  # Pooled effect size (estimate)
-    ci_lower = model$ci.lb,    # Lower bound of the CI
-    ci_upper = model$ci.ub,    # Upper bound of the CI
+    effect_size = model$beta,  # pooled effect size (estimate)
+    ci_lower = model$ci.lb,    # lower bound of the CI
+    ci_upper = model$ci.ub,    # upper bound of the CI
     p_value = model$pval,      # p-value for the effect size
     tau = model$tau2          # tau (between-study variance)
   )
 })
 
-# Combine the list of data frames into one data frame
+# combine the list of data frames into one data frame
 en.m.ic.df <- do.call(rbind, en.m.ic.stats)
 
-# Add the names of the models (effect size columns) as a new column
+# add the names of the models (effect size columns) as a new column
 en.m.ic.df$effect_size_column <- rep(names(m.ic), each = 1)
 
 m.ic.stats <- lapply(m.ic, function(model) {
   data.frame(
-    effect_size = model$beta,  # Pooled effect size (estimate)
-    ci_lower = model$ci.lb,    # Lower bound of the CI
-    ci_upper = model$ci.ub,    # Upper bound of the CI
+    effect_size = model$beta,  # pooled effect size (estimate)
+    ci_lower = model$ci.lb,    # lower bound of the CI
+    ci_upper = model$ci.ub,    # upper bound of the CI
     p_value = model$pval,      # p-value for the effect size
     tau = model$tau2          # tau (between-study variance)
   )
 })
 
-# Combine the list of data frames into one data frame
+# combine the list of data frames into one data frame
 m.ic.df <- do.call(rbind, m.ic.stats)
 
-# Add the names of the models (effect size columns) as a new column
+# add the names of the models (effect size columns) as a new column
 m.ic.df$effect_size_column <- rep(names(m.ic), each = 1)
 
 en.m.ic.df$language <- "english"
@@ -454,9 +435,8 @@ write.csv(combined_df,
 ```
 
 # Pnorm
-How many countries exhibit change in pa
 ```{r}
-# PA
+# How many countries exhibit change in PA
 100 - 
   pnorm(q = 0, 
         mean = m.ic[["pa_effect_size"]][["b"]],
@@ -502,5 +482,26 @@ pnorm(q = 0,
         sd = m.ic[["indebted_effect_size"]][["sigma2"]][[2]] %>% 
           sqrt()
         ) * 100
+```
+
+#Calculate I2
+```{r}
+#calculate I2
+
+calc_I2_from_model <- function(model) {
+  Q <- model$QE           
+  df <- model$k - model$p
+  
+  # I^2 formula
+  I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
+  return(round(I2, 1))
+}
+
+# Apply to each model in your list
+I2_list <- sapply(m.ic, calc_I2_from_model)
+
+# Assign names
+names(I2_list) <- effect_size_columns
+
 ```
 

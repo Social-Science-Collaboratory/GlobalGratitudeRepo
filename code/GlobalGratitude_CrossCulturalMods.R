@@ -5,7 +5,7 @@ library(here)
 # specify directory
 i_am("code/GlobalGratitude_CrossCulturalMods.R")
 
-#Main data country_code
+#main data country_code
 DF_main <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
 DF_main <- DF_main %>%
   mutate(
@@ -14,7 +14,7 @@ DF_main <- DF_main %>%
 
 sampled <- unique(DF_main$country_code)
 
-#Relational Mobility
+#self-reported relational mobility
 DF_main <- DF_main %>%
   mutate(
     rel_mob_mean = rowMeans(
@@ -36,7 +36,7 @@ DF_main <- DF_main %>%
     )
   )
 
-#Responsibilism
+#self-reported responsibilism
 DF_main <- DF_main %>%
   mutate(
     respon_mean = rowMeans(
@@ -51,7 +51,6 @@ DF_main <- DF_main %>%
     )
   )
 
-
 DF_cultural <- DF_main %>%
   select(country_code, rel_mob_mean, respon_mean) %>% 
   mutate(country_name = countrycode(country_code, origin = "iso3c", destination = "country.name")) %>%
@@ -62,7 +61,7 @@ DF_cultural <- DF_main %>%
     .groups = "drop"
   )
 
-#Relational Mobility
+#relational mobility
 DF_relation <- read.csv(file = here("data", "GlobalGratitude_RelationalMobility.csv"))
 DF_relation <- DF_relation %>%
   rename("country_name" = "COUNTRY") %>% 
@@ -71,7 +70,7 @@ DF_relation <- DF_relation %>%
   mutate(country_code = countrycode(country_name, origin = "country.name", destination = "iso3c")) %>% 
   select(country_code, country_name, relational_mobility) 
   
-#Responsibilism
+#responsibilism
 DF_respon <- read.csv(file = here("data", "GlobalGratitude_Responsibilism.csv"))
 DF_respon <- DF_respon %>% 
   rename("country_name" = "Culture") %>% 
@@ -83,7 +82,6 @@ DF_respon <- DF_respon %>%
   mutate(country_name = ifelse(country_name == "Macedonia", "North Macedonia", country_name)) 
 
 #GDP
-#Fetch main survey data
 DF_GDP <- read.csv(file = here("data", "GlobalGratitude_GDPpc.csv"))
 DF_GDP <- DF_GDP %>%
   rename("country_code" = "Country.Code") %>%
@@ -94,20 +92,20 @@ DF_GDP <- DF_GDP %>%
 DF_GDP <- DF_GDP %>%
   filter(country_name != "NA")
 
-#Tightness Looseness
+#tightness-looseness
 DF_tight <- read.csv(file = here("data", "GlobalGratitude_Tightness.csv")) %>%
   rename(country_name = Country) %>%
   mutate(country_code = countrycode(country_name, origin = 'country.name', destination = 'iso3c')) %>% 
   select(tightness = Tightness, country_code,country_name)
 
-#Hofstede
+#hofstede
 DF_indcol <- read.csv(file = here("data", "GlobalGratitude_Hofstede_ResMobility.csv"))
 DF_indcol <- DF_indcol %>%
   mutate(country_code = countrycode(Matched, origin = 'country.name', destination = 'iso3c')) %>%
   mutate(country_name = countrycode(country_code, origin = "iso3c", destination = "country.name")) %>%
   select(resmobility:country_name)
 
-#Religiosity
+#religiosity
 DF_relig <- read.csv(file = here("data", "GlobalGratitude_WorldReligiosity.csv")) %>%
   rename("country_name" = "country") %>% 
   mutate(country_code = countrycode(country_name, origin = 'country.name', destination = 'iso3c')) %>%
@@ -120,7 +118,7 @@ DF_relig <- read.csv(file = here("data", "GlobalGratitude_WorldReligiosity.csv")
   mutate(country_name = ifelse(country_name == "Macedonia", "North Macedonia", country_name)) 
 
 
-#Combine datasets
+#combine datasets
 
 DF_combined <- DF_cultural %>%
   full_join(DF_relation, by = c("country_name", "country_code")) %>%

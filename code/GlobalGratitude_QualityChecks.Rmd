@@ -16,37 +16,37 @@ library(openxlsx)
 
 #Setup data file
 ```{r}
-# Open data
-# Specify directory
+# open data
+# specify directory
 i_am("code/GlobalGratitude_QualityChecks.Rmd")
 
-# Load the workbook
+# load the workbook
 df <- loadWorkbook(file = here("data", "GlobalGratitude_LabSpecificData.xlsx"))
 
-# Get sheet names
+# get sheet names
 sheet_names <- names(df)
 
-# Remove the first sheet
+# remove the first sheet
 removeWorksheet(df, sheet = sheet_names[1])
 
-# Save to a temp file (because openxlsx needs a file to read from)
+# save to a temp file (because openxlsx needs a file to read from)
 temp_file <- tempfile(fileext = "temp_GlobalGratitude_QualityCheck.xlsx")
 saveWorkbook(df, temp_file, overwrite = TRUE)
 
-# Re-read sheet names after removal
+# re-read sheet names after removal
 new_sheets <- getSheetNames(temp_file)
 ```
 
 #Standardize datasets
 ```{r}
-#Standardize sheet with mismatched columns
+#standardize sheet with mismatched columns
 USA_02b <- readWorkbook(temp_file, sheet = new_sheets[37])
 
-#Standardize sheet with missing column
+#standardize sheet with missing column
 USA_02c <- readWorkbook(temp_file, sheet = new_sheets[38])
 USA_02c$me_attention <- as.character(NA)
 
-# Combine sheets 1-36 and 39 into a dataframe
+#combine sheets 1-36 and 39 into a dataframe
 selected_indices <- c(1:36, 39)
 
 selected_sheets <- lapply(selected_indices, function(i) {
@@ -58,15 +58,15 @@ combined_df <- bind_rows(selected_sheets) %>%
   mutate(lab = ifelse(ResponseId == "R_8EFEKmOIkETMemi", "ITA_01", lab)) %>% 
   filter(!is.na(lab))
 
-# Loop over columns in USA_02b and USA_02c to match the types from combined_df
+#loop over columns in USA_02b and USA_02c to match the types from combined_df
 match_column_types <- function(df, reference_df) {
   for (col in names(df)) {
-    # Check if the column exists in combined_df
+    #check if the column exists in combined_df
     if (col %in% names(reference_df)) {
-      # Match the column type from combined_df
+      #match the column type from combined_df
       target_type <- class(reference_df[[col]])
       
-      # Convert the column type in df to match the target type
+      #convert the column type in df to match the target type
       if (target_type == "numeric") {
         df[[col]] <- as.numeric(df[[col]])
       } else if (target_type == "character") {
@@ -81,11 +81,11 @@ match_column_types <- function(df, reference_df) {
   return(df)
 }
 
-# Apply to USA_02b and USA_02c
+#apply to USA_02b and USA_02c
 USA_02b <- match_column_types(USA_02b, combined_df)
 USA_02c <- match_column_types(USA_02c, combined_df)
 
-#Final sheets
+#final sheets
 final_df <- bind_rows(combined_df, USA_02b, USA_02c)
 
 ```
@@ -117,15 +117,15 @@ condition_summary <- final_df %>%
 # Create a workbook
 wb <- createWorkbook()
 
-# Add sheets
+# add sheets
 addWorksheet(wb, "Country_Summary")
 addWorksheet(wb, "Condition_Summary")
 
-# Write data to sheets
+# write data to sheets
 writeData(wb, "Country_Summary", country_summary)
 writeData(wb, "Condition_Summary", condition_summary)
 
-# Save the workbook
+# save the workbook
 saveWorkbook(wb, here("data", "summary_data.xlsx"), overwrite = TRUE)
 ```
 

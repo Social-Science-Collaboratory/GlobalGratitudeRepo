@@ -3,11 +3,11 @@ library(here)
 library(tidyverse)
 library(psych)
 library(lavaan)
-library('semTools')
+library(semTools)
 
 # open data
 ## specify directory
-i_am("code/GlobalGratitude_Main.Rmd")
+i_am("code/factoranalysis.R")
 
 ## fetch survey
 DF <- 

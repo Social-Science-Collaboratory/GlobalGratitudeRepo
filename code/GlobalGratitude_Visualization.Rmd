@@ -160,6 +160,7 @@ country_test <- DF %>%
   )
 
 ```
+
 #Overall intervention vs. control (All intervention vs. All control)
 ```{r Overall intervention vs. control}
 
@@ -372,7 +373,7 @@ unique_country_nested <- unique_country_results_df %>%
 print(unique_country_nested)
 
 # Nest unique data by condition
-unique_condition_nested <- unique_condition_results_df %>%
+unique_condition_nested <- unique_cond_results_df %>%
   group_by(control_condition, intervention_condition) %>%
   nest()
 

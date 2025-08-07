@@ -53,7 +53,6 @@ mod.DF <-
   select(-c(country_code,
             country_name))
 
-rm(mod.list, out.list)
 ```
 
 # Join
@@ -71,13 +70,13 @@ DF <-
     )
 
 # delete vestigial
-# rm(country.DF,
-#    mod.DF)
+# rm(country.DF, mod.DF)
 ```
 
 # Open cultural distance data
 ```{r}
 # cultural distance
+# renamed columns to match with DF
 DF.cd <- read.csv(here('data',
                        "culturaldistance_table_combined.csv")) %>% 
   select(Name, United.States1981.2014) %>% 
@@ -110,7 +109,117 @@ DF2 <-
                       to = c(-1, 1)))
 ```
 
-# New attempt at bottom of Figure 1
+# Create figure 1a (cultural distance)
+```{r}
+DF2 <- DF2 %>% 
+  mutate(
+    sampled =
+      if_else(is.na(pa_effect_size),
+              'no', 
+              'yes'),
+    
+    country = 
+      countrycode(country,
+                  origin = "country.name",
+                  destination = "iso3c")
+    )
+```
+
+```{r}
+fig.1a <- 
+  ggplot(
+    data = DF2,
+    aes(x = dist.us,
+        y = .2)) +
+
+  # Population density (all countries)
+  geom_density(
+    data = DF2,
+    aes(x = dist.us, 
+        y = ..scaled..),
+    color = "grey80", 
+    alpha = 0.5) +
+
+  # sample density (sampled countries)
+  geom_density(
+    data = DF2 %>% 
+      filter(sampled == "yes"),
+    aes(x = dist.us, 
+        y = ..scaled..),
+    color = "#3C5488", 
+    alpha = 0.5) +
+
+  # rug lines: unsampled countries
+  geom_linerange(
+    data = DF2 %>% filter(sampled == "no"),
+    aes(ymin = 0, ymax = 0.1),
+    color = 'grey50') +
+
+  # rug lines: sampled countries
+  geom_linerange(
+    data = DF2 %>% filter(sampled == "yes"),
+    aes(ymin = 0, ymax = 0.2,
+        color = country)) +
+
+  # country labels
+  geom_text(
+    data = DF2 %>% filter(sampled == "yes"),
+    aes(label = country,
+        color = country,
+        y = 1),
+    position = position_jitter(height = .75)) +
+
+  # theme
+  theme_classic() +
+  theme(
+    legend.position = 'none',
+    axis.title.y = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line.y = element_blank(),
+    strip.background = element_blank()
+  ) +
+  xlab('Cultural distance (from USA)')
+```
+
+# Map facet
+```{r}
+# open packages
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+library("ggspatial")
+
+# download world data
+world <- ne_countries(scale = "medium", 
+                      returnclass = "sf")
+
+# fix missing ISO values in world data
+world[world$name == "France", ]$iso_a3 = "FRA"
+world[world$name == "Norway", ]$iso_a3 = "NOR"
+```
+
+#Create figure 1b
+```{r}
+world <- ne_countries(scale = "medium", 
+                      returnclass = "sf")
+
+fig.1b <- ggplot() +
+  # plot map layer
+  layer_spatial(data = world,
+                color = NA) +
+  layer_spatial(data = 
+                  world %>% 
+                  filter(iso_a3 %in% DF$iso),
+                aes(fill = iso_a3)) +
+  
+  # change coordinate projections
+  coord_sf(crs = 'ESRI:54030') +
+  cowplot::theme_minimal_grid() +
+  theme(legend.position = 'none')
+```
+
+# Create figure 1c (cross-cultural moderators)
 ```{r}
 fig1.DF.new <-
   mod.DF %>% 
@@ -136,7 +245,7 @@ fig1.DF.new <-
 ```
 
 ```{r}
-fig.1a <-
+fig.1c <-
   ggplot(data = fig1.DF.new,
        aes(x = value)) +
   
@@ -168,182 +277,16 @@ fig.1a <-
   )
 ```
 
-
-# Prep figure
-```{r}
-fig1.DF <- 
-  DF %>% 
-  select(country,
-         rel_mob_mean : tightness, 
-         relig_mean : indulgence) %>% 
-  pivot_longer(cols = rel_mob_mean : indulgence) %>% 
-  mutate(
-    name = 
-      fct_recode(name,
-                 "Relational mobility" = "relational_mobility",
-                 "Responsibilism" = "responsibilism", 
-                 "Tightness" = "tightness", 
-                 "Religiosity" = "relig_mean",
-                 "GDP" = "mean_GDP",
-                 "Residential mobility" = "resmobility",
-                 "Power distance" = "power.distance",
-                 "Individualism" = "individualism",
-                 "Motivation" = "motivation",
-                 "Uncertainty Avoidance" = "uncertainty.avoidance",
-                 "Long term orientation" = "long.term.orientation",
-                 "Indulgence" = "indulgence")
-  )
-```
-
-# Facet B (cross-cultural moderators)
-```{r eval = F}
-fig.1a <-
-  ggplot(data = fig1.DF,
-       aes(x = country,
-           y = value,
-           fill = country)) +
-  facet_wrap(~ name,
-             scales = 'free') +
-  theme(axis.text.x = element_text(angle = 90, 
-                                   hjust = 1)) +
-  geom_bar(stat = 'identity') +
-  theme_classic() +
-  theme(legend.position = 'none',
-        axis.title.x = element_blank(),
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank())
-```
-
-# Facet A (cultural distance)
-Prep data
-```{r}
-DF2 <- DF2 %>% 
-  mutate(
-    sampled =
-      if_else(is.na(pa_effect_size),
-              'no', 
-              'yes'),
-    
-    country = 
-      countrycode(country,
-                  origin = "country.name",
-                  destination = "iso3c")
-    )
-```
-
-plot
-```{r}
-fig.1b <- 
-  ggplot(
-    data = DF2,
-    aes(x = dist.us,
-        y = .2)) +
-
-  # Population density (unsampled countries)
-  geom_density(
-    data = DF2 %>% 
-      filter(sampled == "no"),
-    aes(x = dist.us, 
-        y = ..scaled..),
-    color = "grey80", 
-    alpha = 0.5) +
-
-  # Sample density (sampled countries)
-  geom_density(
-    data = DF2 %>% 
-      filter(sampled == "yes"),
-    aes(x = dist.us, 
-        y = ..scaled..),
-    color = "#3C5488", 
-    alpha = 0.5) +
-
-  # Rug lines: population
-  geom_linerange(
-    data = DF2 %>% filter(sampled == "no"),
-    aes(ymin = 0, ymax = 0.1),
-    color = 'grey50') +
-
-  # Rug lines: sample
-  geom_linerange(
-    data = DF2 %>% filter(sampled == "yes"),
-    aes(ymin = 0, ymax = 0.2,
-        color = country)) +
-
-  # Country labels
-  geom_text(
-    data = DF2 %>% filter(sampled == "yes"),
-    aes(label = country,
-        color = country,
-        y = 1),
-    position = position_jitter(height = .75)) +
-
-  # Theme
-  theme_classic() +
-  theme(
-    legend.position = 'none',
-    axis.title.y = element_blank(),
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
-    axis.line.y = element_blank(),
-    strip.background = element_blank()
-  ) +
-  xlab('Cultural distance (from USA)')
-```
-
 # Combine
 ```{r}
-plot_grid(fig.1b,
-          fig.1a,
-          nrow = 2,
-          labels = c('a', 'b'))
-```
-
-# Map facet
-```{r}
-# open packages
-library("sf")
-library("rnaturalearth")
-library("rnaturalearthdata")
-library("ggspatial")
-
-# download world data
-world <- ne_countries(scale = "medium", 
-                      returnclass = "sf")
-
-# fix missing ISO values in world data
-world[world$name == "France", ]$iso_a3 = "FRA"
-world[world$name == "Norway", ]$iso_a3 = "NOR"
-```
-
-```{r}
-world <- ne_countries(scale = "medium", 
-                      returnclass = "sf")
-
-fig.1c <- ggplot() +
-  # plot map layer
-  layer_spatial(data = world,
-                color = NA) +
-  layer_spatial(data = 
-                  world %>% 
-                  filter(iso_a3 %in% DF$iso),
-                aes(fill = iso_a3)) +
-  
-  # change coordinate projections
-  coord_sf(crs = 'ESRI:54030') +
-  cowplot::theme_minimal_grid() +
-  theme(legend.position = 'none')
-```
-
-# Combine
-```{r}
-ac <- 
-  plot_grid(fig.1c,
-            fig.1a,
+bc <- 
+  plot_grid(fig.1b,
+            fig.1c,
           ncol = 2,
           labels = c('b', 'c'))
 
-plot_grid(fig.1b, 
-          ac, 
+plot_grid(fig.1a, 
+          bc, 
           nrow = 2,
           labels = c('a', ''))
 ```
