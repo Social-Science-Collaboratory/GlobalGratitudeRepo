@@ -1,7 +1,7 @@
 # GlobalGratitudeProject
 GitHub repository for the Global Gratitude Project
 
-##Code:
+## Code:
 ### USA_02b_Harmonize.R:
 - Harmonized USA_02b with the rest of the data
 
@@ -39,7 +39,7 @@ GitHub repository for the Global Gratitude Project
 - Calculated country-level effect sizes, practice-level effect sizes, and overall effect sizes for each dependent variable
 - Calculated data for Supplemental Table 2
 
-##Data
+##bData
 ### Codebook:
 - GlobalGratitudeCodebook.xlsx: Codebook for GlobalGratitude_Final_Cleaned.Rds
 
