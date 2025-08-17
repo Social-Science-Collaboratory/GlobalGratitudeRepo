@@ -39,7 +39,7 @@ GitHub repository for the Global Gratitude Project
 - Calculated country-level effect sizes, practice-level effect sizes, and overall effect sizes for each dependent variable
 - Calculated data for Supplemental Table 2
 
-##bData
+## Data
 ### Codebook:
 - GlobalGratitudeCodebook.xlsx: Codebook for GlobalGratitude_Final_Cleaned.Rds
 
