@@ -149,12 +149,10 @@ print(country_results)
 
 # load and plot data
 ```{r}
-universality_data.csv <- left_join(distribution_results, country_results, by = "outcome")
+universality_data <- left_join(distribution_results, country_results, by = "outcome")
 
 viz.DF <- 
-  read.csv(here('data',
-                "universality_data.csv"),
-                na.strings = "N/A") %>%
+  universality_data %>%
   
   # clean factors
   mutate(outcome = factor(outcome,

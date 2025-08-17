@@ -384,10 +384,6 @@ colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
                            "country_2_ci_lb", "country_ci_lb", 
                            "practice_2_ci_ub", "practice_ci_ub", 
                            "country_2_ci_ub", "country_ci_ub")
-
-write.csv(ci_df, 
-        file = here('data',
-                    "ci_df.csv"))
 ```
 #Sensitivity Analyses
 ```{r}

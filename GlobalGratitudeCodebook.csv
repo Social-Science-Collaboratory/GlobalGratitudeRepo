@@ -50,41 +50,21 @@ obligated,"Report of extent that participant experienced feeling ""obligated"" a
 sad,"Report of extent that participant experienced feeling ""sad"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 optimistic,"Report of extent that participant experienced feeling ""optimistic"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 envious,"Report of extent that participant experienced feeling ""envious"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
-emotion_DO_happy,Qualtrics randomization variable,
-emotion_DO_obligated,Qualtrics randomization variable,
-emotion_DO_sad,Qualtrics randomization variable,
-emotion_DO_optimistic,Qualtrics randomization variable,
-emotion_DO_envious,Qualtrics randomization variable,
 depressed,"Report of extent that participant experienced feeling ""depressed"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 pleased,"Report of extent that participant experienced feeling ""pleased"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 thankful,"Report of extent that participant experienced feeling ""thankful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 jealous,"Report of extent that participant experienced feeling ""jealous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 nervous,"Report of extent that participant experienced feeling ""nervous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
-emotion_DO_depressed,Qualtrics randomization variable,
-emotion_DO_pleased,Qualtrics randomization variable,
-emotion_DO_thankful,Qualtrics randomization variable,
-emotion_DO_jealous,Qualtrics randomization variable,
-emotion_DO_nervous,Qualtrics randomization variable,
 joyful,"Report of extent that participant experienced feeling ""joyful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 anxious,"Report of extent that participant experienced feeling ""anxious"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 guilty,"Report of extent that participant experienced feeling ""guilty"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 hopeful,"Report of extent that participant experienced feeling ""jealous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 bitter,"Report of extent that participant experienced feeling ""nervous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
-emotion_DO_joyful,Qualtrics randomization variable,
-emotion_DO_anxious,Qualtrics randomization variable,
-emotion_DO_guilty,Qualtrics randomization variable,
-emotion_DO_hopeful,Qualtrics randomization variable,
-emotion_DO_bitter,Qualtrics randomization variable,
 appreciative,"Report of extent that participant experienced feeling ""depressed"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 satisfied,"Report of extent that participant experienced feeling ""pleased"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 indebted,"Report of extent that participant experienced feeling ""thankful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 content,"Report of extent that participant experienced feeling ""hopeful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
 grateful,"Report of extent that participant experienced feeling ""grateful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
-emotion_DO_appreciative,Qualtrics randomization variable,
-emotion_DO_satisfied,Qualtrics randomization variable,
-emotion_DO_indebted,Qualtrics randomization variable,
-emotion_DO_content,Qualtrics randomization variable,
-emotion_DO_grateful,Qualtrics randomization variable,
 self_image_circle,Report of which circle size represents how large or small the participant feels about themselves.,1 = small; 7 = large
 self_image,Report of which stick figure size best describes themselves.,1 = small; 7 = large
 ls_1,In most ways my life is close to my ideal.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
@@ -92,11 +72,6 @@ ls_2,The conditions of my life are excellent.,"1 = ""strongly disagree""; 7 = ""
 ls_3,I am satisfied with my life.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 ls_4,So far I have gotten the important things I want in life.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 ls_5,"If I could live my life over, I would change almost nothing.","1 = ""strongly disagree""; 7 = ""strongly agree"""
-life_satisfaction_DO_ls_1,Qualtrics randomization variable,
-life_satisfaction_DO_ls_2,Qualtrics randomization variable,
-life_satisfaction_DO_ls_3,Qualtrics randomization variable,
-life_satisfaction_DO_ls_4,Qualtrics randomization variable,
-life_satisfaction_DO_ls_5,Qualtrics randomization variable,
 ladder,Report of what ladder rung represents how good the participant sees their life as.,"0 = worst, 10 = best"
 gratitude_1,I have so much in life to be thankful for.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gratitude_2,"If I had to list everything that I felt grateful for, it would be a very long list.","1 = ""strongly disagree""; 7 = ""strongly agree"""
@@ -104,12 +79,6 @@ gratitude_3,"When I look at the world, I don't see much to be grateful for. (rev
 gratitude_4,I am grateful to a wide variety of people.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gratitude_5,"As I get older, I find myself more able to appreciate the people, events, and situations that have been part of my life history.","1 = ""strongly disagree""; 7 = ""strongly agree"""
 gratitude_6,Long amounts of time can go by before I feel grateful to something or someone. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
-gratitude_DO_gratitude_1,Qualtrics randomization variable,
-gratitude_DO_gratitude_2,Qualtrics randomization variable,
-gratitude_DO_gratitude_3,Qualtrics randomization variable,
-gratitude_DO_gratitude_4,Qualtrics randomization variable,
-gratitude_DO_gratitude_5,Qualtrics randomization variable,
-gratitude_DO_gratitude_6,Qualtrics randomization variable,
 gratitude_frequency_1,"Thanked someone you didn’t know who did a small favor for you in public (for example, someone who opened a door for you).","0 = Did not perform the behavior
 1 = Performed the behavior once
 2 = Performed the behavior more than once"
@@ -137,15 +106,6 @@ gratitude_frequency_8,Complimented a friend who had done something nice for you.
 gratitude_frequency_9,Told other people about a nice thing that someone else did for you.,"0 = Did not perform the behavior
 1 = Performed the behavior once
 2 = Performed the behavior more than once"
-gratitude_frequency_DO_gratitude_frequency_1,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_2,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_3,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_4,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_5,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_6,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_7,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_8,Qualtrics randomization variable,
-gratitude_frequency_DO_gratitude_frequency_9,Qualtrics randomization variable,
 color_task_red_6,"Report of how ""red"" the displayed color is",0 = not at all; 5 = moderately; 10 = extremely
 color_task_yellow_1,"Report of how ""yellow"" the displayed color is",0 = not at all; 5 = moderately; 10 = extremely
 color_task_blue_1,"Report of how ""blue"" the displayed color is",0 = not at all; 5 = moderately; 10 = extremely
@@ -192,12 +152,6 @@ religious_grat_3,"When I look at the world, I don’t see much to be grateful to G
 religious_grat_4,I am grateful to God.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 religious_grat_5,As I get older I find myself more able to appreciate that God has been part of my life history.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 religious_grat_6,Long amounts of time can go by before I feel grateful to God. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
-religious_grat_DO_religious_grat_1,Qualtrics randomization variable,
-religious_grat_DO_religious_grat_2,Qualtrics randomization variable,
-religious_grat_DO_religious_grat_3,Qualtrics randomization variable,
-religious_grat_DO_religious_grat_4,Qualtrics randomization variable,
-religious_grat_DO_religious_grat_5,Qualtrics randomization variable,
-religious_grat_DO_religious_grat_6,Qualtrics randomization variable,
 responsibilism_1,Children should be taught to place duty before pleasure.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 responsibilism_2,"You’re working in a company for two years, and one day you meet a co-worker from a different department that you’ve never met before. You are sitting outside a meeting room waiting for the meeting to start, and the two of you start talking. The co-worker starts asking you if you’re married, if you have children, what your hobbies are. Then you remember what a friend of yours told you: “Be careful not to share your personal secrets with people you don’t know because they could use those secrets to hurt you.” Do you agree with this statement?","1 = ""strongly disagree""; 7 = ""strongly agree"""
 responsibilism_3,Children should feel honored if their parents receive a distinguished award.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
@@ -215,18 +169,6 @@ relational_mobility_9,"Even if these people were not completely satisfied with t
 relational_mobility_10,There are few opportunities for these people to form new friendships. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
 relational_mobility_11,"Even if these people were not satisfied with their current relationships, they would often have no choice but to stay with them. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
 relational_mobility_12,"Even though they might rather leave, these people often have no choice but to stay in groups they don’t like. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
-relational_mobility_DO_relational_mobility_1,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_2,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_3,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_4,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_5,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_6,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_7,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_8,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_9,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_10,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_11,Qualtrics randomization variable,
-relational_mobility_DO_relational_mobility_12,Qualtrics randomization variable,
 envy_1,I like to make people feel bad when something good has happened to them.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 envy_2,I wouldn’t want to trade places with anyone.  (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
 envy_3,I feel angry when others succeed. ,"1 = ""strongly disagree""; 7 = ""strongly agree"""
@@ -235,39 +177,18 @@ envy_5,I’m content with what I’ve got.  (reverse coded),"1 = ""strongly disagree
 envy_6,I am happy when others succeed even when I don’t.  (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
 envy_7,It pains me to think of the success of my friends.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 envy_8,I would rather see someone I don’t know win a lottery than to see an acquaintance win.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
-envy_DO_envy_1,Qualtrics randomization variable,
-envy_DO_envy_2,Qualtrics randomization variable,
-envy_DO_envy_3,Qualtrics randomization variable,
-envy_DO_envy_4,Qualtrics randomization variable,
-envy_DO_envy_5,Qualtrics randomization variable,
-envy_DO_envy_6,Qualtrics randomization variable,
-envy_DO_envy_7,Qualtrics randomization variable,
-envy_DO_envy_8,Qualtrics randomization variable,
 me_attention,Attention check and creates an embedded variable for the WTR slider questions,
 inequality_1,Incomes should be made more equal : We need larger income differences as incentives for individual effort,1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
 inequality_2,Competition is good : Competition is harmful,1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
 inequality_3,"In the long run, hard work usually brings a better life : Hard work doesn’t bring success",1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
 inequality_4,People can only get rich at the expense of others : Wealth can grow so there’s enough for everyone,1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
-inequality_DO_inequality_1,Qualtrics randomization variable,
-inequality_DO_inequality_2,Qualtrics randomization variable,
-inequality_DO_inequality_3,Qualtrics randomization variable,
-inequality_DO_inequality_4,Qualtrics randomization variable,
-gov_confidence_1,How much confidence do you have in your government?,"1 = A great deal
-2 = Quite a lot
-3 = Not very much
-4 = Not at all"
+gov_confidence_1,How much confidence do you have in your government?,1 = A great deal; 2 = Quite a lot; 3 = Not very much; 4 = Not at all
 gov_leaders_1,"In my country, there are plenty of opportunities to improve one's economic situations.","1 = ""strongly disagree""; 7 = ""strongly agree"""
 gov_leaders_2,Children in my country have a fair chance of moving up the economic ladder.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gov_leaders_3,Leaders in my country take good care of our citizens.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gov_leaders_4,Leaders in my country are competent and charismatic.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gov_leaders_5,Leaders in my country inspire us.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gov_leaders_6,Leaders in my country protect us when we are in a difficult situation.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
-gov_leaders_DO_gov_leaders_1,Qualtrics randomization variable,
-gov_leaders_DO_gov_leaders_2,Qualtrics randomization variable,
-gov_leaders_DO_gov_leaders_3,Qualtrics randomization variable,
-gov_leaders_DO_gov_leaders_4,Qualtrics randomization variable,
-gov_leaders_DO_gov_leaders_5,Qualtrics randomization variable,
-gov_leaders_DO_gov_leaders_6,Qualtrics randomization variable,
 stim_lef_sma_mkn,Visual judgement of whether the black line is the same length as the red line with no info (small discrepancy),
 stim_lef_lar_mkn,Visual judgement of whether the black line is the same length as the red line with no info (large discrepancy),
 stim_rig_sma_mkn,Visual judgement of whether the black line is the same length as the red line with no info (small discrepancy),
@@ -288,25 +209,8 @@ prq_n_1,Getting into an argument with a colleague or classmate,1 = maximally dis
 prq_n_2,Walking outside during a storm,1 = maximally dissimilar; 10 = maximally similar
 prq_w_1,Working extra hours to earn more money,1 = maximally dissimilar; 10 = maximally similar
 prq_w_2,Completing an assignment to get a good grade in a class,1 = maximally dissimilar; 10 = maximally similar
-prq_DO_prq_g_1,Qualtrics randomization variable,
-prq_DO_prq_g_2,Qualtrics randomization variable,
-prq_DO_prq_o_1,Qualtrics randomization variable,
-prq_DO_prq_o_2,Qualtrics randomization variable,
-prq_DO_prq_a_1,Qualtrics randomization variable,
-prq_DO_prq_a_2,Qualtrics randomization variable,
-prq_DO_prq_p_1,Qualtrics randomization variable,
-prq_DO_prq_p_2,Qualtrics randomization variable,
-prq_DO_prq_n_1,Qualtrics randomization variable,
-prq_DO_prq_n_2,Qualtrics randomization variable,
-prq_DO_prq_w_1,Qualtrics randomization variable,
-prq_DO_prq_w_2,Qualtrics randomization variable,
 empathy_family,Participants are asked to input the name of a close relative of the same age.,
-empathy_kinType,What is your relationship with the close relative?,"1 = Cousin
-2 = Sibling
-3 = Aunt or uncle
-4 = Parent
-5 = Grandparent
-6 = Other"
+empathy_kinType,What is your relationship with the close relative?,1 = Cousin; 2 = Sibling; 3 = Aunt or uncle; 4 = Parent; 5 = Grandparent; 6 = Other
 empathy_kinType_6_TEXT,"Text input for ""Other""",
 empathy_friend,Participants are asked to input the name of a friend.,
 empathy_stranger,Participants are asked to input the name of a stranger.,
@@ -322,14 +226,6 @@ empathy_1_upset,"Report of extent that participant experienced feeling ""upset""
 empathy_1_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
 empathy_1_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
 empathy_1_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_emotions_DO_empathy_1_compassionate,Qualtrics randomization variable,
-empathy_1_emotions_DO_empathy_1_distressed,Qualtrics randomization variable,
-empathy_1_emotions_DO_empathy_1_suprised,Qualtrics randomization variable,
-empathy_1_emotions_DO_empathy_1_sympathetic,Qualtrics randomization variable,
-empathy_1_emotions_DO_empathy_1_upset,Qualtrics randomization variable,
-empathy_1_emotions_DO_empathy_1_sad,Qualtrics randomization variable,
-empathy_1_emotions_DO_empathy_1_pity,Qualtrics randomization variable,
-empathy_1_emotions_DO_empathy_1_confused,Qualtrics randomization variable,
 empathy_1_help,How much help would you be willing to provide [NAME] in this situation (finding their dog)?,"1 = No help
 2 = Search for a few minutes
 3 = Search for an hour
@@ -345,14 +241,6 @@ empathy_2_upset,"Report of extent that participant experienced feeling ""upset""
 empathy_2_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
 empathy_2_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
 empathy_2_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_emotions_DO_empathy_2_compassionate,Qualtrics randomization variable,
-empathy_2_emotions_DO_empathy_2_distressed,Qualtrics randomization variable,
-empathy_2_emotions_DO_empathy_2_suprised,Qualtrics randomization variable,
-empathy_2_emotions_DO_empathy_2_sympathetic,Qualtrics randomization variable,
-empathy_2_emotions_DO_empathy_2_upset,Qualtrics randomization variable,
-empathy_2_emotions_DO_empathy_2_sad,Qualtrics randomization variable,
-empathy_2_emotions_DO_empathy_2_pity,Qualtrics randomization variable,
-empathy_2_emotions_DO_empathy_2_confused,Qualtrics randomization variable,
 empathy_2_help,How much help would you be willing to provide [NAME] in this situation (getting evicted)?,"1 = No help
 2 = Send them information about available apartments
 3 = Help them find a new place to live by visiting apartments for a few hours
@@ -368,14 +256,6 @@ empathy_3_upset,"Report of extent that participant experienced feeling ""upset""
 empathy_3_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
 empathy_3_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
 empathy_3_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_emotions_DO_empathy_3_compassionate,Qualtrics randomization variable,
-empathy_3_emotions_DO_empathy_3_distressed,Qualtrics randomization variable,
-empathy_3_emotions_DO_empathy_3_suprised,Qualtrics randomization variable,
-empathy_3_emotions_DO_empathy_3_sympathetic,Qualtrics randomization variable,
-empathy_3_emotions_DO_empathy_3_upset,Qualtrics randomization variable,
-empathy_3_emotions_DO_empathy_3_sad,Qualtrics randomization variable,
-empathy_3_emotions_DO_empathy_3_pity,Qualtrics randomization variable,
-empathy_3_emotions_DO_empathy_3_confused,Qualtrics randomization variable,
 empathy_3_help,How much help would you be willing to provide [NAME]'s children in this situation?,"1 = No help
 2 = Donate an hours worth of typical wages toward a fund for the kids
 3 = Donate a 2.5 hours worth of typical wages toward a fund for the kids
@@ -665,48 +545,3 @@ totalOffTask,The total amount of time spent off task,
 totalOnTask,The total amount of time on task (without subtracting time spent off task),
 perPagePT,Page breaks between pages,
 pageNo,How many pages the participant saw,
-FL_6_DO_FL_42,Qualtrics randomization variable,
-FL_6_DO_FL_43,Qualtrics randomization variable,
-FL_6_DO_FL_44,Qualtrics randomization variable,
-FL_6_DO_FL_46,Qualtrics randomization variable,
-FL_6_DO_FL_47,Qualtrics randomization variable,
-FL_6_DO_FL_48,Qualtrics randomization variable,
-FL_6_DO_FL_49,Qualtrics randomization variable,
-FL_6_DO_FL_50,Qualtrics randomization variable,
-FL_6_DO_FL_51,Qualtrics randomization variable,
-FL_8_DO_emotion_1,Qualtrics randomization variable,
-FL_8_DO_emotion_2,Qualtrics randomization variable,
-FL_8_DO_emotion_3,Qualtrics randomization variable,
-FL_8_DO_emotion_4,Qualtrics randomization variable,
-FL_13180993309_DO_FL_151,Qualtrics randomization variable,
-FL_13180993309_DO_FL_87,Qualtrics randomization variable,
-FL_152_DO_FL_153,Qualtrics randomization variable,
-FL_152_DO_FL_154,Qualtrics randomization variable,
-FL_155_DO_FL_156,Qualtrics randomization variable,
-FL_155_DO_FL_157,Qualtrics randomization variable,
-FL_160_DO_FL_161,Qualtrics randomization variable,
-FL_160_DO_FL_171,Qualtrics randomization variable,
-FL_164_DO_stimuli:leftaligned;smalldiscrepancy;noinfo,Qualtrics randomization variable,
-FL_164_DO_stimuli:leftaligned;largediscrepancy;noinfo,Qualtrics randomization variable,
-FL_168_DO_stimuli:rightaligned;smalldiscrepancy;noinfo,Qualtrics randomization variable,
-FL_168_DO_stimuli:rightaligned;largediscrepancy;noinfo,Qualtrics randomization variable,
-FL_177_DO_stimuli:rightaligned;largediscrepancy;info,Qualtrics randomization variable,
-FL_177_DO_stimuli:rightaligned;smalldiscrepancy;info,Qualtrics randomization variable,
-FL_181_DO_stimuli:leftaligned;largediscrepancy;info,Qualtrics randomization variable,
-FL_181_DO_stimuli:leftaligned;smalldiscrepancy;info,Qualtrics randomization variable,
-FL_73_DO_FL_13180993312,Qualtrics randomization variable,
-FL_73_DO_FL_13180993314,Qualtrics randomization variable,
-FL_73_DO_FL_13180993315,Qualtrics randomization variable,
-FL_82_DO_empathystory1,Qualtrics randomization variable,
-FL_82_DO_empathy_story2,Qualtrics randomization variable,
-FL_82_DO_empathystory3,Qualtrics randomization variable,
-control_measure_DO_control_measure,Qualtrics randomization variable,
-emotion_1_DO_emotion,Qualtrics randomization variable,
-emotion_2_DO_emotion,Qualtrics randomization variable,
-emotion_3_DO_emotion,Qualtrics randomization variable,
-emotion_4_DO_emotion,Qualtrics randomization variable,
-responsibilism_DO_responsibilism_1,Qualtrics randomization variable,
-responsibilism_DO_responsibilism_2,Qualtrics randomization variable,
-responsibilism_DO_responsibilism_3,Qualtrics randomization variable,
-responsibilism_DO_responsibilism_5,Qualtrics randomization variable,
-responsibilism_DO_responsibilism_4,Qualtrics randomization variable,

@@ -47,7 +47,8 @@ data <- data %>%
          Progress >= 95,
          lab != "",
          condition_type != "NA",
-         lab != "NA")
+         lab != "NA") %>% 
+  select(StartDate:pageNo) #Remove non-relevant columns for USA_02b
 
 # fix known issues
 data <- data %>% 
