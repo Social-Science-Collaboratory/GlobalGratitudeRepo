@@ -129,7 +129,3 @@ writeData(wb, "Condition_Summary", condition_summary)
 saveWorkbook(wb, here("data", "summary_data.xlsx"), overwrite = TRUE)
 ```
 
-
-```{r}
-```
-
