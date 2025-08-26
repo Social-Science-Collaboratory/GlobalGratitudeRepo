@@ -376,51 +376,6 @@ colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
                            "practice_2_ci_ub", "practice_ci_ub", 
                            "country_2_ci_ub", "country_ci_ub")
 ```
-#Sensitivity Analyses
-```{r}
-en.m.ic.stats <- lapply(en.m.ic, function(model) {
-  data.frame(
-    effect_size = model$beta,  # pooled effect size (estimate)
-    ci_lower = model$ci.lb,    # lower bound of the CI
-    ci_upper = model$ci.ub,    # upper bound of the CI
-    p_value = model$pval,      # p-value for the effect size
-    tau = model$tau2          # tau (between-study variance)
-  )
-})
-
-# combine the list of data frames into one data frame
-en.m.ic.df <- do.call(rbind, en.m.ic.stats)
-
-# add the names of the models (effect size columns) as a new column
-en.m.ic.df$effect_size_column <- rep(names(m.ic), each = 1)
-
-m.ic.stats <- lapply(m.ic, function(model) {
-  data.frame(
-    effect_size = model$beta,  # pooled effect size (estimate)
-    ci_lower = model$ci.lb,    # lower bound of the CI
-    ci_upper = model$ci.ub,    # upper bound of the CI
-    p_value = model$pval,      # p-value for the effect size
-    tau = model$tau2          # tau (between-study variance)
-  )
-})
-
-# combine the list of data frames into one data frame
-m.ic.df <- do.call(rbind, m.ic.stats)
-
-# add the names of the models (effect size columns) as a new column
-m.ic.df$effect_size_column <- rep(names(m.ic), each = 1)
-
-en.m.ic.df$language <- "english"
-m.ic.df$language <- "all"
-
-combined_df <- rbind(m.ic.df, en.m.ic.df)
-
-write.csv(combined_df, 
-          file = here('data',
-                      "lang_sensitivity_analysis.csv"))
-
-```
-
 # Pnorm
 ```{r}
 # How many countries exhibit change in PA
@@ -490,5 +445,43 @@ I2_list <- sapply(m.ic, calc_I2_from_model)
 # Assign names
 names(I2_list) <- effect_size_columns
 
+```
+
+
+#Prediction Intervals
+```{r}
+# Build a data frame with fixed effect, practice-level and country-level prediction intervals
+pred_df <- do.call(rbind, lapply(1:length(m.ic), function(i) {
+  mod <- m.ic[[i]]
+  
+  # Prediction
+  pred <- predict(mod, digits = 3)$pred
+  
+  # Standard deviations of random effects
+  sd_practice <- sqrt(mod$sigma2[1])
+  sd_country  <- sqrt(mod$sigma2[2])
+  
+  # Prediction intervals
+  lwr_practice <- pred - 1.96 * sd_practice
+  upr_practice <- pred + 1.96 * sd_practice
+  
+  lwr_country <- pred - 1.96 * sd_country
+  upr_country <- pred + 1.96 * sd_country
+  
+  # Combine into a data frame
+  data.frame(
+    effect_size = effect_size_columns[i],
+    pred = pred,
+    lwr_practice = lwr_practice,
+    upr_practice = upr_practice,
+    lwr_country = lwr_country,
+    upr_country = upr_country
+    )
+}))
+
+# Save data frame
+write.csv(pred_df, 
+          file = here('data',
+                      "prediction_intervals.csv"))
 ```
 
