@@ -40,21 +40,11 @@ data <- bind_rows(data_main, data_USA_02c)
 data <- bind_rows(data, data_USA_02b)
 
 #clean data
-data <- data %>% 
-  #removed test links and incomplete surveys
+data_cleaned <- data %>% 
+  #removed test links
   filter(DistributionChannel != "preview",
-         consent == 1,
-         Progress >= 95,
-         lab != "",
-         condition_type != "NA",
-         lab != "NA") %>% 
-  select(StartDate:pageNo) #Remove non-relevant columns for USA_02b
-
-# fix known issues
-data <- data %>% 
-  
-  # 4/22/2024 TUR_01 used real link for testing purposes
-  filter(ResponseId != "R_42KUGZSS76NgWH7",
+         # 4/22/2024 TUR_01 used real link for testing purposes
+         ResponseId != "R_42KUGZSS76NgWH7",
          ResponseId != "R_4W4EXfgeyk1rCYF",
          ResponseId != "R_45Z862EIfzYcin4",
          ResponseId != "R_7BhJx9Ci7THupmF",
@@ -74,17 +64,38 @@ data <- data %>%
          ResponseId != "R_4ioYJK1zR2FgR4R",
          ResponseId != "R_4OvlyOmeTsmLpFn",
          ResponseId != "R_4BA1gbglSYnVyDK")
+         
+#clean data
+data_cleaned <- data_cleaned %>%
+  #removed incomplete surveys
+  filter(consent == 1,
+         Progress >= 95,
+         lab != "",
+         condition_type != "NA",
+         lab != "NA") %>% 
+  select(StartDate:pageNo) #Remove non-relevant columns
+
 
 # change the 'incentive' column from "volunteer" to "paid" for NOR_01 participants after 11/19/2024
-data <- data %>%
+data_cleaned <- data_cleaned %>%
   mutate(StartDate = as.POSIXct(StartDate, format = "%m/%d/%Y %H:%M"),
          incentive = if_else(lab == "NOR_01" & StartDate > as.POSIXct("11/19/2024 0:00", format = "%m/%d/%Y %H:%M"),
                              "paid", incentive))
 
 # fix age data where wrong info is inputted
-data <- data %>%
+data_cleaned <- data_cleaned %>%
   mutate(age = if_else(age > 99, 2024 - age, age))
 
-saveRDS(data, 
+#rename interventions and controls
+data_cleaned <- data_cleaned %>% 
+  mutate(condition = case_when(
+    condition == "god.letter" ~ "divine.grat",
+    condition == "hk.list"    ~ "naikan",
+    condition == "sub"        ~ "mental.sub",
+    TRUE ~ condition
+  )
+  )
+
+saveRDS(data_cleaned, 
         file = here('data',
                     "GlobalGratitude_Final_Cleaned.Rds"))

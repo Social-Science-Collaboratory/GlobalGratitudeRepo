@@ -1,5 +1,5 @@
 ---
-title: "Figure 1: Cross-cultural viz"
+title: "Figure 1: Cross-cultural Visualization"
 author: "Nicholas A. Coles"
 output: html_document
 editor_options: 
@@ -69,8 +69,6 @@ DF <-
                 destination = "iso3c")
     )
 
-# delete vestigial
-# rm(country.DF, mod.DF)
 ```
 
 # Open cultural distance data

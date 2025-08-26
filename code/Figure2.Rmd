@@ -1,5 +1,5 @@
 ---
-title: "Figure 2: Variability decomposition"
+title: "Figure 2: Variability Decomposition"
 author: "Nicholas A. Coles"
 date: "2025-04-01"
 output: html_document
@@ -57,7 +57,7 @@ m.i  <- lapply(1:length(effect_size_columns), function(i) {
          random = ~ 1 | intervention_condition,
          data = df)})
 
-# Use lapply to fit models for each pair of effect size and variance (use this for results, annabel)
+# Use lapply to fit models for each pair of effect size and variance
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
@@ -262,16 +262,6 @@ d.i$country <- NA
 
 d.c.i <- rbind(d.c, d.i)
 
-# clean labels
-d.c.i <- d.c.i %>% 
-  mutate(label = case_when(
-    label == "god.letter" ~ "divine\ngrat",
-    label == "hk.list"    ~ "naikan",
-    label == "sub"        ~ "mental\nsub",
-    TRUE ~ label
-    )
-    )
-
 # create a list of 6 plots based on the effect size values
 m.p <- lapply(effect_size_columns, function(es) {
   
@@ -359,6 +349,7 @@ ggdraw() +
              x = 0.5, y = 0, vjust = -1, size = 10)
 
 ```
+
 #Confidence Intervals
 ```{r}
 # loop through each effect size column and get confidence intervals

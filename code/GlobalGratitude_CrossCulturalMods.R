@@ -51,6 +51,7 @@ DF_main <- DF_main %>%
     )
   )
 
+#combine self-report values
 DF_cultural <- DF_main %>%
   select(country_code, rel_mob_mean, respon_mean) %>% 
   mutate(country_name = countrycode(country_code, origin = "iso3c", destination = "country.name")) %>%

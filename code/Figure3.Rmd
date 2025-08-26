@@ -1,5 +1,5 @@
 ---
-title: "Figure 3: Cross-cultural analyses"
+title: "Figure 3: Cross-cultural Analyses"
 author: "Nicholas A. Coles"
 output: html_document
 editor_options: 

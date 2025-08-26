@@ -35,7 +35,7 @@ GitHub repository for the Global Gratitude Project
 ### Site Demographics
 - Calculated data for Supplemental Table 1
 
-### GlobalGratitude_Visualizations.Rmd
+### GlobalGratitude_EffectSizes.Rmd
 - Calculated country-level effect sizes, practice-level effect sizes, and overall effect sizes for each dependent variable
 - Calculated data for Supplemental Table 2
 
@@ -64,7 +64,5 @@ GitHub repository for the Global Gratitude Project
 - GlobalGratitude_World Religiosity.csv: Cultural data on religiosity (Gallup, 2016)
 
 ### Effect Sizes:
-- overall_effect_sizes.csv: Effect sizes for each dependent variable across all interventions and all control conditions
-- overall_country_effect_sizes.csv: Effect sizes for each dependent variable across all interventions and all control conditions for each country
 - unique_cond_effect_sizes.csv: Effect sizes for each dependent variable across each interention and each control
 - unique_country_effect_sizes.csv: Effect sizes for each dependent variable across each interention and each control for each country

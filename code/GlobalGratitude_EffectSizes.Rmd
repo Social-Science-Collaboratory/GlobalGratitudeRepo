@@ -1,5 +1,5 @@
 ---
-title: "GlobalGratitude_Visualization"
+title: "GlobalGratitude_EffectSizes"
 output: html_notebook
 ---
 ```{r}
@@ -20,7 +20,7 @@ library(here)
 ```{r}
 
 # specify directory
-i_am("code/GlobalGratitude_Visualization.Rmd")
+i_am("code/GlobalGratitude_EffectSizes.Rmd")
 
 # fetch survey
 DF <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
@@ -112,7 +112,7 @@ control_data <- subset(DF, condition_type == "control")
 intervention_data <- subset(DF, condition_type == "intervention")
 
 unique_labs <- unique(DF$country)
-condition_names <- c("list", "letter", "text", "hk.list", "sub", "god.letter")
+condition_names <- c("list", "letter", "text", "naikan", "mental.sub", "divine.grat")
 variables <- c(
   "pa_mean", "na_mean", "optimistic_mean", "ls_mean", "ladder",
   "envy_mean", "indebted_mean", "gratitude_mean", "guilty", "ss_mean"
@@ -122,7 +122,7 @@ variables <- c(
 DF$condition <- factor(DF$condition)  # convert to factor
 DF$condition <- factor(DF$condition, levels = c(
   "measure", "events", "int.events",     # Control
-  "list", "letter", "text", "hk.list", "sub", "god.letter"  # Intervention
+  "list", "letter", "text", "naikan", "mental.sub", "divine.grat"  # Intervention
 ))
 
 DF$condition_type <- factor(DF$condition_type)  # convert to factor
@@ -158,86 +158,6 @@ country_test <- DF %>%
     ss_mean       = mean(ss_mean, na.rm = TRUE),
     n             = n()
   )
-
-```
-
-#Overall intervention vs. control (All intervention vs. All control)
-```{r Overall intervention vs. control}
-
-# Create an empty list to store results
-effect_sizes <- numeric(length(variables))
-names(effect_sizes) <- variables
-
-# Loop through each variable and compute Cohen's d
-for (var in variables) {
-  formula <- as.formula(paste(var, "~ condition_type"))
-  result <- cohen.d(formula, data = DF)
-  effect_sizes[var] <- -result$estimate  # Note the negation
-}
-
-# Assemble the results into a data frame
-overall_results_df <- data.frame(
-  country = "NA",
-  control_condition = "All",
-  intervention_condition = "All",
-  contrast = "All vs. All",
-  t(effect_sizes),
-  stringsAsFactors = FALSE
-)
-
-print(overall_results_df)
-
-```
-
-#Overall intervention vs. control for each country (All interventions vs. All control)
-```{r}
-
-# Initialize the output data frame
-overall_country_results_df <- data.frame(
-  country = character(),
-  control_condition = character(),
-  intervention_condition = character(),
-  matrix(ncol = length(variables), nrow = 0,
-         dimnames = list(NULL, paste0(gsub("_mean", "", variables), "_effect_size"))),
-  stringsAsFactors = FALSE
-)
-
-# Loop through each country/lab
-results_list <- lapply(unique_labs, function(lab_name) {
-  
-  # Subset data for the lab
-  lab_data <- subset(DF, country == lab_name)
-  
-  # Skip if data for this lab is missing or has only one condition
-  if (nrow(lab_data) < 2 || length(unique(lab_data$condition_type)) < 2) {
-    return(NULL)
-  }
-
-  # Calculate Cohen's d for each variable
-  effect_sizes <- sapply(variables, function(var) {
-    formula <- as.formula(paste(var, "~ condition_type"))
-    result <- cohen.d(formula, data = lab_data)
-    return(-result$estimate)
-  })
-
-  # Create a data frame row with the results
-  result <- data.frame(
-    country = lab_name,
-    control_condition = "All",
-    intervention_condition = "All",
-    contrast = "All vs. All",
-    t(effect_sizes),
-    stringsAsFactors = FALSE
-  )
-  
-  return(result)
-})
-
-# Combine all non-null results
-overall_country_results_df <- do.call(rbind, results_list)
-
-# Print final result
-print(overall_country_results_df)
 
 ```
 
@@ -332,7 +252,7 @@ compute_effect_sizes <- function(control_cond, intervention_cond) {
 
   # Create data frame row
   data.frame(
-    country = "NA",
+    country = "All",
     control_condition = control_cond,
     intervention_condition = intervention_cond,
     contrast = paste(control_cond, "vs", intervention_cond),
@@ -384,14 +304,6 @@ print(unique_condition_nested)
 #Write CSV
 
 ```{r}
-write.csv(overall_results_df, 
-        file = here('data',
-                    "overall_effect_sizes.csv"))
-
-write.csv(overall_country_results_df, 
-        file = here('data',
-                    "overall_country_effect_sizes.csv"))
-
 write.csv(unique_country_results_df, 
         file = here('data',
                     "unique_country_effect_sizes.csv"))
