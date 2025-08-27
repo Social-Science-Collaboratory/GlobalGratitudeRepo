@@ -451,32 +451,84 @@ names(I2_list) <- effect_size_columns
 #Prediction Intervals
 ```{r}
 # Build a data frame with fixed effect, practice-level and country-level prediction intervals
-pred_df <- do.call(rbind, lapply(1:length(m.ic), function(i) {
+pred_df <- do.call(rbind, lapply(seq_along(m.ic), function(i) {
   mod <- m.ic[[i]]
   
-  # Prediction
+  # 1) Predicted mean (population-level)
   pred <- predict(mod, digits = 3)$pred
   
-  # Standard deviations of random effects
-  sd_practice <- sqrt(mod$sigma2[1])
-  sd_country  <- sqrt(mod$sigma2[2])
+  # 2) Fixed-effect variance
+  Vbeta <- as.matrix(vcov(mod))
+  var_beta <- if (ncol(Vbeta) >= 1) Vbeta[1,1] else 0
   
-  # Prediction intervals
-  lwr_practice <- pred - 1.96 * sd_practice
-  upr_practice <- pred + 1.96 * sd_practice
+  # 3) Sampling variance to represent a plausible new study
+  v_new <- if (!is.null(mod$vi)) median(mod$vi, na.rm = TRUE) else 0
   
-  lwr_country <- pred - 1.96 * sd_country
-  upr_country <- pred + 1.96 * sd_country
+  # 4) Extract tau^2 components
+  tau2_all <- as.numeric(mod$sigma2)
+  if (length(tau2_all) == 0) {
+    var_practice <- var_country <- 0
+  } else if (length(tau2_all) == 1) {
+    var_practice <- tau2_all[1]
+    var_country  <- 0
+  } else {
+    var_practice <- tau2_all[1]
+    var_country  <- tau2_all[2]
+  }
   
-  # Combine into a data frame
+  z <- qnorm(0.975)
+  
+  # Heterogeneity-only intervals
+  lwr_practice_heter <- pred - z * sqrt(var_practice)
+  upr_practice_heter <- pred + z * sqrt(var_practice)
+  
+  lwr_country_heter <- pred - z * sqrt(var_country)
+  upr_country_heter <- pred + z * sqrt(var_country)
+  
+  lwr_both_heter <- pred - z * sqrt(var_practice + var_country)
+  upr_both_heter <- pred + z * sqrt(var_practice + var_country)
+  
+  # Full prediction intervals for a single new study
+  var_practice_full <- var_beta + var_practice + v_new
+  var_country_full  <- var_beta + var_country  + v_new
+  var_both_full     <- var_beta + var_practice + var_country + v_new
+  
+  lwr_practice_full <- pred - z * sqrt(var_practice_full)
+  upr_practice_full <- pred + z * sqrt(var_practice_full)
+  
+  lwr_country_full <- pred - z * sqrt(var_country_full)
+  upr_country_full <- pred + z * sqrt(var_country_full)
+  
+  lwr_both_full <- pred - z * sqrt(var_both_full)
+  upr_both_full <- pred + z * sqrt(var_both_full)
+  
   data.frame(
     effect_size = effect_size_columns[i],
     pred = pred,
-    lwr_practice = lwr_practice,
-    upr_practice = upr_practice,
-    lwr_country = lwr_country,
-    upr_country = upr_country
-    )
+    
+    # heterogeneity-only
+    lwr_practice_heter = lwr_practice_heter,
+    upr_practice_heter = upr_practice_heter,
+    lwr_country_heter  = lwr_country_heter,
+    upr_country_heter  = upr_country_heter,
+    lwr_both_heter     = lwr_both_heter,
+    upr_both_heter     = upr_both_heter,
+    
+    # full PIs
+    lwr_practice_full = lwr_practice_full,
+    upr_practice_full = upr_practice_full,
+    lwr_country_full  = lwr_country_full,
+    upr_country_full  = upr_country_full,
+    lwr_both_full     = lwr_both_full,
+    upr_both_full     = upr_both_full,
+    
+    # components for transparency
+    var_practice = var_practice,
+    var_country  = var_country,
+    var_beta     = var_beta,
+    v_new        = v_new,
+    stringsAsFactors = FALSE
+  )
 }))
 
 # Save data frame
