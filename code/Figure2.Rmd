@@ -444,7 +444,6 @@ I2_list <- sapply(m.ic, calc_I2_from_model)
 
 # Assign names
 names(I2_list) <- effect_size_columns
-
 ```
 
 
