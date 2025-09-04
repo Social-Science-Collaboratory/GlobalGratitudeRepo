@@ -1,0 +1,280 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.1.2">
+  <diagram name="Page-1" id="n8CiBm4qhVp-r3E-J9so">
+    <mxGraphModel dx="1224" dy="1102" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="O11xp4IN_EI182L2QyEV-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;entryX=0.524;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-3" target="O11xp4IN_EI182L2QyEV-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="612.5" y="302" as="targetPoint" />
+            <mxPoint x="172.5" y="302" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="173" y="322" />
+              <mxPoint x="615" y="322" />
+              <mxPoint x="615" y="292" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-3" value="&lt;u&gt;GlobalGratitude_Final.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="240" width="210" height="60" as="geometry" />
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-6" target="O11xp4IN_EI182L2QyEV-31">
+=======
+        <mxCell id="De1eZjqfpODv19dZXhUb-1" value="&lt;u&gt;GlobalGratitude_Final.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="270" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="De1eZjqfpODv19dZXhUb-2" target="z9q1VAa0Q0Au0Lvns-ut-26" edge="1">
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-5" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-4">
+          <mxGeometry x="-0.1333" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-6" value="&lt;u&gt;USA_02b_raw_unharmonized.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="40" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-7" value="&lt;u&gt;USA_02b_raw_harmonized.csv&lt;/u&gt;&lt;div&gt;Harmonized to match with GlobalGratitude_Final.csv&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="240" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-8" value="&lt;div&gt;&lt;u&gt;USA_02c.csv&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="240" width="210" height="60" as="geometry" />
+=======
+        <mxCell id="De1eZjqfpODv19dZXhUb-2" value="&lt;u&gt;USA_02b_raw_unharmonized.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="70" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="De1eZjqfpODv19dZXhUb-6" value="&lt;u&gt;USA_02b_raw_harmonized.csv&lt;/u&gt;&lt;div&gt;Harmonized to match with GlobalGratitude_Final.csv&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="270" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="De1eZjqfpODv19dZXhUb-7" value="&lt;div&gt;&lt;u&gt;USA_02c.csv&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="270" width="210" height="60" as="geometry" />
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-15" target="O11xp4IN_EI182L2QyEV-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-15" target="O11xp4IN_EI182L2QyEV-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-15" target="O11xp4IN_EI182L2QyEV-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-12" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-11">
+          <mxGeometry x="-0.3023" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="690" y="530" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="691" y="492" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-14" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-13">
+          <mxGeometry x="-0.169" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-15" value="&lt;u&gt;GlobalGratitude_Final_Cleaned.Rds&lt;/u&gt;&lt;div&gt;Final Rds file used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="462" width="230" height="60" as="geometry" />
+=======
+        <mxCell id="De1eZjqfpODv19dZXhUb-10" value="&lt;u&gt;GlobalGratitude_Final_Cleaned.Rds&lt;/u&gt;&lt;div&gt;Final Rds file used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="492" width="230" height="60" as="geometry" />
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-19" target="O11xp4IN_EI182L2QyEV-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-19" target="O11xp4IN_EI182L2QyEV-48">
+=======
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-22" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="z9q1VAa0Q0Au0Lvns-ut-21" vertex="1" connectable="0">
+          <mxGeometry y="1" relative="1" as="geometry">
+            <mxPoint y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="De1eZjqfpODv19dZXhUb-14" value="&lt;u&gt;GlobalGratitude_EffectSizes.Rmd&lt;/u&gt;&lt;div&gt;Creates dataset of Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country (and condition).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="589" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="De1eZjqfpODv19dZXhUb-15" target="z9q1VAa0Q0Au0Lvns-ut-23" edge="1">
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-64" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-62">
+          <mxGeometry x="0.0137" y="3" relative="1" as="geometry">
+            <mxPoint y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-19" value="&lt;u&gt;GlobalGratitude_EffectSizes.Rmd&lt;/u&gt;&lt;div&gt;Creates dataset of Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country (and condition).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="559" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-22" target="O11xp4IN_EI182L2QyEV-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-21" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-20">
+          <mxGeometry x="-0.0667" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-22" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="690" width="230" height="60" as="geometry" />
+=======
+        <mxCell id="De1eZjqfpODv19dZXhUb-15" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="712" width="230" height="60" as="geometry" />
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="394.5" y="412" as="sourcePoint" />
+            <mxPoint x="394.5" y="462" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-24" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-23">
+          <mxGeometry x="0.04" relative="1" as="geometry">
+            <mxPoint x="1" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-25" value="&lt;u&gt;Cleaned_Final_Dataset.R&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="342" width="230" height="80" as="geometry" />
+=======
+        <mxCell id="De1eZjqfpODv19dZXhUb-18" value="&lt;u&gt;Cleaned_Final_Dataset.R&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="372" width="230" height="80" as="geometry" />
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-26" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="O11xp4IN_EI182L2QyEV-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="395" y="302" as="sourcePoint" />
+            <mxPoint x="395" y="332" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-27" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-26">
+          <mxGeometry x="-0.1556" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-28" target="O11xp4IN_EI182L2QyEV-49">
+=======
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-23" value="&lt;div&gt;&lt;u&gt;Figure2.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="310" y="806" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="z9q1VAa0Q0Au0Lvns-ut-26" target="De1eZjqfpODv19dZXhUb-6" edge="1">
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-28" value="&lt;div&gt;&lt;u&gt;Figure2.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="790" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-31" target="O11xp4IN_EI182L2QyEV-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-30" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-29">
+          <mxGeometry x="0.0667" y="-1" relative="1" as="geometry">
+            <mxPoint y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-31" value="&lt;div&gt;&lt;u&gt;USA_02b_Harmonize.R&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Harmonized USA_02b raw data to match with the other two datasets.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="140" width="210" height="70" as="geometry" />
+=======
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-26" value="&lt;div&gt;&lt;u&gt;USA_02b_Harmonize.R&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Harmonized USA_02b raw data to match with the other two datasets.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="170" width="210" height="70" as="geometry" />
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-34" target="O11xp4IN_EI182L2QyEV-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-33" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-32">
+          <mxGeometry x="0.1333" y="-1" relative="1" as="geometry">
+            <mxPoint y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-34" value="&lt;u&gt;GlobalGratitude_CrossCulturalMod.R&lt;/u&gt;&lt;div&gt;Compile cross-cultural moderators for use in creating Figure3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="530" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-36" target="O11xp4IN_EI182L2QyEV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-36" value="&lt;u&gt;GlobalGratitude_Tightness.csv&lt;/u&gt;&lt;div&gt;Dataset of tightness-looseness measures from&amp;nbsp;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(34, 34, 34); font-family: Arial, sans-serif; font-size: 13px; text-align: start;&quot;&gt;Gelfand et al., 2021.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="898.5" y="397" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-38" target="O11xp4IN_EI182L2QyEV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-38" value="&lt;div&gt;&lt;u&gt;GlobalGratitude_Hofstede_ResMobility.csv&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Dataset of Hofstede individualism scale and residential mobility scores from the&amp;nbsp;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; text-align: start;&quot;&gt;Gallup World Poll.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="898.5" y="487" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-40" target="O11xp4IN_EI182L2QyEV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-40" value="&lt;u&gt;GlobalGratitude_WorldReligiosity.csv&lt;/u&gt;&lt;div&gt;World religiosity scores from Joshanloo &amp;amp; Gebauer 2019.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="898.5" y="577" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-43" target="O11xp4IN_EI182L2QyEV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-43" value="&lt;u&gt;GlobalGratitude_GDPpc.csv&lt;/u&gt;&lt;div&gt;GDP records from the World Bank.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="898.5" y="667" width="250" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-46">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="695" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-45" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-44">
+          <mxGeometry x="-0.1333" y="2" relative="1" as="geometry">
+            <mxPoint x="-1" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-46" value="&lt;u&gt;GlobalGratitude_CrossCulturalMod.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="630" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-47" value="&lt;div&gt;&lt;u&gt;Figure3.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="722" width="230" height="54" as="geometry" />
+        </mxCell>
+<<<<<<< HEAD
+        <mxCell id="O11xp4IN_EI182L2QyEV-48" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;u&gt;contrast.table.csv&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Creates csv file with effect sizes for all comparisons.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="690" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-49" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;u&gt;prediction_intervals.csv&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Creates csv file of prediction intervals.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="880" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-65" target="O11xp4IN_EI182L2QyEV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-65" value="&lt;u&gt;GlobalGratitude_RelationalMobility.csv&lt;/u&gt;&lt;div&gt;Dataset of relational mobility measures from Thompson et al., 2018.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="898.5" y="740" width="250" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-66" target="O11xp4IN_EI182L2QyEV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-66" value="&lt;u&gt;GlobalGratitude_Responsiblism.csv&lt;/u&gt;&lt;div&gt;Dataset of responsiblism measures from&amp;nbsp;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(34, 34, 34); font-family: Arial, sans-serif; font-size: 13px; text-align: start;&quot;&gt;Talhelm et al., under review.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="898.5" y="310" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O11xp4IN_EI182L2QyEV-67" target="O11xp4IN_EI182L2QyEV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-73" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="O11xp4IN_EI182L2QyEV-69">
+          <mxGeometry x="0.8309" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O11xp4IN_EI182L2QyEV-67" value="&lt;u&gt;culturaldistance_table_combined.csv&lt;/u&gt;&lt;div&gt;Dataset of cultural distance measures from&amp;nbsp;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(34, 34, 34); font-family: Arial, sans-serif; font-size: 13px; text-align: start;&quot;&gt;Muthukrishna et al., 2020.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="898.5" y="820" width="250" height="70" as="geometry" />
+=======
+        <mxCell id="Vtg4XO2cr6gVQWl0nDEv-1" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="712" width="230" height="60" as="geometry" />
+>>>>>>> 02e1c4eb798540f3945d7f881f97bd19e5ccf0d5
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

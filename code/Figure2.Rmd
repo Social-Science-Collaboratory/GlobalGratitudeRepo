@@ -25,7 +25,7 @@ Prep data
 i_am("code/Figure2.Rmd")
 
 df <- 
-  read.csv(file = here("data",
+  read.csv(file = here("data/output",
                        "unique_country_effect_sizes.csv")
            ) %>% 
   select(country:ss_var)
