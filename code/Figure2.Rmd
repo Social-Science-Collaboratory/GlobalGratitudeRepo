@@ -464,33 +464,25 @@ pred_df <- do.call(rbind, lapply(seq_along(m.ic), function(i) {
   v_new <- if (!is.null(mod$vi)) median(mod$vi, na.rm = TRUE) else 0
   
   # 4) Extract tau^2 components
-  tau2_all <- as.numeric(mod$sigma2)
-  if (length(tau2_all) == 0) {
-    var_practice <- var_country <- 0
-  } else if (length(tau2_all) == 1) {
-    var_practice <- tau2_all[1]
-    var_country  <- 0
-  } else {
-    var_practice <- tau2_all[1]
-    var_country  <- tau2_all[2]
-  }
+    tau2_practice <- mod$sigma2[1]
+    var_country  <- mod$sigma2[2]
   
-  z <- qnorm(0.975)
+  z <- qnorm(0.95)
   
   # Heterogeneity-only intervals
-  lwr_practice_heter <- pred - z * sqrt(var_practice)
-  upr_practice_heter <- pred + z * sqrt(var_practice)
+  lwr_practice_heter <- pred - z * sqrt(tau2_practice + (0.0448^2))
+  upr_practice_heter <- pred + z * sqrt(tau2_practice + (0.0448^2))
   
   lwr_country_heter <- pred - z * sqrt(var_country)
   upr_country_heter <- pred + z * sqrt(var_country)
   
-  lwr_both_heter <- pred - z * sqrt(var_practice + var_country)
-  upr_both_heter <- pred + z * sqrt(var_practice + var_country)
+  lwr_both_heter <- pred - z * sqrt(tau2_practice + var_country)
+  upr_both_heter <- pred + z * sqrt(tau2_practice + var_country)
   
   # Full prediction intervals for a single new study
-  var_practice_full <- var_beta + var_practice + v_new
+  var_practice_full <- var_beta + tau2_practice + v_new
   var_country_full  <- var_beta + var_country  + v_new
-  var_both_full     <- var_beta + var_practice + var_country + v_new
+  var_both_full     <- var_beta + tau2_practice + var_country + v_new
   
   lwr_practice_full <- pred - z * sqrt(var_practice_full)
   upr_practice_full <- pred + z * sqrt(var_practice_full)
@@ -522,7 +514,7 @@ pred_df <- do.call(rbind, lapply(seq_along(m.ic), function(i) {
     upr_both_full     = upr_both_full,
     
     # components for transparency
-    var_practice = var_practice,
+    var_practice = tau2_practice,
     var_country  = var_country,
     var_beta     = var_beta,
     v_new        = v_new,

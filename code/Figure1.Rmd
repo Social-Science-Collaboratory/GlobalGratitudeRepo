@@ -25,7 +25,7 @@ i_am('code/Figure1.Rmd')
 ```{r}
 country.DF <-
   # open data
-  read.csv(here('data',
+  read.csv(here('output',
                 'unique_country_effect_sizes.csv'
                 )
            ) %>% 

@@ -54,13 +54,13 @@ GitHub repository for the Global Gratitude Project
 - summary_data: Summarizes the rate of inclusion by country and practice.
 
 ### Cultural Moderators:
-- culturaldistance_table.csv: Original data for cultural distance (Muthukrishna et al., 2020)
+- culturaldistance_table.csv: Original data for cultural distance (Muthukrishna et al., 2020). Data extracted from http://culturaldistance.com/.
 - culturaldistance_table_combined.csv: Cultural distance data combined across years (Muthukrishna et al., 2020)
-- GlobalGratitude_GDPpc.csv: Data on gross domestic product (World Bank, 2023)
-- GlobalGratitude_Hofstede_ResMobility.csv: Data on Hofstede cultural dimensions (individualism, motivation, indulgence, power distance, long-term orientation, and uncertainty avoidance) (The Culture Factor, 2023) and residential mobility (Gallup, 2016)
+- GlobalGratitude_GDPpc.csv: Data on gross domestic product (World Bank, 2023). Data extracted from https://data.worldbank.org/indicator/NY.GDP.PCAP.CD.
+- GlobalGratitude_Hofstede_ResMobility.csv: Data on Hofstede cultural dimensions (individualism, motivation, indulgence, power distance, long-term orientation, and uncertainty avoidance) (The Culture Factor, 2023) and residential mobility (Gallup, 2016). Data manually scraped on 
 - GlobalGratitude_RelationalMobility.csv: Cultural data on the relational mobility measure (Thompson et al., 2018)
 - GlobalGratitude_Responsibilism.csv: Cultural data on the responsibilism measure (Talhelm et al., under review)
-- GlobalGratitude_Tightness.csv: Cultural data on the tightness measure (Gelfand et ., 2021)
+- GlobalGratitude_Tightness.csv: Cultural data on the tightness measure (Gelfand et al., 2021)
 - GlobalGratitude_World Religiosity.csv: Cultural data on religiosity (Gallup, 2016)
 
 ### Effect Sizes:

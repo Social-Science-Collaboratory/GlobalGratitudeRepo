@@ -307,9 +307,5 @@ print(unique_condition_nested)
 write.csv(unique_country_results_df, 
         file = here('data',
                     "unique_country_effect_sizes.csv"))
-
-write.csv(unique_cond_results_df, 
-        file = here('data',
-                    "unique_cond_effect_sizes.csv"))
 ```
 
