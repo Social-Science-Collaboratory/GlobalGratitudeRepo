@@ -4,6 +4,14 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="Vtg4XO2cr6gVQWl0nDEv-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Vtg4XO2cr6gVQWl0nDEv-1" target="z9q1VAa0Q0Au0Lvns-ut-23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="185" y="792" />
+              <mxPoint x="425" y="792" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;entryX=0.524;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="De1eZjqfpODv19dZXhUb-1" target="De1eZjqfpODv19dZXhUb-7" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="642.5" y="332" as="targetPoint" />
@@ -65,6 +73,14 @@
         <mxCell id="De1eZjqfpODv19dZXhUb-10" value="&lt;u&gt;GlobalGratitude_Final_Cleaned.Rds&lt;/u&gt;&lt;div&gt;Final Rds file used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="310" y="492" width="230" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="Vtg4XO2cr6gVQWl0nDEv-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="De1eZjqfpODv19dZXhUb-14" target="Vtg4XO2cr6gVQWl0nDEv-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="692" />
+              <mxPoint x="185" y="692" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="De1eZjqfpODv19dZXhUb-14" target="De1eZjqfpODv19dZXhUb-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -73,7 +89,7 @@
             <mxPoint y="-4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-14" value="&lt;u&gt;GlobalGratitude_EffectSizes.Rmd&lt;/u&gt;&lt;div&gt;Creates dataset of Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country (and condition).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-14" value="&lt;u&gt;GlobalGratitude_EffectSizes.Rmd&lt;/u&gt;&lt;div&gt;Creates dataset of Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country (and condition).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="310" y="589" width="230" height="90" as="geometry" />
         </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="De1eZjqfpODv19dZXhUb-15" target="z9q1VAa0Q0Au0Lvns-ut-23" edge="1">
@@ -84,7 +100,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-15" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-15" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="310" y="712" width="230" height="60" as="geometry" />
         </mxCell>
         <mxCell id="De1eZjqfpODv19dZXhUb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
@@ -112,7 +128,7 @@
             <mxPoint x="-1" y="2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-23" value="&lt;div&gt;&lt;u&gt;Figure2.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-23" value="&lt;div&gt;&lt;u&gt;Figure2.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="310" y="806" width="230" height="54" as="geometry" />
         </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="z9q1VAa0Q0Au0Lvns-ut-26" target="De1eZjqfpODv19dZXhUb-6" edge="1">
@@ -181,6 +197,9 @@
         </mxCell>
         <mxCell id="RnCf14qXrR9SS4oPR-BJ-34" value="&lt;div&gt;&lt;u&gt;Figure3.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="610" y="752" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="Vtg4XO2cr6gVQWl0nDEv-1" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="70" y="712" width="230" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

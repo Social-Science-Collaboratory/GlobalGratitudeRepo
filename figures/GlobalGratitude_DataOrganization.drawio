@@ -23,7 +23,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-1" value="&lt;u&gt;GlobalGratitude_Final.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-1" value="&lt;u&gt;GlobalGratitude_Final.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="100" y="270" width="210" height="60" as="geometry" />
         </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="De1eZjqfpODv19dZXhUb-2" target="z9q1VAa0Q0Au0Lvns-ut-26" edge="1">
@@ -34,13 +34,13 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-2" value="&lt;u&gt;USA_02b_raw_unharmonized.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-2" value="&lt;u&gt;USA_02b_raw_unharmonized.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="70" width="210" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-6" value="&lt;u&gt;USA_02b_raw_harmonized.csv&lt;/u&gt;&lt;div&gt;Harmonized to match with GlobalGratitude_Final.csv&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-6" value="&lt;u&gt;USA_02b_raw_harmonized.csv&lt;/u&gt;&lt;div&gt;Harmonized to match with GlobalGratitude_Final.csv&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="270" width="210" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-7" value="&lt;div&gt;&lt;u&gt;USA_02c.csv&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-7" value="&lt;div&gt;&lt;u&gt;USA_02c.csv&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="540" y="270" width="210" height="60" as="geometry" />
         </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="De1eZjqfpODv19dZXhUb-10" target="De1eZjqfpODv19dZXhUb-14" edge="1">
@@ -70,7 +70,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-10" value="&lt;u&gt;GlobalGratitude_Final_Cleaned.Rds&lt;/u&gt;&lt;div&gt;Final Rds file used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-10" value="&lt;u&gt;GlobalGratitude_Final_Cleaned.Rds&lt;/u&gt;&lt;div&gt;Final Rds file used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="310" y="492" width="230" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Vtg4XO2cr6gVQWl0nDEv-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="De1eZjqfpODv19dZXhUb-14" target="Vtg4XO2cr6gVQWl0nDEv-1">
@@ -89,7 +89,7 @@
             <mxPoint y="-4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-14" value="&lt;u&gt;GlobalGratitude_EffectSizes.Rmd&lt;/u&gt;&lt;div&gt;Creates dataset of Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country (and condition).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-14" value="&lt;u&gt;GlobalGratitude_EffectSizes.Rmd&lt;/u&gt;&lt;div&gt;Creates dataset of Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country (and condition).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="310" y="589" width="230" height="90" as="geometry" />
         </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="De1eZjqfpODv19dZXhUb-15" target="z9q1VAa0Q0Au0Lvns-ut-23" edge="1">
@@ -100,7 +100,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-15" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-15" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="310" y="712" width="230" height="60" as="geometry" />
         </mxCell>
         <mxCell id="De1eZjqfpODv19dZXhUb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
@@ -114,7 +114,7 @@
             <mxPoint x="1" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-18" value="&lt;u&gt;Cleaned_Final_Dataset.R&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="De1eZjqfpODv19dZXhUb-18" value="&lt;u&gt;Cleaned_Final_Dataset.R&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="310" y="372" width="230" height="80" as="geometry" />
         </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-6" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="De1eZjqfpODv19dZXhUb-18" edge="1">
@@ -128,7 +128,7 @@
             <mxPoint x="-1" y="2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-23" value="&lt;div&gt;&lt;u&gt;Figure2.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-23" value="&lt;div&gt;&lt;u&gt;Figure2.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="310" y="806" width="230" height="54" as="geometry" />
         </mxCell>
         <mxCell id="z9q1VAa0Q0Au0Lvns-ut-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="z9q1VAa0Q0Au0Lvns-ut-26" target="De1eZjqfpODv19dZXhUb-6" edge="1">
@@ -139,7 +139,7 @@
             <mxPoint y="-4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-26" value="&lt;div&gt;&lt;u&gt;USA_02b_Harmonize.R&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Harmonized USA_02b raw data to match with the other two datasets.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-26" value="&lt;div&gt;&lt;u&gt;USA_02b_Harmonize.R&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Harmonized USA_02b raw data to match with the other two datasets.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="170" width="210" height="70" as="geometry" />
         </mxCell>
         <mxCell id="RnCf14qXrR9SS4oPR-BJ-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="RnCf14qXrR9SS4oPR-BJ-13" target="RnCf14qXrR9SS4oPR-BJ-30" edge="1">
@@ -198,7 +198,7 @@
         <mxCell id="RnCf14qXrR9SS4oPR-BJ-34" value="&lt;div&gt;&lt;u&gt;Figure3.Rmd&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="610" y="752" width="230" height="54" as="geometry" />
         </mxCell>
-        <mxCell id="Vtg4XO2cr6gVQWl0nDEv-1" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="Vtg4XO2cr6gVQWl0nDEv-1" value="&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;div&gt;Final csv file used to create Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="70" y="712" width="230" height="60" as="geometry" />
         </mxCell>
       </root>
