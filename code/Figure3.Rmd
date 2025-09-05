@@ -23,7 +23,7 @@ i_am('code/Figure3.Rmd')
 ```{r}
 # open data
 df <- 
-  read.csv(file = here("data",
+  read.csv(file = here("data/output",
                        "unique_country_effect_sizes.csv")
            ) %>% 
   select(country:ss_var)
@@ -182,21 +182,22 @@ fig3a <-
            x = opposite_distribution,
            label = countries)) +
   geom_col(alpha = .5,
-           fill = 'blue') +
+           fill = 'gray30') +
   geom_text(aes(x = 18),
             size = 3,
-            hjust = 0) +
+            hjust = 0,
+            color = 'lightblue') +
   theme_classic() +
   xlim(0,100) +
-  xlab('theory-inconsistent proportion of estimated distribution') +
-  ylab('outcome')
+  xlab('Theory-inconsistent proportion of estimated distribution') +
+  ylab('Outcome')
 ```
 
 # Prep data for figure 3b
 ```{r}
 country.DF <-
   # open data
-  read.csv(here('data',
+  read.csv(here('data/output',
                 'unique_country_effect_sizes.csv'
                 )
            ) %>% 
@@ -216,7 +217,7 @@ country.DF <-
   summarise(across(everything(), mean, na.rm = TRUE))
 
 mod.DF <-
-  read.csv(here('data',
+  read.csv(here('data/final processed data',
                 'GlobalGratitude_CrossCulturalMod.csv'
                 )
            ) %>% 

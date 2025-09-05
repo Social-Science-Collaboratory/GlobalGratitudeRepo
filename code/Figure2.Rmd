@@ -449,78 +449,39 @@ names(I2_list) <- effect_size_columns
 
 #Prediction Intervals
 ```{r}
-# Build a data frame with fixed effect, practice-level and country-level prediction intervals
-pred_df <- do.call(rbind, lapply(seq_along(m.ic), function(i) {
-  mod <- m.ic[[i]]
+# Build a data frame with practice-level prediction intervals
+practice_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
+  mod <- m.i[[i]]
   
-  # 1) Predicted mean (population-level)
-  pred <- predict(mod, digits = 3)$pred
-  
-  # 2) Fixed-effect variance
-  Vbeta <- as.matrix(vcov(mod))
-  var_beta <- if (ncol(Vbeta) >= 1) Vbeta[1,1] else 0
-  
-  # 3) Sampling variance to represent a plausible new study
-  v_new <- if (!is.null(mod$vi)) median(mod$vi, na.rm = TRUE) else 0
-  
-  # 4) Extract tau^2 components
-    tau2_practice <- mod$sigma2[1]
-    var_country  <- mod$sigma2[2]
-  
-  z <- qnorm(0.95)
-  
-  # Heterogeneity-only intervals
-  lwr_practice_heter <- pred - z * sqrt(tau2_practice + (0.0448^2))
-  upr_practice_heter <- pred + z * sqrt(tau2_practice + (0.0448^2))
-  
-  lwr_country_heter <- pred - z * sqrt(var_country)
-  upr_country_heter <- pred + z * sqrt(var_country)
-  
-  lwr_both_heter <- pred - z * sqrt(tau2_practice + var_country)
-  upr_both_heter <- pred + z * sqrt(tau2_practice + var_country)
-  
-  # Full prediction intervals for a single new study
-  var_practice_full <- var_beta + tau2_practice + v_new
-  var_country_full  <- var_beta + var_country  + v_new
-  var_both_full     <- var_beta + tau2_practice + var_country + v_new
-  
-  lwr_practice_full <- pred - z * sqrt(var_practice_full)
-  upr_practice_full <- pred + z * sqrt(var_practice_full)
-  
-  lwr_country_full <- pred - z * sqrt(var_country_full)
-  upr_country_full <- pred + z * sqrt(var_country_full)
-  
-  lwr_both_full <- pred - z * sqrt(var_both_full)
-  upr_both_full <- pred + z * sqrt(var_both_full)
+  # Run predict once
+  pred_practice <- predict(mod, digits = 3)
   
   data.frame(
     effect_size = effect_size_columns[i],
-    pred = pred,
-    
-    # heterogeneity-only
-    lwr_practice_heter = lwr_practice_heter,
-    upr_practice_heter = upr_practice_heter,
-    lwr_country_heter  = lwr_country_heter,
-    upr_country_heter  = upr_country_heter,
-    lwr_both_heter     = lwr_both_heter,
-    upr_both_heter     = upr_both_heter,
-    
-    # full PIs
-    lwr_practice_full = lwr_practice_full,
-    upr_practice_full = upr_practice_full,
-    lwr_country_full  = lwr_country_full,
-    upr_country_full  = upr_country_full,
-    lwr_both_full     = lwr_both_full,
-    upr_both_full     = upr_both_full,
-    
-    # components for transparency
-    var_practice = tau2_practice,
-    var_country  = var_country,
-    var_beta     = var_beta,
-    v_new        = v_new,
-    stringsAsFactors = FALSE
+    practice_pred = pred_practice$pred,
+    practice_se   = pred_practice$se,
+    practice_pi_lb = pred_practice$pi.lb,
+    practice_pi_ub = pred_practice$pi.ub
   )
 }))
+
+# Build a data frame with country-level prediction intervals
+country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
+  mod <- m.c[[i]]
+  
+  # Run predict once
+  pred_country <- predict(mod, digits = 3)
+  
+  data.frame(
+    effect_size = effect_size_columns[i],
+    country_pred = pred_country$pred,
+    country_se   = pred_country$se,
+    country_pi_lb = pred_country$pi.lb,
+    country_pi_ub = pred_country$pi.ub
+  )
+}))
+
+pred_df <- left_join(practice_pred_df, country_pred_df, by = "effect_size")
 
 # Save data frame
 write.csv(pred_df, 
