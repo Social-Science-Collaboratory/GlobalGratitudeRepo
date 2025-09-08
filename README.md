@@ -57,12 +57,12 @@ GitHub repository for the Global Gratitude Project
 - culturaldistance_table.csv: Original data for cultural distance (Muthukrishna et al., 2020). Data extracted from http://culturaldistance.com/.
 - culturaldistance_table_combined.csv: Cultural distance data combined across years (Muthukrishna et al., 2020)
 - GlobalGratitude_GDPpc.csv: Data on gross domestic product (World Bank, 2023). Data extracted from https://data.worldbank.org/indicator/NY.GDP.PCAP.CD.
-- GlobalGratitude_Hofstede_ResMobility.csv: Data on Hofstede cultural dimensions (individualism, motivation, indulgence, power distance, long-term orientation, and uncertainty avoidance) (The Culture Factor, 2023) and residential mobility (Gallup, 2016). Data manually scraped on 
-- GlobalGratitude_RelationalMobility.csv: Cultural data on the relational mobility measure (Thompson et al., 2018)
-- GlobalGratitude_Responsibilism.csv: Cultural data on the responsibilism measure (Talhelm et al., under review)
-- GlobalGratitude_Tightness.csv: Cultural data on the tightness measure (Gelfand et al., 2021)
-- GlobalGratitude_World Religiosity.csv: Cultural data on religiosity (Gallup, 2016)
+- GlobalGratitude_Hofstede_ResMobility.csv: Data on Hofstede cultural dimensions (individualism, motivation, indulgence, power distance, long-term orientation, and uncertainty avoidance) (The Culture Factor, 2023) and residential mobility (Gallup, 2016). Data manually scraped from https://www.theculturefactor.com/country-comparison-tool and obtained from https://www.gallup.com/analytics/318875/global-research.aspx.
+- GlobalGratitude_RelationalMobility.csv: Cultural data on the relational mobility measure (Thompson et al., 2018). Data obtained from http://relationalmobility.org/.
+- GlobalGratitude_Responsibilism.csv: Cultural data on the responsibilism measure (Talhelm et al., under review). Data obtained directly from author.
+- GlobalGratitude_Tightness.csv: Cultural data on the tightness measure (Gelfand et al., 2021). Data obtained from https://osf.io/47pe8/.
+- GlobalGratitude_World Religiosity.csv: Cultural data on religiosity (Joshanloo & Gebauer, 2019). Data obtained from https://econtent.hogrefe.com/doi/suppl/10.1027/1016-9040/a000382.
 
 ### Effect Sizes:
-- unique_cond_effect_sizes.csv: Effect sizes for each dependent variable across each interention and each control
-- unique_country_effect_sizes.csv: Effect sizes for each dependent variable across each interention and each control for each country
+- unique_cond_effect_sizes.csv: Effect sizes for each dependent variable across each intervention and each control
+- unique_country_effect_sizes.csv: Effect sizes for each dependent variable across each intervention and each control for each country
