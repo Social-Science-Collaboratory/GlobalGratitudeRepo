@@ -51,6 +51,25 @@ DF_respon <- DF_respon %>%
                                "North Macedonia", 
                                country_name)) 
 
+#responsibilism_syn
+DF_respon_syn <- read.csv(file = here("data/cross-cultural", 
+                                  "GlobalGratitude_Responsibilism_Syn.csv"))
+DF_respon_syn <- DF_respon_syn %>% 
+  rename("country_name" = "Culture") %>% 
+  rename("responsibilism" = "Responsibilism") %>%
+  select(country_name:responsibilism) %>% 
+  filter(country_name != "", 
+         country_name != "Total") %>% 
+  mutate(country_code = countrycode(country_name, 
+                                    origin = "country.name", 
+                                    destination = "iso3c")) %>% 
+  mutate(country_name = ifelse(country_name == "UK", 
+                               "United Kingdom", 
+                               country_name))  %>% 
+  mutate(country_name = ifelse(country_name == "Macedonia", 
+                               "North Macedonia", 
+                               country_name)) 
+
 #GDP
 DF_GDP <- read.csv(file = here("data/cross-cultural", 
                                "GlobalGratitude_GDPpc.csv"))
@@ -91,6 +110,18 @@ DF_indcol <- DF_indcol %>%
                                     destination = "country.name")) %>%
   select(resmobility:country_name)
 
+#hofstede_syn
+DF_indcol_syn <- read.csv(file = here("data/cross-cultural", 
+                                  "GlobalGratitude_Hofstede_ResMobility_Syn.csv"))
+DF_indcol_syn <- DF_indcol_syn %>%
+  mutate(country_code = countrycode(Matched, 
+                                    origin = 'country.name', 
+                                    destination = 'iso3c')) %>%
+  mutate(country_name = countrycode(country_code, 
+                                    origin = "iso3c", 
+                                    destination = "country.name")) %>%
+  select(resmobility:country_name)
+
 #religiosity
 DF_relig <- read.csv(file = here("data/cross-cultural", 
                                  "GlobalGratitude_WorldReligiosity.csv")) %>%
@@ -107,6 +138,29 @@ DF_relig <- read.csv(file = here("data/cross-cultural",
   mutate(country_name = ifelse(country_name == "Macedonia", 
                                "North Macedonia", country_name)) 
 
+
+#combine datasets (synthetic)
+DF_combined_syn <- DF_relation %>%
+  full_join(DF_respon_syn, by = c("country_name", "country_code")) %>%
+  full_join(DF_tight, by = c("country_name", "country_code")) %>%
+  full_join(DF_relig, by = c("country_name", "country_code")) %>%
+  full_join(DF_GDP, by = c("country_name", "country_code")) %>%
+  full_join(DF_indcol_syn, by = c("country_name", "country_code")) %>%
+  filter(!is.na(country_name))
+
+DF_combined_syn$sample <- ifelse(DF_combined_syn$country_code %in% sampled, 
+                             "yes", 
+                             "no") 
+
+DF_combined_syn <- DF_combined_syn %>%
+  mutate(country_name = ifelse(country_name == "North Macedonia", 
+                               "Macedonia", 
+                               country_name)) 
+
+write.csv(DF_combined_syn, 
+          file = here('data/final-data',
+                      "GlobalGratitude_CrossCulturalMod_Syn.csv"),
+          row.names = F)
 
 #combine datasets
 DF_combined <- DF_relation %>%
@@ -127,6 +181,6 @@ DF_combined <- DF_combined %>%
                                country_name)) 
 
 write.csv(DF_combined, 
-          file = here('data/final processed data',
+          file = here('data/final-data',
                       "GlobalGratitude_CrossCulturalMod.csv"),
           row.names = F)

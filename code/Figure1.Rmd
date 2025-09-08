@@ -46,7 +46,7 @@ country.DF <-
 
 mod.DF <-
   read.csv(here('data/final-data',
-                'GlobalGratitude_CrossCulturalMod.csv'
+                'GlobalGratitude_CrossCulturalMod_Syn.csv'
                 )
            ) %>% 
   mutate(country = country_name) %>% 
