@@ -7,7 +7,7 @@ i_am("code/GlobalGratitude_CrossCulturalMods.R")
 
 # main data country_code
 DF_main <- 
-  readRDS(file = here("data/final processed data", 
+  readRDS(file = here("data/final-data", 
                       "GlobalGratitude_Final_Cleaned.Rds"))
 
 DF_main <- DF_main %>%

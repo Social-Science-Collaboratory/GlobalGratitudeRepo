@@ -217,11 +217,11 @@ country.DF <-
   summarise(across(everything(), mean, na.rm = TRUE))
 
 mod.DF <-
-  read.csv(here('data/final processed data',
+  read.csv(here('data/final-data',
                 'GlobalGratitude_CrossCulturalMod.csv'
                 )
            ) %>% 
-  filter(sample == "sampled") %>% 
+  filter(sample == "yes") %>% 
   mutate(country = country_name) %>% 
   select(-c(country_code,
             country_name))

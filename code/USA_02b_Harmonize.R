@@ -11,7 +11,7 @@ i_am("code/USA_02B_Harmonize.R")
 ## --------------------------------------------------------------------------------------
 # Fetch USA_02b survey
 data <- 
-  read.csv(file = here("data", 
+  read.csv(file = here("data/raw-data", 
                        "USA_02b_raw_unharmonized.csv")
            )
 
@@ -50,6 +50,6 @@ data <-
 
 # Save the processed data to CSV
 write.csv(data, 
-          file = here('data',
+          file = here('data/raw-data',
                       "USA_02b_raw_harmonized.csv")
           )

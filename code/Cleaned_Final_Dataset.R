@@ -9,7 +9,7 @@ i_am("code/Cleaned_Final_Dataset.R")
 
 # fetch main survey data
 data_main <- 
-  readRDS(file = here("data", 
+  readRDS(file = here("data/raw-data", 
                       "GlobalGratitude_Final.Rds")
           )
 
@@ -18,7 +18,7 @@ data_main <- data_main %>%
 
 # fetch the USA_02b (harmonized) survey data
 data_USA_02b <- 
-  read.csv(file = here("data", 
+  read.csv(file = here("data/raw-data", 
                        "USA_02b_raw_harmonized.csv")
            )
 
@@ -29,7 +29,7 @@ data_USA_02b <-
 
 # fetch the USA_02c survey data
 data_USA_02c <- 
-  read.csv(file = here("data", 
+  read.csv(file = here("data/raw-data", 
                        "USA_02c.csv")
            )
 
@@ -128,5 +128,5 @@ data_cleaned <-
     )
 
 saveRDS(data_cleaned, 
-        file = here('data',
+        file = here('data/final-data',
                     "GlobalGratitude_Final_Cleaned.Rds"))

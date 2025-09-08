@@ -376,55 +376,6 @@ colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
                            "practice_2_ci_ub", "practice_ci_ub", 
                            "country_2_ci_ub", "country_ci_ub")
 ```
-# Pnorm
-```{r}
-# How many countries exhibit change in PA
-100 - 
-  pnorm(q = 0, 
-        mean = m.ic[["pa_effect_size"]][["b"]],
-        sd = m.ic[["pa_effect_size"]][["sigma2"]][[2]] %>% 
-          sqrt()
-        ) * 100
-
-# NA (note reverse direction -- i.e., not subtracted from 100)
-pnorm(q = 0, 
-      mean = m.ic[["na_effect_size"]][["b"]],
-      sd = m.ic[["na_effect_size"]][["sigma2"]][[2]] %>% 
-        sqrt()
-      ) * 100
-
-# optimism
-100 - 
-  pnorm(q = 0, 
-        mean = m.ic[["optimistic_effect_size"]][["b"]],
-        sd = m.ic[["optimistic_effect_size"]][["sigma2"]][[2]] %>% 
-          sqrt()
-        ) * 100
-
-# ls
-100 - 
-  pnorm(q = 0, 
-        mean = m.ic[["ls_effect_size"]][["b"]],
-        sd = m.ic[["ls_effect_size"]][["sigma2"]][[2]] %>% 
-          sqrt()
-        ) * 100
-
-# envy
-100 - 
-  pnorm(q = 0, 
-        mean = m.ic[["envy_effect_size"]][["b"]],
-        sd = m.ic[["envy_effect_size"]][["sigma2"]][[2]] %>% 
-          sqrt()
-        ) * 100
-
-# indebted
-100 - 
-  pnorm(q = 0, 
-        mean = m.ic[["indebted_effect_size"]][["b"]],
-        sd = m.ic[["indebted_effect_size"]][["sigma2"]][[2]] %>% 
-          sqrt()
-        ) * 100
-```
 
 #Calculate I2
 ```{r}
@@ -485,7 +436,7 @@ pred_df <- left_join(practice_pred_df, country_pred_df, by = "effect_size")
 
 # Save data frame
 write.csv(pred_df, 
-          file = here('data',
+          file = here('data/output',
                       "prediction_intervals.csv"))
 ```
 

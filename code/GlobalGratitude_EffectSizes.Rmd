@@ -23,7 +23,7 @@ library(here)
 i_am("code/GlobalGratitude_EffectSizes.Rmd")
 
 # fetch survey
-DF <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
+DF <- readRDS(file = here("data/final-data", "GlobalGratitude_Final_Cleaned.Rds"))
 
 ```
 ```{r}
@@ -127,37 +127,6 @@ DF$condition <- factor(DF$condition, levels = c(
 
 DF$condition_type <- factor(DF$condition_type)  # convert to factor
 DF$condition_type <- factor(DF$condition_type, levels = c("control", "intervention"))
-
-# sanity check
-interventions_test <- DF %>%
-  group_by(condition) %>%
-  summarize(
-    grat_mean     = mean(gratitude_mean, na.rm = TRUE),
-    pa_mean       = mean(pa_mean, na.rm = TRUE),
-    optimistic_mean = mean(optimistic_mean, na.rm = TRUE),
-    na_mean       = mean(na_mean, na.rm = TRUE),
-    indebted_mean = mean(indebted_mean, na.rm = TRUE),
-    envy_mean     = mean(envy_mean, na.rm = TRUE),
-    ls_mean       = mean(ls_mean, na.rm = TRUE),
-    guilty_mean       = mean(guilty, na.rm = TRUE),
-    ss_mean       = mean(ss_mean, na.rm = TRUE),
-    n             = n()
-  )
-
-country_test <- DF %>%
-  group_by(country) %>%
-  summarize(
-    grat_mean     = mean(gratitude_mean, na.rm = TRUE),
-    pa_mean       = mean(pa_mean, na.rm = TRUE),
-    optimistic_mean = mean(optimistic_mean, na.rm = TRUE),
-    na_mean       = mean(na_mean, na.rm = TRUE),
-    indebted_mean = mean(indebted_mean, na.rm = TRUE),
-    envy_mean     = mean(envy_mean, na.rm = TRUE),
-    ls_mean       = mean(ls_mean, na.rm = TRUE),
-    guilty_mean       = mean(guilty, na.rm = TRUE),
-    ss_mean       = mean(ss_mean, na.rm = TRUE),
-    n             = n()
-  )
 
 ```
 
@@ -276,36 +245,16 @@ print(unique_cond_results_df)
 
 ```
 
-#Create nested lists
-```{r}
-# Nest overall data by country
-overall_country_nested <- overall_country_results_df %>%
-  group_by(country) %>%
-  nest()
-
-print(overall_country_nested)
-
-# Nest unique data by condition
-unique_country_nested <- unique_country_results_df %>%
-  group_by(country, control_condition, intervention_condition) %>%
-  nest()
-
-print(unique_country_nested)
-
-# Nest unique data by condition
-unique_condition_nested <- unique_cond_results_df %>%
-  group_by(control_condition, intervention_condition) %>%
-  nest()
-
-print(unique_condition_nested)
-
-```
-
 #Write CSV
 
 ```{r}
 write.csv(unique_country_results_df, 
-        file = here('data',
+        file = here('data/output',
                     "unique_country_effect_sizes.csv"))
+
+write.csv(unique_cond_results_df, 
+        file = here('data/output',
+                    "unique_cond_effect_sizes.csv"))
+
 ```
 

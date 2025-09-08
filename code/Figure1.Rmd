@@ -25,7 +25,7 @@ i_am('code/Figure1.Rmd')
 ```{r}
 country.DF <-
   # open data
-  read.csv(here('output',
+  read.csv(here('data/output',
                 'unique_country_effect_sizes.csv'
                 )
            ) %>% 
@@ -45,7 +45,7 @@ country.DF <-
   summarise(across(everything(), mean, na.rm = TRUE))
 
 mod.DF <-
-  read.csv(here('data',
+  read.csv(here('data/final-data',
                 'GlobalGratitude_CrossCulturalMod.csv'
                 )
            ) %>% 
@@ -75,7 +75,7 @@ DF <-
 ```{r}
 # cultural distance
 # renamed columns to match with DF
-DF.cd <- read.csv(here('data',
+DF.cd <- read.csv(here('data/cross-cultural',
                        "culturaldistance_table_combined.csv")) %>% 
   select(Name, United.States1981.2014) %>% 
   rename(country = Name,
@@ -102,7 +102,7 @@ DF2 <-
            replace_na(dist.us, 
                       0)) %>% 
   mutate_at(.vars = vars(dist.us,
-                         rel_mob_mean : indulgence),
+                         relational_mobility : indulgence),
             ~ rescale(x = .,
                       to = c(-1, 1)))
 ```
@@ -221,9 +221,7 @@ fig.1b <- ggplot() +
 ```{r}
 fig1.DF.new <-
   mod.DF %>% 
-  pivot_longer(rel_mob_mean : indulgence) %>% 
-  filter(name != 'rel_mob_mean',
-         name != 'respon_mean') %>% 
+  pivot_longer(relational_mobility : indulgence) %>% 
   mutate(
     name = 
       fct_recode(name,
@@ -258,7 +256,7 @@ fig.1c <-
   
   # plot sampled countries
   geom_density(data = fig1.DF.new %>% 
-               filter(sample == 'sampled'),
+               filter(sample == 'yes'),
              alpha = .5,
              color = '#3C5488') +
   theme_classic() +
