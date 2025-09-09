@@ -1,31 +1,24 @@
 ---
 title: "Figure 3: Cross-cultural Analyses"
-author: "Nicholas A. Coles"
+author: "Nicholas A. Coles, Annabel V. Dang"
+description: "Conduct cross-cultural analyses, generating Figure 3 for the manuscript"
 output: html_document
 editor_options: 
   chunk_output_type: console
 ---
 
-# Load libraries
+# Load packages
 ```{r lib}
-library(tidyverse)
-library(here)
-library(BayesFactor)
-library(metafor)
-library(stringr)
-
-options(scipen = 999)
-
-i_am('code/Figure3.Rmd')
+#load packages
+source("../setup.R")
 ```
 
-#Prep data for Fig 3a
+#Prep data 
 ```{r}
 # open data
 df <- 
   read.csv(file = here("data/output",
-                       "unique_country_effect_sizes.csv")
-           ) %>% 
+                       "unique_country_effect_sizes.csv")) %>% 
   select(country:ss_var)
 
 # list of effect size columns and variance columns
@@ -36,19 +29,16 @@ effect_size_columns <- c("pa_effect_size", "na_effect_size",
 variance_columns <- c("pa_var", "na_var", "optimistic_var",
                          "ls_var", "envy_var", "indebted_var")
 
-# use lapply to fit models for each pair of effect size and variance
+# use lapply to fit models
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
          random = list(~ 1 | intervention_condition, ~ 1 | country),
          data = df)})
 
-# store the results with a name reflecting the effect size and variance pair
+# store the results 
 names(m.ic) <- paste(effect_size_columns)
 
-# evaluate relative importance of variance components for each outcome
-lapply(m.ic, function(model){
-   model$sigma2[2] / model$sigma2[1]})
 ```
 
 # Pnorm
@@ -81,22 +71,21 @@ distribution_results <- data.frame(
     effect_prob("indebted_effect_size", reverse = TRUE)
 ))
 
-print(distribution_results)
 ```
 
+# Calculate effect sizes
 ```{r}
-
 d.c <- lapply(effect_size_columns, function(effect_size) {
   
   d.c <- df %>%
     group_by(country) %>%
     summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
     
-    # add [jittered] y-value to assist with plotting
+    # add [jittered] y-value
     mutate(y = 0,
            y = jitter(y, .1)) %>%
     
-    # labels most extreme observations (in terms of min and max)
+    # labels most extreme observations
     mutate(label = if_else(m == min(m),
                            true = country,
                            false = ""),
@@ -104,7 +93,7 @@ d.c <- lapply(effect_size_columns, function(effect_size) {
                            true = country,
                            false = label)) %>%
     
-    # include effect size name for reference
+    # include effect size name 
     mutate(effect_size = effect_size)
   
   return(d.c)
@@ -113,6 +102,7 @@ d.c <- lapply(effect_size_columns, function(effect_size) {
 d.c <- bind_rows(d.c) 
 d.c <- d.c %>% select(-y, -label)
 
+# organize effect sizes
 mutate_country_results <- d.c %>%
   mutate(
     is_negative = case_when(
@@ -147,7 +137,7 @@ print(country_results)
 
 ```
 
-# load and plot data
+# Load and plot data
 ```{r}
 universality_data <- left_join(distribution_results, country_results, by = "outcome")
 
@@ -175,8 +165,9 @@ viz.DF <-
          )
 ```
 
+#Plot fig 3a
 ```{r}
-fig3a <- 
+fig.3a <- 
   ggplot(data = viz.DF,
        aes(y = fct_rev(outcome),
            x = opposite_distribution,
@@ -193,7 +184,7 @@ fig3a <-
   ylab('Outcome')
 ```
 
-# Prep data for figure 3b
+# Prep data for fig.3b
 ```{r}
 country.DF <-
   # open data
@@ -218,7 +209,7 @@ country.DF <-
 
 mod.DF <-
   read.csv(here('data/final-data',
-                'GlobalGratitude_CrossCulturalMod.csv'
+                'crossculturalmod.csv'
                 )
            ) %>% 
   filter(sample == "yes") %>% 
@@ -228,7 +219,7 @@ mod.DF <-
 
 ```
 
-# Open cross-cultural moderator data
+# Join dataframes
 ```{r}
 # join
 DF <-
@@ -241,7 +232,7 @@ rm(country.DF,
    mod.DF)
 ```
 
-# Bayesian correlation analyses
+# Bayesian Correlation Analyses
 ```{r}
 # created expanded list of outcome-moderator combinations
 out.list <- 
@@ -270,7 +261,7 @@ expanded.list <-
   expand_grid(out.list,
               mod.list)
 
-results <- sapply(X = seq_len(nrow(expanded.list)), # iterate through each row of list
+results <- sapply(X = seq_len(nrow(expanded.list)), 
                   simplify = F,
                   FUN = function(i){
                     df <- DF %>% 
@@ -353,7 +344,7 @@ results <-
                             )
          )
 
-# Make minor edit to label
+# minor edit to label
 results <- results %>% 
     mutate(cor.lab = paste0("paste(", 
                             "italic(r), ' = ",
@@ -395,7 +386,7 @@ results <- results %>%
          )
 ```
 
-# For paper
+# Correlation Test (for paper)
 ```{r}
 cor.test(DF$optimistic_effect_size, 
          DF$indulgence)
@@ -408,9 +399,9 @@ cor.test(DF$indebted_effect_size,
 ```
 
 
-# Final figure 3b
+# Create final fig.3b
 ```{r}
-fig3b <-
+fig.3b <-
   ggplot(data = results,
        aes(x = moderator,
            y = fct_rev(outcome),
@@ -465,13 +456,11 @@ fig3b <-
         legend.key.size = unit(.6, 'cm'))
 ```
 
-#combine
+#Combine
 ```{r}
-library(cowplot)
-
-plot_grid(fig3a, 
+plot_grid(fig.3a, 
           ggdraw(),
-          fig3b, 
+          fig.3b, 
           labels = c("a", "", "b"), 
           nrow = 3,
           rel_heights = c(.2, .05, .75),

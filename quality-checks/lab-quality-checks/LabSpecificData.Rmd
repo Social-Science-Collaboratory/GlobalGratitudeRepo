@@ -1,0 +1,47 @@
+---
+title: "LabSpecificData"
+author: "Nicholas A. Coles, Annabel V. Dang"
+description: "Generate datasets for each lab to inspect after they complete data collection"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Load packages
+```{r lib}
+#load packages
+source("../setup.R")
+```
+
+# Open data
+```{r}
+# fetch the main survey data
+data <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
+
+#edit dataset to only include certain columns
+lab_specific_data <- data %>% select(Progress:Duration..in.seconds.,ResponseId,consent:grat_god_letter, me_attention, meals_attention, attention_check:feedback, lab)
+
+```
+
+#Create singular Excel workbook with each lab as an individual sheet
+```{r}
+# split data by lab
+lab_data <- split(lab_specific_data, lab_specific_data$lab)
+
+# create a new workbook
+wb <- createWorkbook()
+
+# loop through each lab and write the data to separate sheets
+for (lab in names(lab_data)) {
+  # add a sheet for each lab
+  addWorksheet(wb, lab)
+  
+  # write the data for the current lab into the sheet
+  writeData(wb, sheet = lab, lab_data[[lab]])
+}
+
+# save to an Excel file
+saveWorkbook(wb, 
+          file = here('quality-checks/lab-quality-checks',
+                      "labspecific_data.xlsx"), overwrite = TRUE)
+
+```

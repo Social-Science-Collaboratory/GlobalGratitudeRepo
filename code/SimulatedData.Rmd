@@ -1,0 +1,186 @@
+---
+title: "Simulated_Data"
+author: "Nicholas A. Coles, Annabel V. Dang"
+description: "Create simulated data for non-sharable data"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load packages
+```{r}
+# install packages
+source("../setup.R")
+```
+
+# Create simulated data
+```{r}
+# load data (Hofstede + Residential Mobility)
+data <- read.csv(file = here("data/cross-cultural", 
+                                  "hofstede_resmobility.csv")) %>% 
+  select(Matched, resmobility:indulgence) %>% 
+  filter(Matched != "")  %>%
+  distinct(Matched, .keep_all = TRUE)
+
+country_data <- unique(data$Matched)
+
+set.seed(123)
+
+# create synthetic version
+syn_data <- syn(
+  data,
+  maxfaclevels = 154
+)
+
+syn_data <- syn_data$syn
+syn_data <- syn_data %>%
+  slice(1:length(country_data)) %>%
+  mutate(Matched = country_data)
+
+write.csv(syn_data, 
+          file = here('data/simulated-data',
+                      "hofstede_resmobility_sim.csv"),
+          row.names = F)
+
+# load data (Responsibilism)
+data_2 <- read.csv(file = here("data/cross-cultural", 
+                             "responsibilism.csv")) %>% 
+  select(Culture:Responsibilism) %>% 
+  filter(Culture != "", Culture != "Total")
+
+country_data_2 <- unique(data_2$Culture)
+
+set.seed(123)
+
+# create synthetic version
+syn_data_2 <- syn(
+  data_2,
+  maxfaclevels = 100
+)
+
+syn_data_2 <- (syn_data_2$syn) %>%
+  slice(1:length(country_data_2)) %>%
+  mutate(Culture = country_data_2)
+
+write.csv(syn_data_2, 
+          file = here('data/simulated-data',
+                      "responsibilism_sim.csv"),
+          row.names = F)
+```
+
+#Create simulated crossculturalmod.csv
+```{r}
+# main data iso
+DF_main <- 
+  readRDS(file = here("data/final-data", 
+                      "globalgratitude_final_cleaned.Rds"))
+
+DF_main <- DF_main %>%
+  mutate(iso = str_sub(lab, 1, 3)) %>%
+  filter(!is.na(iso))
+
+sampled <- unique(DF_main$iso)
+
+# cultural distance
+DF_culture <- read.csv(here('data/cross-cultural',
+                       "culturaldistance_combined.csv")) %>% 
+  select(Name, United.States1981.2014) %>% 
+  rename(country = Name,
+         dist.us = United.States1981.2014) %>% 
+  mutate(country = str_remove_all(country, "[:digit:]"),
+         country = str_remove_all(country, "-")) %>% 
+  mutate(country = ifelse(country == "Great Britain", "United Kingdom", country)) %>% 
+  mutate(iso = countrycode(country,
+                           origin = 'country.name',
+                           destination = 'iso3c'))
+
+# relational mobility
+DF_relation <- read.csv(file = here("data/cross-cultural", 
+                                    "relationalmobility.csv")) %>%
+  rename("country" = "COUNTRY") %>% 
+  rename("relational_mobility" = "RMOBLM") %>% 
+  mutate(country = ifelse(country == "USA", "United States", country)) %>% 
+  mutate(iso = countrycode(country,
+                           origin = "country.name",
+                           destination = "iso3c")) %>% 
+  select(iso, country, relational_mobility) 
+  
+# responsibilism
+DF_respon <- read.csv(file = here("data/simulated-data", 
+                                  "responsibilism_sim.csv")) %>% 
+  rename("country" = "Culture") %>% 
+  rename("responsibilism" = "Responsibilism") %>%
+  select(country:responsibilism) %>% 
+  filter(country != "", 
+         country != "Total") %>% 
+  mutate(iso = countrycode(country,
+                           origin = "country.name",
+                           destination = "iso3c")) %>% 
+  mutate(country = ifelse(country == "UK", "United Kingdom", country))  %>% 
+  mutate(country = ifelse(country == "Macedonia", "North Macedonia", country)) 
+
+# GDP
+DF_GDP <- read.csv(file = here("data/cross-cultural", 
+                               "GDPpc.csv")) %>%
+  rename("iso" = "Country.Code") %>%
+  select(iso, X2011:X2020) %>%
+  mutate(country = countrycode(iso,
+                               origin = "iso3c",
+                               destination = "country.name")) %>% 
+  mutate(mean_GDP = rowMeans(select(., X2011:X2020), na.rm = TRUE)) %>%
+  select(iso, country, mean_GDP) %>%
+  filter(country != "NA")
+
+# tightness-looseness
+DF_tight <- read.csv(file = here("data/cross-cultural", 
+                                 "tightness.csv")) %>%
+  rename(country = Country) %>%
+  mutate(iso = countrycode(country,
+                           origin = 'country.name',
+                           destination = 'iso3c')) %>% 
+  select(tightness = Tightness, iso, country)
+
+# hofstede/residential mobility
+DF_indcol <- read.csv(file = here("data/simulated-data", 
+                                  "hofstede_resmobility_sim.csv")) %>%
+  mutate(iso = countrycode(Matched,
+                           origin = 'country.name',
+                           destination = 'iso3c')) %>%
+  mutate(country = countrycode(iso,
+                               origin = "iso3c",
+                               destination = "country.name")) %>%
+  select(resmobility:country)
+
+
+# religiosity
+DF_relig <- read.csv(file = here("data/cross-cultural", 
+                                 "worldreligiosity.csv")) %>% 
+  mutate(iso = countrycode(country,
+                           origin = 'country.name',
+                           destination = 'iso3c')) %>%
+  select(X2011:X2014, country, iso) %>%
+  mutate(relig_mean = rowMeans(cbind(X2011, X2012, X2013, X2014), na.rm = TRUE)) %>%
+  select(iso, country, relig_mean)
+```
+
+#Combine datasets
+```{r}
+# combine datasets
+DF_combined <- DF_culture %>%
+  full_join(DF_relation, by = c("country", "iso")) %>%
+  full_join(DF_respon, by = c("country", "iso")) %>%
+  full_join(DF_tight, by = c("country", "iso")) %>%
+  full_join(DF_relig, by = c("country", "iso")) %>%
+  full_join(DF_GDP, by = c("country", "iso")) %>%
+  full_join(DF_indcol, by = c("country", "iso")) %>%
+  filter(!is.na(country))
+
+DF_combined$sample <- ifelse(DF_combined$iso %in% sampled, "yes", "no") 
+
+DF_combined <- DF_combined %>%
+  mutate(country = ifelse(country == "North Macedonia", "Macedonia", country)) 
+
+write.csv(DF_combined, 
+          file = here('data/simulated-data',
+                      "crossculturalmod_sim.csv"), row.names = F)
+```

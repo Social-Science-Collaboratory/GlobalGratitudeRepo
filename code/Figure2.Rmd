@@ -1,33 +1,23 @@
 ---
 title: "Figure 2: Variability Decomposition"
-author: "Nicholas A. Coles"
-date: "2025-04-01"
+author: "Nicholas A. Coles, Annabel V. Dang"
+description: "Visualizes effect sizes, generating Figure 2 for the manuscript"
 output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-Load libraries
-```{r lib}
-library(tidyverse)
-library(metafor)
-library(ggExtra)
-library(ggplot2)
-library(ggrepel)
-library(cowplot)
-library(purrr)
-library(here)
+# Load packages
+```{r}
+#load packages
+source("../setup.R")
 ```
 
-Prep data
+# Prep data
 ```{r}
 # open data
-# specify directory
-i_am("code/Figure2.Rmd")
-
 df <- 
   read.csv(file = here("data/output",
-                       "unique_country_effect_sizes.csv")
-           ) %>% 
+                       "unique_country_effect_sizes.csv")) %>% 
   select(country:ss_var)
 
 # list of effect size columns and variance columns
@@ -57,35 +47,34 @@ m.i  <- lapply(1:length(effect_size_columns), function(i) {
          random = ~ 1 | intervention_condition,
          data = df)})
 
-# Use lapply to fit models for each pair of effect size and variance
+# fit models for each pair of effect size and variance
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
          random = list(~ 1 | intervention_condition, ~ 1 | country),
          data = df)})
 
-# Store the results with a name reflecting the effect size and variance pair
+# store the results
 names(m.ic) <- paste(effect_size_columns)
 
-# evaluate relative importance of variance components for each outcome
+# evaluate variance components for each outcome
 lapply(m.ic, function(model){
    model$sigma2[2] / model$sigma2[1]})
 ```
 
-#Calculate country-level and intervention-level descriptives
+# Calculate country-level and intervention-level descriptives
 ```{r}
-# Apply the operations for each effect size column
 d.c <- lapply(effect_size_columns, function(effect_size) {
   
   d.c <- df %>%
     group_by(country) %>%
     summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
     
-    # add [jittered] y-value to assist with plotting
+    # add [jittered] y-value 
     mutate(y = 0,
            y = jitter(y, .1)) %>%
     
-    # labels most extreme observations (in terms of min and max)
+    # labels most extreme observations
     mutate(label = if_else(m == min(m),
                            true = country,
                            false = ""),
@@ -93,7 +82,7 @@ d.c <- lapply(effect_size_columns, function(effect_size) {
                            true = country,
                            false = label)) %>%
     
-    # include effect size name for reference
+    # include effect size namece
     mutate(effect_size = effect_size)
   
   return(d.c)
@@ -105,11 +94,11 @@ d.i <- lapply(effect_size_columns, function(effect_size) {
     group_by(intervention_condition) %>%
     summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
     
-    # add [jittered] y-value to assist with plotting
+    # add [jittered] y-value
     mutate(y = -0.02,
            y = jitter(y, .1)) %>% 
     
-    # labels most extreme observations (in terms of min and max)
+    # labels most extreme observations
     mutate(label = if_else(m == min(m),
                            true = intervention_condition,
                            false = ""),
@@ -117,7 +106,7 @@ d.i <- lapply(effect_size_columns, function(effect_size) {
                            true = intervention_condition,
                            false = label)) %>%
     
-    # include effect size name for reference
+    # include effect size name
     mutate(effect_size = effect_size)
   
   return(d.i)
@@ -129,24 +118,16 @@ d.i <- bind_rows(d.i)
 
 #Add Tau
 ```{r}
-# Extract tau values
+# extract tau values
 tau_c <- sapply(m.ic, function(model) (model$sigma2[2]))
 tau_i <- sapply(m.ic, function(model) (model$sigma2[1]))
 
-# Create data frame
+# create data frame
 tau_df <- data.frame(
   effect_size = effect_size_columns,
   tau_c = tau_c,
   tau_i = tau_i,
   tau_ci = tau_c / tau_i
-)
-
-options(scipen=999)
-
-tau_label <- data.frame(
-  effect_size = "positive_effect_size",
-  label_1 = I(list(expression(tau[country]))),
-  label_2 = I(list(expression(tau[practice])))
 )
 
 ```
@@ -231,11 +212,10 @@ if (i == 1) {
       vjust = 1,
       color = "#E64B35"
     ) +
-    # draw a horizontal line between them to mimic fraction bar
+    # draw a horizontal line
     geom_segment(aes(x = 0.28, xend = 0.52, y = 10.2, yend = 10.2),
                  color = "black", size = 0.5)
 }
-  
   
   # final formatting
   plot <- plot +
@@ -246,15 +226,13 @@ if (i == 1) {
   return(plot)
 })
 
-
-# Check the resulting list of plots
 m.d
 
 ```
 
 # Plot descriptives
 ```{r}
-# combine both datasets into one data frame
+# combine datasets
 d.c$dataset <- "d.c"
 d.i$dataset <- "d.i"
 d.c$intervention_condition <- NA
@@ -262,21 +240,18 @@ d.i$country <- NA
 
 d.c.i <- rbind(d.c, d.i)
 
-# create a list of 6 plots based on the effect size values
+# create a list 
 m.p <- lapply(effect_size_columns, function(es) {
   
-  # filter the data for the current effect_size level
   data_subset <- subset(d.c.i, effect_size == es)
   
-  #  create the plot for the current effect_size
   ggplot(data_subset) +
     
-    # visual indicator: null effect
     geom_vline(xintercept = 0,
                color = "grey30",
                linetype = 'dotted') +
     
-    # add country-level descriptives (for d.c)
+    # add country-level descriptives
     geom_point(data = subset(data_subset, dataset == "d.c"),
                aes(x = m, y = y), 
                color = "#3C5488", alpha = .5) +
@@ -286,7 +261,7 @@ m.p <- lapply(effect_size_columns, function(es) {
                     aes(x = m, y = y, label = label),
                     color = "#3C5488", alpha = .5, nudge_y = -.005) +
     
-    # add intervention-level descriptives (for d.i)
+    # add intervention-level descriptives
     geom_point(data = subset(data_subset, dataset == "d.i"),
                aes(x = m, y = y),
                color = "#E64B35", alpha = .5) +
@@ -305,19 +280,18 @@ m.p <- lapply(effect_size_columns, function(es) {
     scale_x_continuous(limits = c(-3, 3))
 })
 
-# Check the resulting list of plots
 m.p
 ```
 
 # combine plots
 ```{r}
-# combine m.d and m.p into a single list
+# combine m.d and m.p
 combined_plots <- mapply(function(plot_d, plot_p) {
-  # combine each pair of plots (one from m.d and one from m.p) into a list
-  plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
+
+    plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
 }, m.d, m.p, SIMPLIFY = FALSE)
 
-# combine the plot
+# combine
 grid <-
   plot_grid(combined_plots[[1]], 
           combined_plots[[2]],
@@ -342,7 +316,6 @@ grid <-
           vjust = 1.7
           ) 
 
-# add space at bottom
 ggdraw() + 
   draw_plot(grid, 0, 0.05, 1, 0.95) +
   draw_label(expression("Cohen's "*italic(d)), 
@@ -350,61 +323,12 @@ ggdraw() +
 
 ```
 
-#Confidence Intervals
-```{r}
-# loop through each effect size column and get confidence intervals
-ci_list <- list()  
-
-for (col in effect_size_columns) {
-  # Apply confint() to each model in the list
-  ci_list[[col]] <- confint(m.ic[[col]])
-}
-
-ci_df <- do.call(rbind, lapply(names(ci_list), function(name) {
-  ci <- ci_list[[name]]
-  df <- as.data.frame(ci)
-  df$effect <- name
-  df$term <- rownames(ci)
-  return(df)
-}))
-
-# Rename the columns
-colnames(ci_df)[1:12] <- c("practice_2_estimate", "practice_estimate",
-                           "country_2_estimate", "country_estimate",
-                           "practice_2_ci_lb", "practice_ci_lb", 
-                           "country_2_ci_lb", "country_ci_lb", 
-                           "practice_2_ci_ub", "practice_ci_ub", 
-                           "country_2_ci_ub", "country_ci_ub")
-```
-
-#Calculate I2
-```{r}
-#calculate I2
-
-calc_I2_from_model <- function(model) {
-  Q <- model$QE           
-  df <- model$k - model$p
-  
-  # I^2 formula
-  I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
-  return(round(I2, 1))
-}
-
-# Apply to each model in your list
-I2_list <- sapply(m.ic, calc_I2_from_model)
-
-# Assign names
-names(I2_list) <- effect_size_columns
-```
-
-
 #Prediction Intervals
 ```{r}
-# Build a data frame with practice-level prediction intervals
+# calculate practice-level prediction intervals
 practice_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
   mod <- m.i[[i]]
   
-  # Run predict once
   pred_practice <- predict(mod, digits = 3)
   
   data.frame(
@@ -416,11 +340,10 @@ practice_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
   )
 }))
 
-# Build a data frame with country-level prediction intervals
+# calculate country-level prediction intervals
 country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
   mod <- m.c[[i]]
   
-  # Run predict once
   pred_country <- predict(mod, digits = 3)
   
   data.frame(

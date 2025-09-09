@@ -1,0 +1,195 @@
+---
+title: "EffectSizes"
+author: "Nicholas A. Coles, Annabel V. Dang"
+description: "Calculate effect sizes across country and condition"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load packages
+```{r}
+# install packages
+source("../setup.R")
+```
+
+# Set Up Data
+```{r}
+# fetch survey
+DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
+
+DF <- DF %>% 
+  rowwise() %>% 
+  mutate(
+    # gratitude
+    gratitude_mean = mean(c(grateful, appreciative, thankful), na.rm = TRUE),
+    
+    # positive affect
+    pa_mean = mean(c(happy, satisfied, content, joyful, pleased), na.rm = TRUE),
+    
+    # optimism
+    optimistic_mean = mean(c(optimistic, hopeful), na.rm = TRUE),
+    
+    # negative affect
+    na_mean = mean(c(sad, depressed, anxious, nervous), na.rm = TRUE),
+    
+    # indebtedness
+    indebted_mean = mean(c(indebted, obligated), na.rm = TRUE),
+    
+    # envy
+    envy_mean = mean(c(envious, bitter, jealous), na.rm = TRUE),
+    
+    # life satisfaction
+    ls_mean = mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), na.rm = TRUE),
+    
+    # sense of self
+    ss_mean = mean(c(self_image, self_image_circle), na.rm = TRUE)
+
+  ) %>% 
+  ungroup() %>% 
+  drop_na(gratitude_mean, pa_mean, optimistic_mean, na_mean, 
+          indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean)
+
+DF <- DF %>%
+  mutate(country = case_when(
+    lab == "POL_01" ~ "Poland",
+    lab == "POL_02" ~ "Poland",
+    lab == "DNK_01" ~ "Denmark",
+    lab == "TUR_01" ~ "Turkey",
+    lab == "MYS_01" ~ "Malaysia",
+    lab == "USA_01" ~ "United States",
+    lab == "USA_02" ~ "United States",
+    lab == "USA_02b" ~ "United States",
+    lab == "USA_02c" ~ "United States",
+    lab == "NGA_01" ~ "Nigeria",
+    lab == "NGA_02" ~ "Nigeria",
+    lab == "CAN_01" ~ "Canada",
+    lab == "FRA_01" ~ "France",
+    lab == "AUS_01" ~ "Australia",
+    lab == "CHL_01" ~ "Chile",
+    lab == "DEU_01" ~ "Germany",
+    lab == "GRC_01" ~ "Greece",
+    lab == "HUN_01" ~ "Hungary",
+    lab == "ISR_01" ~ "Israel",
+    lab == "IRL_01" ~ "Ireland",
+    lab == "MEX_01" ~ "Mexico",
+    lab == "ITA_01" ~ "Italy",
+    lab == "PRT_01" ~ "Portugal",
+    lab == "BRA_01" ~ "Brazil",
+    lab == "NLD_01" ~ "Netherlands",
+    lab == "GBR_01" ~ "United Kingdom",
+    lab == "ESP_01" ~ "Spain",
+    lab == "ZAF_01" ~ "South Africa",
+    lab == "KOR_01" ~ "South Korea",
+    lab == "SWE_01" ~ "Sweden",
+    lab == "IND_01" ~ "India",
+    lab == "COL_01" ~ "Colombia",
+    lab == "CHN_01" ~ "China",
+    lab == "KAZ_01" ~ "Kazakhstan",
+    lab == "NOR_01" ~ "Norway",
+    lab == "JPN_01" ~ "Japan",
+    lab == "GHA_01" ~ "Ghana",
+    lab == "THA_01" ~ "Thailand",
+    lab == "MKD_01" ~ "Macedonia",
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(country))
+
+DF <- DF %>% select(country, condition, condition_type, guilty,ladder,gratitude_mean:ss_mean)
+```
+
+# Organize data
+```{r}
+# create lists
+unique_labs <- unique(DF$country)
+condition_names <- c("list", "letter", "text", "naikan", "mental.sub", "divine.grat")
+variables <- c(
+  "pa_mean", "na_mean", "optimistic_mean", "ls_mean", "ladder",
+  "envy_mean", "indebted_mean", "gratitude_mean", "guilty", "ss_mean"
+)
+
+# set levels
+DF$condition <- factor(DF$condition)
+DF$condition <- factor(DF$condition, levels = c(
+  "measure", "events", "int.events",
+  "list", "letter", "text", "naikan", "mental.sub", "divine.grat"))
+DF$condition_type <- factor(DF$condition_type, levels = c("control", "intervention"))
+```
+
+#Unique intervention vs. control for each country (Each interventions vs. Each control)
+```{r}
+# initialize data frame
+unique_country_results_df <- data.frame()
+
+# compute Cohen's d and variance
+compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
+  # subset data 
+  country_data <- DF %>% filter(country == lab_name)
+  control_subset <- country_data %>% filter(condition == control_cond)
+  intervention_subset <- country_data %>% filter(condition == intervention_cond)
+
+  # calculate variance
+  calc_var <- function(d, n1, n2) {
+    se_d <- sqrt((n1 + n2) / (n1 * n2) + d^2 / (2 * (n1 + n2)))
+    return(se_d^2)
+  }
+
+  # loop through each measure
+  effects <- sapply(variables, function(measure) {
+    d_result <- effsize::cohen.d(
+      intervention_subset[[measure]],
+      control_subset[[measure]],
+      pooled = TRUE,
+      hedges.correction = TRUE
+    )
+    d_value <- d_result$estimate
+    var_value <- calc_var(d_value, nrow(control_subset), nrow(intervention_subset))
+    c(d_value, var_value)
+  })
+
+  # split into vectors
+  effect_sizes <- effects[1, ]
+  variances <- effects[2, ]
+
+  # create result 
+  result <- data.frame(
+    country = lab_name,
+    control_condition = control_cond,
+    intervention_condition = intervention_cond,
+    contrast = paste(control_cond, "vs", intervention_cond),
+    as.list(setNames(effect_sizes, paste0(gsub("_mean", "", variables), "_effect_size"))),
+    as.list(setNames(variances, paste0(gsub("_mean", "", variables), "_var"))),
+    stringsAsFactors = FALSE
+  )
+
+  return(result)
+}
+
+# loop through countries and contrasts
+results_list <- list()
+
+for (lab_name in unique_labs) {
+  country_data <- DF %>% filter(country == lab_name)
+  control_conditions <- unique(country_data$condition[country_data$condition_type == "control"])
+  intervention_conditions <- unique(country_data$condition[country_data$condition_type == "intervention"])
+
+  for (control_cond in control_conditions) {
+    for (intervention_cond in intervention_conditions) {
+      results_list[[length(results_list) + 1]] <- compute_effect_sizes(lab_name, control_cond, intervention_cond)
+    }
+  }
+}
+
+# combine all results
+unique_country_results_df <- do.call(rbind, results_list)
+
+```
+
+#Write CSV
+
+```{r}
+write.csv(unique_country_results_df, 
+        file = here('data/output',
+                    "unique_country_effect_sizes.csv"))
+```
+

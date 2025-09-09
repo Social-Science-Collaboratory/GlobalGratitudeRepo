@@ -1,0 +1,172 @@
+---
+title: "Cleaned_FinalDataset"
+author: "Nicholas A. Coles, Annabel V. Dang"
+description: "Clean raw data into final dataset"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load packages
+```{r}
+# install packages
+source("../setup.R")
+```
+
+# Harmonize USA_02b data
+```{r}
+# fetch USA_02b data
+USA_02b <- 
+  read.csv(file = here("data/raw-data", 
+                       "USA_02b_raw_unharmonized.csv"))
+
+# change the condition column
+USA_02b <- 
+  USA_02b %>% 
+  mutate(condition = case_when(
+    condition == 1 ~ "measure",
+    condition == 2 ~ "events",
+    condition == 3 ~ "int.events",
+    condition == 5 ~ "list",
+    condition == 6 ~ "letter",
+    condition == 7 ~ "text",
+    condition == 8 ~ "hk.list",
+    condition == 9 ~ "sub",
+    condition == 11 ~ "god.letter",
+    TRUE ~ as.character(condition)))
+
+# change the condition_type column
+USA_02b <- 
+  USA_02b %>% 
+  mutate(condition_type = case_when(
+    condition_type == 1 ~ "control",
+    condition_type == 2 ~ "intervention",
+    TRUE ~ as.character(condition_type)))
+
+# Remove the color columns (results are inaccurate due to survey error)
+USA_02b <- 
+  USA_02b %>% 
+  select(-color_task_red_6, -color_task_yellow_1, -color_task_blue_1)
+
+# Save the processed data to CSV
+write.csv(USA_02b, 
+          file = here('data/raw-data',
+                      "USA_02b_raw_harmonized.csv"))
+```
+
+# Combine raw data
+```{r}
+# fetch main survey data
+data_main <- 
+  readRDS(file = here("data/raw-data", 
+                      "globalgratitude_final.Rds")) %>%
+  select(StartDate : pageNo)
+
+# fetch the USA_02b (harmonized) survey data
+data_USA_02b <- 
+  read.csv(file = here("data/raw-data", 
+                       "USA_02b_raw_harmonized.csv") %>% 
+  select(StartDate:pageNo) %>%
+  rename("events_list" = "control_list"))
+
+# fetch the USA_02c survey data
+data_USA_02c <- 
+  read.csv(file = here("data/raw-data", 
+                       "USA_02c.csv")) %>% 
+  select(StartDate : pageNo)
+
+#match columns
+data_main <- data_main %>%
+  mutate(across(names(data_USA_02c), ~ {
+    
+    # matching character columns
+    if (is.character(data_USA_02c[[cur_column()]])) {
+      return(as.character(.))
+    }
+  
+    # matching numeric or integer columns
+    else if (is.numeric(data_USA_02c[[cur_column()]])) {
+      return(as.numeric(.))
+    }
+    else {
+      return(.)
+    }
+  }))
+
+# combine CSV files
+data <- 
+  bind_rows(data_main, 
+            data_USA_02c)
+
+data <- 
+  bind_rows(data, 
+            data_USA_02b)
+
+# clean data
+data_cleaned <- 
+  data %>% 
+  
+  #removed test links
+  filter(DistributionChannel != "preview",
+         
+         # 4/22/2024 TUR_01 used real link for testing purposes
+         ResponseId != "R_42KUGZSS76NgWH7",
+         ResponseId != "R_4W4EXfgeyk1rCYF",
+         ResponseId != "R_45Z862EIfzYcin4",
+         ResponseId != "R_7BhJx9Ci7THupmF",
+         ResponseId != "R_42Lv9fg5qi9V9xm",
+         ResponseId != "R_2kFa26mh78uevnz",
+         ResponseId != "R_4DRThnH8LgbEvM8",
+         ResponseId != "R_4r1kAEqQCo1PNn6",
+         ResponseId != "R_4GQErqyYDlRWVwZ",
+         ResponseId != "R_4SGF0GCHSHIN0ls",
+         ResponseId != "R_6Pndj5c7sr1pcU3",
+         ResponseId != "R_8lQxsY2ITg7HKh1",         
+         ResponseId != "R_8HXsI5PQftiJUYk",
+         ResponseId != "R_8iVWI3CN49ACiUp",
+         
+         #6/6/2024 Removed USA_01 duplicate data
+         ResponseId != "R_6rDfD5u84z6WufT",
+         
+         #11/21/2024 Removed DZA_01 test data
+         ResponseId != "R_4ioYJK1zR2FgR4R",
+         ResponseId != "R_4OvlyOmeTsmLpFn",
+         ResponseId != "R_4BA1gbglSYnVyDK") %>%
+  
+  #removed incomplete surveys
+  filter(consent == 1,
+         Progress >= 95,
+         lab != "",
+         condition_type != "NA",
+         lab != "NA") %>% 
+  select(StartDate:pageNo) #Remove non-relevant columns
+
+# change the 'incentive' column from "volunteer" to "paid" for NOR_01 participants after 11/19/2024
+data_cleaned <- data_cleaned %>%
+  mutate(StartDate = as.POSIXct(StartDate, format = "%m/%d/%Y %H:%M"),
+         incentive = if_else(lab == "NOR_01" & 
+                               StartDate > as.POSIXct("11/19/2024 0:00", 
+                                                      format = "%m/%d/%Y%H:%M"),
+                                                      "paid", incentive))
+
+# fix age data where wrong info is inputted
+data_cleaned <- data_cleaned %>%
+  mutate(age = if_else(age > 99, 
+                       2024 - age, 
+                       age))
+
+# rename interventions and controls
+data_cleaned <- 
+  data_cleaned %>% 
+  mutate(condition = case_when(
+    condition == "god.letter" ~ "divine.grat",
+    condition == "hk.list"    ~ "naikan",
+    condition == "sub"        ~ "mental.sub",
+    TRUE ~ condition))
+
+# save dataset
+saveRDS(data_cleaned, 
+        file = here('data/final-data',
+                    "globalgratitude_final_cleaned.Rds"))
+```
+

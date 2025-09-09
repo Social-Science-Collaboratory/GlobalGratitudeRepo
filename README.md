@@ -2,67 +2,89 @@
 GitHub repository for the Global Gratitude Project
 
 ## Code:
-### USA_02b_Harmonize.R:
-- Harmonized USA_02b with the rest of the data
 
-### Cleaned_Final_Dataset.R:
-- Combined Final_Dataset.Rmd, USA_02b_harmonized.csv, and USA_02c.csv
-- Removed test responses and unfinished surveys
-- Fixed issues with embedded data and incorrect age input
+### CleanedFinalDataset.Rmd:
+- Combined Final_Dataset.Rds, USA_02b_harmonized.csv, and USA_02c.csv.
+- Removed test responses and unfinished surveys.
+- Fixed issues with embedded data and incorrect age input.
 
-### factoranalysis.R:
-- Conducted factor analysis on dependent variables
+### CrossCulturalMods.Rmd:
+- Compile all cross-cultural moderator data from outside sources.
+- Combined GDPpc.csv, hofstede_resmobility.csv, relationalmobility.csv, responsibilism.csv, tightness.csv, and world religiosity.csv.
+- Creates crossculturalmod.csv and crossculturalmod_sim.csv.
+
+### EffectSizes.Rmd:
+- Calculate Cohen's d effect sizes and variance for comparisons between each gratitude intervention and each control for every country.
+- Create unique_country_effect_sizes.csv.
 
 ### Figure1.Rmd:
-- Code to create Figure 1
+- Create Figure 1.
 
 ### Figure2.Rmd:
-- Code to create Figure 2
+- Create Figure 2 and prediction_intervals.csv.
 
 ### Figure3.Rmd:
-- Code to create Figure 3
+- Create Figure 3.
 
-### GlobalGratitude_CrossCulturalMods.Rmd
-- Compile all cross-cultural moderator data from outside sources
-- Combined GlobalGratitude_GDPpc.csv, GlobalGratitude_Hofstede_ResMobility.csv, GlobalGratitude_RelationalMobility.csv, GlobalGratitude_Responsibilism.csv, GlobalGratitude_Tightness.csv, and GlobalGratitude_World Religiosity.csv
+### MixedModels.Rmd:
+- Calculate pre-registered analyses, fits a separate mixed-effects model for each outcome variable.
+- Create si_table_3.
 
-### GlobalGratitude_LabSpecificData.Rmd
-- Create Excel Workbook with country data separated for quality checks
+### SimulatedData.Rmd:
+- Create simulated data for non-sharable data.
+- Create hofstede_resmobility_sim.csv and responsibilism_sim.csv.
 
-### GlobalGratitude_MixedModels.Rmd
-- Created mixed models for each dependent variable
-
-### Site Demographics
-- Calculated data for Supplemental Table 1
-
-### GlobalGratitude_EffectSizes.Rmd
-- Calculated country-level effect sizes, practice-level effect sizes, and overall effect sizes for each dependent variable
-- Calculated data for Supplemental Table 2
+### SiteDemographics:
+- Calculate demographics for each site.
+- Create si_table_1.
 
 ## Data
-### Codebook:
-- GlobalGratitudeCodebook.xlsx: Codebook for GlobalGratitude_Final_Cleaned.Rds
+### codebook:
+- globalgratitude_final_codebook.xlsx: Codebook for globalgratitude_final_cleaned.Rds.
+- crossculturalmod_codebook.xlsx: Codebook for crossculturalmod.csv.
 
-### Raw:
-- GlobalGratitude_Final.Rds: raw Qualitrics data for main survey
-- USA_02b_raw_unharmonized.csv: raw Qualtrics data for USA_02b survey
-- USA_02b_raw_harmonized.csv: raw Qualtrics data for USA_02b survey harmonized with main survey
-- USA_02c.csv: raw Qualtrics data for USA_02c survey
+### cross-cultural:
+- culturaldistance.csv: Original data on cultural distance (Muthukrishna et al., 2020). Data extracted from http://culturaldistance.com/.
+- culturaldistance_combined.csv: Cultural distance data combined across years (Muthukrishna et al., 2020)
+- GDPpc.csv: Data on gross domestic product (World Bank, 2023). Data extracted from https://data.worldbank.org/indicator/NY.GDP.PCAP.CD.
+- hofstede_resmobility.csv: Data on Hofstede cultural dimensions (individualism, motivation, indulgence, power distance, long-term orientation, and uncertainty avoidance) (The Culture Factor, 2023) and residential mobility (Gallup, 2016). Data manually scraped from https://www.theculturefactor.com/country-comparison-tool and obtained from https://www.gallup.com/analytics/318875/global-research.aspx.
+- relationalmobility.csv: Data on the relational mobility measure (Thompson et al., 2018). Data obtained from http://relationalmobility.org/.
+- responsibilism.csv: Data on the responsibilism measure (Talhelm et al., under review). Data obtained directly from author.
+- tightness.csv: Data on the tightness-looseness measure (Gelfand et al., 2021). Data obtained from https://osf.io/47pe8/.
+- worldreligiosity.csv: Data on world religiosity (Joshanloo & Gebauer, 2019). Data obtained from https://econtent.hogrefe.com/doi/suppl/10.1027/1016-9040/a000382.
 
-### Quality Checks:
-- GlobalGratitude_LabSpecificData.xlsx: Each lab conducted quality checks for their data collection sites. Each response was rate "yes", "no", or "maybe" for inclusion with comments. The sites collected through Prolific were coded by the UCSD and UF team.
-- summary_data: Summarizes the rate of inclusion by country and practice.
+### final-data:
+- globalgratitude_final_cleaned.Rds: Final dataset used for all data analysis.
+- crossculturalmod.csv: Combined dataset with all cross-cultural moderators.
 
-### Cultural Moderators:
-- culturaldistance_table.csv: Original data for cultural distance (Muthukrishna et al., 2020). Data extracted from http://culturaldistance.com/.
-- culturaldistance_table_combined.csv: Cultural distance data combined across years (Muthukrishna et al., 2020)
-- GlobalGratitude_GDPpc.csv: Data on gross domestic product (World Bank, 2023). Data extracted from https://data.worldbank.org/indicator/NY.GDP.PCAP.CD.
-- GlobalGratitude_Hofstede_ResMobility.csv: Data on Hofstede cultural dimensions (individualism, motivation, indulgence, power distance, long-term orientation, and uncertainty avoidance) (The Culture Factor, 2023) and residential mobility (Gallup, 2016). Data manually scraped from https://www.theculturefactor.com/country-comparison-tool and obtained from https://www.gallup.com/analytics/318875/global-research.aspx.
-- GlobalGratitude_RelationalMobility.csv: Cultural data on the relational mobility measure (Thompson et al., 2018). Data obtained from http://relationalmobility.org/.
-- GlobalGratitude_Responsibilism.csv: Cultural data on the responsibilism measure (Talhelm et al., under review). Data obtained directly from author.
-- GlobalGratitude_Tightness.csv: Cultural data on the tightness measure (Gelfand et al., 2021). Data obtained from https://osf.io/47pe8/.
-- GlobalGratitude_World Religiosity.csv: Cultural data on religiosity (Joshanloo & Gebauer, 2019). Data obtained from https://econtent.hogrefe.com/doi/suppl/10.1027/1016-9040/a000382.
+### output:
+- prediction_interval.csv: Data of prediction intervals for all outcomes.
+- si_table_1.csv: Data for Supplemental Table 1.
+- si_table_3.csv: Data for Supplemental Table 3.
+- unique_country_effect_sizes.csv: Data of pairwise comparisons across all interventions vs. all controls for each site.
 
-### Effect Sizes:
-- unique_cond_effect_sizes.csv: Effect sizes for each dependent variable across each intervention and each control
-- unique_country_effect_sizes.csv: Effect sizes for each dependent variable across each intervention and each control for each country
+### raw-data:
+- globalgratitude_final.Rds: raw Qualitrics data from the main survey.
+- USA_02b_raw_unharmonized.csv: raw Qualtrics data for USA_02b survey.
+- USA_02b_raw_harmonized.csv: raw Qualtrics data for USA_02b survey harmonized with main survey.
+- USA_02c.csv: raw Qualtrics data for USA_02c survey.
+
+### simulated-data:
+- hofstede_resmobility_sim.csv: Simulated data for the hofstede_resmobility.csv file.
+- responsibilism_sim.csv: Simulated data for the responsibilism.csv file.
+- crossculturalmod_sim.csv: A version of the crossculturalmod.csv file with simulated data.
+
+## quality-checks:
+### lab-quality-checks:
+- LabSpecificData.Rmd: Generates an Excel workbook with all data for quality checks.
+- labspecific_data.csv: Exports data organized by site for quality checks.
+- qualitychecks.xlsx: Records quality checks, with survey responses rated “yes”, “no”, or “maybe” for inclusion, along with comments. Sites collected through Prolific were coded by the UCSD and UF teams.
+- QualityChecks.Rmd: Produces a summary table of each site’s quality checks.
+- qualitychecks_summary.csv: Summarizes the rate of inclusion by country and by practice.
+
+### sensitivity-analyses:
+- EN_SensitivityAnalyses.Rmd: Conduct sensistivity analyses comparing  only English responses to the full dataset.
+- tau_sensitivity_analyses.csv: Tau estimates for English-speaking responses compared to full dataset.
+
+## figures:
+- GlobalGratitude_DataOrganization.drawio: A figure depicting the organization of all files within the repository.
