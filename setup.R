@@ -27,9 +27,7 @@ pkg_install_load(core_pkgs)
 options(
   scipen = 999,                         
   digits = 3,
-  # behavior
   dplyr.summarise.inform = FALSE,
   repos = c(CRAN = "https://cloud.r-project.org"),
-  # stringsAsFactors is FALSE by default (R >= 4.0); keep explicit for clarity:
   stringsAsFactors = FALSE
 )

@@ -10,11 +10,12 @@ Please open GlobalGratitudeRepo.Rproj before running any code.
 - Combined Final_Dataset.Rds, USA_02b_harmonized.csv, and USA_02c.csv.
 - Removed test responses and unfinished surveys.
 - Fixed issues with embedded data and incorrect age input.
+- Create globalgratitude_cleaned_final.Rds.
 
 ### CrossCulturalMods.Rmd:
 - Compile all cross-cultural moderator data from outside sources.
 - Combined GDPpc.csv, hofstede_resmobility.csv, relationalmobility.csv, responsibilism.csv, tightness.csv, and world religiosity.csv.
-- Creates crossculturalmod.csv and crossculturalmod_sim.csv.
+- Create crossculturalmod.csv.
 
 ### EffectSizes.Rmd:
 - Calculate Cohen's d effect sizes and variance for comparisons between each gratitude intervention and each control for every country.
@@ -35,7 +36,7 @@ Please open GlobalGratitudeRepo.Rproj before running any code.
 
 ### SimulatedData.Rmd:
 - Create simulated data for non-sharable data.
-- Create hofstede_resmobility_sim.csv and responsibilism_sim.csv.
+- Create hofstede_resmobility_sim.csv, responsibilism_sim.csv, and crossculturalmod_sim.csv.
 
 ### SiteDemographics:
 - Calculate demographics for each site.
