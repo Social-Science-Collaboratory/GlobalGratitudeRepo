@@ -1,6 +1,9 @@
 # GlobalGratitudeProject
 GitHub repository for the Global Gratitude Project
 
+## Note: 
+Please open GlobalGratitudeRepo.Rproj before running any code.
+
 ## Code:
 
 ### CleanedFinalDataset.Rmd:

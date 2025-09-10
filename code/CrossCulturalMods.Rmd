@@ -10,7 +10,7 @@ editor_options:
 # Load packages
 ```{r}
 # install packages
-source("../setup.R")
+source("setup.R")
 ```
 
 #Organize cross-cultural mods

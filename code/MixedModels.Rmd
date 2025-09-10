@@ -9,7 +9,7 @@ editor_options:
 # Load packages
 ```{r}
 # install packages
-source("../setup.R")
+source("setup.R")
 
 # allow for Type III Sums of Square
 options(contrasts = c('contr.sum', 'contr.poly'))
