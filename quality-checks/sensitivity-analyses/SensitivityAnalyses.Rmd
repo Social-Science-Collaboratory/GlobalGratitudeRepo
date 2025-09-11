@@ -1,7 +1,7 @@
 ---
-title: "QC_SensitivityAnalyses"
+title: "SensitivityAnalyses"
 author: "Nicholas A. Coles, Annabel V. Dang"
-description: "Conduct sensistivity analyses comparing only English responses to the full dataset"
+description: "Conduct sensistivity analyses comparing only English and quality check data to the full dataset"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -264,14 +264,6 @@ lapply(qc.m.ic, function(model){
 # extract tau values
 qc_tau_c <- sapply(qc.m.ic, function(model) (model$sigma2[2]))
 qc_tau_i <- sapply(qc.m.ic, function(model) (model$sigma2[1]))
-
-# create data frame
-qc_tau_df <- data.frame(
-  effect_size = effect_size_columns,
-  qc_tau_c = qc_tau_c,
-  qc_tau_i = qc_tau_i,
-  qc_tau_ci = qc_tau_c / qc_tau_i
-)
 
 ```
 
