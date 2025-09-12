@@ -10,7 +10,7 @@ editor_options:
 # Load packages
 ```{r lib}
 #load packages
-source("../setup.R")
+source("setup.R")
 ```
 
 # Open data
@@ -241,7 +241,7 @@ lapply(en.m.ic, function(model){
 
 # extract tau values
 en_tau_c <- sapply(en.m.ic, function(model) (model$sigma2[2]))
-en_tau_i <- sapply(en.m.ic, function(model) (model$sigma2[1]))
+en_tau_p <- sapply(en.m.ic, function(model) (model$sigma2[1]))
 
 ```
 
@@ -263,7 +263,7 @@ lapply(qc.m.ic, function(model){
 
 # extract tau values
 qc_tau_c <- sapply(qc.m.ic, function(model) (model$sigma2[2]))
-qc_tau_i <- sapply(qc.m.ic, function(model) (model$sigma2[1]))
+qc_tau_p <- sapply(qc.m.ic, function(model) (model$sigma2[1]))
 
 ```
 
@@ -291,7 +291,7 @@ lapply(m.ic, function(model){
 
 # extract tau values
 all_tau_c <- sapply(m.ic, function(model) (model$sigma2[2]))
-all_tau_i <- sapply(m.ic, function(model) (model$sigma2[1]))
+all_tau_p <- sapply(m.ic, function(model) (model$sigma2[1]))
 
 ```
 
@@ -305,12 +305,12 @@ en_tau <- data.frame(
   all_c = all_tau_c,
   c_diff   = all_tau_c - en_tau_c,
   c_ratio  = en_tau_c / all_tau_c,
-  en_i = en_tau_i,  
-  all_i = all_tau_i,
-  i_diff   = all_tau_i - en_tau_i,
-  i_ratio  = en_tau_i / all_tau_i,
-  en_ci = en_tau_c / en_tau_i,
-  all_ci = all_tau_c / all_tau_i,
+  en_p = en_tau_p,  
+  all_p = all_tau_p,
+  p_diff   = all_tau_p - en_tau_p,
+  p_ratio  = en_tau_p / all_tau_p,
+  en_ci = en_tau_c / en_tau_p,
+  all_ci = all_tau_c / all_tau_p,
   stringsAsFactors = FALSE
 )
 
@@ -328,12 +328,12 @@ qc_tau <- data.frame(
   all_c = all_tau_c,
   c_diff   = all_tau_c - qc_tau_c,
   c_ratio  = qc_tau_c / all_tau_c,
-  qc_i = qc_tau_i,  
-  all_i = all_tau_i,
-  i_diff   = all_tau_i - qc_tau_i,
-  i_ratio  = qc_tau_i / all_tau_i,
-  qc_ci = qc_tau_c / qc_tau_i,
-  all_ci = all_tau_c / all_tau_i,
+  qc_p = qc_tau_p,  
+  all_p = all_tau_p,
+  p_diff   = all_tau_p - qc_tau_p,
+  p_ratio  = qc_tau_p / all_tau_p,
+  qc_ci = qc_tau_c / qc_tau_p,
+  all_ci = all_tau_c / all_tau_p,
   stringsAsFactors = FALSE
 )
 
@@ -348,26 +348,6 @@ write.csv(qc_tau,
 
 #Pull effect sizes estimate and CI
 ```{r}
-#effect size estimates for quality check data
-qc_results <- lapply(qc.m.ic, function(model) {
-  est <- as.numeric(coef(model))               # pooled estimate (intercept)
-  se  <- sqrt(diag(vcov(model)))[1]            # SE of intercept
-  
-  ci_lower <- est - 1.96 * se
-  ci_upper <- est + 1.96 * se
-  
-  data.frame(
-    qc_estimate = est,
-    qc_ci_lower = ci_lower,
-    qc_ci_upper = ci_upper
-  )
-})
-
-qc_results_df <- do.call(rbind, qc_results)
-qc_results_df$outcome <- names(qc.m.ic)
-
-qc_results_df <- qc_results_df[, c("outcome", "qc_estimate", "qc_ci_lower", "qc_ci_upper")]
-
 #effect size estimates for all data
 results <- lapply(m.ic, function(model) {
   est <- as.numeric(coef(model))               # pooled estimate (intercept)
@@ -388,11 +368,53 @@ results_df$outcome <- names(m.ic)
 
 results_df <- results_df[, c("outcome", "estimate", "ci_lower", "ci_upper")]
 
+#effect size estimates for quality check data
+en_results <- lapply(en.m.ic, function(model) {
+  est <- as.numeric(coef(model))               # pooled estimate (intercept)
+  se  <- sqrt(diag(vcov(model)))[1]            # SE of intercept
+  
+  ci_lower <- est - 1.96 * se
+  ci_upper <- est + 1.96 * se
+  
+  data.frame(
+    en_estimate = est,
+    en_ci_lower = ci_lower,
+    en_ci_upper = ci_upper
+  )
+})
+
+en_results_df <- do.call(rbind, en_results)
+en_results_df$outcome <- names(en.m.ic)
+
+en_results_df <- en_results_df[, c("outcome", "en_estimate", "en_ci_lower", "en_ci_upper")]
+
+#effect size estimates for quality check data
+qc_results <- lapply(qc.m.ic, function(model) {
+  est <- as.numeric(coef(model))               # pooled estimate (intercept)
+  se  <- sqrt(diag(vcov(model)))[1]            # SE of intercept
+  
+  ci_lower <- est - 1.96 * se
+  ci_upper <- est + 1.96 * se
+  
+  data.frame(
+    qc_estimate = est,
+    qc_ci_lower = ci_lower,
+    qc_ci_upper = ci_upper
+  )
+})
+
+qc_results_df <- do.call(rbind, qc_results)
+qc_results_df$outcome <- names(qc.m.ic)
+
+qc_results_df <- qc_results_df[, c("outcome", "qc_estimate", "qc_ci_lower", "qc_ci_upper")]
+
+#save csv
 results_df <- results_df %>% 
+  left_join(en_results_df, by = c("outcome")) %>% 
   left_join(qc_results_df, by = c("outcome"))
 
 write.csv(results_df, 
           file = here('quality-checks/sensitivity-analyses',
-                      "QC_ef_sensitivity_analyses.csv"))
+                      "ef_sensitivity_analyses.csv"))
 
 ```

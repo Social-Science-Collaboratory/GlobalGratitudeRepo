@@ -323,6 +323,50 @@ ggdraw() +
 
 ```
 
+#Pooled effect sizes + CI
+```{r}
+#effect size estimates + CI
+results <- lapply(m.ic, function(model) {
+  est <- as.numeric(coef(model))               # pooled estimate (intercept)
+  se  <- sqrt(diag(vcov(model)))[1]            # SE of intercept
+  
+  ci_lower <- est - 1.96 * se
+  ci_upper <- est + 1.96 * se
+  
+  data.frame(
+    estimate = est,
+    ci_lower = ci_lower,
+    ci_upper = ci_upper
+  )
+})
+
+results_df <- do.call(rbind, results)
+results_df$outcome <- names(m.ic)
+
+results_df <- results_df[, c("outcome", "estimate", "ci_lower", "ci_upper")]
+```
+
+#Calculate I2
+```{r}
+#calculate I2
+
+calc_I2_from_model <- function(model) {
+  Q <- model$QE           
+  df <- model$k - model$p
+  
+  # I^2 formula
+  I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
+  return(round(I2, 1))
+}
+
+# Apply to each model in your list
+I2_list <- sapply(m.ic, calc_I2_from_model)
+
+# Assign names
+names(I2_list) <- effect_size_columns
+
+```
+
 #Prediction Intervals
 ```{r}
 # calculate practice-level prediction intervals
