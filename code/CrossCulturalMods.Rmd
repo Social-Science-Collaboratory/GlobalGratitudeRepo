@@ -141,19 +141,26 @@ DF_relig <- read.csv(file = here(
 #Combine datasets
 ```{r}
 # combine datasets
-DF_combined <- DF_culture %>%
-  full_join(DF_relation, by = c("country", "iso")) %>%
-  full_join(DF_respon, by = c("country", "iso")) %>%
-  full_join(DF_tight, by = c("country", "iso")) %>%
-  full_join(DF_relig, by = c("country", "iso")) %>%
-  full_join(DF_GDP, by = c("country", "iso")) %>%
-  full_join(DF_indcol, by = c("country", "iso")) %>%
-  filter(!is.na(country))
+DF_combined <- bind_rows(
+  DF_culture,
+  DF_relation,
+  DF_respon,
+  DF_tight,
+  DF_relig,
+  DF_GDP,
+  DF_indcol
+) %>%
+  group_by(iso) %>%
+  summarise(
+    across(everything(),
+      ~ dplyr::first(na.omit(.x)),
+      .names = "{.col}"
+    ),
+    .groups = "drop"
+  )
 
+# organize countries sampled in study
 DF_combined$sample <- ifelse(DF_combined$iso %in% sampled, "yes", "no")
-
-DF_combined <- DF_combined %>%
-  mutate(country = ifelse(country == "North Macedonia", "Macedonia", country))
 
 # save dataset
 write.csv(DF_combined,
