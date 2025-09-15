@@ -17,32 +17,45 @@ source("setup.R")
 # open data
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
-si.table.1 <- 
-  DF %>% 
-  mutate(site = lab) %>% 
-  group_by(site) %>% 
-  summarise(n = n(),
-            language = paste(unique(UserLanguage),
-                             collapse = ", "),
-            modality = paste(unique(modality),
-                             collapse = ", "),
-            incentive = paste(unique(incentive),
-                              collapse = ", "),
-            age = paste0("M = ",
-                         round(mean(age,
-                                    na.rm = T),
-                               2),
-                         ", SD = ",
-                         round(sd(age,
-                                  na.rm = T),
-                               2)
-                         ),
-            gender = table(sex) %>% paste(collapse = ", ")
-            )
+si.table.1 <-
+  DF %>%
+  mutate(site = lab) %>%
+  group_by(site) %>%
+  summarise(
+    n = n(),
+    language = paste(unique(UserLanguage),
+      collapse = ", "
+    ),
+    modality = paste(unique(modality),
+      collapse = ", "
+    ),
+    incentive = paste(unique(incentive),
+      collapse = ", "
+    ),
+    age = paste0(
+      "M = ",
+      round(
+        mean(age,
+          na.rm = T
+        ),
+        2
+      ),
+      ", SD = ",
+      round(
+        sd(age,
+          na.rm = T
+        ),
+        2
+      )
+    ),
+    gender = table(sex) %>% paste(collapse = ", ")
+  )
 
-write.csv(si.table.1, 
-        file = here('data/output',
-                    "si_table_1.csv"))
-
+write.csv(si.table.1,
+  file = here(
+    "data/output",
+    "si_table_1.csv"
+  )
+)
 ```
 

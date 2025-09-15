@@ -9,13 +9,12 @@ editor_options:
 
 # Load packages
 ```{r lib}
-#load packages
+# load packages
 source("setup.R")
 ```
 
 #Setup data file
 ```{r}
-
 # load the workbook
 df <- loadWorkbook(file = here("quality-checks/lab-quality-checks", "qualitychecks.xlsx"))
 
@@ -35,14 +34,14 @@ new_sheets <- getSheetNames(temp_file)
 
 #Standardize datasets
 ```{r}
-#standardize sheet with mismatched columns
+# standardize sheet with mismatched columns
 USA_02b <- readWorkbook(temp_file, sheet = new_sheets[37])
 
-#standardize sheet with missing column
+# standardize sheet with missing column
 USA_02c <- readWorkbook(temp_file, sheet = new_sheets[38])
 USA_02c$me_attention <- as.character(NA)
 
-#combine sheets 1-36 and 39 into a dataframe
+# combine sheets 1-36 and 39 into a dataframe
 selected_indices <- c(1:36, 39)
 
 selected_sheets <- lapply(selected_indices, function(i) {
@@ -50,19 +49,19 @@ selected_sheets <- lapply(selected_indices, function(i) {
 })
 
 combined_df <- bind_rows(selected_sheets) %>%
-  #column response was accidentally deleted when conducting quality checks
-  mutate(lab = ifelse(ResponseId == "R_8EFEKmOIkETMemi", "ITA_01", lab)) %>% 
+  # column response was accidentally deleted when conducting quality checks
+  mutate(lab = ifelse(ResponseId == "R_8EFEKmOIkETMemi", "ITA_01", lab)) %>%
   filter(!is.na(lab))
 
-#loop over columns in USA_02b and USA_02c to match the types from combined_df
+# loop over columns in USA_02b and USA_02c to match the types from combined_df
 match_column_types <- function(df, reference_df) {
   for (col in names(df)) {
-    #check if the column exists in combined_df
+    # check if the column exists in combined_df
     if (col %in% names(reference_df)) {
-      #match the column type from combined_df
+      # match the column type from combined_df
       target_type <- class(reference_df[[col]])
-      
-      #convert the column type in df to match the target type
+
+      # convert the column type in df to match the target type
       if (target_type == "numeric") {
         df[[col]] <- as.numeric(df[[col]])
       } else if (target_type == "character") {
@@ -77,17 +76,15 @@ match_column_types <- function(df, reference_df) {
   return(df)
 }
 
-#apply to USA_02b and USA_02c
+# apply to USA_02b and USA_02c
 USA_02b <- match_column_types(USA_02b, combined_df)
 USA_02c <- match_column_types(USA_02c, combined_df)
 
-#final sheets
+# final sheets
 final_df <- bind_rows(combined_df, USA_02b, USA_02c) %>%
-
-  #fix issues with extra spaces
+  # fix issues with extra spaces
   mutate(Category = str_replace(Category, "^no\\s+$", "no")) %>%
-  mutate(Category = if_else(Category == "No", "no", Category)) 
-
+  mutate(Category = if_else(Category == "No", "no", Category))
 ```
 
 #Final Statistics
@@ -128,19 +125,21 @@ saveWorkbook(wb, here("quality-checks/lab-quality-checks", "qualitychecks_summar
 ```{r}
 # select response_id and category
 final_df <- final_df %>%
-  select(ResponseId,Category)
+  select(ResponseId, Category)
 
 # load original dataset
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
 # remove "no" data quality category
 DF_combined <- DF %>%
-  left_join(final_df, by = c("ResponseId")) %>% 
+  left_join(final_df, by = c("ResponseId")) %>%
   filter(Category != "no")
 
 # save csv
-write_rds(DF_combined, 
-          file = here('quality-checks/sensitivity-analyses',
-                      "QC_globalgratitude_final_cleaned.Rds"))
-
+write_rds(DF_combined,
+  file = here(
+    "quality-checks/sensitivity-analyses",
+    "QC_globalgratitude_final_cleaned.Rds"
+  )
+)
 ```

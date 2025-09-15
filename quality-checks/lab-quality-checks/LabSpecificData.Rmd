@@ -8,7 +8,7 @@ editor_options:
 ---
 # Load packages
 ```{r lib}
-#load packages
+# load packages
 source("setup.R")
 ```
 
@@ -17,9 +17,8 @@ source("setup.R")
 # fetch the main survey data
 data <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
-#edit dataset to only include certain columns
-lab_specific_data <- data %>% select(Progress:Duration..in.seconds.,ResponseId,consent:grat_god_letter, me_attention, meals_attention, attention_check:feedback, lab)
-
+# edit dataset to only include certain columns
+lab_specific_data <- data %>% select(Progress:Duration..in.seconds., ResponseId, consent:grat_god_letter, me_attention, meals_attention, attention_check:feedback, lab)
 ```
 
 #Create singular Excel workbook with each lab as an individual sheet
@@ -34,14 +33,16 @@ wb <- createWorkbook()
 for (lab in names(lab_data)) {
   # add a sheet for each lab
   addWorksheet(wb, lab)
-  
+
   # write the data for the current lab into the sheet
   writeData(wb, sheet = lab, lab_data[[lab]])
 }
 
 # save to an Excel file
-saveWorkbook(wb, 
-          file = here('quality-checks/lab-quality-checks',
-                      "labspecific_data.xlsx"), overwrite = TRUE)
-
+saveWorkbook(wb,
+  file = here(
+    "quality-checks/lab-quality-checks",
+    "labspecific_data.xlsx"
+  ), overwrite = TRUE
+)
 ```

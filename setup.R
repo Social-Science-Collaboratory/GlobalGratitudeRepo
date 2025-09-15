@@ -25,9 +25,14 @@ pkg_install_load(core_pkgs)
 
 # global options
 options(
-  scipen = 999,                         
+  scipen = 999,
   digits = 3,
   dplyr.summarise.inform = FALSE,
   repos = c(CRAN = "https://cloud.r-project.org"),
   stringsAsFactors = FALSE
 )
+
+# Optional: style code
+style_project <- function() {
+  styler::style_dir(".", filetype = c("R", "Rmd"))
+}

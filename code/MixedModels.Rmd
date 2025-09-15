@@ -12,8 +12,7 @@ editor_options:
 source("setup.R")
 
 # allow for Type III Sums of Square
-options(contrasts = c('contr.sum', 'contr.poly'))
-
+options(contrasts = c("contr.sum", "contr.poly"))
 ```
 
 # Open data
@@ -22,235 +21,274 @@ options(contrasts = c('contr.sum', 'contr.poly'))
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
 # select relevant variables
-DF  <- 
-  DF %>% select(Status: envy_8,
-                lab : condition_type,
-                me_attention, meals_attention) %>% 
-  
+DF <-
+  DF %>% select(
+    Status:envy_8,
+    lab:condition_type,
+    me_attention, meals_attention
+  ) %>%
   # fix variable formatting
-  mutate_at(c('ResponseId', 'lab',
-              'condition', 'condition_type'),
-            as.factor)
+  mutate_at(
+    c(
+      "ResponseId", "lab",
+      "condition", "condition_type"
+    ),
+    as.factor
+  )
 ```
 
 # Examine reliability
 ```{r}
-rel <- 
-  sapply(X = DF$lab %>% unique() %>% as.character(),
-         simplify = F,
-         USE.NAMES = T,
-         FUN = function(x){
-           d <- DF %>%
-             filter(lab == x)
-           
-           # gratitude (0.89)
-           gra <- psych::alpha(x = d %>%
-                                 select(grateful, appreciative, thankful))$total[1] %>% 
-             as.numeric()
-           
-           # positive affect (0.92)
-           pas <- psych::alpha(x = d %>%
-                                 select(happy, satisfied, content, joyful, pleased))$total[1] %>% 
-             as.numeric()
-           
-           # optimism (0.81)
-           opt <- psych::alpha(x = d %>%
-                                 select(optimistic, hopeful))$total[1] %>% 
-             as.numeric()
-           
-           # negative affect (0.85)
-           neg <- psych::alpha(x = d %>%
-                                 select(sad, depressed, anxious, nervous))$total[1] %>% 
-             as.numeric()
-           
-           # indebtedness (0.39)
-           ind <- psych::alpha(x = d %>%
-                                 select(indebted, obligated))$total[1] %>% 
-             as.numeric()
-           
-           # envy (0.74)
-           env <- psych::alpha(x = d %>%
-                                 select(envious, bitter, jealous))$total[1] %>% 
-             as.numeric()
-           
-           # life satisfaction (0.88)
-           lif <- psych::alpha(x = d %>%
-                                 select(ls_1, ls_2, ls_3, ls_4, ls_5))$total[1] %>% 
-             as.numeric()
-           
-           # sense of self (0.74)
-           sen <- psych::alpha(x = d %>%
-                                 select(self_image_circle, self_image))$total[1] %>% 
-             as.numeric()
-           
-           list(
-             lab = x,
-             gra = gra,
-             pas = pas,
-             opt = opt,
-             neg = neg,
-             ind = ind,
-             env = env,
-             lif = lif
-           ) %>%
-             return()
-       }
-       )
+rel <-
+  sapply(
+    X = DF$lab %>% unique() %>% as.character(),
+    simplify = F,
+    USE.NAMES = T,
+    FUN = function(x) {
+      d <- DF %>%
+        filter(lab == x)
+
+      # gratitude (0.89)
+      gra <- psych::alpha(x = d %>%
+        select(grateful, appreciative, thankful))$total[1] %>%
+        as.numeric()
+
+      # positive affect (0.92)
+      pas <- psych::alpha(x = d %>%
+        select(happy, satisfied, content, joyful, pleased))$total[1] %>%
+        as.numeric()
+
+      # optimism (0.81)
+      opt <- psych::alpha(x = d %>%
+        select(optimistic, hopeful))$total[1] %>%
+        as.numeric()
+
+      # negative affect (0.85)
+      neg <- psych::alpha(x = d %>%
+        select(sad, depressed, anxious, nervous))$total[1] %>%
+        as.numeric()
+
+      # indebtedness (0.39)
+      ind <- psych::alpha(x = d %>%
+        select(indebted, obligated))$total[1] %>%
+        as.numeric()
+
+      # envy (0.74)
+      env <- psych::alpha(x = d %>%
+        select(envious, bitter, jealous))$total[1] %>%
+        as.numeric()
+
+      # life satisfaction (0.88)
+      lif <- psych::alpha(x = d %>%
+        select(ls_1, ls_2, ls_3, ls_4, ls_5))$total[1] %>%
+        as.numeric()
+
+      # sense of self (0.74)
+      sen <- psych::alpha(x = d %>%
+        select(self_image_circle, self_image))$total[1] %>%
+        as.numeric()
+
+      list(
+        lab = x,
+        gra = gra,
+        pas = pas,
+        opt = opt,
+        neg = neg,
+        ind = ind,
+        env = env,
+        lif = lif
+      ) %>%
+        return()
+    }
+  )
 
 rel <- rel %>% bind_rows()
 ```
 
 # Calculate scales
 ```{r}
-DF <- DF %>% 
-  rowwise() %>% 
+DF <- DF %>%
+  rowwise() %>%
   mutate(
     # gratitude
-    gratitude_mean = 
-      mean(c(grateful, appreciative, thankful), 
-           na.rm = T),
-    
+    gratitude_mean =
+      mean(c(grateful, appreciative, thankful),
+        na.rm = T
+      ),
+
     # positive affect
-    pa_mean = 
-      mean(c(happy, satisfied, content, joyful, pleased), 
-           na.rm = T),
-    
+    pa_mean =
+      mean(c(happy, satisfied, content, joyful, pleased),
+        na.rm = T
+      ),
+
     # optimism
-    optimistic_mean = 
-      mean(c(optimistic, hopeful), 
-           na.rm = T),
-  
+    optimistic_mean =
+      mean(c(optimistic, hopeful),
+        na.rm = T
+      ),
+
     # negative affect
-    na_mean = 
-      mean(c(sad, depressed, anxious, nervous), 
-           na.rm = T),
-    
+    na_mean =
+      mean(c(sad, depressed, anxious, nervous),
+        na.rm = T
+      ),
+
     # indebtendess
-    indebted_mean = 
-      mean(c(indebted, obligated), 
-           na.rm = T),
-          
+    indebted_mean =
+      mean(c(indebted, obligated),
+        na.rm = T
+      ),
+
     # envy
-    envy_mean = 
-      mean(c(envious, bitter, jealous), 
-           na.rm = T),
-    
+    envy_mean =
+      mean(c(envious, bitter, jealous),
+        na.rm = T
+      ),
+
     # life satisfaction
-    ls_mean = 
-      mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), 
-           na.rm = T),
-    
+    ls_mean =
+      mean(c(ls_1, ls_2, ls_3, ls_4, ls_5),
+        na.rm = T
+      ),
+
     # sense of self
-    ss_mean = 
-      mean(c(self_image_circle, self_image), 
-           na.rm = T)) %>% 
+    ss_mean =
+      mean(c(self_image_circle, self_image),
+        na.rm = T
+      )
+  ) %>%
   ungroup()
-  
+
 # delete vestigial variables
 DF <- DF %>%
-  select(-c(grateful, appreciative, thankful, 
-            happy, satisfied, content, 
-            joyful, pleased, optimistic,
-            hopeful,  depressed, sad,  anxious,  nervous,
-            indebted, obligated,
-            envious, bitter, jealous,
-            ls_1, ls_2, ls_3,
-            ls_4, ls_5, self_image_circle,
-            self_image)
-         )
+  select(-c(
+    grateful, appreciative, thankful,
+    happy, satisfied, content,
+    joyful, pleased, optimistic,
+    hopeful, depressed, sad, anxious, nervous,
+    indebted, obligated,
+    envious, bitter, jealous,
+    ls_1, ls_2, ls_3,
+    ls_4, ls_5, self_image_circle,
+    self_image
+  ))
 
 # create list of outcome variables
-out.list <- c('gratitude_mean',
-              'pa_mean',
-              'optimistic_mean',
-              'na_mean',
-              'indebted_mean',
-              'guilty',
-              'envy_mean',
-              'ls_mean',
-              'ss_mean',
-              'ladder')
-
+out.list <- c(
+  "gratitude_mean",
+  "pa_mean",
+  "optimistic_mean",
+  "na_mean",
+  "indebted_mean",
+  "guilty",
+  "envy_mean",
+  "ls_mean",
+  "ss_mean",
+  "ladder"
+)
 ```
 
 # Analyses
 ## Pre-registered analyses
 ```{r}
 # for each outcome build model
-results3 <- sapply(X = out.list,
-                  simplify = F,
-                  FUN = function(x){
-                    
-                    m <- lmer(as.formula(paste0(x, 
-                                                '~ condition + (1 + condition | lab)')
-                                         ),
-                              data = DF)
-                    
-                    emm <- emmeans(m,
-                                   pairwise ~ condition,
-                                   adjust = "none",
-                                   pbkrtest.limit = 99999)
-                    
-                    return(list(m = summary(m), 
-                                emm = emm)
-                           )
-       })
+results3 <- sapply(
+  X = out.list,
+  simplify = F,
+  FUN = function(x) {
+    m <- lmer(
+      as.formula(paste0(
+        x,
+        "~ condition + (1 + condition | lab)"
+      )),
+      data = DF
+    )
 
+    emm <- emmeans(m,
+      pairwise ~ condition,
+      adjust = "none",
+      pbkrtest.limit = 99999
+    )
+
+    return(list(
+      m = summary(m),
+      emm = emm
+    ))
+  }
+)
 ```
 
 # bind rows
 ```{r}
 contrast.table <-
-  rbind(cbind(outcome = 'gratitude',
-              results3$gratitude_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'pa',
-              results3$pa_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'optimism',
-              results3$optimistic_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'na',
-              results3$na_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'indebted',
-              results3$indebted_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'guilty',
-              results3$guilty$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'envy',
-              results3$envy_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'ls',
-              results3$ls_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'ss',
-              results3$ss_mean$emm$contrasts %>% 
-                as.data.frame()),
-        
-        cbind(outcome = 'ladder',
-              results3$ladder$emm$contrasts  %>% 
-                as.data.frame())
-        )
+  rbind(
+    cbind(
+      outcome = "gratitude",
+      results3$gratitude_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "pa",
+      results3$pa_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "optimism",
+      results3$optimistic_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "na",
+      results3$na_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "indebted",
+      results3$indebted_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "guilty",
+      results3$guilty$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "envy",
+      results3$envy_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "ls",
+      results3$ls_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "ss",
+      results3$ss_mean$emm$contrasts %>%
+        as.data.frame()
+    ),
+    cbind(
+      outcome = "ladder",
+      results3$ladder$emm$contrasts %>%
+        as.data.frame()
+    )
+  )
 
-contrast.table <- contrast.table %>% 
-  mutate(p.value = stars.pval(p.value),
-         estimate = round(estimate, 2),
-         SE = round(SE, 2),
-         df = round(df, 2),
-         t.ratio = round(t.ratio, 2)) 
+contrast.table <- contrast.table %>%
+  mutate(
+    p.value = stars.pval(p.value),
+    estimate = round(estimate, 2),
+    SE = round(SE, 2),
+    df = round(df, 2),
+    t.ratio = round(t.ratio, 2)
+  )
 
 write.csv(contrast.table,
-          file = here('data/ouput',
-                      'si_table_3.csv'))
+  file = here(
+    "data/ouput",
+    "si_table_3.csv"
+  )
+)
 ```
 
