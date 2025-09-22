@@ -198,7 +198,7 @@ fig.3a <-
   geom_text(aes(x = 18),
     size = 3,
     hjust = 0,
-    color = "lightblue"
+    color = "#3C5488"
   ) +
   theme_classic() +
   xlim(0, 100) +

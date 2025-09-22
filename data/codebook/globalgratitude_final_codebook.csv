@@ -1,6 +1,4 @@
 Variable,Description,Values
-StartDate,Date when Qualtrics survey was opened,month/day/year time
-EndDate,Date when Qualtrics survey was closed,month/day/year time
 Status,Type of survey observation,"0 / IP Address: A normal response
 1 / Survey Preview: A preview response
 2 / Survey Test: A test response
@@ -14,7 +12,6 @@ Progress,Percentage of survey completed,0-100
 Duration (in seconds),Amount of time participant spent completing survey,
 Finished,Indicator of whether participant submitted a completed survey,"0 = participant left survey before completing
 1 = participant submitted completed survey"
-RecordedDate,Date survey was recorded in Qualtrics,
 ResponseId,Qualtrics-generated unique identifier for each participant,
 DistributionChannel,Method of survey distribution,"preview = preview version of survey used
 anonymous = anonymized official version of survey used"
@@ -189,255 +186,6 @@ gov_leaders_3,Leaders in my country take good care of our citizens.,"1 = ""stron
 gov_leaders_4,Leaders in my country are competent and charismatic.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gov_leaders_5,Leaders in my country inspire us.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
 gov_leaders_6,Leaders in my country protect us when we are in a difficult situation.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
-stim_lef_sma_mkn,Visual judgement of whether the black line is the same length as the red line with no info (small discrepancy),
-stim_lef_lar_mkn,Visual judgement of whether the black line is the same length as the red line with no info (large discrepancy),
-stim_rig_sma_mkn,Visual judgement of whether the black line is the same length as the red line with no info (small discrepancy),
-stim_rig_lar_mkn,Visual judgement of whether the black line is the same length as the red line with no info (large discrepancy),
-stim_rig_lar_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (large discrepancy),7 is identified as the correct answer by the community or researcher
-stim_rig_sma_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (small discrepancy),7 is identified as the correct answer by the community or researcher
-stim_lef_lar_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (large discrepancy),7 is identified as the correct answer by the community or researcher
-stim_lef_sma_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (small discrepancy),7 is identified as the correct answer by the community or researcher
-prq_g_1,Please rate the extent to which you view your role as a subject in a psychology experiment as being similar to the following roles in society: Giving anonymously to charity,1 = maximally dissimilar; 10 = maximally similar
-prq_g_2,Volunteering to pick up trash in a nearby community,1 = maximally dissimilar; 10 = maximally similar
-prq_o_1,"Waiting at a stop light even though there are no cars, people, or cameras around",1 = maximally dissimilar; 10 = maximally similar
-prq_o_2,Following instructions to turn off your phone at a show even though you do not believe that others would hear or see it,1 = maximally dissimilar; 10 = maximally similar
-prq_a_1,Trying to make a good impression when you meet a new person,1 = maximally dissimilar; 10 = maximally similar
-prq_a_2,Being interviewed for a job,1 = maximally dissimilar; 10 = maximally similar
-prq_p_1,Spending the evening with a good friend,1 = maximally dissimilar; 10 = maximally similar
-prq_p_2,Taking a relaxing walk through a park,1 = maximally dissimilar; 10 = maximally similar
-prq_n_1,Getting into an argument with a colleague or classmate,1 = maximally dissimilar; 10 = maximally similar
-prq_n_2,Walking outside during a storm,1 = maximally dissimilar; 10 = maximally similar
-prq_w_1,Working extra hours to earn more money,1 = maximally dissimilar; 10 = maximally similar
-prq_w_2,Completing an assignment to get a good grade in a class,1 = maximally dissimilar; 10 = maximally similar
-empathy_family,Participants are asked to input the name of a close relative of the same age.,
-empathy_kinType,What is your relationship with the close relative?,1 = Cousin; 2 = Sibling; 3 = Aunt or uncle; 4 = Parent; 5 = Grandparent; 6 = Other
-empathy_kinType_6_TEXT,"Text input for ""Other""",
-empathy_friend,Participants are asked to input the name of a friend.,
-empathy_stranger,Participants are asked to input the name of a stranger.,
-empathy_email_9,"How likely is it that you'll call, e-mail, or text [Name] over the next week?",0 = I am completely certain that I will NOT contanct this person in the next week; 100 = I am completely certain I WILL contact this person in the next week
-empathy_discussion_8,How likely is it that you'll discuss something important or interesting with [NAME] over the next month?,0 = I am completely certain that I will NOT discuss something important or interesting with this person in the next month; 100 = I am completely certain that I WILL discuss something important or interesting with this person in the next month
-empathy_time_8,How likely is it that you'll spend time with [NAME] over the next year?,0 = I am completely certain that I will NOT spend time with this person in the next year; 100 = I am completely certain that I WILL spend time with this person in the next year
-empathy_circle,"Please indicate which picture below best describes your relationship with [NAME]. For the picture, you are the left circle and [NAME[ is the right circle.",1 = No overlap; 7 = A lot of overlap
-empathy_1_compassionate,"Report of extent that participant experienced feeling ""compassionate"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_distressed,"Report of extent that participant experienced feeling ""distressed"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_suprised,"Report of extent that participant experienced feeling ""suprised"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_sympathetic,"Report of extent that participant experienced feeling ""sympathetic"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_upset,"Report of extent that participant experienced feeling ""upset"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_1_help,How much help would you be willing to provide [NAME] in this situation (finding their dog)?,"1 = No help
-2 = Search for a few minutes
-3 = Search for an hour
-4 = Search for two hours
-5 = Search for an entire afternoon
-6 = Cancel an afternoon of work or school to search
-7 = Cancel an afternoon of work or school to search and ask others to do the same"
-empathy_2_compassionate,"Report of extent that participant experienced feeling ""compassionate"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_distressed,"Report of extent that participant experienced feeling ""distressed"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_suprised,"Report of extent that participant experienced feeling ""suprised"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_sympathetic,"Report of extent that participant experienced feeling ""sympathetic"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_upset,"Report of extent that participant experienced feeling ""upset"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_2_help,How much help would you be willing to provide [NAME] in this situation (getting evicted)?,"1 = No help
-2 = Send them information about available apartments
-3 = Help them find a new place to live by visiting apartments for a few hours
-4 = Offer to have them come stay with you for a couple of days (provided you have space)
-5 = Offer to have them come stay with you for a week (provided you have space)
-6 = Offer to have them come stay with you until they find a new place (provided you have space)
-7 = Offer to have them come stay with you rent-free (provided you have space)"
-empathy_3_compassionate,"Report of extent that participant experienced feeling ""compassionate"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_distressed,"Report of extent that participant experienced feeling ""distressed"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_suprised,"Report of extent that participant experienced feeling ""suprised"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_sympathetic,"Report of extent that participant experienced feeling ""sympathetic"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_upset,"Report of extent that participant experienced feeling ""upset"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
-empathy_3_help,How much help would you be willing to provide [NAME]'s children in this situation?,"1 = No help
-2 = Donate an hours worth of typical wages toward a fund for the kids
-3 = Donate a 2.5 hours worth of typical wages toward a fund for the kids
-4 = Donate a 5 hours worth of typical wages toward a fund for the kids
-5 = Start a fund-raising effort for the kids' welfare
-6 = Have the kids come live with you until a permanent home was found
-7 = Have the kids come live with you and raise them as you would your own"
-birthdate,Participant's age,
-brother,"How many brothers do you have (please include all step, adopted, biological, and half-brothers)?",1-10+
-sister,"How many sisters do you have (please include all step, adopted, biological, and half-sisters)?",1-10+
-sibling_instructions,What is the name of your oldest living sibling?,
-sibling_gender,What is the sex of this sibling?,"1 = Male
-2 = Female
-3 = Other"
-sibling_gen_match,Is this sibling the same or different sex as you?,"1 = Same
-2 = Different"
-sibling_birthdate,What is your sibling's age?,
-sibling_mother,Does this sibling share the same biological mother as you?,"1 = Yes
-2 = No 
-3 = I don't know"
-sibling_father,Does this sibling share the same biological father as you?,"1 = Yes
-2 = No 
-3 = I don't know"
-sibling_status,Is this sibling older or younger than you?,"1 = Younger
-2 = Older
-3 = Twin"
-older_age,How old was this sibling when you were born?,
-younger_age,How old were you when this sibling was born?,
-younger_mother,Did you live with BOTH this sibling and your biological mother right after this sibling was born?,"1 = Yes
-2 = No 
-3 = I don't know"
-younger_infant,Did your biological mother care for this sibling as an infant?,"1 = Yes
-2 = No 
-3 = I don't know"
-sb_tg_0_1,Did you live with your oldest sibling when you were just born?,"1 = Yes
-2 = No "
-sb_tg_0_2,Did you live with your biological mother when you were just born?,"1 = Yes
-2 = No "
-sb_tg_0_3,Did you live with your biological father when you were just born?,"1 = Yes
-2 = No "
-sb_tg_1_1,Did you live with your oldest sibling when you were 1 years old?,"1 = Yes
-2 = No "
-sb_tg_1_2,Did you live with your biological mother when you were 1 years old?,"1 = Yes
-2 = No "
-sb_tg_1_3,Did you live with your biological father when you were 1 years old?,"1 = Yes
-2 = No "
-sb_tg_2_1,Did you live with your oldest sibling when you were 2 years old?,"1 = Yes
-2 = No "
-sb_tg_2_2,Did you live with your biological mother when you were 2 years old?,"1 = Yes
-2 = No "
-sb_tg_2_3,Did you live with your biological father when you were 2 years old?,"1 = Yes
-2 = No "
-sb_tg_3_1,Did you live with your oldest sibling when you were 3 years old?,"1 = Yes
-2 = No "
-sb_tg_3_2,Did you live with your biological mother when you were 3 years old?,"1 = Yes
-2 = No "
-sb_tg_3_3,Did you live with your biological father when you were 3 years old?,"1 = Yes
-2 = No "
-sb_tg_4_1,Did you live with your oldest sibling when you were 4 years old?,"1 = Yes
-2 = No "
-sb_tg_4_2,Did you live with your biological mother when you were 4 years old?,"1 = Yes
-2 = No "
-sb_tg_4_3,Did you live with your biological father when you were 4 years old?,"1 = Yes
-2 = No "
-sb_tg_5_1,Did you live with your oldest sibling when you were 5 years old?,"1 = Yes
-2 = No "
-sb_tg_5_2,Did you live with your biological mother when you were 5 years old?,"1 = Yes
-2 = No "
-sb_tg_5_3,Did you live with your biological father when you were 5 years old?,"1 = Yes
-2 = No "
-sb_tg_6_1,Did you live with your oldest sibling when you were 6 years old?,"1 = Yes
-2 = No "
-sb_tg_6_2,Did you live with your biological mother when you were 6 years old?,"1 = Yes
-2 = No "
-sb_tg_6_3,Did you live with your biological father when you were 6 years old?,"1 = Yes
-2 = No "
-sb_tg_7_1,Did you live with your oldest sibling when you were 7 years old?,"1 = Yes
-2 = No "
-sb_tg_7_2,Did you live with your biological mother when you were 7 years old?,"1 = Yes
-2 = No "
-sb_tg_7_3,Did you live with your biological father when you were 7 years old?,"1 = Yes
-2 = No "
-sb_tg_8_1,Did you live with your oldest sibling when you were 8 years old?,"1 = Yes
-2 = No "
-sb_tg_8_2,Did you live with your biological mother when you were 8 years old?,"1 = Yes
-2 = No "
-sb_tg_8_3,Did you live with your biological father when you were 8 years old?,"1 = Yes
-2 = No "
-sb_tg_9_1,Did you live with your oldest sibling when you were 9 years old?,"1 = Yes
-2 = No "
-sb_tg_9_2,Did you live with your biological mother when you were 9 years old?,"1 = Yes
-2 = No "
-sb_tg_9_3,Did you live with your biological father when you were 9 years old?,"1 = Yes
-2 = No "
-sb_tg_10_1,Did you live with your oldest sibling when you were 10 years old?,"1 = Yes
-2 = No "
-sb_tg_10_2,Did you live with your biological mother when you were 10 years old?,"1 = Yes
-2 = No "
-sb_tg_10_3,Did you live with your biological father when you were 10 years old?,"1 = Yes
-2 = No "
-sb_tg_11_1,Did you live with your oldest sibling when you were 11 years old?,"1 = Yes
-2 = No "
-sb_tg_11_2,Did you live with your biological mother when you were 11 years old?,"1 = Yes
-2 = No "
-sb_tg_11_3,Did you live with your biological father when you were 11 years old?,"1 = Yes
-2 = No "
-sb_tg_12_1,Did you live with your oldest sibling when you were 12 years old?,"1 = Yes
-2 = No "
-sb_tg_12_2,Did you live with your biological mother when you were 12 years old?,"1 = Yes
-2 = No "
-sb_tg_12_3,Did you live with your biological father when you were 12 years old?,"1 = Yes
-2 = No "
-sb_tg_13_1,Did you live with your oldest sibling when you were 13 years old?,"1 = Yes
-2 = No "
-sb_tg_13_2,Did you live with your biological mother when you were 13 years old?,"1 = Yes
-2 = No "
-sb_tg_13_3,Did you live with your biological father when you were 13 years old?,"1 = Yes
-2 = No "
-sb_tg_14_1,Did you live with your oldest sibling when you were 14 years old?,"1 = Yes
-2 = No "
-sb_tg_14_2,Did you live with your biological mother when you were 14 years old?,"1 = Yes
-2 = No "
-sb_tg_14_3,Did you live with your biological father when you were 14 years old?,"1 = Yes
-2 = No "
-sb_tg_15_1,Did you live with your oldest sibling when you were 15 years old?,"1 = Yes
-2 = No "
-sb_tg_15_2,Did you live with your biological mother when you were 15 years old?,"1 = Yes
-2 = No "
-sb_tg_15_3,Did you live with your biological father when you were 15 years old?,"1 = Yes
-2 = No "
-sb_tg_16_1,Did you live with your oldest sibling when you were 16 years old?,"1 = Yes
-2 = No "
-sb_tg_16_2,Did you live with your biological mother when you were 16 years old?,"1 = Yes
-2 = No "
-sb_tg_16_3,Did you live with your biological father when you were 16 years old?,"1 = Yes
-2 = No "
-sb_tg_17_1,Did you live with your oldest sibling when you were 17 years old?,"1 = Yes
-2 = No "
-sb_tg_17_2,Did you live with your biological mother when you were 17 years old?,"1 = Yes
-2 = No "
-sb_tg_17_3,Did you live with your biological father when you were 17 years old?,"1 = Yes
-2 = No "
-sb_tg_18_1,Did you live with your oldest sibling when you were 18 years old?,"1 = Yes
-2 = No "
-sb_tg_18_2,Did you live with your biological mother when you were 18 years old?,"1 = Yes
-2 = No "
-sb_tg_18_3,Did you live with your biological father when you were 18 years old?,"1 = Yes
-2 = No "
-sb_tg_19_1,Did you live with your oldest sibling when you were 19 years old?,"1 = Yes
-2 = No "
-sb_tg_19_2,Did you live with your biological mother when you were 19 years old?,"1 = Yes
-2 = No "
-sb_tg_19_3,Did you live with your biological father when you were 19 years old?,"1 = Yes
-2 = No "
-sb_tg_20_1,Did you live with your oldest sibling when you were 20 years old?,"1 = Yes
-2 = No "
-sb_tg_20_2,Did you live with your biological mother when you were 20 years old?,"1 = Yes
-2 = No "
-sb_tg_20_3,Did you live with your biological father when you were 20 years old?,"1 = Yes
-2 = No "
-sibling_house,Do you still live with this sibling in the same household?,"1 = Yes
-2 = No "
-sibling_favor,How many favors did you do for your sibling in the past month?,0 - 10 or more
-sibling_kidney,"Provided that your sibling needed a new kidney, how willing would you be to donate one of your kidneys? In this hypothetical situation, you’re not the only person who could help your sibling.",0 = Not willing at all; 6 = Completely willing
-sibling_money,How willing would you be to give your sibling a month of living expenses?,0 = Not willing at all; 6 = Completely willing
-sibling_education,"Assume your sibling needed your help to make a large necessary purchase. If, for some reason, nobody else could help, how willing would you be to interrupt your education, career, or other important goals <u>for an entire year</u> to work and help pay for this purchase?",0 = Not willing at all; 6 = Completely willing
-sibling_sick,How willing would you be to care for this sibling if they got sick?,0 = Not willing at all; 6 = Completely willing
-sibling_phone,How many times in the last month have you called to talk to this sibling on the phone?,"1 = 0 times
-2 = 1 time
-3 = 2-3 times
-4 = 4 times (once a week)
-5 = 8 times (twice a week)
-6 = 12-16 times (3-4 times a week)
-7 = 20-30 times (5-7 times a week)"
-sibling_inperson,When was the last time you saw this sibling in person?,"1 = Within the lask week
-2 = Within the last month
-3 = Within the last 6 months
-4 = Witihin the last year
-5 = Within the last 2 years
-6 = Within the last 5 years
-7 = Within the last 10 years
-8 = It's been more than 10 years"
 meals_attention,Attention check,4 (Correct answer)
 sex,Participant's gender identity,"1 = Male
 2 = Female
@@ -484,7 +232,6 @@ copy_paste,Copy paste check,"1 = Yes
 2 = No "
 copy_paste_yes,Elaborating on AI and copy paste check,
 feedback,Feedback on the survey,
-PROLIFIC_PID,Prolific ID,
 lab,Site identification,"USA_01
 BRA_01
 CHN_01
@@ -526,16 +273,6 @@ sub
 god.letter"
 condition_type,Type of the condition assigned,"control
 intervention"
-orientation,Orientation of the line task,"left.c
-right.c"
-info,Assigned condition of the line task,"demand
-conform"
-otherName,Name of the other person in the empathy task,
-subjName,Embedded data from me_attention,
-lambda1,WTR slider from the empathy task module,
-lambda2,WTR slider from the kinship module,
-subjName2,Embedded data from me_attention,
-kinName,Name of the sibling from the kinship module,
 worktimeArray,An ordered array of the total time spent both on and off task,
 tasktime,How much time a participant spent on the survey,
 WorktimeArray,An ordered array of the total time spent both on and off task,

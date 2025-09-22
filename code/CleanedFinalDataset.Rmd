@@ -20,7 +20,8 @@ USA_02b <-
   read.csv(file = here(
     "data/raw-data",
     "USA_02b_raw_unharmonized.csv"
-  ))
+  )) %>% 
+  select(Status:pageNo)
 
 # change the condition column
 USA_02b <-
@@ -65,28 +66,23 @@ write.csv(USA_02b,
 ```{r}
 # fetch main survey data
 data_main <-
-  readRDS(file = here(
-    "data/raw-data",
-    "globalgratitude_final.Rds"
-  )) %>%
-  select(StartDate:pageNo)
+  readRDS(file = here("data/raw-data", "globalgratitude_final.Rds"))
 
 # fetch the USA_02b (harmonized) survey data
 data_USA_02b <-
   read.csv(file = here(
     "data/raw-data",
-    "USA_02b_raw_harmonized.csv"
-  ) %>%
-    select(StartDate:pageNo) %>%
-    rename("events_list" = "control_list"))
+    "USA_02b_raw_harmonized.csv")) %>%
+    select(Status:pageNo) %>%
+    rename("events_list" = "control_list")
 
 # fetch the USA_02c survey data
 data_USA_02c <-
   read.csv(file = here(
     "data/raw-data",
     "USA_02c.csv"
-  )) %>%
-  select(StartDate:pageNo)
+  )) %>% 
+  select(Status:pageNo)
 
 # match columns
 data_main <- data_main %>%
@@ -152,23 +148,9 @@ data_cleaned <-
   filter(
     consent == 1,
     Progress >= 95,
-    lab != "",
-    condition_type != "NA",
-    lab != "NA"
+    lab != ""
   ) %>%
-  select(StartDate:pageNo) # Remove non-relevant columns
-
-# change the 'incentive' column from "volunteer" to "paid" for NOR_01 participants after 11/19/2024
-data_cleaned <- data_cleaned %>%
-  mutate(
-    StartDate = as.POSIXct(StartDate, format = "%m/%d/%Y %H:%M"),
-    incentive = if_else(lab == "NOR_01" &
-      StartDate > as.POSIXct("11/19/2024 0:00",
-        format = "%m/%d/%Y%H:%M"
-      ),
-    "paid", incentive
-    )
-  )
+  select(Status:pageNo) # Remove non-relevant columns
 
 # fix age data where wrong info is inputted
 data_cleaned <- data_cleaned %>%
