@@ -20,7 +20,7 @@ USA_02b <-
   read.csv(file = here(
     "data/raw-data",
     "USA_02b_raw_unharmonized.csv"
-  )) %>% 
+  )) %>%
   select(Status:pageNo)
 
 # change the condition column
@@ -72,16 +72,17 @@ data_main <-
 data_USA_02b <-
   read.csv(file = here(
     "data/raw-data",
-    "USA_02b_raw_harmonized.csv")) %>%
-    select(Status:pageNo) %>%
-    rename("events_list" = "control_list")
+    "USA_02b_raw_harmonized.csv"
+  )) %>%
+  select(Status:pageNo) %>%
+  rename("events_list" = "control_list")
 
 # fetch the USA_02c survey data
 data_USA_02c <-
   read.csv(file = here(
     "data/raw-data",
     "USA_02c.csv"
-  )) %>% 
+  )) %>%
   select(Status:pageNo)
 
 # match columns

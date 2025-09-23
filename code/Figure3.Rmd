@@ -214,16 +214,6 @@ country.DF <-
     "data/output",
     "unique_country_effect_sizes.csv"
   )) %>%
-  # select relevant outcomes
-  select(
-    pa_effect_size,
-    na_effect_size,
-    optimistic_effect_size,
-    ls_effect_size,
-    envy_effect_size,
-    indebted_effect_size,
-    country
-  ) %>%
   # summarise
   group_by(country) %>%
   summarise(across(everything(), mean, na.rm = TRUE))
@@ -233,12 +223,7 @@ mod.DF <-
     "data/final-data",
     "crossculturalmod.csv"
   )) %>%
-  filter(sample == "yes") %>%
-  mutate(country = country_name) %>%
-  select(-c(
-    country_code,
-    country_name
-  ))
+  filter(sample == "yes")
 ```
 
 # Join dataframes
@@ -540,3 +525,58 @@ plot_grid(fig.3a,
   rel_widths = c(.1, 1)
 )
 ```
+
+# Correlation Tests
+```{r}
+plots <- list()
+
+for (i in seq_along(effect_size_columns)) {
+  yi_col <- effect_size_columns[i]
+  vi_col <- variance_columns[i]
+
+  # Fit meta-regression
+  res <- rma(
+    yi = DF[[yi_col]],
+    vi = DF[[vi_col]],
+    mods = ~dist.us,
+    data = DF,
+    method = "REML"
+  )
+
+  # Create prediction line for plotting
+  new_dist <- seq(min(DF$dist.us, na.rm = TRUE), max(DF$dist.us, na.rm = TRUE), length.out = 100)
+  pred <- predict(res, newmods = new_dist)
+  pred_df <- data.frame(
+    dist.us = new_dist,
+    pred = pred$pred,
+    ci.lb = pred$ci.lb,
+    ci.ub = pred$ci.ub
+  )
+
+  # Scatter plot with regression line and 95% CI
+  p <- ggplot() +
+    geom_point(data = DF, aes(x = dist.us, y = .data[[yi_col]])) +
+    geom_line(data = pred_df, aes(x = dist.us, y = pred), color = "blue") +
+    geom_ribbon(data = pred_df, aes(x = dist.us, ymin = ci.lb, ymax = ci.ub), alpha = 0.2, fill = "blue") +
+    labs(title = yi_col, x = "Distance from US", y = "Effect size") +
+    theme_minimal()
+
+  plots[[yi_col]] <- p
+}
+
+# Display the first plot as an example
+plots
+
+cor_results <- lapply(effect_size_columns, function(col) {
+  test <- cor.test(DF[[col]], DF$dist.us, use = "pairwise.complete.obs")
+  data.frame(
+    outcome = col,
+    pearson_r = test$estimate,
+    p_value = test$p.value
+  )
+}) %>%
+  bind_rows()
+
+cor_results
+```
+
