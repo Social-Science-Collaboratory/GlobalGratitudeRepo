@@ -310,34 +310,3 @@ write.csv(
   )
 )
 ```
-
-## ICC analyses
-```{r}
-# for each outcome build model
-results4 <- sapply(
-  X = out.list,
-  simplify = F,
-  FUN = function(x) {
-    m <- lmer(
-      as.formula(paste0(
-        x,
-        "~ condition_type + (1 + condition_type | lab)"
-      )),
-      data = DF
-    )
-
-    return(list(
-      m = m
-    ))
-  }
-)
-
-# evaluate ICC (if you'd like)
-library(performance)
-sapply(results4, function(x) {
-  icc(x$m)
-})
-```
-
-
-
