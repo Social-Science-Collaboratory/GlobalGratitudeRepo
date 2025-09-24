@@ -15,100 +15,117 @@ source("setup.R")
 # Prep data
 ```{r}
 # open data
-df <- 
-  read.csv(file = here("data/output",
-                       "unique_country_effect_sizes.csv")) %>% 
+df <-
+  read.csv(file = here("data/output", "unique_country_effect_sizes.csv")) %>%
   select(country:ss_var)
 
 # list of effect size columns and variance columns
-effect_size_columns <- c("pa_effect_size", "na_effect_size",
-                         "optimistic_effect_size","ls_effect_size",
-                         "envy_effect_size", "indebted_effect_size")
+effect_size_columns <- c(
+  "pa_effect_size",
+  "na_effect_size",
+  "optimistic_effect_size",
+  "ls_effect_size",
+  "envy_effect_size",
+  "indebted_effect_size"
+)
 
-variance_columns <- c("pa_var", "na_var", "optimistic_var",
-                         "ls_var", "envy_var", "indebted_var")
+variance_columns <- c(
+  "pa_var",
+  "na_var",
+  "optimistic_var",
+  "ls_var",
+  "envy_var",
+  "indebted_var"
+)
 
 # estimate total heterogeneity
 m <- lapply(1:length(effect_size_columns), function(i) {
-  rma.mv(yi = df[[effect_size_columns[i]]],
-         V = df[[variance_columns[i]]],
-         data = df)})
+  rma.mv(
+    yi = df[[effect_size_columns[i]]],
+    V = df[[variance_columns[i]]],
+    data = df
+  )
+})
 
-m.c  <- lapply(1:length(effect_size_columns), function(i) {
-  rma.mv(yi = df[[effect_size_columns[i]]],
-         V = df[[variance_columns[i]]],
-         random = ~ 1 | country,
-         data = df)})
+m.c <- lapply(1:length(effect_size_columns), function(i) {
+  rma.mv(
+    yi = df[[effect_size_columns[i]]],
+    V = df[[variance_columns[i]]],
+    random = ~ 1 | country,
+    data = df
+  )
+})
 
 
-m.i  <- lapply(1:length(effect_size_columns), function(i) {
-  rma.mv(yi = df[[effect_size_columns[i]]],
-         V = df[[variance_columns[i]]],
-         random = ~ 1 | intervention_condition,
-         data = df)})
+m.i <- lapply(1:length(effect_size_columns), function(i) {
+  rma.mv(
+    yi = df[[effect_size_columns[i]]],
+    V = df[[variance_columns[i]]],
+    random = ~ 1 | intervention_condition,
+    data = df
+  )
+})
 
 # fit models for each pair of effect size and variance
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
-  rma.mv(yi = df[[effect_size_columns[i]]],
-         V = df[[variance_columns[i]]],
-         random = list(~ 1 | intervention_condition, ~ 1 | country),
-         data = df)})
+  rma.mv(
+    yi = df[[effect_size_columns[i]]],
+    V = df[[variance_columns[i]]],
+    random = list(~ 1 | intervention_condition, ~ 1 | country),
+    data = df
+  )
+})
 
 # store the results
 names(m.ic) <- paste(effect_size_columns)
 
 # evaluate variance components for each outcome
-lapply(m.ic, function(model){
-   model$sigma2[2] / model$sigma2[1]})
+lapply(m.ic, function(model) {
+  model$sigma2[1] + model$sigma2[2]
+
+  model$sigma2[2] / model$sigma2[1]
+})
 ```
 
 # Calculate country-level and intervention-level descriptives
 ```{r}
 d.c <- lapply(effect_size_columns, function(effect_size) {
-  
   d.c <- df %>%
     group_by(country) %>%
     summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
-    
-    # add [jittered] y-value 
-    mutate(y = 0,
-           y = jitter(y, .1)) %>%
-    
+
+    # add [jittered] y-value
+    mutate(y = 0, y = jitter(y, .1)) %>%
+
     # labels most extreme observations
-    mutate(label = if_else(m == min(m),
-                           true = country,
-                           false = ""),
-           label = if_else(m == max(m),
-                           true = country,
-                           false = label)) %>%
-    
+    mutate(
+      label = if_else(m == min(m), true = country, false = ""),
+      label = if_else(m == max(m), true = country, false = label)
+    ) %>%
+
     # include effect size namece
     mutate(effect_size = effect_size)
-  
+
   return(d.c)
 })
 
 d.i <- lapply(effect_size_columns, function(effect_size) {
-  
   d.i <- df %>%
     group_by(intervention_condition) %>%
     summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
-    
+
     # add [jittered] y-value
-    mutate(y = -0.02,
-           y = jitter(y, .1)) %>% 
-    
+    mutate(y = -0.02, y = jitter(y, .1)) %>%
+
     # labels most extreme observations
-    mutate(label = if_else(m == min(m),
-                           true = intervention_condition,
-                           false = ""),
-           label = if_else(m == max(m),
-                           true = intervention_condition,
-                           false = label)) %>%
-    
+    mutate(
+      label = if_else(m == min(m), true = intervention_condition, false = ""),
+      label = if_else(m == max(m), true = intervention_condition, false = label)
+    ) %>%
+
     # include effect size name
     mutate(effect_size = effect_size)
-  
+
   return(d.i)
 })
 
@@ -136,93 +153,102 @@ tau_df <- data.frame(
 ```{r}
 # create a list of ggplot objects
 m.d <- lapply(seq_along(effect_size_columns), function(i) {
-  
   effect_size <- effect_size_columns[i]
   model <- m.ic[[i]]
-  
+
   #add tau
   tau_label <- tau_df$tau_ci[i]
   tau_str <- if (tau_label > 50) "n.s." else round(tau_label, 2)
-  
+
   # create label
-label_text <- if (tau_str == "n.s.") {
-  tau_str
-} else {
-  paste0("= ", tau_str)
-}
-  
+  label_text <- if (tau_str == "n.s.") {
+    tau_str
+  } else {
+    paste0("= ", tau_str)
+  }
+
   # create the plot for each effect size
   plot <- ggplot() +
-    
+
     # overall effect size estimate
-    geom_point(aes(x = model$b[1], 
-                   y = 5.7),
-               shape = 18,
-               size = 4,
-               color = "grey30") +
-    
-    # 95% CI of overall effect size estimate
-    geom_segment(aes(x = model$ci.lb, 
-                     xend = model$ci.ub, 
-                     y = 5.7,
-                     yend = 5.7),
-                 color = "grey30") +
-    
-    # visual indicator: null effect
-    geom_vline(xintercept = 0,
-               color = "grey30",
-               linetype = 'dotted') +
-    
-    # density plot: intervention-level sources of heterogeneity
-    stat_function(fun = dnorm, 
-                  args = list(mean = model$b[1], 
-                              sd = sqrt(model$sigma2[1])), 
-                  color = "#E64B35") +
-    
-    # density plot: country-level sources of heterogeneity
-    stat_function(fun = dnorm, 
-                  args = list(mean = model$b[1], 
-                              sd = sqrt(model$sigma2[2])), 
-                  color = "#3C5488") +
-        # Add tau_ci label
-    geom_text(aes(x = 0.7, y = 11.5, label = label_text),
-              color = "black", hjust = 1, vjust = 1, size = 4)
-  
-if (i == 1) {
-  plot <- plot +
-    # τ[country] on top, blue color
-    annotate(
-      "text",
-      x = 0.5, y = 13,
-      label = expression(tau[country]),
-      parse = TRUE,
-      size = 5,
-      hjust = 1,
-      vjust = 1,
-      color = "#3C5488"
+    geom_point(
+      aes(x = model$b[1], y = 5.7),
+      shape = 18,
+      size = 4,
+      color = "grey30"
     ) +
-    # τ[practice] below, red color
-    annotate(
-      "text",
-      x = 0.5, y = 10,
-      label = expression(tau[practice]),
-      parse = TRUE,
-      size = 5,
-      hjust = 1,
-      vjust = 1,
+
+    # 95% CI of overall effect size estimate
+    geom_segment(
+      aes(x = model$ci.lb, xend = model$ci.ub, y = 5.7, yend = 5.7),
+      color = "grey30"
+    ) +
+
+    # visual indicator: null effect
+    geom_vline(xintercept = 0, color = "grey30", linetype = 'dotted') +
+
+    # density plot: intervention-level sources of heterogeneity
+    stat_function(
+      fun = dnorm,
+      args = list(mean = model$b[1], sd = sqrt(model$sigma2[1])),
       color = "#E64B35"
     ) +
-    # draw a horizontal line
-    geom_segment(aes(x = 0.28, xend = 0.52, y = 10.2, yend = 10.2),
-                 color = "black", size = 0.5)
-}
-  
+
+    # density plot: country-level sources of heterogeneity
+    stat_function(
+      fun = dnorm,
+      args = list(mean = model$b[1], sd = sqrt(model$sigma2[2])),
+      color = "#3C5488"
+    ) +
+    # Add tau_ci label
+    geom_text(
+      aes(x = 0.7, y = 11.5, label = label_text),
+      color = "black",
+      hjust = 1,
+      vjust = 1,
+      size = 4
+    )
+
+  if (i == 1) {
+    plot <- plot +
+      # τ[country] on top, blue color
+      annotate(
+        "text",
+        x = 0.5,
+        y = 13,
+        label = expression(tau[country]),
+        parse = TRUE,
+        size = 5,
+        hjust = 1,
+        vjust = 1,
+        color = "#3C5488"
+      ) +
+      # τ[practice] below, red color
+      annotate(
+        "text",
+        x = 0.5,
+        y = 10,
+        label = expression(tau[practice]),
+        parse = TRUE,
+        size = 5,
+        hjust = 1,
+        vjust = 1,
+        color = "#E64B35"
+      ) +
+      # draw a horizontal line
+      geom_segment(
+        aes(x = 0.28, xend = 0.52, y = 10.2, yend = 10.2),
+        color = "black",
+        size = 0.5
+      )
+  }
+
   # final formatting
   plot <- plot +
     scale_x_continuous(limits = c(-0.75, 0.75)) +
     scale_y_continuous(limits = c(0, 13)) +
     theme_void()
-  
+
   return(plot)
 })
 
@@ -240,43 +266,56 @@ d.i$country <- NA
 
 d.c.i <- rbind(d.c, d.i)
 
-# create a list 
+# create a list
 m.p <- lapply(effect_size_columns, function(es) {
-  
   data_subset <- subset(d.c.i, effect_size == es)
-  
+
   ggplot(data_subset) +
-    
-    geom_vline(xintercept = 0,
-               color = "grey30",
-               linetype = 'dotted') +
-    
+
+    geom_vline(xintercept = 0, color = "grey30", linetype = 'dotted') +
+
     # add country-level descriptives
-    geom_point(data = subset(data_subset, dataset == "d.c"),
-               aes(x = m, y = y), 
-               color = "#3C5488", alpha = .5) +
-    
+    geom_point(
+      data = subset(data_subset, dataset == "d.c"),
+      aes(x = m, y = y),
+      color = "#3C5488",
+      alpha = .5
+    ) +
+
     # add labels for country-level
-    geom_text_repel(data = subset(data_subset, dataset == "d.c"),
-                    aes(x = m, y = y, label = label),
-                    color = "#3C5488", alpha = .5, nudge_y = -.005) +
-    
+    geom_text_repel(
+      data = subset(data_subset, dataset == "d.c"),
+      aes(x = m, y = y, label = label),
+      color = "#3C5488",
+      alpha = .5,
+      nudge_y = -.005
+    ) +
+
     # add intervention-level descriptives
-    geom_point(data = subset(data_subset, dataset == "d.i"),
-               aes(x = m, y = y),
-               color = "#E64B35", alpha = .5) +
-    
+    geom_point(
+      data = subset(data_subset, dataset == "d.i"),
+      aes(x = m, y = y),
+      color = "#E64B35",
+      alpha = .5
+    ) +
+
     # add labels for intervention-level
-    geom_text_repel(data = subset(data_subset, dataset == "d.i"),
-                    aes(x = m, y = y, label = label),
-                    color = "#E64B35", alpha = .5, nudge_y = .005) +
-    
+    geom_text_repel(
+      data = subset(data_subset, dataset == "d.i"),
+      aes(x = m, y = y, label = label),
+      color = "#E64B35",
+      alpha = .5,
+      nudge_y = .005
+    ) +
+
     # aesthetics
     theme_classic() +
-    theme(axis.title.y = element_blank(),
-          axis.title.x = element_blank(),
-          axis.text.y = element_blank(), 
-          axis.ticks.y = element_blank()) +
+    theme(
+      axis.title.y = element_blank(),
+      axis.title.x = element_blank(),
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank()
+    ) +
     scale_x_continuous(limits = c(-3, 3))
 })
 
@@ -286,80 +325,97 @@ m.p
 # combine plots
 ```{r}
 # combine m.d and m.p
-combined_plots <- mapply(function(plot_d, plot_p) {
-
+combined_plots <- mapply(
+  function(plot_d, plot_p) {
     plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
-}, m.d, m.p, SIMPLIFY = FALSE)
+  },
+  m.d,
+  m.p,
+  SIMPLIFY = FALSE
+)
 
 # combine
 grid <-
-  plot_grid(combined_plots[[1]], 
-          combined_plots[[2]],
-          combined_plots[[3]],
-          combined_plots[[4]],
-          combined_plots[[5]],
-          combined_plots[[6]],
-          ncol = 2,
-          labels = paste0("   ",
-                          letters[1:6],
-                          ". ",
-                          c('Positive affect',
-                            'Negative affect',
-                            'Optimism',
-                            'Life satisfaction',
-                            'Envy',
-                            'Indebtedness')
-                          ),
-          label_size = 10,
-          label_x = 0,
-          hjust = 0,
-          vjust = 1.7
-          ) 
+  plot_grid(
+    combined_plots[[1]],
+    combined_plots[[2]],
+    combined_plots[[3]],
+    combined_plots[[4]],
+    combined_plots[[5]],
+    combined_plots[[6]],
+    ncol = 2,
+    labels = paste0(
+      "   ",
+      letters[1:6],
+      ". ",
+      c(
+        'Positive affect',
+        'Negative affect',
+        'Optimism',
+        'Life satisfaction',
+        'Envy',
+        'Indebtedness'
+      )
+    ),
+    label_size = 10,
+    label_x = 0,
+    hjust = 0,
+    vjust = 1.7
+  )
 
-ggdraw() + 
+ggdraw() +
   draw_plot(grid, 0, 0.05, 1, 0.95) +
-  draw_label(expression("Cohen's "*italic(d)), 
-             x = 0.5, y = 0, vjust = -1, size = 10)
+  draw_label(
+    expression("Cohen's " * italic(d)),
+    x = 0.5,
+    y = 0,
+    vjust = -1,
+    size = 10
+  )
 
 ```
 
 #Prediction Intervals
 ```{r}
 # calculate practice-level prediction intervals
-practice_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
-  mod <- m.i[[i]]
-  
-  pred_practice <- predict(mod, digits = 3)
-  
-  data.frame(
-    effect_size = effect_size_columns[i],
-    practice_pred = pred_practice$pred,
-    practice_se   = pred_practice$se,
-    practice_pi_lb = pred_practice$pi.lb,
-    practice_pi_ub = pred_practice$pi.ub
-  )
-}))
+practice_pred_df <- do.call(
+  rbind,
+  lapply(seq_along(m.i), function(i) {
+    mod <- m.i[[i]]
+
+    pred_practice <- predict(mod, digits = 3)
+
+    data.frame(
+      effect_size = effect_size_columns[i],
+      practice_pred = pred_practice$pred,
+      practice_se = pred_practice$se,
+      practice_pi_lb = pred_practice$pi.lb,
+      practice_pi_ub = pred_practice$pi.ub
+    )
+  })
+)
 
 # calculate country-level prediction intervals
-country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
-  mod <- m.c[[i]]
-  
-  pred_country <- predict(mod, digits = 3)
-  
-  data.frame(
-    effect_size = effect_size_columns[i],
-    country_pred = pred_country$pred,
-    country_se   = pred_country$se,
-    country_pi_lb = pred_country$pi.lb,
-    country_pi_ub = pred_country$pi.ub
-  )
-}))
+country_pred_df <- do.call(
+  rbind,
+  lapply(seq_along(m.i), function(i) {
+    mod <- m.c[[i]]
+
+    pred_country <- predict(mod, digits = 3)
+
+    data.frame(
+      effect_size = effect_size_columns[i],
+      country_pred = pred_country$pred,
+      country_se = pred_country$se,
+      country_pi_lb = pred_country$pi.lb,
+      country_pi_ub = pred_country$pi.ub
+    )
+  })
+)
 
 pred_df <- left_join(practice_pred_df, country_pred_df, by = "effect_size")
 
 # Save data frame
-write.csv(pred_df, 
-          file = here('data/output',
-                      "prediction_intervals.csv"))
+write.csv(pred_df, file = here('data/output', "prediction_intervals.csv"))
 ```
 
