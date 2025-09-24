@@ -17,159 +17,198 @@ source("setup.R")
 ```{r}
 # open data
 DF <-
-  read.csv(here('data/final-data',
-                'crossculturalmod.csv'))
+  read.csv(here(
+    "data/final-data",
+    "crossculturalmod.csv"
+  ))
 
 # standardize variables
 DF <-
-  DF %>% 
+  DF %>%
   mutate(dist.us = if_else(country == "United States" & is.na(dist.us),
-                           0,
-                           dist.us)) %>% 
-  mutate_at(.vars = vars(dist.us,
-                         relational_mobility : indulgence),
-                ~ scales::rescale(., to = c(-1, 1)))
+    0,
+    dist.us
+  )) %>%
+  mutate_at(
+    .vars = vars(
+      dist.us,
+      relational_mobility:indulgence
+    ),
+    ~ scales::rescale(., to = c(-1, 1))
+  )
 ```
 
 # Create figure 1a (cultural distance)
 ```{r}
-fig.1a <- 
+fig.1a <-
   ggplot(
     data = DF,
-    aes(x = dist.us,
-        y = .2)) +
+    aes(
+      x = dist.us,
+      y = .2
+    )
+  ) +
 
   # population density (all countries)
   geom_density(
     data = DF,
-    aes(x = dist.us, 
-        y = ..scaled..),
-    color = "grey80", 
-    alpha = 0.5) +
+    aes(
+      x = dist.us,
+      y = ..scaled..
+    ),
+    color = "grey80",
+    alpha = 0.5
+  ) +
 
   # sample density (sampled countries)
   geom_density(
-    data = DF %>% 
+    data = DF %>%
       filter(sample == "yes"),
-    aes(x = dist.us, 
-        y = ..scaled..),
-    color = "#3C5488", 
-    alpha = 0.5) +
+    aes(
+      x = dist.us,
+      y = ..scaled..
+    ),
+    color = "#3C5488",
+    alpha = 0.5
+  ) +
 
   # rug lines: unsampled countries
   geom_linerange(
     data = DF %>% filter(sample == "no"),
     aes(ymin = 0, ymax = 0.1),
-    color = 'grey50') +
+    color = "grey50"
+  ) +
 
   # rug lines: sampled countries
   geom_linerange(
     data = DF %>% filter(sample == "yes"),
-    aes(ymin = 0, ymax = 0.2,
-        color = country)) +
+    aes(
+      ymin = 0, ymax = 0.2,
+      color = country
+    )
+  ) +
 
   # country labels
   geom_text(
     data = DF %>% filter(sample == "yes"),
-    aes(label = country,
-        color = country,
-        y = 1),
-    position = position_jitter(height = .75)) +
+    aes(
+      label = country,
+      color = country,
+      y = 1
+    ),
+    position = position_jitter(height = .75)
+  ) +
 
   # theme
   theme_classic() +
   theme(
-    legend.position = 'none',
+    legend.position = "none",
     axis.title.y = element_blank(),
     axis.text = element_blank(),
     axis.ticks = element_blank(),
     axis.line.y = element_blank(),
     strip.background = element_blank()
   ) +
-  xlab('Cultural distance (from USA)')
+  xlab("Cultural distance (from USA)")
 ```
 
 # Map facet
 ```{r}
 # download world data
-world <- ne_countries(scale = "medium", 
-                      returnclass = "sf")
+world <- ne_countries(
+  scale = "medium",
+  returnclass = "sf"
+)
 
 # fix missing ISO values in world data
-world[world$name == "France", ]$iso_a3 = "FRA"
-world[world$name == "Norway", ]$iso_a3 = "NOR"
+world[world$name == "France", ]$iso_a3 <- "FRA"
+world[world$name == "Norway", ]$iso_a3 <- "NOR"
 ```
 
 #Create figure 1b
 ```{r}
-world <- ne_countries(scale = "medium", 
-                      returnclass = "sf")
+world <- ne_countries(
+  scale = "medium",
+  returnclass = "sf"
+)
 
 fig.1b <- ggplot() +
   # plot map layer
-  layer_spatial(data = world,
-                color = NA) +
-  layer_spatial(data = 
-                  world %>% 
-                  filter(iso_a3 %in% DF$iso),
-                aes(fill = iso_a3)) +
-  
+  layer_spatial(
+    data = world,
+    color = NA
+  ) +
+  layer_spatial(
+    data =
+      world %>%
+        filter(iso_a3 %in% DF$iso),
+    aes(fill = iso_a3)
+  ) +
+
   # change coordinate projections
-  coord_sf(crs = 'ESRI:54030') +
+  coord_sf(crs = "ESRI:54030") +
   cowplot::theme_minimal_grid() +
-  theme(legend.position = 'none')
+  theme(legend.position = "none")
 ```
 
 # Create figure 1c (cross-cultural moderators)
 ```{r}
 fig1.DF <-
-  DF %>% 
-  pivot_longer(relational_mobility : indulgence) %>% 
+  DF %>%
+  pivot_longer(relational_mobility:indulgence) %>%
   mutate(
-    name = 
+    name =
       fct_recode(name,
-                 "Relational mobility" = "relational_mobility", 
-                 "Responsibilism" = "responsibilism", 
-                 "Tightness" = "tightness", 
-                 "Religiosity" = "relig_mean",
-                 "GDP" = "mean_GDP",
-                 "Residential mobility" = "resmobility",
-                 "Power distance" = "power.distance",
-                 "Individualism" = "individualism",
-                 "Motivation" = "motivation",
-                 "Uncertainty avoidance" = "uncertainty.avoidance",
-                 "Long term orientation" = "long.term.orientation",
-                 "Indulgence" = "indulgence")
+        "Relational mobility" = "relational_mobility",
+        "Responsibilism" = "responsibilism",
+        "Tightness" = "tightness",
+        "Religiosity" = "relig_mean",
+        "GDP" = "mean_GDP",
+        "Residential mobility" = "resmobility",
+        "Power distance" = "power.distance",
+        "Individualism" = "individualism",
+        "Motivation" = "motivation",
+        "Uncertainty avoidance" = "uncertainty.avoidance",
+        "Long term orientation" = "long.term.orientation",
+        "Indulgence" = "indulgence"
+      )
   )
 ```
 
 ```{r}
 fig.1c <-
-  ggplot(data = fig1.DF,
-       aes(x = value)) +
-  
+  ggplot(
+    data = fig1.DF,
+    aes(x = value)
+  ) +
+
   # facet wrap
-  facet_wrap(~ name,
-             scales = 'free',
-             strip.position = 'bottom') +
-  
+  facet_wrap(~name,
+    scales = "free",
+    strip.position = "bottom"
+  ) +
+
   # plot all countries
-  geom_density(alpha = .5,
-               color = 'grey70') +
-  
+  geom_density(
+    alpha = .5,
+    color = "grey70"
+  ) +
+
   # plot sampled countries
-  geom_density(data = fig1.DF %>% 
-               filter(sample == 'yes'),
-             alpha = .5,
-             color = '#3C5488') +
+  geom_density(
+    data = fig1.DF %>%
+      filter(sample == "yes"),
+    alpha = .5,
+    color = "#3C5488"
+  ) +
   theme_classic() +
   theme(
-    legend.position = 'none',
+    legend.position = "none",
     axis.title = element_blank(),
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
     axis.ticks.x = element_blank(),
-    axis.ticks.y = element_blank(),    
+    axis.ticks.y = element_blank(),
     axis.line.y = element_blank(),
     strip.placement = "outside",
     strip.background = element_blank()
@@ -178,16 +217,18 @@ fig.1c <-
 
 # Combine
 ```{r}
-bc <- 
+bc <-
   plot_grid(fig.1b,
-            fig.1c,
-          ncol = 2,
-          labels = c('b', 'c'))
+    fig.1c,
+    ncol = 2,
+    labels = c("b", "c")
+  )
 
-plot_grid(fig.1a, 
-          bc, 
-          nrow = 2,
-          labels = c('a', ''))
+plot_grid(fig.1a,
+  bc,
+  nrow = 2,
+  labels = c("a", "")
+)
 ```
 
 
