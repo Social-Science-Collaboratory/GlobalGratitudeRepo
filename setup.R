@@ -16,7 +16,7 @@ core_pkgs <- c(
   # country/global
   "countrycode", "rnaturalearth", "rnaturalearthdata", "ggspatial",
   # visualization
-  "effsize", "metafor", "scales", "ggtext", "cowplot", "ggExtra", "ggrepel", "gridExtra",
+  "effsize", "metafor", "scales", "ggtext", "cowplot", "ggExtra", "ggrepel", "gridExtra", "styler",
   # analysis
   "psych", "lavaan", "semTools", "BayesFactor", "lme4", "lmerTest", "emmeans", "gtools"
 )

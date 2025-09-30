@@ -1,382 +1,387 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36" version="28.2.0">
-  <diagram name="Page-1" id="bTmki2LVThCZo1XSe_z3">
-    <mxGraphModel dx="2294" dy="1102" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36" version="28.2.4">
+  <diagram name="Page-1" id="eBX0-S38Gu0VxwLfOJHk">
+    <mxGraphModel dx="-274" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;entryX=0.524;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-2" target="puwfdb-oq2pkB_Dj-Zls-9">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;entryX=0.524;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=light-dark(#000000,#FFFFFF);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-2" target="xPAkyx5vGHgE6qB_fpSA-9" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1762.5" y="472" as="targetPoint" />
-            <mxPoint x="1322.5" y="472" as="sourcePoint" />
+            <mxPoint x="3492.5" y="282" as="targetPoint" />
+            <mxPoint x="3052.5" y="282" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="1323" y="500" />
-              <mxPoint x="1765" y="500" />
-              <mxPoint x="1765" y="454" />
-              <mxPoint x="1770" y="454" />
+              <mxPoint x="3053" y="310" />
+              <mxPoint x="3495" y="310" />
+              <mxPoint x="3495" y="264" />
+              <mxPoint x="3500" y="264" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-2" value="&lt;u&gt;&lt;b&gt;globalgratitude_final.Rds&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1230" y="410" width="210" height="60" as="geometry" />
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-3" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-1" vertex="1" connectable="0">
+          <mxGeometry x="-0.0687" y="2" relative="1" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-5" target="puwfdb-oq2pkB_Dj-Zls-8">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-2" value="&lt;u&gt;&lt;b&gt;globalgratitude_final.Rds&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2960" y="220" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FFFFFF);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-5" target="xPAkyx5vGHgE6qB_fpSA-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-4" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-3">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-4" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="xPAkyx5vGHgE6qB_fpSA-3" vertex="1" connectable="0">
           <mxGeometry x="-0.0667" y="-1" relative="1" as="geometry">
             <mxPoint x="1" y="-4" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-5" value="&lt;u&gt;&lt;b&gt;USA_02b_raw_unharmonized.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1450" y="310" width="210" height="70" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-5" value="&lt;u&gt;&lt;b&gt;USA_02b_raw_unharmonized.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3180" y="120" width="210" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-8" target="puwfdb-oq2pkB_Dj-Zls-28">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#FBFBFB);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-8" target="xPAkyx5vGHgE6qB_fpSA-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-7" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-6">
-          <mxGeometry x="-0.0978" relative="1" as="geometry">
-            <mxPoint y="5" as="offset" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-8" value="&lt;u&gt;&lt;b&gt;USA_02b_raw_harmonized.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Harmonized to match with global_gratitude_final.Rds&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3180" y="220" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-9" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;USA_02c.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3400" y="220" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3284.58" y="516" as="sourcePoint" />
+            <mxPoint x="3284.58" y="553" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-8" value="&lt;u&gt;&lt;b&gt;USA_02b_raw_harmonized.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Harmonized to match with global_gratitude_final.Rds&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1450" y="410" width="210" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-9" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;USA_02c.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1670" y="410" width="210" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-18" target="puwfdb-oq2pkB_Dj-Zls-21">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-18" target="xPAkyx5vGHgE6qB_fpSA-99" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-18" target="puwfdb-oq2pkB_Dj-Zls-21">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-18" target="xPAkyx5vGHgE6qB_fpSA-68" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-12" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-11">
-          <mxGeometry x="-0.3023" relative="1" as="geometry">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-18" target="xPAkyx5vGHgE6qB_fpSA-64" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-18" target="xPAkyx5vGHgE6qB_fpSA-84" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-18" value="Used&lt;div&gt;for&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-16" vertex="1" connectable="0">
+          <mxGeometry x="-0.44" y="2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-18" target="puwfdb-oq2pkB_Dj-Zls-100">
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="xPAkyx5vGHgE6qB_fpSA-18" target="xPAkyx5vGHgE6qB_fpSA-21" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-18" target="puwfdb-oq2pkB_Dj-Zls-68">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-18" target="puwfdb-oq2pkB_Dj-Zls-64">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-18" target="puwfdb-oq2pkB_Dj-Zls-84">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-17" value="Used&lt;div&gt;for&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-16">
-          <mxGeometry x="-0.4322" y="1" relative="1" as="geometry">
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-7" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="SYNxzmzt6m2xNOakgi5z-5" vertex="1" connectable="0">
+          <mxGeometry x="-0.3023" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-18" value="&lt;u&gt;&lt;b&gt;globalgratitude_final_cleaned.Rds&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Final dataset used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="646" width="230" height="60" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-18" value="&lt;u&gt;&lt;b&gt;globalgratitude_final_cleaned.Rds&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Final dataset used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3170" y="456" width="230" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-21" target="puwfdb-oq2pkB_Dj-Zls-25">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-20" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-19">
-          <mxGeometry y="1" relative="1" as="geometry">
-            <mxPoint x="-1" y="-7" as="offset" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3284.58" y="646" as="sourcePoint" />
+            <mxPoint x="3284.58" y="679" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-21" value="&lt;u&gt;&lt;b&gt;EffectSizes.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="743" width="230" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-25" target="puwfdb-oq2pkB_Dj-Zls-31">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-23" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-22">
-          <mxGeometry x="-0.0667" relative="1" as="geometry">
-            <mxPoint y="-4" as="offset" />
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-8" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-19" vertex="1" connectable="0">
+          <mxGeometry x="-0.1919" y="-2" relative="1" as="geometry">
+            <mxPoint x="2" y="-2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-25" target="puwfdb-oq2pkB_Dj-Zls-61">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-21" value="&lt;u&gt;&lt;b&gt;EffectSizes.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3170" y="553" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-25" target="xPAkyx5vGHgE6qB_fpSA-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-25" value="&lt;b&gt;&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;Data of pairwise comparisons across all interventions vs. all controls for each site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="866" width="230" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-28" target="puwfdb-oq2pkB_Dj-Zls-18">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-25" target="xPAkyx5vGHgE6qB_fpSA-61" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-27" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-26">
-          <mxGeometry x="-0.15" y="-3" relative="1" as="geometry">
-            <mxPoint x="3" y="-1" as="offset" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-25" value="&lt;b&gt;&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;Data of pairwise comparisons across all interventions vs. all controls for each site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3170" y="676" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#D5D5D5);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3284.58" y="408.5" as="sourcePoint" />
+            <mxPoint x="3284.58" y="456" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-28" value="&lt;u&gt;&lt;b&gt;CleanedFinalDataset.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="526.5" width="230" height="72" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-31" target="puwfdb-oq2pkB_Dj-Zls-53">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-30" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-29">
-          <mxGeometry x="-0.0625" y="-1" relative="1" as="geometry">
-            <mxPoint y="-3" as="offset" />
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-4" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-26" vertex="1" connectable="0">
+          <mxGeometry x="-0.0175" relative="1" as="geometry">
+            <mxPoint y="-2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-31" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure2.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="964" width="230" height="54" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-28" value="&lt;u&gt;&lt;b&gt;CleanedFinalDataset.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3170" y="336.5" width="230" height="72" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-34" target="puwfdb-oq2pkB_Dj-Zls-60">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-31" target="xPAkyx5vGHgE6qB_fpSA-53" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-33" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-32">
-          <mxGeometry x="-0.1405" relative="1" as="geometry">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-31" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure2.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3170" y="774" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#DFDFDF);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-34" target="xPAkyx5vGHgE6qB_fpSA-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-13" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-32" vertex="1" connectable="0">
+          <mxGeometry x="-0.1905" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-34" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(246, 246, 246));&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;CrossCulturalMods&lt;/u&gt;&lt;u style=&quot;background-color: transparent;&quot;&gt;.Rmd&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;Compile all cross-cultural moderator data from outside sources.&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="840" y="754" width="230" height="70" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-34" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;CrossCulturalMods&lt;/u&gt;&lt;u style=&quot;&quot;&gt;.Rmd&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;Compile all cross-cultural moderator data from outside sources.&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2570" y="564" width="230" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-37" target="puwfdb-oq2pkB_Dj-Zls-34">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-37" target="xPAkyx5vGHgE6qB_fpSA-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-37" target="puwfdb-oq2pkB_Dj-Zls-78">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-37" target="xPAkyx5vGHgE6qB_fpSA-78" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-37" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;u&gt;responsibilism.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Data on the responsibilism measure (Talhelm et al., under review).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="566.5" width="250" height="70" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-37" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;u&gt;responsibilism.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on the responsibilism measure (Talhelm et al., under review).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2210" y="376.5" width="250" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-39" target="puwfdb-oq2pkB_Dj-Zls-34">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-39" target="xPAkyx5vGHgE6qB_fpSA-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-39" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;u&gt;culturaldistance_combined.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Dataset on cultural distance measures from Muthukrishna et al., 2020 combined across years.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="656.5" width="250" height="75" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-39" value="&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;u&gt;culturaldistance_combined.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Dataset on cultural distance measures from Muthukrishna et al., 2020 combined across years.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2210" y="466.5" width="250" height="75" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-41" target="puwfdb-oq2pkB_Dj-Zls-34">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-41" target="xPAkyx5vGHgE6qB_fpSA-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-41" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;u&gt;worldreligiosity.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Data on world religiosity (Joshanloo &amp;amp; Gebauer, 2019).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="753" width="250" height="70" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-41" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;u&gt;worldreligiosity.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on world religiosity (Joshanloo &amp;amp; Gebauer, 2019).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2210" y="563" width="250" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-43" target="puwfdb-oq2pkB_Dj-Zls-34">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-43" target="xPAkyx5vGHgE6qB_fpSA-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-43" value="&lt;font style=&quot;color: rgb(10, 10, 10);&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;GDPpc.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(10, 10, 10);&quot;&gt;Data on gross domestic product (World Bank, 2023).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="843" width="250" height="61" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-43" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;GDPpc.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on gross domestic product (World Bank, 2023).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2210" y="653" width="250" height="61" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-47" target="puwfdb-oq2pkB_Dj-Zls-34">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-47" target="xPAkyx5vGHgE6qB_fpSA-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-47" target="puwfdb-oq2pkB_Dj-Zls-78">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-47" target="xPAkyx5vGHgE6qB_fpSA-78" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-46" value="Used for&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-45">
-          <mxGeometry x="0.6421" y="-1" relative="1" as="geometry">
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-15" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-45" vertex="1" connectable="0">
+          <mxGeometry x="0.3643" relative="1" as="geometry">
+            <mxPoint x="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-47" value="&lt;div&gt;&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;hofstede_resmobility.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on Hofstede cultural dimensions (The Culture Factor, 2023) and residential mobility (Gallup, 2016).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2210" y="280" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-49" target="xPAkyx5vGHgE6qB_fpSA-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-49" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;tightness.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font&gt;Data on the tightness-looseness measure (Gelfand et al., 2021).&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2210" y="736" width="250" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-52" target="xPAkyx5vGHgE6qB_fpSA-34" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-14" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-50" vertex="1" connectable="0">
+          <mxGeometry x="0.7621" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-52" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;relationalmobility&lt;/u&gt;&lt;u style=&quot;&quot;&gt;.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data of the relational mobility measure (Thompson et al., 2018).&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2210" y="813.5" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-53" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;prediction_intervals.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Compile prediction intervals for all outcomes.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3170" y="860" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-54" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure1.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 1.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2570" y="774" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-60" target="xPAkyx5vGHgE6qB_fpSA-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-60" target="xPAkyx5vGHgE6qB_fpSA-61" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-11" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-56" vertex="1" connectable="0">
+          <mxGeometry x="0.3597" relative="1" as="geometry">
+            <mxPoint x="13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-60" target="xPAkyx5vGHgE6qB_fpSA-54" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-12" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-58" vertex="1" connectable="0">
+          <mxGeometry x="-0.1667" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-60" value="&lt;b&gt;&lt;u&gt;crossculturalmod.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;Combined dataset with all cross-cultural moderators.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2570" y="676" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-61" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure3.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2870" y="774" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-64" target="xPAkyx5vGHgE6qB_fpSA-65" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-21" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-62" vertex="1" connectable="0">
+          <mxGeometry x="-0.2288" relative="1" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-64" value="&lt;u&gt;&lt;b&gt;MixedModels.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate pre-registered analyses, fits a separate mixed-effects model for each outcome variable.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3450.5299999999997" y="400.5" width="230" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-65" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_3.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3740.5299999999997" y="413.5" width="230" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-68" target="xPAkyx5vGHgE6qB_fpSA-69" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="xPAkyx5vGHgE6qB_fpSA-68" target="xPAkyx5vGHgE6qB_fpSA-69" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-20" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="SYNxzmzt6m2xNOakgi5z-19" vertex="1" connectable="0">
+          <mxGeometry x="-0.3954" y="2" relative="1" as="geometry">
+            <mxPoint x="11" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-68" value="&lt;u&gt;&lt;b&gt;SiteDemographics.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate demographics for each site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3450.5299999999997" y="336.5" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-69" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_1.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 1.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3740.5299999999997" y="336.5" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-72" target="xPAkyx5vGHgE6qB_fpSA-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-71" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="xPAkyx5vGHgE6qB_fpSA-70" vertex="1" connectable="0">
+          <mxGeometry x="-0.0217" y="-1" relative="1" as="geometry">
+            <mxPoint x="-3" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-72" value="&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;culturaldistance.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Original data on cultural distance (Muthukrishna et al., 2020).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="1900" y="466.5" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-78" target="xPAkyx5vGHgE6qB_fpSA-79" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2685" y="434" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-17" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-73" vertex="1" connectable="0">
+          <mxGeometry x="-0.377" relative="1" as="geometry">
+            <mxPoint y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-78" target="xPAkyx5vGHgE6qB_fpSA-81" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#F9F9F9);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-78" target="xPAkyx5vGHgE6qB_fpSA-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-16" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-76" vertex="1" connectable="0">
+          <mxGeometry x="-0.2524" y="2" relative="1" as="geometry">
+            <mxPoint x="4" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-78" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;SimulatedData&lt;/u&gt;&lt;u style=&quot;&quot;&gt;.Rmd&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Create simulated data for non-sharable data.&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2570" y="336.5" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-79" value="&lt;font style=&quot;&quot;&gt;&lt;b&gt;&lt;u&gt;crossculturalmod_sim.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;A version of the crossculturalmod.csv file with simulated data.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2570" y="437" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-80" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;hofstede_resmobility_sim.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Simulated data for the hofstede_resmobility.csv file.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2870" y="342.5" width="250" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-81" value="&lt;u&gt;&lt;b&gt;responsibilism_sim.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Simulated data for the responsibilism.csv file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="2870" y="419" width="250" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-84" target="xPAkyx5vGHgE6qB_fpSA-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-22" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-82" vertex="1" connectable="0">
+          <mxGeometry x="-0.0899" y="1" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-84" value="&lt;u&gt;&lt;b&gt;LabSpecificData.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Create Excel workbook with all data for quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3450.5299999999997" y="490" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-87" target="xPAkyx5vGHgE6qB_fpSA-90" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Uh54gl0T0y5tzpFSsmVm-212" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="xPAkyx5vGHgE6qB_fpSA-87" target="xPAkyx5vGHgE6qB_fpSA-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Uh54gl0T0y5tzpFSsmVm-213" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Uh54gl0T0y5tzpFSsmVm-212">
+          <mxGeometry x="-0.1163" y="-1" relative="1" as="geometry">
+            <mxPoint x="-1" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-87" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;labspecific_data.xlsx&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Excel workbook with survey responses divided by site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3740.5299999999997" y="490" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#E9E9E9);shadow=1;fontColor=default;labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);fillColor=none;" parent="1" source="xPAkyx5vGHgE6qB_fpSA-90" target="xPAkyx5vGHgE6qB_fpSA-94" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-89" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=light-dark(#000000,#F9F9F9);shadow=1;fontColor=default;labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);fillColor=none;" parent="xPAkyx5vGHgE6qB_fpSA-88" vertex="1" connectable="0">
+          <mxGeometry x="-0.2015" y="1" relative="1" as="geometry">
             <mxPoint x="-1" y="-2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-47" value="&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;hofstede_resmobility.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(251, 251, 251));&quot;&gt;Data on Hofstede cultural dimensions (The Culture Factor, 2023) and residential mobility (Gallup, 2016).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="470" width="250" height="80" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-90" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;qualitychecks.xlxs&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Excel workbook with completed quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3740.5299999999997" y="583" width="230" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-49" target="puwfdb-oq2pkB_Dj-Zls-34">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-94" target="xPAkyx5vGHgE6qB_fpSA-101" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-49" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;tightness.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font&gt;Data on the tightness-looseness measure (Gelfand et al., 2021).&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="926" width="250" height="55" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-52" target="puwfdb-oq2pkB_Dj-Zls-34">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-94" target="xPAkyx5vGHgE6qB_fpSA-105" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-51" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-50">
-          <mxGeometry x="0.7883" y="1" relative="1" as="geometry">
-            <mxPoint x="5" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-52" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;relationalmobility&lt;/u&gt;&lt;u style=&quot;background-color: transparent;&quot;&gt;.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(5, 5, 5);&quot;&gt;Data of the relational mobility measure (Thompson et al., 2018).&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="480" y="1003.5" width="250" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-53" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;prediction_intervals.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Compile prediction intervals for all outcomes.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1440" y="1050" width="230" height="57" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-54" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure1.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 1.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="840" y="964" width="230" height="54" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-60" target="puwfdb-oq2pkB_Dj-Zls-54">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-60" target="puwfdb-oq2pkB_Dj-Zls-61">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-57" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-56">
-          <mxGeometry x="0.3302" y="1" relative="1" as="geometry">
-            <mxPoint x="17" y="1" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-60" target="puwfdb-oq2pkB_Dj-Zls-54">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-59" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-58">
-          <mxGeometry x="-0.2215" relative="1" as="geometry">
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-23" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-92" vertex="1" connectable="0">
+          <mxGeometry x="-0.4298" y="-1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-60" value="&lt;b&gt;&lt;u&gt;crossculturalmod.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;Combined dataset with all cross-cultural moderators.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="840" y="866" width="230" height="60" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-94" value="&lt;u&gt;&lt;b&gt;QualityChecks.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Create summary table and dataset of each site&#39;s quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3740.5299999999997" y="670" width="230" height="57" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-61" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure3.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="964" width="230" height="54" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-64" target="puwfdb-oq2pkB_Dj-Zls-65">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-94" target="xPAkyx5vGHgE6qB_fpSA-94" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-63" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-62">
-          <mxGeometry x="-0.1739" relative="1" as="geometry">
-            <mxPoint x="2" y="-1" as="offset" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-99" target="xPAkyx5vGHgE6qB_fpSA-102" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-25" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-97" vertex="1" connectable="0">
+          <mxGeometry x="-0.7395" y="2" relative="1" as="geometry">
+            <mxPoint x="17" y="2" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-64" value="&lt;u&gt;&lt;b&gt;MixedModels.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate pre-registered analyses, fits a separate mixed-effects model for each outcome variable.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1720.53" y="590.5" width="230" height="74" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-99" value="&lt;u&gt;&lt;b&gt;SensitivityAnalyses.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Conduct sensistivity analyses comparing&amp;nbsp; English only and quality check data to the full dataset.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3450.5299999999997" y="814" width="230" height="66" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-65" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_3.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="2010.5299999999997" y="603.5" width="230" height="48" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-101" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;qualitychecks_summary.xlsx&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Summary table of quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3450.5299999999997" y="634" width="230" height="57" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-68" target="puwfdb-oq2pkB_Dj-Zls-69">
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-102" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_4.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 4.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3740.53" y="812" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" source="xPAkyx5vGHgE6qB_fpSA-105" target="xPAkyx5vGHgE6qB_fpSA-99" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-67" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-66">
-          <mxGeometry x="-0.1739" relative="1" as="geometry">
-            <mxPoint x="1" y="-1" as="offset" />
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-24" value="Used&lt;div&gt;for&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="xPAkyx5vGHgE6qB_fpSA-103" vertex="1" connectable="0">
+          <mxGeometry x="-0.3041" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="3" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-68" value="&lt;u&gt;&lt;b&gt;SiteDemographics.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate demographics for each site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1720.53" y="526.5" width="230" height="50" as="geometry" />
+        <mxCell id="xPAkyx5vGHgE6qB_fpSA-105" value="&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;b&gt;&lt;u&gt;QC_globalgratitude_final_cleaned.Rds&lt;/u&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Dataset with problematic data removed.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#0E0E0E);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" parent="1" vertex="1">
+          <mxGeometry x="3450.5299999999997" y="711" width="230" height="57" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-69" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_1.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="2010.5299999999997" y="526.5" width="230" height="50" as="geometry" />
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-9" value="Used for" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3250" y="738" width="70" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-72" target="puwfdb-oq2pkB_Dj-Zls-39">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-71" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-70">
-          <mxGeometry x="-0.0217" y="-1" relative="1" as="geometry">
-            <mxPoint x="-3" y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-72" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: rgb(20, 20, 20);&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;culturaldistance.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Original data on cultural distance (Muthukrishna et al., 2020).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="170" y="656.5" width="250" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-78" target="puwfdb-oq2pkB_Dj-Zls-79">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="955" y="624" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-74" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-73">
-          <mxGeometry x="-0.1834" y="1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-78" target="puwfdb-oq2pkB_Dj-Zls-81">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-78" target="puwfdb-oq2pkB_Dj-Zls-80">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-77" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-76">
-          <mxGeometry x="-0.0211" y="-1" relative="1" as="geometry">
-            <mxPoint y="-1" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-78" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;SimulatedData&lt;/u&gt;&lt;u style=&quot;background-color: transparent;&quot;&gt;.Rmd&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Create simulated data for non-sharable data.&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="840" y="526.5" width="230" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-79" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;u&gt;crossculturalmod_sim.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;A version of the crossculturalmod.csv file with simulated data.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="840" y="627" width="230" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-80" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;hofstede_resmobility_sim.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Simulated data for the hofstede_resmobility.csv file.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="532.5" width="250" height="58" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-81" value="&lt;u&gt;&lt;b&gt;responsibilism_sim.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Simulated data for the responsibilism.csv file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1140" y="609" width="250" height="61" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-84" target="puwfdb-oq2pkB_Dj-Zls-87">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-83" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-82">
-          <mxGeometry x="-0.0843" y="2" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-84" value="&lt;u&gt;&lt;b&gt;LabSpecificData.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Create Excel workbook with all data for quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1720.53" y="680" width="230" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-87" target="puwfdb-oq2pkB_Dj-Zls-90">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-86" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-85">
-          <mxGeometry y="-1" relative="1" as="geometry">
-            <mxPoint x="-5" y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-87" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;labspecific_data.xlsx&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Excel workbook with survey responses divided by site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="2010.53" y="680" width="230" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-90" target="puwfdb-oq2pkB_Dj-Zls-94">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-89" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-88">
-          <mxGeometry x="-0.2015" y="1" relative="1" as="geometry">
-            <mxPoint x="-1" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-90" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;qualitychecks.xlxs&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Excel workbook with completed quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="2010.5299999999997" y="763" width="230" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-94" target="puwfdb-oq2pkB_Dj-Zls-102">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-94" target="puwfdb-oq2pkB_Dj-Zls-107">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-93" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-92">
-          <mxGeometry x="-0.5431" y="1" relative="1" as="geometry">
-            <mxPoint x="-2" y="-2" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-94" value="&lt;u&gt;&lt;b&gt;QualityChecks.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Create summary table and dataset of each site&#39;s quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="2010.5299999999997" y="847" width="230" height="57" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-94" target="puwfdb-oq2pkB_Dj-Zls-94">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-100" target="puwfdb-oq2pkB_Dj-Zls-101">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-100" target="puwfdb-oq2pkB_Dj-Zls-104">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-99" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-98">
-          <mxGeometry x="-0.6671" relative="1" as="geometry">
-            <mxPoint x="7" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-100" value="&lt;u&gt;&lt;b&gt;SensitivityAnalyses.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Conduct sensistivity analyses comparing&amp;nbsp; English only and quality check data to the full dataset.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1720.53" y="1004" width="230" height="66" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-101" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;b&gt;&lt;u&gt;tau_sensitivity_analyses.csv&lt;/u&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Tau estimates for English only&amp;nbsp;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;and&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;quality checked data compared to full dataset.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="2010" y="958" width="230" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-102" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;qualitychecks_summary.xlsx&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Summary table of quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1720.53" y="812" width="230" height="57" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-104" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;b&gt;&lt;u&gt;ef_sensitivity_analyses.csv&lt;/u&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Effect size estimates and CIs for English only&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;and&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;quality checked data compared to full dataset.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="2010" y="1037" width="230" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="puwfdb-oq2pkB_Dj-Zls-107" target="puwfdb-oq2pkB_Dj-Zls-100">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-106" value="Used&amp;nbsp;&lt;div&gt;for&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="puwfdb-oq2pkB_Dj-Zls-105">
-          <mxGeometry x="-0.1228" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="puwfdb-oq2pkB_Dj-Zls-107" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;b&gt;&lt;u&gt;QC_globalgratitude_final_cleaned.Rds&lt;/u&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Dataset with problematic data removed.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="1720.53" y="890" width="230" height="57" as="geometry" />
+        <mxCell id="SYNxzmzt6m2xNOakgi5z-10" value="Exports" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="3255" y="828" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
