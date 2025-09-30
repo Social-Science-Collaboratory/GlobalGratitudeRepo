@@ -17,22 +17,31 @@ source("setup.R")
 ```{r}
 # open data
 df <-
-  read.csv(file = here(
-    "data/output",
-    "unique_country_effect_sizes.csv"
-  )) %>%
+  read.csv(
+    file = here(
+      "data/output",
+      "unique_country_effect_sizes.csv"
+    )
+  ) %>%
   select(country:ss_var)
 
 # list of effect size columns and variance columns
 effect_size_columns <- c(
-  "pa_effect_size", "na_effect_size",
-  "optimistic_effect_size", "ls_effect_size",
-  "envy_effect_size", "indebted_effect_size"
+  "pa_effect_size",
+  "na_effect_size",
+  "optimistic_effect_size",
+  "ls_effect_size",
+  "envy_effect_size",
+  "indebted_effect_size"
 )
 
 variance_columns <- c(
-  "pa_var", "na_var", "optimistic_var",
-  "ls_var", "envy_var", "indebted_var"
+  "pa_var",
+  "na_var",
+  "optimistic_var",
+  "ls_var",
+  "envy_var",
+  "indebted_var"
 )
 
 # use lapply to fit models
@@ -61,7 +70,14 @@ effect_prob <- function(effect_name, reverse = FALSE) {
 
 # create the table
 distribution_results <- data.frame(
-  outcome = c("PA", "NA", "Optimism", "Life Satisfaction", "Envy", "Indebtedness"),
+  outcome = c(
+    "PA",
+    "NA",
+    "Optimism",
+    "Life Satisfaction",
+    "Envy",
+    "Indebtedness"
+  ),
   distribution = c(
     effect_prob("pa_effect_size"),
     effect_prob("na_effect_size", reverse = TRUE),
@@ -94,14 +110,8 @@ d.c <- lapply(effect_size_columns, function(effect_size) {
     ) %>%
     # labels most extreme observations
     mutate(
-      label = if_else(m == min(m),
-        true = country,
-        false = ""
-      ),
-      label = if_else(m == max(m),
-        true = country,
-        false = label
-      )
+      label = if_else(m == min(m), true = country, false = ""),
+      label = if_else(m == max(m), true = country, false = label)
     ) %>%
     # include effect size name
     mutate(effect_size = effect_size)
@@ -134,12 +144,12 @@ country_results <- mutate_country_results %>%
   mutate(
     outcome = recode(
       outcome,
-      "pa_effect_size"         = "PA",
-      "na_effect_size"         = "NA",
+      "pa_effect_size" = "PA",
+      "na_effect_size" = "NA",
       "optimistic_effect_size" = "Optimism",
-      "ls_effect_size"         = "Life Satisfaction",
-      "envy_effect_size"       = "Envy",
-      "indebted_effect_size"   = "Indebtedness"
+      "ls_effect_size" = "Life Satisfaction",
+      "envy_effect_size" = "Envy",
+      "indebted_effect_size" = "Indebtedness"
     )
   )
 
@@ -148,13 +158,18 @@ print(country_results)
 
 # Load and plot data
 ```{r}
-universality_data <- left_join(distribution_results, country_results, by = "outcome")
+universality_data <- left_join(
+  distribution_results,
+  country_results,
+  by = "outcome"
+)
 
 viz.DF <-
   universality_data %>%
   # clean factors
   mutate(
-    outcome = factor(outcome,
+    outcome = factor(
+      outcome,
       levels = c(
         "PA",
         "Optimism",
@@ -195,11 +210,7 @@ fig.3a <-
     alpha = .5,
     fill = "gray30"
   ) +
-  geom_text(aes(x = 18),
-    size = 3,
-    hjust = 0,
-    color = "#3C5488"
-  ) +
+  geom_text(aes(x = 18), size = 3, hjust = 0, color = "#3C5488") +
   theme_classic() +
   xlim(0, 100) +
   xlab("Theory-inconsistent proportion of estimated distribution") +
@@ -290,7 +301,6 @@ results <- sapply(
 
     names(df) <- c("x", "y")
 
-
     cor.est <-
       cor(
         x = df$x,
@@ -327,63 +337,71 @@ results <-
     logbf = round(logbf, 2)
   ) %>%
   # clean aesthetics
-  mutate(outcome = factor(outcome,
-    levels = c(
-      "pa_effect_size",
-      "na_effect_size",
-      "optimistic_effect_size",
-      "ls_effect_size",
-      "envy_effect_size",
-      "indebted_effect_size"
-    ),
-    labels = c(
-      "Positive affect",
-      "Negative affect",
-      "Optimism",
-      "Life satisfaction",
-      "Envy",
-      "Indebtedness"
+  mutate(
+    outcome = factor(
+      outcome,
+      levels = c(
+        "pa_effect_size",
+        "na_effect_size",
+        "optimistic_effect_size",
+        "ls_effect_size",
+        "envy_effect_size",
+        "indebted_effect_size"
+      ),
+      labels = c(
+        "Positive affect",
+        "Negative affect",
+        "Optimism",
+        "Life satisfaction",
+        "Envy",
+        "Indebtedness"
+      )
     )
-  )) %>%
-  mutate(moderator = factor(moderator,
-    levels = c(
-      "individualism",
-      "tightness",
-      "relational_mobility",
-      "resmobility",
-      "responsibilism",
-      "relig_mean",
-      "mean_GDP",
-      "power.distance",
-      "motivation",
-      "uncertainty.avoidance",
-      "long.term.orientation",
-      "indulgence"
-    ),
-    labels = c(
-      "Individualism",
-      "Tightness",
-      "Relational mobility",
-      "Residential mobility",
-      "Responsibilism",
-      "Religiosity",
-      "GDP",
-      "Power distance",
-      "Motivation",
-      "Uncertainty avoidance",
-      "Long term orientation",
-      "Indulgence"
+  ) %>%
+  mutate(
+    moderator = factor(
+      moderator,
+      levels = c(
+        "individualism",
+        "tightness",
+        "relational_mobility",
+        "resmobility",
+        "responsibilism",
+        "relig_mean",
+        "mean_GDP",
+        "power.distance",
+        "motivation",
+        "uncertainty.avoidance",
+        "long.term.orientation",
+        "indulgence"
+      ),
+      labels = c(
+        "Individualism",
+        "Tightness",
+        "Relational mobility",
+        "Residential mobility",
+        "Responsibilism",
+        "Religiosity",
+        "GDP",
+        "Power distance",
+        "Motivation",
+        "Uncertainty avoidance",
+        "Long term orientation",
+        "Indulgence"
+      )
     )
-  ))
+  )
 
 # minor edit to label
 results <- results %>%
-  mutate(cor.lab = paste0(
-    "paste(",
-    "italic(r), ' = ",
-    cor,
-    "')"
-  ))
+  mutate(
+    cor.lab = paste0(
+      "paste(",
+      "italic(r), ' = ",
+      cor,
+      "')"
+    )
+  )
 
 # restructure
 results <- results %>%
@@ -395,36 +413,22 @@ results <- results %>%
 # recalculate bf scale
 results <- results %>%
   mutate(
-    bf.type =
-      if_else(bf > .9999,
-        "BF['1,0']",
-        "BF['0,1']"
-      ),
-    bf.tran =
-      if_else(bf > .9999,
-        bf,
-        1 / bf
-      ),
-    bf.tran =
-      round(
-        bf.tran,
-        2
-      ),
-    bf.tran.dir =
-      if_else(bf > .9999,
-        bf.tran,
-        bf.tran * (-1)
-      ),
-    bf.lab =
-      paste0(
-        "paste(",
-        "italic(",
-        bf.type,
-        ")",
-        ", ' = ",
-        bf.tran,
-        "')"
-      )
+    bf.type = if_else(bf > .9999, "BF['1,0']", "BF['0,1']"),
+    bf.tran = if_else(bf > .9999, bf, 1 / bf),
+    bf.tran = round(
+      bf.tran,
+      2
+    ),
+    bf.tran.dir = if_else(bf > .9999, bf.tran, bf.tran * (-1)),
+    bf.lab = paste0(
+      "paste(",
+      "italic(",
+      bf.type,
+      ")",
+      ", ' = ",
+      bf.tran,
+      "')"
+    )
   )
 ```
 
@@ -459,13 +463,13 @@ fig.3b <-
       label = bf.lab
     )
   ) +
-  geom_tile(aes(color = cor),
-    size = 1,
-    width = .97, height = 0.97
-  ) +
+  geom_tile(aes(color = cor), size = 1, width = .97, height = 0.97) +
   scale_color_gradient2(
-    low = "red", mid = "white", high = "blue",
-    midpoint = 0, limits = c(-1, 1),
+    low = "red",
+    mid = "white",
+    high = "blue",
+    midpoint = 0,
+    limits = c(-1, 1),
     name = expression("Pearson's " * italic("r"))
   ) +
   scale_fill_gradient2(
@@ -483,11 +487,7 @@ fig.3b <-
       "4" = expression(BF["1,0"] == 4)
     )
   ) +
-  geom_text(aes(label = bf.lab),
-    parse = T,
-    nudge_y = .25,
-    size = 3.5
-  ) +
+  geom_text(aes(label = bf.lab), parse = T, nudge_y = .25, size = 3.5) +
   geom_label(
     aes(
       label = cor.lab,
@@ -499,8 +499,9 @@ fig.3b <-
   ) +
   theme_classic() +
   labs(
-    y =
-      expression("Country-level effects of gratitude interventions (" * italic("d") * ")"),
+    y = expression(
+      "Country-level effects of gratitude interventions (" * italic("d") * ")"
+    ),
     x = "Country-level differences",
     fill = expression("Pearson's " * italic("r"))
   ) +
@@ -516,7 +517,8 @@ fig.3b <-
 
 #Combine
 ```{r}
-plot_grid(fig.3a,
+plot_grid(
+  fig.3a,
   ggdraw(),
   fig.3b,
   labels = c("a", "", "b"),
@@ -544,7 +546,11 @@ for (i in seq_along(effect_size_columns)) {
   )
 
   # Create prediction line for plotting
-  new_dist <- seq(min(DF$dist.us, na.rm = TRUE), max(DF$dist.us, na.rm = TRUE), length.out = 100)
+  new_dist <- seq(
+    min(DF$dist.us, na.rm = TRUE),
+    max(DF$dist.us, na.rm = TRUE),
+    length.out = 100
+  )
   pred <- predict(res, newmods = new_dist)
   pred_df <- data.frame(
     dist.us = new_dist,
@@ -557,7 +563,12 @@ for (i in seq_along(effect_size_columns)) {
   p <- ggplot() +
     geom_point(data = DF, aes(x = dist.us, y = .data[[yi_col]])) +
     geom_line(data = pred_df, aes(x = dist.us, y = pred), color = "blue") +
-    geom_ribbon(data = pred_df, aes(x = dist.us, ymin = ci.lb, ymax = ci.ub), alpha = 0.2, fill = "blue") +
+    geom_ribbon(
+      data = pred_df,
+      aes(x = dist.us, ymin = ci.lb, ymax = ci.ub),
+      alpha = 0.2,
+      fill = "blue"
+    ) +
     labs(title = yi_col, x = "Distance from US", y = "Effect size") +
     theme_minimal()
 
