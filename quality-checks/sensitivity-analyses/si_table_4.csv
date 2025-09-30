@@ -2,7 +2,7 @@ Outcome,Sample,n,Cohen's d,95% CI,τc,τp,τc/τp
 pa_effect_size,Full,"10,772",.37,"[.28, .45]",.172,.078,2.22
 na_effect_size,Full,"10,772",-0.22,"[-0.30, -0.14]",.193,.048,4.02
 optimistic_effect_size,Full,"10,772",.24,"[.18, .30]",.155,.035,4.43
-ls_effect_size,Full,"10,772",.12,"[.07, .16]",.104,.000,110865.48
+ls_effect_size,Full,"10,772",.12,"[.07, .16]",.104,.000,110846.07
 envy_effect_size,Full,"10,772",-0.16,"[-0.24, -0.07]",.146,.080,1.84
 indebted_effect_size,Full,"10,772",.15,"[.07, .24]",.134,.083,1.62
 pa_effect_size,Excluding potentially problematic participants,"9,617",.39,"[.30, .47]",.166,.079,2.11

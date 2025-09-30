@@ -250,7 +250,7 @@ names(en.m.ic) <- paste(effect_size_columns)
 
 # evaluate variance components for each outcome
 lapply(en.m.ic, function(model) {
-  (sqrt(model$sigma2[2])) / (sqrt(model$sigma2[1]))
+  model$sigma2[2] / model$sigma2[1]
 })
 
 # extract tau values
@@ -275,7 +275,7 @@ names(qc.m.ic) <- paste(effect_size_columns)
 
 # evaluate variance components for each outcome
 lapply(qc.m.ic, function(model) {
-  (sqrt(model$sigma2[2])) / (sqrt(model$sigma2[1]))
+  model$sigma2[2] / model$sigma2[1]
 })
 
 # extract tau values
@@ -308,7 +308,7 @@ names(m.ic) <- paste(effect_size_columns)
 
 # evaluate relative importance of variance components for each outcome
 lapply(m.ic, function(model) {
-  (sqrt(model$sigma2[2])) / (sqrt(model$sigma2[1]))
+  model$sigma2[2] / model$sigma2[1]
 })
 
 # extract tau values

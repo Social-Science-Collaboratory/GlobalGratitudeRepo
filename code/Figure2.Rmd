@@ -142,8 +142,8 @@ d.i <- bind_rows(d.i)
 #Add Tau
 ```{r}
 # extract tau values
-tau_c <- sapply(m.ic, function(model) (model$sigma2[2]))
-tau_i <- sapply(m.ic, function(model) (model$sigma2[1]))
+tau_c <- sapply(m.ic, function(model) sqrt((model$sigma2[2])))
+tau_i <- sapply(m.ic, function(model) sqrt((model$sigma2[1])))
 
 # create data frame
 tau_df <- data.frame(
@@ -234,8 +234,8 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       annotate(
         "text",
         x = 0.5, y = 13,
-        label = expression(tau[country]),
-        parse = TRUE,
+        label = "tau[country]",  
+        parse = TRUE,            
         size = 5,
         hjust = 1,
         vjust = 1,
@@ -245,7 +245,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       annotate(
         "text",
         x = 0.5, y = 10,
-        label = expression(tau[practice]),
+        label = "tau[practice]",  
         parse = TRUE,
         size = 5,
         hjust = 1,
