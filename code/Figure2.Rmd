@@ -377,45 +377,77 @@ ggdraw() +
 
 #Pooled effect sizes + CI
 ```{r}
-# effect size estimates + CI
-results <- lapply(m.ic, function(model) {
-  est <- as.numeric(coef(model)) # pooled estimate (intercept)
-  se <- sqrt(diag(vcov(model)))[1] # SE of intercept
-
+# effect size estimates + CI + p-value
+results_df <- do.call(rbind, lapply(names(m.ic), function(name) {
+  model <- m.ic[[name]]
+  
+  # Extract estimate (Cohen's d or intercept)
+  est <- as.numeric(coef(model))
+  
+  # Standard error
+  se <- sqrt(diag(vcov(model)))[1]
+  
+  # 95% confidence interval
   ci_lower <- est - 1.96 * se
   ci_upper <- est + 1.96 * se
-
+  
+  # two-sided p-value (Wald test)
+  z_value <- est / se
+  p_value <- 2 * (1 - pnorm(abs(z_value)))
+  
+  # Return as data frame
   data.frame(
+    outcome = name,
     estimate = est,
     ci_lower = ci_lower,
-    ci_upper = ci_upper
+    ci_upper = ci_upper,
+    p_value = p_value
   )
-})
+}))
 
-results_df <- do.call(rbind, results)
-results_df$outcome <- names(m.ic)
-
-results_df <- results_df[, c("outcome", "estimate", "ci_lower", "ci_upper")]
+# Save data frame
+write.csv(results_df,
+  file = here(
+    "data/output",
+    "pooled_effect_size.csv"
+  )
+)
 ```
 
-#Calculate I2
+#Extract heterogeneity stats
 ```{r}
-# calculate I2
 
-calc_I2_from_model <- function(model) {
-  Q <- model$QE
+# Calculate Q, I2, p-value
+extract_heterogeneity <- function(name, model) {
+  Q  <- model$QE
   df <- model$k - model$p
-
-  # I^2 formula
+  p  <- model$QEp
+  
+  # Compute I²
   I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
-  return(round(I2, 1))
+  
+  data.frame(
+    outcome = name,
+    Q = round(Q, 2),
+    df = df,
+    p = round(p, 3),
+    I2 = round(I2, 1)
+  )
 }
 
-# Apply to each model in your list
-I2_list <- sapply(m.ic, calc_I2_from_model)
+# Apply across all models in m.ic
+heterogeneity_df <- bind_rows(
+  lapply(names(m.ic), function(name) extract_heterogeneity(name, m.ic[[name]]))
+)
 
-# Assign names
-names(I2_list) <- effect_size_columns
+# Save data frame
+write.csv(heterogeneity_df,
+  file = here(
+    "data/output",
+    "overall_heterogeneity.csv"
+  )
+)
+
 ```
 
 #Prediction Intervals

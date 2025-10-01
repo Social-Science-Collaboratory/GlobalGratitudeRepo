@@ -39,70 +39,46 @@ DF <-
 
 # Examine reliability
 ```{r}
-rel <-
-  sapply(
-    X = DF$lab %>% unique() %>% as.character(),
-    simplify = F,
-    USE.NAMES = T,
-    FUN = function(x) {
-      d <- DF %>%
-        filter(lab == x)
+library(psych)
 
-      # gratitude (0.89)
-      gra <- psych::alpha(x = d %>%
-        select(grateful, appreciative, thankful))$total[1] %>%
-        as.numeric()
+# Gratitude
+gra <- psych::alpha(DF %>% select(grateful, appreciative, thankful))$total$raw_alpha
 
-      # positive affect (0.92)
-      pas <- psych::alpha(x = d %>%
-        select(happy, satisfied, content, joyful, pleased))$total[1] %>%
-        as.numeric()
+# Positive affect
+pas <- psych::alpha(DF %>% select(happy, satisfied, content, joyful, pleased))$total$raw_alpha
 
-      # optimism (0.81)
-      opt <- psych::alpha(x = d %>%
-        select(optimistic, hopeful))$total[1] %>%
-        as.numeric()
+# Optimism
+opt <- psych::alpha(DF %>% select(optimistic, hopeful))$total$raw_alpha
 
-      # negative affect (0.85)
-      neg <- psych::alpha(x = d %>%
-        select(sad, depressed, anxious, nervous))$total[1] %>%
-        as.numeric()
+# Negative affect
+neg <- psych::alpha(DF %>% select(sad, depressed, anxious, nervous))$total$raw_alpha
 
-      # indebtedness (0.39)
-      ind <- psych::alpha(x = d %>%
-        select(indebted, obligated))$total[1] %>%
-        as.numeric()
+# Indebtedness
+ind <- psych::alpha(DF %>% select(indebted, obligated))$total$raw_alpha
 
-      # envy (0.74)
-      env <- psych::alpha(x = d %>%
-        select(envious, bitter, jealous))$total[1] %>%
-        as.numeric()
+# Envy
+env <- psych::alpha(DF %>% select(envious, bitter, jealous))$total$raw_alpha
 
-      # life satisfaction (0.88)
-      lif <- psych::alpha(x = d %>%
-        select(ls_1, ls_2, ls_3, ls_4, ls_5))$total[1] %>%
-        as.numeric()
+# Life satisfaction
+lif <- psych::alpha(DF %>% select(ls_1, ls_2, ls_3, ls_4, ls_5))$total$raw_alpha
 
-      # sense of self (0.74)
-      sen <- psych::alpha(x = d %>%
-        select(self_image_circle, self_image))$total[1] %>%
-        as.numeric()
+# Sense of self
+sen <- psych::alpha(DF %>% select(self_image_circle, self_image))$total$raw_alpha
 
-      list(
-        lab = x,
-        gra = gra,
-        pas = pas,
-        opt = opt,
-        neg = neg,
-        ind = ind,
-        env = env,
-        lif = lif
-      ) %>%
-        return()
-    }
+# Combine into a tidy table
+overall_alpha <- data.frame(
+  outcome = c("Gratitude", "Positive Affect", "Optimism", "Negative Affect",
+              "Indebtedness", "Envy", "Life Satisfaction", "Sense of Self"),
+  alpha = c(gra, pas, opt, neg, ind, env, lif, sen)
+)
+
+write.csv(overall_alpha,
+  file = here(
+    "data/output",
+    "reliability_scores.csv"
   )
+)
 
-rel <- rel %>% bind_rows()
 ```
 
 # Calculate scales

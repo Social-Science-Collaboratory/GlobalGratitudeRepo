@@ -79,6 +79,7 @@ distribution_results <- data.frame(
     effect_prob("indebted_effect_size", reverse = TRUE)
   )
 )
+
 ```
 
 # Calculate effect sizes
@@ -178,6 +179,14 @@ viz.DF <-
       ", "
     )
   )
+
+write.csv(viz.DF,
+  file = here(
+    "data/output",
+    "cultural_consistency.csv"
+  )
+)
+
 ```
 
 #Plot fig 3a
@@ -280,38 +289,45 @@ expanded.list <-
 
 results <- sapply(
   X = seq_len(nrow(expanded.list)),
-  simplify = F,
+  simplify = FALSE,
   FUN = function(i) {
     df <- DF %>%
       select(
         expanded.list$out.list[i],
         expanded.list$mod.list[i]
       )
-
+    
     names(df) <- c("x", "y")
-
-
-    cor.est <-
-      cor(
-        x = df$x,
-        y = df$y,
-        use = "pairwise.complete.obs",
-        method = "pearson"
-      )
-
-    bf.est <-
-      correlationBF(
-        x = df$x,
-        y = df$y
-      )
-
-    cbind(
+    
+    # Pearson correlation
+    cor.est <- cor(
+      x = df$x,
+      y = df$y,
+      use = "pairwise.complete.obs",
+      method = "pearson"
+    )
+    
+    # Bayes factor
+    bf.est <- correlationBF(
+      x = df$x,
+      y = df$y
+    )
+    
+    # Correlation test (gives CI + p)
+    cor.test.res <- cor.test(
+      df$x, df$y,
+      method = "pearson",
+      use = "pairwise.complete.obs"
+    )
+    
+    data.frame(
       outcome = expanded.list$out.list[i],
       moderator = expanded.list$mod.list[i],
-      cor = cor.est,
-      bf = extractBF(bf.est)$b
-    ) %>%
-      return()
+      cor.est = cor.est,
+      bf = extractBF(bf.est)$bf,
+      ci.lower = cor.test.res$conf.int[1],
+      ci.upper = cor.test.res$conf.int[2]
+    )
   }
 )
 
@@ -320,11 +336,13 @@ results <-
   do.call(rbind, results) %>%
   as.data.frame() %>%
   mutate(
-    cor = as.numeric(cor),
-    cor = round(cor, 2),
+    cor.est = as.numeric(cor.est),
+    cor.est = round(cor.est, 2),
     bf = as.numeric(bf),
     logbf = log(bf),
-    logbf = round(logbf, 2)
+    logbf = round(logbf, 2),
+    ci.lower = round(as.numeric(ci.lower), 2),
+    ci.upper = round(as.numeric(ci.upper), 2)
   ) %>%
   # clean aesthetics
   mutate(outcome = factor(outcome,
@@ -381,7 +399,7 @@ results <- results %>%
   mutate(cor.lab = paste0(
     "paste(",
     "italic(r), ' = ",
-    cor,
+    cor.est,
     "')"
   ))
 
@@ -426,26 +444,15 @@ results <- results %>%
         "')"
       )
   )
+
+write.csv(results,
+  file = here(
+    "data/output",
+    "moderators.csv"
+  )
+)
+
 ```
-
-# Correlation Test (for paper)
-```{r}
-cor.test(
-  DF$optimistic_effect_size,
-  DF$indulgence
-)
-
-cor.test(
-  DF$ls_effect_size,
-  DF$power.distance
-)
-
-cor.test(
-  DF$indebted_effect_size,
-  DF$mean_GDP
-)
-```
-
 
 # Create final fig.3b
 ```{r}

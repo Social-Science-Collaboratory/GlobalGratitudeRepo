@@ -53,6 +53,12 @@ USA_02b <-
   USA_02b %>%
   select(-color_task_red_6, -color_task_yellow_1, -color_task_blue_1)
 
+# Clean
+
+USA_02b <- USA_02b %>% 
+  select(Status:pageNo) %>%
+  rename("events_list" = "control_list")
+
 # Save the processed data to CSV
 write.csv(USA_02b,
   file = here(
@@ -73,9 +79,7 @@ data_USA_02b <-
   read.csv(file = here(
     "data/raw-data",
     "USA_02b_raw_harmonized.csv"
-  )) %>%
-  select(Status:pageNo) %>%
-  rename("events_list" = "control_list")
+  ))
 
 # fetch the USA_02c survey data
 data_USA_02c <-
