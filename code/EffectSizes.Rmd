@@ -99,6 +99,25 @@ DF <- DF %>%
 DF <- DF %>% select(country, condition, condition_type, guilty, ladder, gratitude_mean:ss_mean)
 ```
 
+# Organize data
+```{r}
+# create lists
+unique_labs <- unique(DF$country)
+condition_names <- c("list", "letter", "text", "naikan", "mental.sub", "divine.grat")
+variables <- c(
+  "pa_mean", "na_mean", "optimistic_mean", "ls_mean", "ladder",
+  "envy_mean", "indebted_mean", "gratitude_mean", "guilty", "ss_mean"
+)
+
+# set levels
+DF$condition <- factor(DF$condition)
+DF$condition <- factor(DF$condition, levels = c(
+  "measure", "events", "int.events",
+  "list", "letter", "text", "naikan", "mental.sub", "divine.grat"
+))
+DF$condition_type <- factor(DF$condition_type, levels = c("control", "intervention"))
+```
+
 #Unique intervention vs. control for each country (Each interventions vs. Each control)
 ```{r}
 # initialize data frame
@@ -170,7 +189,6 @@ unique_country_results_df <- do.call(rbind, results_list)
 #Write CSV
 
 ```{r}
-
 write.csv(unique_country_results_df,
   file = here(
     "data/output",

@@ -21,17 +21,22 @@ DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"
 nrow(DF)
 
 # Overall effect sizes for each outcome
-ef <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>% filter(Sample == "Full") %>% select (Outcome,Cohen.s.d)
+ef <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>%
+  filter(Sample == "Full") %>%
+  select(Outcome, Cohen.s.d)
 
 print(ef)
 
 # Overall tau
-tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>% filter(Sample == "Full") %>% select (Outcome, τc,τp)
+tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>%
+  filter(Sample == "Full") %>%
+  select(Outcome, τc, τp)
 
 print(tau)
 ```
 
 #Methodology
+Participant N
 ```{r}
 # Calculate original participant n
 DF_org <-
@@ -49,7 +54,7 @@ DF_USA_02c <-
     "USA_02c.csv"
   )) %>% select(-"X")
 
-  # match columns
+# match columns
 DF_org <- DF_org %>%
   mutate(across(names(DF_USA_02c), ~ {
     # matching character columns
@@ -67,7 +72,7 @@ DF_org <- DF_org %>%
 
 combined_DF <- bind_rows(DF_org, DF_USA_02b, DF_USA_02c)
 
-  # remove test and invalid responses
+# remove test and invalid responses
 combined_DF <-
   combined_DF %>%
   # removed test links
@@ -94,7 +99,7 @@ combined_DF <-
     ResponseId != "R_4ioYJK1zR2FgR4R",
     ResponseId != "R_4OvlyOmeTsmLpFn",
     ResponseId != "R_4BA1gbglSYnVyDK",
-    
+
     # remove invalid data
     consent %in% c(0, 1)
   )
@@ -120,10 +125,43 @@ site <- combined_DF %>% filter(Progress >= 95, lab == "")
 nrow(site)
 ```
 
+Demographics
+```{r}
+# Calculate sex percentage
+DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
+
+sex_factor <- factor(DF$sex,
+  levels = c(1, 2, 3, 4),
+  labels = c("Male", "Female", "Other/Not-Reported", "Other/Not-Reported")
+)
+
+# Replace NA values with "Other/Not-Reported"
+sex_factor <- forcats::fct_explicit_na(sex_factor, na_level = "Other/Not-Reported")
+
+# Frequency table
+sex_table <- as.data.frame(table(sex_factor))
+names(sex_table) <- c("Sex", "Count")
+
+# Add percentages
+sex_table$Percentage <- round(100 * sex_table$Count / sum(sex_table$Count), 1)
+
+sex_table
+
+# Calculate Age
+DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds")) %>%
+  filter(
+    !is.na(age),
+    # Remove outliers
+    age >= 10 & age <= 100
+  )
+
+mean(DF$age)
+SD(DF$age)
+```
+
 #Procedure
 Reliability Scores
 ```{r}
-
 # Reliability scores
 reliability <-
   read.csv(file = here(
@@ -145,22 +183,21 @@ overall_ef <-
   ))
 
 print(overall_ef)
-
 ```
 
 Heterogeneity
 ```{r}
-
 # Overall heterogeneity
 heterogeneity <- read.csv(file = here("data/output", "overall_heterogeneity.csv"))
 
 print(heterogeneity)
 
 # Overall tau
-tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>% filter(Sample == "Full") %>% select (Outcome, τc,τp)
+tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>%
+  filter(Sample == "Full") %>%
+  select(Outcome, τc, τp)
 
 print(tau)
-
 ```
 
 Prediction Intervals
@@ -169,7 +206,6 @@ Prediction Intervals
 prediction <- heterogeneity <- read.csv(file = here("data/output", "prediction_intervals.csv")) %>% select(effect_size, practice_pi_lb, practice_pi_ub, country_pi_lb, country_pi_ub)
 
 print(prediction)
-
 ```
 
 Cross-Cultural Consistency
@@ -186,12 +222,13 @@ Cross-Cultural Moderators
 moderators <- read.csv(file = here("data/output", "moderators.csv"))
 
 specific_rows <- moderators[c(36, 43, 64, 65), ]
-tightness_rows <- moderators %>% filter(moderator == "Tightness") %>% slice(1:4)
+tightness_rows <- moderators %>%
+  filter(moderator == "Tightness") %>%
+  slice(1:4)
 
 moderators_selected <- bind_rows(specific_rows, tightness_rows) %>%
   select(outcome:ci.upper)
 
 print(moderators_selected)
-
 ```
 

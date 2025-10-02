@@ -234,8 +234,8 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       annotate(
         "text",
         x = 0.5, y = 13,
-        label = "tau[country]",  
-        parse = TRUE,            
+        label = "tau[country]",
+        parse = TRUE,
         size = 5,
         hjust = 1,
         vjust = 1,
@@ -245,7 +245,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       annotate(
         "text",
         x = 0.5, y = 10,
-        label = "tau[practice]",  
+        label = "tau[practice]",
         parse = TRUE,
         size = 5,
         hjust = 1,
@@ -380,21 +380,21 @@ ggdraw() +
 # effect size estimates + CI + p-value
 results_df <- do.call(rbind, lapply(names(m.ic), function(name) {
   model <- m.ic[[name]]
-  
+
   # Extract estimate (Cohen's d or intercept)
   est <- as.numeric(coef(model))
-  
+
   # Standard error
   se <- sqrt(diag(vcov(model)))[1]
-  
+
   # 95% confidence interval
   ci_lower <- est - 1.96 * se
   ci_upper <- est + 1.96 * se
-  
+
   # two-sided p-value (Wald test)
   z_value <- est / se
   p_value <- 2 * (1 - pnorm(abs(z_value)))
-  
+
   # Return as data frame
   data.frame(
     outcome = name,
@@ -416,16 +416,15 @@ write.csv(results_df,
 
 #Extract heterogeneity stats
 ```{r}
-
 # Calculate Q, I2, p-value
 extract_heterogeneity <- function(name, model) {
-  Q  <- model$QE
+  Q <- model$QE
   df <- model$k - model$p
-  p  <- model$QEp
-  
+  p <- model$QEp
+
   # Compute I²
   I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
-  
+
   data.frame(
     outcome = name,
     Q = round(Q, 2),
@@ -447,7 +446,6 @@ write.csv(heterogeneity_df,
     "overall_heterogeneity.csv"
   )
 )
-
 ```
 
 #Prediction Intervals

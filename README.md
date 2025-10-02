@@ -25,14 +25,18 @@ Please open GlobalGratitudeRepo.Rproj before running any code.
 - Create Figure 1.
 
 ### Figure2.Rmd:
-- Create Figure 2 and prediction_intervals.csv.
+- Create Figure 2, pooled_effect_size.csv, overall_heterogeneity.csv, and prediction_intervals.csv.
 
 ### Figure3.Rmd:
-- Create Figure 3.
+- Create Figure 3, cultural_consistency.csv, moderators.csv.
 
 ### MixedModels.Rmd:
 - Calculate pre-registered analyses, fits a separate mixed-effects model for each outcome variable.
-- Create si_table_3.
+- Create si_table_3, reliability_scores.csv.
+
+### SimulatedData:
+- Create simulated data for cross-cultural datasets.
+- Create hofstede_resmobility_sim.csv, responsibilism_sim.csv, crossculturalmod_sim.csv
 
 ### SiteDemographics:
 - Calculate demographics for each site.

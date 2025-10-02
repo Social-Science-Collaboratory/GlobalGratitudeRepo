@@ -39,8 +39,6 @@ DF <-
 
 # Examine reliability
 ```{r}
-library(psych)
-
 # Gratitude
 gra <- psych::alpha(DF %>% select(grateful, appreciative, thankful))$total$raw_alpha
 
@@ -67,8 +65,10 @@ sen <- psych::alpha(DF %>% select(self_image_circle, self_image))$total$raw_alph
 
 # Combine into a tidy table
 overall_alpha <- data.frame(
-  outcome = c("Gratitude", "Positive Affect", "Optimism", "Negative Affect",
-              "Indebtedness", "Envy", "Life Satisfaction", "Sense of Self"),
+  outcome = c(
+    "Gratitude", "Positive Affect", "Optimism", "Negative Affect",
+    "Indebtedness", "Envy", "Life Satisfaction", "Sense of Self"
+  ),
   alpha = c(gra, pas, opt, neg, ind, env, lif, sen)
 )
 
@@ -78,7 +78,6 @@ write.csv(overall_alpha,
     "reliability_scores.csv"
   )
 )
-
 ```
 
 # Calculate scales
@@ -262,7 +261,7 @@ contrast.table <- contrast.table %>%
 
 write.csv(contrast.table,
   file = here(
-    "data/ouput",
+    "data/output",
     "si_table_3.csv"
   )
 )
