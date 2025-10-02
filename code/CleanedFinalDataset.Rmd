@@ -156,6 +156,15 @@ data_cleaned <- data_cleaned %>%
                    NA,
                    age))
 
+<<<<<<< Updated upstream
+=======
+# remove instances where age data are clearly wrong (Jul 9, 2025)
+data <- data %>% 
+  mutate(age = 
+           if_else(age > 99,
+                   NA,
+                   age))
+>>>>>>> Stashed changes
 
 # rename interventions and controls
 data_cleaned <-
