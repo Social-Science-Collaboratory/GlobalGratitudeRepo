@@ -18,20 +18,26 @@ options(contrasts = c("contr.sum", "contr.poly"))
 # Open data
 ```{r}
 # fetch survey
-DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
+DF <- readRDS(
+  file = here("data/final-data", "globalgratitude_final_cleaned.Rds")
+)
 
 # select relevant variables
 DF <-
-  DF %>% select(
+  DF %>%
+  select(
     Status:envy_8,
     lab:condition_type,
-    me_attention, meals_attention
+    me_attention,
+    meals_attention
   ) %>%
   # fix variable formatting
   mutate_at(
     c(
-      "ResponseId", "lab",
-      "condition", "condition_type"
+      "ResponseId",
+      "lab",
+      "condition",
+      "condition_type"
     ),
     as.factor
   )
@@ -40,16 +46,22 @@ DF <-
 # Examine reliability
 ```{r}
 # Gratitude
-gra <- psych::alpha(DF %>% select(grateful, appreciative, thankful))$total$raw_alpha
+gra <- psych::alpha(
+  DF %>% select(grateful, appreciative, thankful)
+)$total$raw_alpha
 
 # Positive affect
-pas <- psych::alpha(DF %>% select(happy, satisfied, content, joyful, pleased))$total$raw_alpha
+pas <- psych::alpha(
+  DF %>% select(happy, satisfied, content, joyful, pleased)
+)$total$raw_alpha
 
 # Optimism
 opt <- psych::alpha(DF %>% select(optimistic, hopeful))$total$raw_alpha
 
 # Negative affect
-neg <- psych::alpha(DF %>% select(sad, depressed, anxious, nervous))$total$raw_alpha
+neg <- psych::alpha(
+  DF %>% select(sad, depressed, anxious, nervous)
+)$total$raw_alpha
 
 # Indebtedness
 ind <- psych::alpha(DF %>% select(indebted, obligated))$total$raw_alpha
@@ -61,18 +73,27 @@ env <- psych::alpha(DF %>% select(envious, bitter, jealous))$total$raw_alpha
 lif <- psych::alpha(DF %>% select(ls_1, ls_2, ls_3, ls_4, ls_5))$total$raw_alpha
 
 # Sense of self
-sen <- psych::alpha(DF %>% select(self_image_circle, self_image))$total$raw_alpha
+sen <- psych::alpha(
+  DF %>% select(self_image_circle, self_image)
+)$total$raw_alpha
 
 # Combine into a tidy table
 overall_alpha <- data.frame(
   outcome = c(
-    "Gratitude", "Positive Affect", "Optimism", "Negative Affect",
-    "Indebtedness", "Envy", "Life Satisfaction", "Sense of Self"
+    "Gratitude",
+    "Positive Affect",
+    "Optimism",
+    "Negative Affect",
+    "Indebtedness",
+    "Envy",
+    "Life Satisfaction",
+    "Sense of Self"
   ),
   alpha = c(gra, pas, opt, neg, ind, env, lif, sen)
 )
 
-write.csv(overall_alpha,
+write.csv(
+  overall_alpha,
   file = here(
     "data/output",
     "reliability_scores.csv"
@@ -86,68 +107,63 @@ DF <- DF %>%
   rowwise() %>%
   mutate(
     # gratitude
-    gratitude_mean =
-      mean(c(grateful, appreciative, thankful),
-        na.rm = T
-      ),
+    gratitude_mean = mean(c(grateful, appreciative, thankful), na.rm = T),
 
     # positive affect
-    pa_mean =
-      mean(c(happy, satisfied, content, joyful, pleased),
-        na.rm = T
-      ),
+    pa_mean = mean(c(happy, satisfied, content, joyful, pleased), na.rm = T),
 
     # optimism
-    optimistic_mean =
-      mean(c(optimistic, hopeful),
-        na.rm = T
-      ),
+    optimistic_mean = mean(c(optimistic, hopeful), na.rm = T),
 
     # negative affect
-    na_mean =
-      mean(c(sad, depressed, anxious, nervous),
-        na.rm = T
-      ),
+    na_mean = mean(c(sad, depressed, anxious, nervous), na.rm = T),
 
     # indebtendess
-    indebted_mean =
-      mean(c(indebted, obligated),
-        na.rm = T
-      ),
+    indebted_mean = mean(c(indebted, obligated), na.rm = T),
 
     # envy
-    envy_mean =
-      mean(c(envious, bitter, jealous),
-        na.rm = T
-      ),
+    envy_mean = mean(c(envious, bitter, jealous), na.rm = T),
 
     # life satisfaction
-    ls_mean =
-      mean(c(ls_1, ls_2, ls_3, ls_4, ls_5),
-        na.rm = T
-      ),
+    ls_mean = mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), na.rm = T),
 
     # sense of self
-    ss_mean =
-      mean(c(self_image_circle, self_image),
-        na.rm = T
-      )
+    ss_mean = mean(c(self_image_circle, self_image), na.rm = T)
   ) %>%
   ungroup()
 
 # delete vestigial variables
 DF <- DF %>%
-  select(-c(
-    grateful, appreciative, thankful,
-    happy, satisfied, content,
-    joyful, pleased, optimistic,
-    hopeful, depressed, sad, anxious, nervous,
-    indebted, obligated,
-    envious, bitter, jealous,
-    ls_1, ls_2, ls_3,
-    ls_4, ls_5, self_image_circle,
-    self_image
-  ))
+  select(
+    -c(
+      grateful,
+      appreciative,
+      thankful,
+      happy,
+      satisfied,
+      content,
+      joyful,
+      pleased,
+      optimistic,
+      hopeful,
+      depressed,
+      sad,
+      anxious,
+      nervous,
+      indebted,
+      obligated,
+      envious,
+      bitter,
+      jealous,
+      ls_1,
+      ls_2,
+      ls_3,
+      ls_4,
+      ls_5,
+      self_image_circle,
+      self_image
+    )
+  )
 
 # create list of outcome variables
 out.list <- c(
@@ -180,7 +196,8 @@ results3 <- sapply(
       data = DF
     )
 
-    emm <- emmeans(m,
+    emm <- emmeans(
+      m,
       pairwise ~ condition,
       adjust = "none",
       pbkrtest.limit = 99999
@@ -259,7 +276,8 @@ contrast.table <- contrast.table %>%
     t.ratio = round(t.ratio, 2)
   )
 
-write.csv(contrast.table,
+write.csv(
+  contrast.table,
   file = here(
     "data/output",
     "si_table_3.csv"
