@@ -65,7 +65,7 @@ DF_relation <- read.csv(file = here(
 # responsibilism
 DF_respon <- read.csv(file = here(
   "data/cross-cultural",
-  "responsibilism.csv"
+  "responsibilism_simulated.csv"
 )) %>%
   rename("country" = "Culture") %>%
   rename("responsibilism" = "Responsibilism") %>%
@@ -111,7 +111,7 @@ DF_tight <- read.csv(file = here(
 # hofstede/residential mobility
 DF_indcol <- read.csv(file = here(
   "data/cross-cultural",
-  "hofstede_resmobility.csv"
+  "hofstede_resmobility_simulated.csv"
 )) %>%
   mutate(iso = countrycode(Matched,
     origin = "country.name",
@@ -166,7 +166,7 @@ DF_combined$sample <- ifelse(DF_combined$iso %in% sampled, "yes", "no")
 write.csv(DF_combined,
   file = here(
     "data/final-data",
-    "crossculturalmod.csv"
+    "crossculturalmod_simulated.csv"
   ), row.names = F
 )
 ```
