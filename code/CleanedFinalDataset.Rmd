@@ -65,8 +65,9 @@ write.csv(USA_02b,
 # Combine raw data
 ```{r}
 # fetch main survey data
-data_main <-
-  readRDS(file = here("data/raw-data", "globalgratitude_final.Rds"))
+data_main <- readRDS(file = here("data/raw-data", "globalgratitude_final.Rds")) %>% 
+  select(
+    Status:pageNo)
 
 # fetch the USA_02b (harmonized) survey data
 data_USA_02b <-
