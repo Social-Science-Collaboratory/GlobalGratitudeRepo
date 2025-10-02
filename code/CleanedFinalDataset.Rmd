@@ -149,12 +149,13 @@ data_cleaned <-
   ) %>%
   select(Status:pageNo) # Remove non-relevant columns
 
-# fix age data where wrong info is inputted
-data_cleaned <- data_cleaned %>%
-  mutate(age = if_else(age > 99,
-    2024 - age,
-    age
-  ))
+# remove instances where age data are clearly wrong (Jul 9, 2025)
+data_cleaned <- data_cleaned %>% 
+  mutate(age = 
+           if_else(age > 99,
+                   NA,
+                   age))
+
 
 # rename interventions and controls
 data_cleaned <-

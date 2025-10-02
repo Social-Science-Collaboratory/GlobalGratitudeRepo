@@ -1,19 +1,19 @@
 Outcome,Sample,n,Cohen's d,95% CI,τc,τp,τc/τp
-envy_effect_size,Full,"10,772",-0.16,"[-0.24, -0.07]",0.144,0.079,1.83
-envy_effect_size,Excluding potentially problematic participants,"9,617",-0.17,"[-0.26, -0.08]",0.131,0.087,1.5
-envy_effect_size,Excluding non-English surveys,"6,836",-0.21,"[-0.30, -0.12]",0.125,0.088,1.42
-indebted_effect_size,Full,"10,772",0.15,"[.07, .23]",0.131,0.082,1.6
-indebted_effect_size,Excluding potentially problematic participants,"9,617",0.17,"[.08, .25]",0.133,0.084,1.58
-indebted_effect_size,Excluding non-English surveys,"6,836",0.17,"[.06, .28]",0.129,0.114,1.13
-ls_effect_size,Full,"10,772",0.11,"[.07, .15]",0.102,0,120546.76
-ls_effect_size,Excluding potentially problematic participants,"9,617",0.11,"[.07, .16]",0.111,0.017,6.56
-ls_effect_size,Excluding non-English surveys,"6,836",0.13,"[.07, .19]",0.13,0.013,9.98
-na_effect_size,Full,"10,772",-0.22,"[-0.29, -0.14]",0.19,0.047,4.01
-na_effect_size,Excluding potentially problematic participants,"9,617",-0.22,"[-0.31, -0.14]",0.188,0.064,2.95
-na_effect_size,Excluding non-English surveys,"6,836",-0.28,"[-0.38, -0.18]",0.189,0.062,3.06
-optimistic_effect_size,Full,"10,772",0.24,"[.18, .30]",0.152,0.034,4.44
-optimistic_effect_size,Excluding potentially problematic participants,"9,617",0.27,"[.20, .33]",0.144,0.038,3.75
-optimistic_effect_size,Excluding non-English surveys,"6,836",0.27,"[.18, .36]",0.173,0.045,3.84
-pa_effect_size,Full,"10,772",0.36,"[.27, .45]",0.17,0.077,2.21
-pa_effect_size,Excluding potentially problematic participants,"9,617",0.39,"[.30, .47]",0.166,0.079,2.11
-pa_effect_size,Excluding non-English surveys,"6,836",0.43,"[.32, .53]",0.153,0.098,1.57
+pa_effect_size,Full,"10,772",.36,"[.27, .45]",.170,.077,2.21
+na_effect_size,Full,"10,772",-0.22,"[-0.29, -0.14]",.190,.047,4.01
+optimistic_effect_size,Full,"10,772",.24,"[.18, .30]",.152,.034,4.44
+ls_effect_size,Full,"10,772",.11,"[.07, .15]",.102,.000,120546.76
+envy_effect_size,Full,"10,772",-0.16,"[-0.24, -0.07]",.144,.079,1.83
+indebted_effect_size,Full,"10,772",.15,"[.07, .23]",.131,.082,1.60
+pa_effect_size,Excluding potentially problematic participants,"9,617",.39,"[.30, .47]",.166,.079,2.11
+na_effect_size,Excluding potentially problematic participants,"9,617",-0.22,"[-0.31, -0.14]",.188,.064,2.95
+optimistic_effect_size,Excluding potentially problematic participants,"9,617",.27,"[.20, .33]",.144,.038,3.75
+ls_effect_size,Excluding potentially problematic participants,"9,617",.11,"[.07, .16]",.111,.017,6.56
+envy_effect_size,Excluding potentially problematic participants,"9,617",-0.17,"[-0.26, -0.08]",.131,.087,1.50
+indebted_effect_size,Excluding potentially problematic participants,"9,617",.17,"[.08, .25]",.133,.084,1.58
+pa_effect_size,Excluding non-English surveys,"6,836",.43,"[.32, .53]",.153,.098,1.57
+na_effect_size,Excluding non-English surveys,"6,836",-0.28,"[-0.38, -0.18]",.189,.062,3.06
+optimistic_effect_size,Excluding non-English surveys,"6,836",.27,"[.18, .36]",.173,.045,3.84
+ls_effect_size,Excluding non-English surveys,"6,836",.13,"[.07, .19]",.130,.013,9.98
+envy_effect_size,Excluding non-English surveys,"6,836",-0.21,"[-0.30, -0.12]",.125,.088,1.42
+indebted_effect_size,Excluding non-English surveys,"6,836",.17,"[.06, .28]",.129,.114,1.13
