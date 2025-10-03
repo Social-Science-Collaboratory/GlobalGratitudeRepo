@@ -5,15 +5,15 @@ optimistic_effect_size,Full,"10,772",.24,"[.18, .30]",.152,.034,4.44
 ls_effect_size,Full,"10,772",.11,"[.07, .15]",.102,.000,120546.76
 envy_effect_size,Full,"10,772",-0.16,"[-0.24, -0.07]",.144,.079,1.83
 indebted_effect_size,Full,"10,772",.15,"[.07, .23]",.131,.082,1.60
-pa_effect_size,Excluding potentially problematic participants,"9,617",.39,"[.30, .47]",.166,.079,2.11
-na_effect_size,Excluding potentially problematic participants,"9,617",-0.22,"[-0.31, -0.14]",.188,.064,2.95
-optimistic_effect_size,Excluding potentially problematic participants,"9,617",.27,"[.20, .33]",.144,.038,3.75
-ls_effect_size,Excluding potentially problematic participants,"9,617",.11,"[.07, .16]",.111,.017,6.56
-envy_effect_size,Excluding potentially problematic participants,"9,617",-0.17,"[-0.26, -0.08]",.131,.087,1.50
-indebted_effect_size,Excluding potentially problematic participants,"9,617",.17,"[.08, .25]",.133,.084,1.58
-pa_effect_size,Excluding non-English surveys,"6,836",.43,"[.32, .53]",.153,.098,1.57
-na_effect_size,Excluding non-English surveys,"6,836",-0.28,"[-0.38, -0.18]",.189,.062,3.06
-optimistic_effect_size,Excluding non-English surveys,"6,836",.27,"[.18, .36]",.173,.045,3.84
-ls_effect_size,Excluding non-English surveys,"6,836",.13,"[.07, .19]",.130,.013,9.98
-envy_effect_size,Excluding non-English surveys,"6,836",-0.21,"[-0.30, -0.12]",.125,.088,1.42
-indebted_effect_size,Excluding non-English surveys,"6,836",.17,"[.06, .28]",.129,.114,1.13
+pa_effect_size,Excluding potentially problematic participants," 9,617",.39,"[.30, .47]",.166,.079,2.11
+na_effect_size,Excluding potentially problematic participants," 9,617",-0.22,"[-0.31, -0.14]",.188,.064,2.95
+optimistic_effect_size,Excluding potentially problematic participants," 9,617",.27,"[.20, .33]",.144,.038,3.75
+ls_effect_size,Excluding potentially problematic participants," 9,617",.11,"[.07, .16]",.111,.017,6.56
+envy_effect_size,Excluding potentially problematic participants," 9,617",-0.17,"[-0.26, -0.08]",.131,.087,1.50
+indebted_effect_size,Excluding potentially problematic participants," 9,617",.17,"[.08, .25]",.133,.084,1.58
+pa_effect_size,Excluding non-English surveys," 6,780",.43,"[.32, .53]",.153,.098,1.57
+na_effect_size,Excluding non-English surveys," 6,780",-0.28,"[-0.38, -0.18]",.189,.062,3.06
+optimistic_effect_size,Excluding non-English surveys," 6,780",.27,"[.18, .36]",.173,.045,3.84
+ls_effect_size,Excluding non-English surveys," 6,780",.13,"[.07, .19]",.130,.013,9.98
+envy_effect_size,Excluding non-English surveys," 6,780",-0.21,"[-0.30, -0.12]",.125,.088,1.42
+indebted_effect_size,Excluding non-English surveys," 6,780",.17,"[.06, .28]",.129,.114,1.13

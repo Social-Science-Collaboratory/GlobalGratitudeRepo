@@ -127,6 +127,8 @@ calc_scales <- function(data) {
 
 # apply
 EN_DF <- calc_scales(EN_DF)
+QC_DF <- calc_scales(QC_DF)
+
 ```
 
 # Organize data
@@ -216,21 +218,6 @@ EN_unique_country_results_df <- EN_unique_country_results_df %>%
 QC_unique_country_results_df <- compute_all_effect_sizes(QC_DF, QC_unique_labs, variables)
 QC_unique_country_results_df <- QC_unique_country_results_df %>%
   filter(!is.na(intervention_condition), !is.na(country))
-```
-
-#Create list
-```{r}
-# list of effect size columns and variance columns
-effect_size_columns <- c(
-  "pa_effect_size", "na_effect_size",
-  "optimistic_effect_size", "ls_effect_size",
-  "envy_effect_size", "indebted_effect_size"
-)
-
-variance_columns <- c(
-  "pa_var", "na_var", "optimistic_var",
-  "ls_var", "envy_var", "indebted_var"
-)
 ```
 
 #Calculate English data tau values 
@@ -410,16 +397,12 @@ ef_combined <- dplyr::bind_rows(results_df, qc_results_df, en_results_df)
 
 #Combine into one table
 ```{r}
-# Full sample
-n_full <- "10,772"
+# Store counts as numeric
+n_full <- 10772
+n_qc   <- nrow(QC_DF)
+n_en   <- nrow(EN_DF)
 
-# Excluding problematic participants
-n_qc <- "9,617"
-
-# Excluding non-English surveys
-n_en <- "6,836"
-
-# combine
+# Combine
 combined_df <- ef_combined %>%
   inner_join(tau_combined, by = c("outcome", "condition"))
 
@@ -442,12 +425,15 @@ apa_df <- combined_df %>%
     # Create CI column
     CI = paste0("[", ci_lower, ", ", ci_upper, "]"),
 
-    # Add sample size per condition
+    # Add sample size per condition (still numeric here)
     n = dplyr::case_when(
       condition == "Full" ~ n_full,
       condition == "Excluding potentially problematic participants" ~ n_qc,
       condition == "Excluding non-English surveys" ~ n_en
-    )
+    ),
+
+    # Format n nicely with commas for APA
+    n = format(n, big.mark = ",", scientific = FALSE)
   ) %>%
   dplyr::select(
     Outcome = outcome,
@@ -459,6 +445,7 @@ apa_df <- combined_df %>%
     τp = tau_p,
     `τc/τp` = tau_ci
   )
+
 
 # Write to CSV
 write_csv(apa_df, here("quality-checks", "sensitivity-analyses/si_table_4.csv"))
