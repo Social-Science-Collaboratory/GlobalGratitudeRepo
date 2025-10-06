@@ -333,7 +333,7 @@ m.p <- lapply(effect_size_columns, function(es) {
 m.p
 ```
 
-# combine plots
+# Combine plots
 ```{r}
 # combine m.d and m.p
 combined_plots <- mapply(function(plot_d, plot_p) {
