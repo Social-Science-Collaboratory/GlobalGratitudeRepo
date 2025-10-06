@@ -416,4 +416,12 @@ pr.results.red <- sapply(
     ))
   }
 )
+
+saveRDS(
+  pr.results.red,
+  file = here(
+    "data/output",
+    "si_regression_output.Rds"
+  )
+)
 ```
