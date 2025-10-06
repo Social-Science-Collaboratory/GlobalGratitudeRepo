@@ -54,7 +54,7 @@ DF_USA_02c <-
     "USA_02c.csv"
   )) %>% select(Status:pageNo)
 
-# match columns
+# Match columns
 DF_org <- DF_org %>%
   mutate(across(names(DF_USA_02c), ~ {
     # matching character columns
@@ -72,7 +72,7 @@ DF_org <- DF_org %>%
 
 combined_DF <- bind_rows(DF_org, DF_USA_02b, DF_USA_02c)
 
-# remove test and invalid responses
+# Remove test and invalid responses
 combined_DF <-
   combined_DF %>%
   # removed test links
@@ -230,5 +230,17 @@ moderators_selected <- bind_rows(specific_rows, tightness_rows) %>%
   select(outcome:ci.upper)
 
 print(moderators_selected)
+```
+
+#Supplemental Information
+```{r}
+# Pre-registered analysis (reduced)
+analysis <- readRDS(file = here("data/output", "si_regression_output.Rds"))
+
+# Loop and print summary
+for (outcome in names(analysis)) {
+  cat("\n---", outcome, "---\n")
+  print(analysis[[outcome]])
+} 
 ```
 

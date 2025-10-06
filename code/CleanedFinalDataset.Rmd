@@ -9,13 +9,13 @@ editor_options:
 
 # Load packages
 ```{r}
-# install packages
+# Install packages
 source("setup.R")
 ```
 
 # Harmonize USA_02b data
 ```{r}
-# fetch USA_02b data
+# Fetch USA_02b data
 USA_02b <-
   read.csv(file = here(
     "data/raw-data",
@@ -23,9 +23,10 @@ USA_02b <-
   )) %>%
   select(Status:pageNo)
 
-# change the condition column
+# Rename columns
 USA_02b <-
   USA_02b %>%
+  # rename the condition column
   mutate(condition = case_when(
     condition == 1 ~ "measure",
     condition == 2 ~ "events",
@@ -37,20 +38,14 @@ USA_02b <-
     condition == 9 ~ "sub",
     condition == 11 ~ "god.letter",
     TRUE ~ as.character(condition)
-  ))
-
-# change the condition_type column
-USA_02b <-
-  USA_02b %>%
+  )) %>%
+  # rename the condition_type column
   mutate(condition_type = case_when(
     condition_type == 1 ~ "control",
     condition_type == 2 ~ "intervention",
     TRUE ~ as.character(condition_type)
-  ))
-
-# Remove the color columns (results are inaccurate due to survey error)
-USA_02b <-
-  USA_02b %>%
+  )) %>%
+  # remove the color columns (results are inaccurate due to survey error)
   select(-color_task_red_6, -color_task_yellow_1, -color_task_blue_1)
 
 # Save the processed data to CSV
@@ -64,13 +59,13 @@ write.csv(USA_02b,
 
 # Combine raw data
 ```{r}
-# fetch main survey data
+# Fetch main survey data
 data_main <- readRDS(file = here("data/raw-data", "globalgratitude_final.Rds")) %>%
   select(
     Status:pageNo
   )
 
-# fetch the USA_02b (harmonized) survey data
+# Fetch the USA_02b (harmonized) survey data
 data_USA_02b <-
   read.csv(file = here(
     "data/raw-data",
@@ -78,11 +73,11 @@ data_USA_02b <-
   )) %>%
   select(Status:pageNo)
 
-# fetch the USA_02c survey data
+# Fetch the USA_02c survey data
 data_USA_02c <- read.csv(file = here("data/raw-data", "USA_02c.csv")) %>%
   select(Status:pageNo)
 
-# match columns
+# Match columns
 data_main <- data_main %>%
   mutate(across(names(data_USA_02c), ~ {
     # matching character columns
@@ -98,7 +93,7 @@ data_main <- data_main %>%
     }
   }))
 
-# combine CSV files
+# Combine CSV files
 data <-
   bind_rows(
     data_main,
@@ -111,14 +106,14 @@ data <-
     data_USA_02b
   )
 
-# clean data
+# Clean data
 data_cleaned <-
   data %>%
   # removed test links
   filter(
     DistributionChannel != "preview",
-
-    # 4/22/2024 TUR_01 used real link for testing purposes
+    
+    # 4/22/2024: TUR_01 used real link for testing purposes
     ResponseId != "R_42KUGZSS76NgWH7",
     ResponseId != "R_4W4EXfgeyk1rCYF",
     ResponseId != "R_45Z862EIfzYcin4",
@@ -134,23 +129,24 @@ data_cleaned <-
     ResponseId != "R_8HXsI5PQftiJUYk",
     ResponseId != "R_8iVWI3CN49ACiUp",
 
-    # 6/6/2024 Removed USA_01 duplicate data
+    # 6/6/2024: removed USA_01 duplicate data
     ResponseId != "R_6rDfD5u84z6WufT",
 
-    # 11/21/2024 Removed DZA_01 test data
+    # 11/21/2024: removed DZA_01 test data
     ResponseId != "R_4ioYJK1zR2FgR4R",
     ResponseId != "R_4OvlyOmeTsmLpFn",
     ResponseId != "R_4BA1gbglSYnVyDK"
   ) %>%
-  # removed incomplete surveys
+  # remove incomplete surveys
   filter(
     consent == 1,
     Progress >= 95,
     lab != ""
   ) %>%
-  select(Status:pageNo) # Remove non-relevant columns
+  # remove non-relevant columns
+  select(Status:pageNo)
 
-# remove instances where age data are clearly wrong (Jul 9, 2025)
+# Remove instances where age data are clearly wrong (Jul 9, 2025)
 data_cleaned <- data_cleaned %>%
   mutate(
     age =
@@ -160,7 +156,7 @@ data_cleaned <- data_cleaned %>%
       )
   )
 
-# remove instances where age data are clearly wrong (Jul 9, 2025)
+# Remove instances where age data are clearly wrong (Jul 9, 2025)
 data <- data %>%
   mutate(
     age =
@@ -170,7 +166,7 @@ data <- data %>%
       )
   )
 
-# rename interventions and controls
+# Rename interventions and controls
 data_cleaned <-
   data_cleaned %>%
   mutate(condition = case_when(
@@ -183,7 +179,7 @@ data_cleaned <-
 
 
 ```{r}
-# save dataset
+# Save dataset
 saveRDS(data_cleaned,
   file = here(
     "data/final-data",

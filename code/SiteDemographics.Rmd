@@ -8,13 +8,13 @@ editor_options:
 ---
 # Load packages
 ```{r}
-# install packages
+# Install packages
 source("setup.R")
 ```
 
 # Prep data
 ```{r}
-# open data
+# Open data
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
 si.table.1 <-
@@ -50,12 +50,20 @@ si.table.1 <-
     ),
     gender = table(sex) %>% paste(collapse = ", ")
   )
+```
 
+# Save CSV
+```{r}
+# Save CSV
 write.csv(si.table.1,
   file = here(
     "data/output",
     "si_table_1.csv"
   )
 )
+```
+
+
+```{r}
 ```
 

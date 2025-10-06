@@ -9,13 +9,13 @@ editor_options:
 
 # Load packages
 ```{r lib}
-# load packages
+# Load packages
 source("setup.R")
 ```
 
 #Prep data 
 ```{r}
-# open data
+# Open data
 df <-
   read.csv(file = here(
     "data/output",
@@ -23,7 +23,7 @@ df <-
   )) %>%
   select(country:ss_var)
 
-# list of effect size columns and variance columns
+# List of effect size columns and variance columns
 effect_size_columns <- c(
   "pa_effect_size", "na_effect_size",
   "optimistic_effect_size", "ls_effect_size",
@@ -35,7 +35,7 @@ variance_columns <- c(
   "ls_var", "envy_var", "indebted_var"
 )
 
-# use lapply to fit models
+# Use lapply to fit models
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(
     yi = df[[effect_size_columns[i]]],
@@ -45,13 +45,13 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
   )
 })
 
-# store the results
+# Store the results
 names(m.ic) <- paste(effect_size_columns)
 ```
 
 # Pnorm
 ```{r}
-# compute probability > 0
+# Compute probability > 0
 effect_prob <- function(effect_name, reverse = FALSE) {
   mean_val <- m.ic[[effect_name]][["b"]]
   sd_val <- sqrt(m.ic[[effect_name]][["sigma2"]][[2]])
@@ -59,7 +59,7 @@ effect_prob <- function(effect_name, reverse = FALSE) {
   if (reverse) prob else 100 - prob
 }
 
-# create the table
+# Create the table
 distribution_results <- data.frame(
   outcome = c("PA", "NA", "Optimism", "Life Satisfaction", "Envy", "Indebtedness"),
   distribution = c(
@@ -83,6 +83,7 @@ distribution_results <- data.frame(
 
 # Calculate effect sizes
 ```{r}
+# Calculate country-level descriptives
 d.c <- lapply(effect_size_columns, function(effect_size) {
   d.c <- df %>%
     group_by(country) %>%
@@ -112,7 +113,7 @@ d.c <- lapply(effect_size_columns, function(effect_size) {
 d.c <- bind_rows(d.c)
 d.c <- d.c %>% select(-y, -label)
 
-# organize effect sizes
+# Organize effect sizes
 mutate_country_results <- d.c %>%
   mutate(
     is_negative = case_when(
@@ -148,6 +149,7 @@ print(country_results)
 
 # Load and plot data
 ```{r}
+# Join data
 universality_data <- left_join(distribution_results, country_results, by = "outcome")
 
 viz.DF <-
@@ -178,7 +180,11 @@ viz.DF <-
       ", "
     )
   )
+```
 
+
+```{r}
+# Write CSV
 write.csv(viz.DF,
   file = here(
     "data/output",
@@ -189,6 +195,7 @@ write.csv(viz.DF,
 
 #Plot fig 3a
 ```{r}
+# Plot figure 3a
 fig.3a <-
   ggplot(
     data = viz.DF,
@@ -235,7 +242,7 @@ mod.DF <-
 
 # Join dataframes
 ```{r}
-# join
+# Join
 DF <-
   left_join(
     x = country.DF,
@@ -243,7 +250,7 @@ DF <-
     by = "country"
   )
 
-# delete vestigial
+# Delete vestigial
 rm(
   country.DF,
   mod.DF
@@ -252,7 +259,7 @@ rm(
 
 # Bayesian Correlation Analyses
 ```{r}
-# created expanded list of outcome-moderator combinations
+# Created expanded list of outcome-moderator combinations
 out.list <-
   c(
     "pa_effect_size",
@@ -311,7 +318,7 @@ results <- sapply(
       y = df$y
     )
 
-    # Correlation test (gives CI + p)
+    # correlation test (gives CI + p)
     cor.test.res <- cor.test(
       df$x, df$y,
       method = "pearson",
@@ -329,7 +336,7 @@ results <- sapply(
   }
 )
 
-# combine list
+# Combine list
 results <-
   do.call(rbind, results) %>%
   as.data.frame() %>%
@@ -392,7 +399,7 @@ results <-
     )
   ))
 
-# minor edit to label
+# Minor edit to label
 results <- results %>%
   mutate(cor.lab = paste0(
     "paste(",
@@ -401,14 +408,14 @@ results <- results %>%
     "')"
   ))
 
-# restructure
+# Restructure
 results <- results %>%
   mutate(
     outcome = fct_reorder(outcome, -logbf),
     moderator = fct_reorder(moderator, -logbf)
   )
 
-# recalculate bf scale
+# Recalculate bf scale
 results <- results %>%
   mutate(
     bf.type =
@@ -443,16 +450,21 @@ results <- results %>%
       )
   )
 
+```
+```{r}
+# Write CSV
 write.csv(results,
   file = here(
     "data/output",
     "moderators.csv"
   )
 )
+
 ```
 
 # Create final fig.3b
 ```{r}
+# Create figure 3b
 fig.3b <-
   ggplot(
     data = results,

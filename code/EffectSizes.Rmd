@@ -9,13 +9,13 @@ editor_options:
 
 # Load packages
 ```{r}
-# install packages
+# Install packages
 source("setup.R")
 ```
 
 # Set Up Data
 ```{r}
-# fetch survey
+# Fetch survey
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
 DF <- DF %>%
@@ -51,6 +51,7 @@ DF <- DF %>%
     indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
   )
 
+# Rename column
 DF <- DF %>%
   mutate(country = case_when(
     lab == "POL_01" ~ "Poland",
@@ -96,12 +97,13 @@ DF <- DF %>%
   )) %>%
   filter(!is.na(country))
 
+# Select relevant columnsw
 DF <- DF %>% select(country, condition, condition_type, guilty, ladder, gratitude_mean:ss_mean)
 ```
 
 # Organize data
 ```{r}
-# create lists
+# Create lists
 unique_labs <- unique(DF$country)
 condition_names <- c("list", "letter", "text", "naikan", "mental.sub", "divine.grat")
 variables <- c(
@@ -109,7 +111,7 @@ variables <- c(
   "envy_mean", "indebted_mean", "gratitude_mean", "guilty", "ss_mean"
 )
 
-# set levels
+# Set levels
 DF$condition <- factor(DF$condition)
 DF$condition <- factor(DF$condition, levels = c(
   "measure", "events", "int.events",
@@ -120,10 +122,10 @@ DF$condition_type <- factor(DF$condition_type, levels = c("control", "interventi
 
 #Unique intervention vs. control for each country (Each interventions vs. Each control)
 ```{r}
-# initialize data frame
+# Initialize data frame
 unique_country_results_df <- data.frame()
 
-# compute Cohen's d and variance
+# Compute Cohen's d and variance
 compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   # subset data
   country_data <- DF %>% filter(country == lab_name)
@@ -167,7 +169,7 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   return(result)
 }
 
-# loop through countries and contrasts
+# Loop through countries and contrasts
 results_list <- list()
 
 for (lab_name in unique_labs) {
@@ -182,12 +184,11 @@ for (lab_name in unique_labs) {
   }
 }
 
-# combine all results
+# Combine all results
 unique_country_results_df <- do.call(rbind, results_list)
 ```
 
-#Write CSV
-
+#Save dataset
 ```{r}
 write.csv(unique_country_results_df,
   file = here(

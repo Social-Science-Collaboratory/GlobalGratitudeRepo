@@ -128,7 +128,6 @@ calc_scales <- function(data) {
 # apply
 EN_DF <- calc_scales(EN_DF)
 QC_DF <- calc_scales(QC_DF)
-
 ```
 
 # Organize data
@@ -399,8 +398,8 @@ ef_combined <- dplyr::bind_rows(results_df, qc_results_df, en_results_df)
 ```{r}
 # Store counts as numeric
 n_full <- 10772
-n_qc   <- nrow(QC_DF)
-n_en   <- nrow(EN_DF)
+n_qc <- nrow(QC_DF)
+n_en <- nrow(EN_DF)
 
 # Combine
 combined_df <- ef_combined %>%

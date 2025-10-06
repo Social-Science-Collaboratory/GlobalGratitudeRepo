@@ -8,21 +8,21 @@ editor_options:
 ---
 # Load packages
 ```{r}
-# install packages
+# Install packages
 source("setup.R")
 
-# allow for Type III Sums of Square
+# Allow for Type III Sums of Square
 options(contrasts = c("contr.sum", "contr.poly"))
 ```
 
 # Open data
 ```{r}
-# fetch survey
+# Fetch survey
 DF <- readRDS(
   file = here("data/final-data", "globalgratitude_final_cleaned.Rds")
 )
 
-# select relevant variables
+# Select relevant variables
 DF <-
   DF %>%
   select(
@@ -91,7 +91,11 @@ overall_alpha <- data.frame(
   ),
   alpha = c(gra, pas, opt, neg, ind, env, lif, sen)
 )
+```
 
+
+```{r}
+# Write CSV
 write.csv(
   overall_alpha,
   file = here(
@@ -132,7 +136,7 @@ DF <- DF %>%
   ) %>%
   ungroup()
 
-# delete vestigial variables
+# Delete vestigial variables
 DF <- DF %>%
   select(
     -c(
@@ -165,7 +169,7 @@ DF <- DF %>%
     )
   )
 
-# create list of outcome variables
+# Create list of outcome variables
 out.list <- c(
   "gratitude_mean",
   "pa_mean",
@@ -183,7 +187,7 @@ out.list <- c(
 # Analyses
 ## Pre-registered analyses (full)
 ```{r}
-# for each outcome build model
+# For each outcome build model
 pr.results <- sapply(
   X = out.list,
   simplify = F,
@@ -275,7 +279,11 @@ contrast.table <- contrast.table %>%
     df = round(df, 2),
     t.ratio = round(t.ratio, 2)
   )
+```
 
+
+```{r}
+# Write CSV
 write.csv(
   contrast.table,
   file = here(
@@ -287,7 +295,7 @@ write.csv(
 
 ## Pre-registered analyses (full)
 ```{r}
-# for each outcome build model
+# For each outcome build model
 pr.results <- sapply(
   X = out.list,
   simplify = F,
@@ -379,7 +387,11 @@ contrast.table <- contrast.table %>%
     df = round(df, 2),
     t.ratio = round(t.ratio, 2)
   )
+```
 
+
+```{r}
+# Write CSV
 write.csv(
   contrast.table,
   file = here(
@@ -416,7 +428,10 @@ pr.results.red <- sapply(
     ))
   }
 )
+```
 
+```{r}
+# Save RDS
 saveRDS(
   pr.results.red,
   file = here(

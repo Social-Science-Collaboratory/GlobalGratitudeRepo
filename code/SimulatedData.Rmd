@@ -9,13 +9,13 @@ editor_options:
 
 # Load packages
 ```{r}
-# install packages
+# Install packages
 source("setup.R")
 ```
 
 # Create simulated data
 ```{r}
-# load data (Hofstede + Residential Mobility)
+# Load data (Hofstede + Residential Mobility)
 data <- read.csv(file = here(
   "data/cross-cultural",
   "hofstede_resmobility.csv"
@@ -28,7 +28,7 @@ country_data <- unique(data$Matched)
 
 set.seed(123)
 
-# create synthetic version
+# Create synthetic version
 syn_data <- syn(
   data,
   maxfaclevels = 154
@@ -47,7 +47,7 @@ write.csv(syn_data,
   row.names = F
 )
 
-# load data (Responsibilism)
+# Load data (Responsibilism)
 data_2 <- read.csv(file = here(
   "data/cross-cultural",
   "responsibilism.csv"
@@ -59,7 +59,7 @@ country_data_2 <- unique(data_2$Culture)
 
 set.seed(123)
 
-# create synthetic version
+# Create synthetic version
 syn_data_2 <- syn(
   data_2,
   maxfaclevels = 100
@@ -80,7 +80,7 @@ write.csv(syn_data_2,
 
 #Create simulated crossculturalmod.csv
 ```{r}
-# main data iso
+# Main data iso
 DF_main <-
   readRDS(file = here(
     "data/final-data",
@@ -93,7 +93,7 @@ DF_main <- DF_main %>%
 
 sampled <- unique(DF_main$iso)
 
-# cultural distance
+# Cultural distance
 DF_culture <- read.csv(here(
   "data/cross-cultural",
   "culturaldistance_combined.csv"
@@ -113,7 +113,7 @@ DF_culture <- read.csv(here(
     destination = "iso3c"
   ))
 
-# relational mobility
+# Relational mobility
 DF_relation <- read.csv(file = here(
   "data/cross-cultural",
   "relationalmobility.csv"
@@ -127,7 +127,7 @@ DF_relation <- read.csv(file = here(
   )) %>%
   select(iso, country, relational_mobility)
 
-# responsibilism
+# Responsibilism
 DF_respon <- read.csv(file = here(
   "data/simulated-data",
   "responsibilism_sim.csv"
@@ -161,7 +161,7 @@ DF_GDP <- read.csv(file = here(
   select(iso, country, mean_GDP) %>%
   filter(country != "NA")
 
-# tightness-looseness
+# Tightness-looseness
 DF_tight <- read.csv(file = here(
   "data/cross-cultural",
   "tightness.csv"
@@ -173,7 +173,7 @@ DF_tight <- read.csv(file = here(
   )) %>%
   select(tightness = Tightness, iso, country)
 
-# hofstede/residential mobility
+# Hofstede/residential mobility
 DF_indcol <- read.csv(file = here(
   "data/simulated-data",
   "hofstede_resmobility_sim.csv"
@@ -189,7 +189,7 @@ DF_indcol <- read.csv(file = here(
   select(resmobility:country)
 
 
-# religiosity
+# Religiosity
 DF_relig <- read.csv(file = here(
   "data/cross-cultural",
   "worldreligiosity.csv"
@@ -205,7 +205,7 @@ DF_relig <- read.csv(file = here(
 
 #Combine datasets
 ```{r}
-# combine datasets
+# Combine datasets
 DF_combined <- DF_culture %>%
   full_join(DF_relation, by = c("country", "iso")) %>%
   full_join(DF_respon, by = c("country", "iso")) %>%
@@ -219,7 +219,11 @@ DF_combined$sample <- ifelse(DF_combined$iso %in% sampled, "yes", "no")
 
 DF_combined <- DF_combined %>%
   mutate(country = ifelse(country == "North Macedonia", "Macedonia", country))
+```
 
+# Save CSV
+```{r}
+# Save CSV
 write.csv(DF_combined,
   file = here(
     "data/simulated-data",

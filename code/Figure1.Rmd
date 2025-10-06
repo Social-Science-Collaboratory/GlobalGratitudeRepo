@@ -9,20 +9,20 @@ editor_options:
 
 # Load packages
 ```{r}
-# install packages
+# Install packages
 source("setup.R")
 ```
 
 # Open cross-cultural values
 ```{r}
-# open data
+# Fetch cross-cultural data
 DF <-
   read.csv(here(
     "data/final-data",
     "crossculturalmod.csv"
   ))
 
-# standardize variables
+# Standardize variables
 DF <-
   DF %>%
   mutate(dist.us = if_else(country == "United States" & is.na(dist.us),
@@ -40,6 +40,7 @@ DF <-
 
 # Create figure 1a (cultural distance)
 ```{r}
+# Create figure 1a
 fig.1a <-
   ggplot(
     data = DF,
@@ -114,19 +115,20 @@ fig.1a <-
 
 # Map facet
 ```{r}
-# download world data
+# Download world data
 world <- ne_countries(
   scale = "medium",
   returnclass = "sf"
 )
 
-# fix missing ISO values in world data
+# Fix missing ISO values in world data
 world[world$name == "France", ]$iso_a3 <- "FRA"
 world[world$name == "Norway", ]$iso_a3 <- "NOR"
 ```
 
 #Create figure 1b
 ```{r}
+# Create figure 1b
 world <- ne_countries(
   scale = "medium",
   returnclass = "sf"
@@ -153,6 +155,7 @@ fig.1b <- ggplot() +
 
 # Create figure 1c (cross-cultural moderators)
 ```{r}
+# Rename columns
 fig1.DF <-
   DF %>%
   pivot_longer(relational_mobility:indulgence) %>%
@@ -176,6 +179,7 @@ fig1.DF <-
 ```
 
 ```{r}
+# Create figure 1c
 fig.1c <-
   ggplot(
     data = fig1.DF,

@@ -8,13 +8,13 @@ editor_options:
 ---
 # Load packages
 ```{r}
-# load packages
+# Load packages
 source("setup.R")
 ```
 
 # Prep data
 ```{r}
-# open data
+# Open data
 df <-
   read.csv(file = here(
     "data/output",
@@ -22,7 +22,7 @@ df <-
   )) %>%
   select(country:ss_var)
 
-# list of effect size columns and variance columns
+# List of effect size columns and variance columns
 effect_size_columns <- c(
   "pa_effect_size", "na_effect_size",
   "optimistic_effect_size", "ls_effect_size",
@@ -34,7 +34,7 @@ variance_columns <- c(
   "ls_var", "envy_var", "indebted_var"
 )
 
-# estimate total heterogeneity
+# Estimate total heterogeneity
 m <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(
     yi = df[[effect_size_columns[i]]],
@@ -62,7 +62,7 @@ m.i <- lapply(1:length(effect_size_columns), function(i) {
   )
 })
 
-# fit models for each pair of effect size and variance
+# Fit models for each pair of effect size and variance
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(
     yi = df[[effect_size_columns[i]]],
@@ -72,17 +72,14 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
   )
 })
 
-# store the results
+# Store the results
 names(m.ic) <- paste(effect_size_columns)
 
-# evaluate variance components for each outcome
-lapply(m.ic, function(model) {
-  model$sigma2[2] / model$sigma2[1]
-})
 ```
 
 # Calculate country-level and intervention-level descriptives
 ```{r}
+# Calculate country-level descriptives
 d.c <- lapply(effect_size_columns, function(effect_size) {
   d.c <- df %>%
     group_by(country) %>%
@@ -109,6 +106,7 @@ d.c <- lapply(effect_size_columns, function(effect_size) {
   return(d.c)
 })
 
+# Calculate intervention-level descriptives
 d.i <- lapply(effect_size_columns, function(effect_size) {
   d.i <- df %>%
     group_by(intervention_condition) %>%
@@ -135,17 +133,18 @@ d.i <- lapply(effect_size_columns, function(effect_size) {
   return(d.i)
 })
 
+# Bind rows
 d.c <- bind_rows(d.c)
 d.i <- bind_rows(d.i)
 ```
 
 #Add Tau
 ```{r}
-# extract tau values
+# Extract tau values
 tau_c <- sapply(m.ic, function(model) sqrt((model$sigma2[2])))
 tau_i <- sapply(m.ic, function(model) sqrt((model$sigma2[1])))
 
-# create data frame
+# Create data frame
 tau_df <- data.frame(
   effect_size = effect_size_columns,
   tau_c = tau_c,
@@ -156,7 +155,7 @@ tau_df <- data.frame(
 
 # Create density plots
 ```{r}
-# create a list of ggplot objects
+# Create a list of ggplot objects
 m.d <- lapply(seq_along(effect_size_columns), function(i) {
   effect_size <- effect_size_columns[i]
   model <- m.ic[[i]]
@@ -272,7 +271,7 @@ m.d
 
 # Plot descriptives
 ```{r}
-# combine datasets
+# Combine datasets
 d.c$dataset <- "d.c"
 d.i$dataset <- "d.i"
 d.c$intervention_condition <- NA
@@ -280,7 +279,7 @@ d.i$country <- NA
 
 d.c.i <- rbind(d.c, d.i)
 
-# create a list
+# Create a list
 m.p <- lapply(effect_size_columns, function(es) {
   data_subset <- subset(d.c.i, effect_size == es)
 
@@ -335,12 +334,12 @@ m.p
 
 # Combine plots
 ```{r}
-# combine m.d and m.p
+# Combine m.d and m.p
 combined_plots <- mapply(function(plot_d, plot_p) {
   plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
 }, m.d, m.p, SIMPLIFY = FALSE)
 
-# combine
+# Combine
 grid <-
   plot_grid(combined_plots[[1]],
     combined_plots[[2]],
@@ -377,14 +376,14 @@ ggdraw() +
 
 #Pooled effect sizes + CI
 ```{r}
-# effect size estimates + CI + p-value
+# Effect size estimates + CI + p-value
 results_df <- do.call(rbind, lapply(names(m.ic), function(name) {
   model <- m.ic[[name]]
 
-  # Extract estimate (Cohen's d or intercept)
+  # extract estimate (Cohen's d or intercept)
   est <- as.numeric(coef(model))
 
-  # Standard error
+  # standard error
   se <- sqrt(diag(vcov(model)))[1]
 
   # 95% confidence interval
@@ -395,7 +394,7 @@ results_df <- do.call(rbind, lapply(names(m.ic), function(name) {
   z_value <- est / se
   p_value <- 2 * (1 - pnorm(abs(z_value)))
 
-  # Return as data frame
+  # return as data frame
   data.frame(
     outcome = name,
     estimate = est,
@@ -405,6 +404,8 @@ results_df <- do.call(rbind, lapply(names(m.ic), function(name) {
   )
 }))
 
+```
+```{r}
 # Save data frame
 write.csv(results_df,
   file = here(
@@ -422,7 +423,7 @@ extract_heterogeneity <- function(name, model) {
   df <- model$k - model$p
   p <- model$QEp
 
-  # Compute I²
+  # compute I²
   I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
 
   data.frame(
@@ -439,6 +440,8 @@ heterogeneity_df <- bind_rows(
   lapply(names(m.ic), function(name) extract_heterogeneity(name, m.ic[[name]]))
 )
 
+```
+```{r}
 # Save data frame
 write.csv(heterogeneity_df,
   file = here(
@@ -450,7 +453,7 @@ write.csv(heterogeneity_df,
 
 #Prediction Intervals
 ```{r}
-# calculate practice-level prediction intervals
+# Calculate practice-level prediction intervals
 practice_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
   mod <- m.i[[i]]
 
@@ -465,7 +468,7 @@ practice_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
   )
 }))
 
-# calculate country-level prediction intervals
+# Calculate country-level prediction intervals
 country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
   mod <- m.c[[i]]
 
@@ -482,6 +485,8 @@ country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
 
 pred_df <- left_join(practice_pred_df, country_pred_df, by = "effect_size")
 
+```
+```{r}
 # Save data frame
 write.csv(pred_df,
   file = here(

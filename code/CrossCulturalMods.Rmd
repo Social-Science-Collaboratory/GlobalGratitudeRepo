@@ -9,13 +9,13 @@ editor_options:
 
 # Load packages
 ```{r}
-# install packages
+# Install packages
 source("setup.R")
 ```
 
 #Organize cross-cultural mods
 ```{r}
-# main data iso
+# Fetch main data
 DF_main <-
   readRDS(file = here(
     "data/final-data",
@@ -28,7 +28,7 @@ DF_main <- DF_main %>%
 
 sampled <- unique(DF_main$iso)
 
-# cultural distance
+# Cultural distance
 DF_culture <- read.csv(here(
   "data/cross-cultural",
   "culturaldistance_combined.csv"
@@ -48,7 +48,7 @@ DF_culture <- read.csv(here(
     destination = "iso3c"
   ))
 
-# relational mobility
+# Relational mobility
 DF_relation <- read.csv(file = here(
   "data/cross-cultural",
   "relationalmobility.csv"
@@ -62,7 +62,7 @@ DF_relation <- read.csv(file = here(
   )) %>%
   select(iso, country, relational_mobility)
 
-# responsibilism
+# Responsibilism
 DF_respon <- read.csv(file = here(
   "data/cross-cultural",
   "responsibilism_simulated.csv"
@@ -96,7 +96,7 @@ DF_GDP <- read.csv(file = here(
   select(iso, country, mean_GDP) %>%
   filter(country != "NA")
 
-# tightness-looseness
+# Tightness-looseness
 DF_tight <- read.csv(file = here(
   "data/cross-cultural",
   "tightness.csv"
@@ -108,7 +108,7 @@ DF_tight <- read.csv(file = here(
   )) %>%
   select(tightness = Tightness, iso, country)
 
-# hofstede/residential mobility
+# Hofstede/residential mobility
 DF_indcol <- read.csv(file = here(
   "data/cross-cultural",
   "hofstede_resmobility_simulated.csv"
@@ -124,7 +124,7 @@ DF_indcol <- read.csv(file = here(
   select(resmobility:country)
 
 
-# religiosity
+# Religiosity
 DF_relig <- read.csv(file = here(
   "data/cross-cultural",
   "worldreligiosity.csv"
@@ -140,7 +140,7 @@ DF_relig <- read.csv(file = here(
 
 #Combine datasets
 ```{r}
-# combine datasets
+# Combine datasets
 DF_combined <- bind_rows(
   DF_culture,
   DF_relation,
@@ -159,10 +159,13 @@ DF_combined <- bind_rows(
     .groups = "drop"
   )
 
-# organize countries sampled in study
+# Organize countries sampled in study
 DF_combined$sample <- ifelse(DF_combined$iso %in% sampled, "yes", "no")
+```
 
-# save dataset
+#Save dataset
+```{r}
+# Save dataset
 write.csv(DF_combined,
   file = here(
     "data/final-data",
