@@ -74,7 +74,6 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
 
 # Store the results
 names(m.ic) <- paste(effect_size_columns)
-
 ```
 
 # Calculate country-level and intervention-level descriptives
@@ -143,11 +142,13 @@ d.all <- lapply(effect_size_columns, function(effect_size) {
       y = -0.01 + runif(n(), min = -0.01, max = 0),
       # label extreme values
       label = if_else(m == min(m),
-                      paste(country, intervention_condition, sep = ", "),
-                      ""),
+        paste(country, intervention_condition, sep = ", "),
+        ""
+      ),
       label = if_else(m == max(m),
-                      paste(country, intervention_condition, sep = ", "),
-                      label)
+        paste(country, intervention_condition, sep = ", "),
+        label
+      )
     ) %>%
     ungroup()
 })
@@ -179,13 +180,12 @@ tau_df <- data.frame(
 ```{r}
 # Create a list of ggplot objects
 m.d <- lapply(seq_along(effect_size_columns), function(i) {
-  
   effect_size <- effect_size_columns[i]
   model <- m.ic[[i]]
 
   # create the plot for each effect size
   plot <- ggplot() +
-    
+
     # overall effect size estimate
     geom_point(
       aes(
@@ -209,8 +209,9 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
     ) +
 
     # visual indicator: null effect
-geom_segment(aes(x = 0, xend = 0, y = 0, yend = 7),
-             color = "grey30", linetype = "dotted")+
+    geom_segment(aes(x = 0, xend = 0, y = 0, yend = 7),
+      color = "grey30", linetype = "dotted"
+    ) +
 
     # density plot: intervention-level heterogeneity
     stat_function(
@@ -279,13 +280,13 @@ m.p <- lapply(effect_size_columns, function(es) {
       aes(x = m, y = y, label = label),
       color = "#3C5488", alpha = .5, nudge_y = .005, size = 3
     ) +
-    
+
     # add overall descriptives
     geom_point(
       data = subset(data_subset, dataset == "d.all"),
       aes(x = m, y = y),
       color = "#A47DAB", alpha = .5
-      ) +
+    ) +
 
     # add labels for overall-level
     geom_text_repel(
@@ -293,7 +294,7 @@ m.p <- lapply(effect_size_columns, function(es) {
       aes(x = m, y = y, label = label),
       color = "#A47DAB", alpha = .6, nudge_y = .005, size = 3
     ) +
-    
+
     # add intervention-level descriptives
     geom_point(
       data = subset(data_subset, dataset == "d.i"),
@@ -345,14 +346,14 @@ results_df <- do.call(rbind, lapply(names(m.ic), function(name) {
   # return as data frame
   data.frame(
     outcome = name,
-    estimate = round(est,2),
-    ci_lower = round(ci_lower,2),
-    ci_upper = round(ci_upper,2),
+    estimate = round(est, 2),
+    ci_lower = round(ci_lower, 2),
+    ci_upper = round(ci_upper, 2),
     p_value = p_value
   )
 }))
 
-#Create titles
+# Create titles
 outcome <- c(
   "Positive Affect",
   "Negative Affect",
@@ -364,7 +365,6 @@ outcome <- c(
 
 # Replace the outcome column in results_df
 results_df$outcome <- outcome
-
 ```
 ```{r}
 # Save data frame
@@ -383,7 +383,7 @@ combined_plots <- mapply(function(plot_d, plot_p) {
   plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
 }, m.d, m.p, SIMPLIFY = FALSE)
 
-#Create tau labels
+# Create tau labels
 tau_labels <- sapply(tau_df$tau_ci, function(x) {
   if (x > 50) "n.s." else paste0("= ", round(x, 2))
 })
@@ -391,7 +391,7 @@ tau_labels <- sapply(tau_df$tau_ci, function(x) {
 # Create the titles
 combined_plots <- lapply(1:length(combined_plots), function(i) {
   res <- results_df[i, ]
-  
+
   combined_plots[[i]] +
     ggtitle(
       paste0(
@@ -415,11 +415,12 @@ grid <- plot_grid(
 # Draw final figure with Cohen's d and tau annotations
 ggdraw() +
   draw_plot(grid, 0, 0.05, 1, 0.95) +
-  
+
   # Cohen's d label at bottom
   draw_label(expression("Cohen's " * italic(d)),
-             x = 0.5, y = 0, vjust = -1, size = 10) +
-  
+    x = 0.5, y = 0, vjust = -1, size = 10
+  ) +
+
   # Tau numeric labels (positioned per panel, after the title)
   draw_label(tau_labels[1], x = 0.08, y = .94, hjust = 0, size = 9) +
   draw_label(tau_labels[2], x = 0.58, y = .94, hjust = 0, size = 9) +
@@ -427,17 +428,22 @@ ggdraw() +
   draw_label(tau_labels[4], x = 0.58, y = 0.62, hjust = 0, size = 9) +
   draw_label(tau_labels[5], x = 0.08, y = 0.30, hjust = 0, size = 9) +
   draw_label(tau_labels[6], x = 0.58, y = 0.30, hjust = 0, size = 9) +
-  
-  # τ headers for first plot
-  draw_label(expression(tau[country]), x = 0.07, y = 0.96,
-             hjust = 1, vjust = 1, color = "#3C5488", size = 9.5) +
-  draw_label(expression(tau[practice]), x = 0.07, y = 0.938,
-             hjust = 1, vjust = 1, color = "#E64B35", size = 9.5) +
-  
-  # Horizontal line under tau headers
-  draw_line(x = c(0.02, 0.075), y = c(.94, .94),
-            color = "black", size = 0.5)
 
+  # τ headers for first plot
+  draw_label(expression(tau[country]),
+    x = 0.07, y = 0.96,
+    hjust = 1, vjust = 1, color = "#3C5488", size = 9.5
+  ) +
+  draw_label(expression(tau[practice]),
+    x = 0.07, y = 0.938,
+    hjust = 1, vjust = 1, color = "#E64B35", size = 9.5
+  ) +
+
+  # Horizontal line under tau headers
+  draw_line(
+    x = c(0.02, 0.075), y = c(.94, .94),
+    color = "black", size = 0.5
+  )
 ```
 
 #Extract heterogeneity stats
@@ -464,7 +470,6 @@ extract_heterogeneity <- function(name, model) {
 heterogeneity_df <- bind_rows(
   lapply(names(m.ic), function(name) extract_heterogeneity(name, m.ic[[name]]))
 )
-
 ```
 ```{r}
 # Save data frame
@@ -509,7 +514,6 @@ country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
 }))
 
 pred_df <- left_join(practice_pred_df, country_pred_df, by = "effect_size")
-
 ```
 ```{r}
 # Save data frame

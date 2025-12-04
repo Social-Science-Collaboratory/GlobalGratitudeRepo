@@ -99,7 +99,7 @@ fig.1a <-
     ),
     position = position_jitter(height = .75)
   ) +
-  
+
   # theme
   theme_classic() +
   theme(
@@ -111,11 +111,13 @@ fig.1a <-
     strip.background = element_blank()
   ) +
   xlab("Cultural distance (from USA)") +
-  
+
   # Grey line for "All countries"
   geom_segment(
-    aes(x = .6, xend = .75, 
-        y = 1, yend = 1),
+    aes(
+      x = .6, xend = .75,
+      y = 1, yend = 1
+    ),
     color = "grey80",
     size = 1.5,
     inherit.aes = FALSE
@@ -128,25 +130,30 @@ fig.1a <-
 
   # Blue line for "Sampled countries"
   geom_segment(
-    aes(x = .6, xend = .75, 
-        y = .9, yend = .9),
+    aes(
+      x = .6, xend = .75,
+      y = .9, yend = .9
+    ),
     color = "#3C5488",
     size = 1.5,
     inherit.aes = FALSE
   ) +
   geom_text(
-    aes(x = .8, y = .9,
-        label = "Sampled countries"),
+    aes(
+      x = .8, y = .9,
+      label = "Sampled countries"
+    ),
     hjust = 0,
     inherit.aes = FALSE
   ) +
-  
   geom_rect(
-    aes(xmin = .55, xmax = 1.05,
-        ymin = .8, ymax = 1.1),
-    color = "black",   
-    fill = NA,         
-    size = 1,        
+    aes(
+      xmin = .55, xmax = 1.05,
+      ymin = .8, ymax = 1.1
+    ),
+    color = "black",
+    fill = NA,
+    size = 1,
     inherit.aes = FALSE
   )
 
@@ -197,7 +204,7 @@ fig.1b <- ggplot() +
   coord_sf(crs = "ESRI:54030") +
 
   # Minimal theme, remove legend and axes
-  theme_void() +  # removes axes, gridlines, and background
+  theme_void() + # removes axes, gridlines, and background
   theme(legend.position = "none")
 ```
 
