@@ -99,7 +99,7 @@ fig.1a <-
     ),
     position = position_jitter(height = .75)
   ) +
-
+  
   # theme
   theme_classic() +
   theme(
@@ -110,7 +110,47 @@ fig.1a <-
     axis.line.y = element_blank(),
     strip.background = element_blank()
   ) +
-  xlab("Cultural distance (from USA)")
+  xlab("Cultural distance (from USA)") +
+  
+  # Grey line for "All countries"
+  geom_segment(
+    aes(x = .6, xend = .75, 
+        y = 1, yend = 1),
+    color = "grey80",
+    size = 1.5,
+    inherit.aes = FALSE
+  ) +
+  geom_text(
+    aes(x = .8, y = 1, label = "All countries"),
+    hjust = 0,
+    inherit.aes = FALSE
+  ) +
+
+  # Blue line for "Sampled countries"
+  geom_segment(
+    aes(x = .6, xend = .75, 
+        y = .9, yend = .9),
+    color = "#3C5488",
+    size = 1.5,
+    inherit.aes = FALSE
+  ) +
+  geom_text(
+    aes(x = .8, y = .9,
+        label = "Sampled countries"),
+    hjust = 0,
+    inherit.aes = FALSE
+  ) +
+  
+  geom_rect(
+    aes(xmin = .55, xmax = 1.05,
+        ymin = .8, ymax = 1.1),
+    color = "black",   
+    fill = NA,         
+    size = 1,        
+    inherit.aes = FALSE
+  )
+
+fig.1a
 ```
 
 # Map facet
@@ -128,28 +168,36 @@ world[world$name == "Norway", ]$iso_a3 <- "NOR"
 
 #Create figure 1b
 ```{r}
-# Create figure 1b
+# Filter sampled countries
+sampled_iso <- DF %>%
+  filter(sample == "yes") %>%
+  pull(iso)
+
+# Get world map
 world <- ne_countries(
   scale = "medium",
   returnclass = "sf"
 )
 
+# Create fig.1b
 fig.1b <- ggplot() +
-  # plot map layer
+  # Base world map (all countries, no fill)
   layer_spatial(
     data = world,
     color = NA
   ) +
+
+  # Highlight sampled countries
   layer_spatial(
-    data =
-      world %>%
-        filter(iso_a3 %in% DF$iso),
+    data = world %>% filter(iso_a3 %in% sampled_iso),
     aes(fill = iso_a3)
   ) +
 
-  # change coordinate projections
+  # Use equal-area projection
   coord_sf(crs = "ESRI:54030") +
-  cowplot::theme_minimal_grid() +
+
+  # Minimal theme, remove legend and axes
+  theme_void() +  # removes axes, gridlines, and background
   theme(legend.position = "none")
 ```
 

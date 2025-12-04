@@ -241,6 +241,6 @@ analysis <- readRDS(file = here("data/output", "si_regression_output.Rds"))
 for (outcome in names(analysis)) {
   cat("\n---", outcome, "---\n")
   print(analysis[[outcome]])
-} 
+}
 ```
 

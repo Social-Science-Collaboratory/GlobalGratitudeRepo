@@ -449,7 +449,6 @@ results <- results %>%
         "')"
       )
   )
-
 ```
 ```{r}
 # Write CSV
@@ -459,64 +458,54 @@ write.csv(results,
     "moderators.csv"
   )
 )
-
 ```
 
 # Create final fig.3b
 ```{r}
 # Create figure 3b
-fig.3b <-
-  ggplot(
-    data = results,
-    aes(
-      x = moderator,
-      y = fct_rev(outcome),
-      fill = bf.tran.dir,
-      label = bf.lab
-    )
+fig.3b <- ggplot(
+  data = results,
+  aes(
+    x = moderator,
+    y = fct_rev(outcome),
+    fill = cor.est,       # now correlation drives fill
+    label = bf.lab
+  )
+) +
+  geom_tile(aes(color = bf.tran.dir),  # optional: outline or secondary color
+            size = 0,
+            width = 0.97, height = 0.97,
+            show.legend = FALSE  # hide BF legend
+            
   ) +
-  geom_tile(aes(color = cor.est),
-    size = 1,
-    width = .97, height = 0.97
-  ) +
-  scale_color_gradient2(
-    low = "red", mid = "white", high = "blue",
-    midpoint = 0, limits = c(-1, 1),
+  
+  # Fill gradient now for correlation
+  scale_fill_gradient2(
+    low = "#d73027", mid = "white", high = "#4575b4",
+    midpoint = 0,
+    limits = c(-.5, .5),       # adjust limits to correlation range
     name = expression("Pearson's " * italic("r"))
   ) +
-  scale_fill_gradient2(
-    high = "#1b7837",
-    mid = "white",
-    low = "black",
-    midpoint = 1,
-    limits = c(-8, 8),
-    name = "Bayes factor",
-    labels = c(
-      "-4" = expression(BF["0,1"] == 4),
-      "-2" = expression(BF["0,1"] == 2),
-      "0" = expression(BF["1,0"] == 1),
-      "2" = expression(BF["1,0"] == 2),
-      "4" = expression(BF["1,0"] == 4)
-    )
-  ) +
-  geom_text(aes(label = bf.lab),
-    parse = T,
-    nudge_y = .25,
+  
+  # Text labels for Bayes factor
+  geom_text(
+    aes(label = bf.lab),
+    parse = TRUE,
+    nudge_y = -0.25,
     size = 3.5
   ) +
+  
+  # Text labels for correlation
   geom_label(
-    aes(
-      label = cor.lab,
-      color = cor.est
-    ),
-    parse = T,
-    nudge_y = -.25,
+    aes(label = cor.lab),
+    parse = TRUE,
+    nudge_y = 0.25,
     size = 3.5
-  ) +
+    ) +
+  
   theme_classic() +
   labs(
-    y =
-      expression("Country-level effects of gratitude interventions (" * italic("d") * ")"),
+    y = expression("Country-level effects of gratitude interventions (" * italic("d") * ")"),
     x = "Country-level differences",
     fill = expression("Pearson's " * italic("r"))
   ) +
@@ -526,7 +515,7 @@ fig.3b <-
     plot.background = element_blank(),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_text(size = 10, margin = margin(b = 15)),
-    legend.key.size = unit(.6, "cm")
+    legend.key.size = unit(0.6, "cm")
   )
 ```
 
